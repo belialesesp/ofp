@@ -1,0 +1,68 @@
+.archives-page {
+  flex-direction: column;
+  padding: 4rem 0;
+  .archives-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .archives-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-family: $text;
+    font-weight: 700;
+    color: #222;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #FFD6D9;
+    &.green {
+      background-color: #BED8BA;
+    }
+    &.blue {
+      background-color: #9BBFCD;
+    }
+    @media screen and (max-width: 767px) {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.8rem;
+    }
+  }
+ 
+  .archive-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    .post {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: calc(33.33% - (2rem/3));
+      text-align: center;
+      &__image {
+        img {
+          width: 100%;
+          height: 544px;
+          object-fit: cover;
+          @media screen and (max-width: 767px) {
+            height: 248px;
+          }
+        }
+      }
+      &__title {
+        margin: 0;
+        font-size: 1rem;
+      }
+      &__cta {
+        color: #66B1BB;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      @media screen and (max-width: 767px) {
+        width: calc(50% - 0.5rem);
+      }
+    }
+  }
+}

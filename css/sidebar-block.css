@@ -1,0 +1,397 @@
+/* Layout with normal widget sidebar - only applies to pages with has-sidebar class */
+body.has-post-sidebar:not(.has-sidebar-block) .site-main {
+    float: left;
+    width: 70%;
+}
+
+body.has-post-sidebar:not(.has-sidebar-block) .sidebar {
+    float: right;
+    width: 25%;
+    position: relative !important;
+    top: 0 !important;
+}
+
+/* Page-specific sidebar layout */
+body.has-page-sidebar:not(.has-sidebar-block) .site-main {
+    float: left;
+    width: 75%;
+}
+
+body.has-page-sidebar:not(.has-sidebar-block) .sidebar {
+    float: right;
+    width: 22%;
+    position: relative !important;
+    top: 0 !important;
+}
+
+/* Force hide widget sidebar when sidebar block is present - ONLY FOR PAGES */
+body.page.no-widget-sidebar .sidebar:not(.sidebar-block-wrapper .sidebar) {
+    display: none !important;
+}
+
+/* Clear floats */
+.site-content:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+/* Page sidebar block positioning */
+.sidebar-block-wrapper.page-sidebar-block .sidebar {
+    position: absolute !important;
+    top: 30rem !important; /* Adjusted for pages */
+    padding: 0 15px 15px;
+}
+
+/* Widget styles */
+.widget {
+    margin-top: 20px;
+}
+
+.about-kam-widget__image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.about-kam-widget__title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.about-kam-widget__description {
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* Banner CTA styles */
+.banner-cta {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+/* Favorite Cards styles */
+.my-favorite-cards.widget {
+  padding: 0;
+}
+
+.my-favorite-cards__left-col {
+  margin-bottom: 15px;
+}
+
+.my-favorite-cards__title {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.my-favorite-cards__card {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.sidebar .my-favorite-cards__card-cta:hover{
+  color: #F0A9AC;
+}
+
+/* Page-specific Widget styles - apply to both widget area and block */
+.page-sidebar-widget .widget,
+.page-sidebar-block .widget {
+  margin-bottom: 25px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.page-sidebar-widget .about-kam-widget__title,
+.page-sidebar-block .about-kam-widget__title {
+  font-size: 1.4em;
+  color: #333;
+}
+
+.page-sidebar-widget .about-kam-widget__description,
+.page-sidebar-block .about-kam-widget__description {
+  font-size: 0.85em;
+}
+
+.page-sidebar-widget .banner-cta,
+.page-sidebar-block .banner-cta {
+  padding: 15px;
+}
+
+.page-sidebar-widget .my-favorite-cards__title,
+.page-sidebar-block .my-favorite-cards__title {
+  font-size: 1.2em;
+}
+
+.page-sidebar-widget .my-favorite-cards__card-title,
+.page-sidebar-block .my-favorite-cards__card-title {
+  font-size: 1.1em;
+}
+
+.page-sidebar-widget .my-favorite-cards__card-offer,
+.page-sidebar-block .my-favorite-cards__card-offer {
+  font-size: 0.9em;
+}
+
+/* Success Stories Widget Styles */
+.widget .success-stories.widget-mode {
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+.widget .success-stories.widget-mode .success-stories__title {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.widget .success-stories.widget-mode .splide__arrow {
+    transform: scale(0.7);
+}
+
+.widget .success-stories.widget-mode .storie-image img {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.widget .success-stories.widget-mode .storie-description {
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.widget .success-stories.widget-mode .storie-author {
+    font-size: 0.85em;
+}
+
+/* Free Resources Widget Styles */
+.widget .free-resources.widget-mode {
+    padding: 15px;
+}
+
+.widget .free-resources.widget-mode .free-resources__title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.widget .free-resources.widget-mode .free-resources__description {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.widget .free-resources.widget-mode .free-resources__resources {
+    display: block;
+}
+
+.widget .free-resources.widget-mode .resource {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.widget .free-resources.widget-mode .resource__image {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.widget .free-resources.widget-mode .resource__image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.widget .free-resources.widget-mode .badge {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.widget .free-resources.widget-mode .badge img {
+    width: 24px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.widget .free-resources.widget-mode .badge h3 {
+    font-size: 0.8em;
+    margin: 0;
+}
+
+.widget .free-resources.widget-mode .resource__content .title {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+.widget .free-resources.widget-mode .resource__content .description {
+    font-size: 0.85em;
+    margin-bottom: 8px;
+}
+
+/* Lets Connect Widget Styles */
+.widget .lets-connect.widget-mode {
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+.widget .lets-connect.widget-mode .lets-connect__image {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.widget .lets-connect.widget-mode .lets-connect__image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 120px;
+}
+
+.widget .lets-connect.widget-mode .title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.widget .lets-connect.widget-mode .description {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.widget .lets-connect.widget-mode .social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.widget .lets-connect.widget-mode .social-links__link {
+    margin-bottom: 8px;
+}
+
+.widget .lets-connect.widget-mode .social-links__link a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.widget .lets-connect.widget-mode .social-links__link a:hover {
+    opacity: 0.8;
+}
+
+.widget .lets-connect.widget-mode .social-links__link .icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.widget .lets-connect.widget-mode .social-links__link .icon img {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    body.has-post-sidebar .site-main,
+    body.has-post-sidebar .sidebar,
+    body.has-page-sidebar .site-main,
+    body.has-page-sidebar .sidebar {
+        float: none;
+        width: 100%;
+    }
+
+    body.has-post-sidebar .sidebar,
+    body.has-page-sidebar .sidebar {
+        position: relative !important;
+        top: 0 !important;
+    }
+
+
+    .widget .success-stories.widget-mode,
+    .widget .free-resources.widget-mode,
+    .widget .lets-connect.widget-mode {
+        padding: 10px;
+    }
+}
+
+/* Force hide any sidebar with force-hidden class (added via JS) */
+.sidebar.force-hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Adjust main content width when we've hidden sidebar - MODIFIED FOR PAGES ONLY */
+body.page.no-widget-sidebar #primary,
+body.page.no-widget-sidebar .site-main,
+body.page.has-sidebar-block #primary,
+body.page.has-sidebar-block .site-main {
+    width: 100% !important;
+    float: none !important;
+}
+
+/* Mobile specific global fixes - MODIFIED FOR PAGES ONLY */
+@media (max-width: 768px) {
+    body.page.has-sidebar-block .sidebar:not(.sidebar-block-wrapper .sidebar),
+    body.page.no-widget-sidebar .sidebar:not(.sidebar-block-wrapper .sidebar) {
+        display: none !important;
+    }
+    
+    /* Full width content on mobile - MODIFIED FOR PAGES ONLY */
+    body.page.has-sidebar-block .site-main,
+    body.page.no-widget-sidebar .site-main {
+        width: 100% !important;
+    }
+}
+
+/* Block-specific widget hiding rules */
+body.page.has-favorite-cards-block .widget .my-favorite-cards,
+body.page.has-favorite-cards-block .widget_block:has(.my-favorite-cards),
+body.page.has-favorite-cards-block .widget [id^="course-library-"] {
+    display: none !important;
+}
+
+body.page.has-success-stories-block .widget .success-stories:not(.site-main .success-stories),
+body.page.has-success-stories-block .widget_block:has(.success-stories) {
+    display: none !important;
+}
+
+body.page.has-free-resources-block .widget .free-resources:not(.site-main .free-resources),
+body.page.has-free-resources-block .widget_block:has(.free-resources) {
+    display: none !important;
+}
+
+body.page.has-lets-connect-block .widget .lets-connect:not(.site-main .lets-connect),
+body.page.has-lets-connect-block .widget_block:has(.lets-connect) {
+    display: none !important;
+}
+/* Hide all sidebars on pages */
+body.page .sidebar:not(.pre-footer-page-sidebar-wrapper .widget) {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Ensure full width content on pages */
+body.page #primary,
+body.page .site-main {
+    width: 100% !important;
+    float: none !important;
+}
+
+/* Make sure the pre-footer sidebar is visible */
+body.page .pre-footer-page-sidebar-container {
+    display: block !important;
+    visibility: visible !important;
+}
+
+body.single-post.has-post-sidebar-block .entry-content {
+    float: left;
+    width: 70%;
+}
+

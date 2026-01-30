@@ -1,0 +1,244 @@
+<?php
+
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package our-family-passport
+ */
+$socialMediaOpts = get_field('footer', 'option');
+$popUps = get_field('pop-ups', 'option');
+$flodeskLoaded = false; // Track if Flodesk universal script is loaded
+?>
+
+<?php foreach ($popUps as $popUp): ?>
+	<?php if ($popUp['show_on_entire_site']): ?>
+		<?php
+		$popupID = 'popup-' . uniqid();
+		$background_type = $popUp['background_type'];
+		$background_color = $popUp['background_color'];
+		$background_color_start = $popUp['background_color_start'];
+		$background_color_end = $popUp['background_color_end'];
+		$rotation_deg = $popUp['rotation_deg'];
+		$background_image = $popUp['background_image'];
+		?>
+
+		<?php if ($background_type == 'gradient'): ?>
+			<style>
+				#<?= $popupID ?> .right {
+					background: linear-gradient(<?= $rotation_deg ? $rotation_deg : 0 ?>deg,
+							<?= $background_color_start ?> 0%,
+							<?= $background_color_end ?> 100%);
+				}
+			</style>
+		<?php endif; ?>
+		<?php if ($background_type == 'image'): ?>
+			<style>
+				#<?= $popupID ?> .right {
+					background-image: url(<?= $background_image['url'] ?>);
+				}
+			</style>
+		<?php endif; ?>
+		<?php if ($background_type == 'color'): ?>
+			<style>
+				#<?= $popupID ?> .right {
+					background-color: <?= $background_color ?>;
+				}
+			</style>
+		<?php endif; ?>
+
+		<div id="<?= $popupID ?>" class="pop-up">
+			<div class="popup-box">
+				<button class="close-btn" onclick="javascript:close_pop_up('<?= $popupID ?>')">
+					<svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none">
+						<path d="M46.6699 14.0336L44.9645 12.3281L29.5 27.7926L14.0355 12.3281L12.3301 14.0336L27.7945 29.498L12.3301 44.9625L14.0355 46.668L29.5 31.2035L44.9645 46.668L46.6699 44.9625L31.2055 29.498L46.6699 14.0336Z" fill="#2B2B2B" />
+					</svg>
+				</button>
+				<div class="left" style="background-image: url(<?= $popUp['left_image'] ? $popUp['left_image']['url'] : '' ?>);">
+					<div class="circular-image" style="background-color: <?= $popUp['icon_image_background_color'] ?>;">
+						<img src="<?= $popUp['icon_image'] ? $popUp['icon_image']['url'] : '' ?>" alt="<?= $popUp['icon_image'] ? $popUp['icon_image']['alt'] : '' ?>">
+					</div>
+				</div>
+				<div class="right">
+					<h3 style="color: <?= $popUp['sub-title_color'] ?>;"><?= $popUp['sub-title'] ?></h3>
+					<h2 style="color: <?= $popUp['title_color'] ?>;"><?= $popUp['title'] ?></h2>
+					<div class="description" style="color: <?= $popUp['description_color'] ?>;"><?= $popUp['description'] ?></div>
+
+					<?php $formID = 'cta-' . uniqid(); ?>
+					<style>
+						#<?= $formID ?> button[type="submit"] {
+							color: <?= $popUp['cta_color'] ?>;
+							background-color: <?= $popUp['cta_background_color'] ?>;
+						}
+
+						#<?= $formID ?> button[type="submit"]:hover {
+							color: <?= $popUp['cta_hover_color'] ?>;
+							background-color: <?= $popUp['cta_background_hover_color'] ?>;
+						}
+					</style>
+					<div id="<?= $formID ?>" class="popup-form">
+						<!-- Flodesk form container -->
+						<div class="flodesk-form-container" data-flodesk-id="<?= $popUp['form_id'] ?>"></div>
+					</div>
+
+					<?php $dimissID = 'dimiss-' . uniqid(); ?>
+					<style>
+						#<?= $dimissID ?> {
+							color: <?= $popUp['dimiss_color'] ?>;
+						}
+
+						#<?= $dimissID ?>:hover {
+							color: <?= $popUp['dimiss_hover_color'] ?>;
+						}
+					</style>
+					<button id="<?= $dimissID ?>" class="dimiss" onclick="javascript:close_pop_up('<?= $popupID ?>')"><?= $popUp['dimiss_label'] ?></button>
+				</div>
+			</div>
+		</div>
+		
+		<?php if (!$flodeskLoaded): ?>
+			<!-- Load Flodesk universal script only once -->
+			<script>
+			  (function(w, d, t, h, s, n) {
+			    w.FlodeskObject = n;
+			    var fn = function() {
+			      (w[n].q = w[n].q || []).push(arguments);
+			    };
+			    w[n] = w[n] || fn;
+			    var f = d.getElementsByTagName(t)[0];
+			    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+			    var sm = d.createElement(t);
+			    sm.async = true;
+			    sm.type = 'module';
+			    sm.src = h + s + '.mjs' + v;
+			    f.parentNode.insertBefore(sm, f);
+			    var sn = d.createElement(t);
+			    sn.async = true;
+			    sn.noModule = true;
+			    sn.src = h + s + '.js' + v;
+			    f.parentNode.insertBefore(sn, f);
+			  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+			</script>
+			<?php $flodeskLoaded = true; ?>
+		<?php endif; ?>
+		
+		<!-- Initialize Flodesk form for this popup -->
+		<script>
+		  // Wait for DOM and Flodesk to be ready
+		  document.addEventListener('DOMContentLoaded', function() {
+		    // Small delay to ensure Flodesk is loaded
+		    setTimeout(function() {
+		      if (window.fd) {
+		        window.fd('form', {
+		          formId: '<?= $popUp['form_id'] ?>',
+		          containerEl: document.querySelector('#<?= $formID ?> .flodesk-form-container')
+		        });
+		      }
+		    }, 100);
+		  });
+		</script>
+	<?php endif; ?>
+<?php endforeach; ?>
+
+<footer id="colophon" class="site-footer" style="background-color: <?= $socialMediaOpts['bacground_color'] ?>;">
+    <div class="footer-container">
+        <div class="footer-top container">        
+            <div class="footer-left">            
+                <h3 class="footer-title"><?= $socialMediaOpts['footer_title'] ?></h3>
+
+                <?php if ($socialMediaOpts['footer_socials']) : ?>
+                    <div class="social-icons">
+                        <?php foreach ($socialMediaOpts['footer_socials'] as $social) : 
+                            $icon = $social['icon'];
+                            $link = $social['link'];
+                        ?>
+                            <a href="<?php echo esc_url($link); ?>" target="_blank" class="social-icon">
+                                <?php if ($icon) : ?>
+                                    <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
+                                <?php endif; ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+
+
+            </div>
+            <div class="footer-center">
+
+                <?php if ($socialMediaOpts['top_image']) : ?>
+                    <div class="top-image">
+                        <img src="<?php echo esc_url($socialMediaOpts['top_image']['url']); ?>" alt="<?php echo esc_attr($socialMediaOpts['top_image']['alt']); ?>">
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($socialMediaOpts['main_logo']) : ?>
+                    <div class="main-logo">
+                        <img src="<?php echo esc_url($socialMediaOpts['main_logo']['url']); ?>" alt="<?php echo esc_attr($socialMediaOpts['main_logo']['alt']); ?>">
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($socialMediaOpts['footer_description']) : ?>
+                    <div class="footer-description">
+                        <?php echo wp_kses_post(wpautop($socialMediaOpts['footer_description'])); ?>
+                    </div>
+                <?php endif; ?>
+
+            </div>
+            <div class="footer-right">
+
+                <?php if ($socialMediaOpts['form_title']) : ?>
+                    <h3 class="form-title"><?php echo esc_html($socialMediaOpts['form_title']); ?></h3>
+                <?php endif; ?>
+
+                <?php if ($socialMediaOpts['form_description']) : ?>
+                    <p class="form-description"><?php echo esc_html($socialMediaOpts['form_description']); ?></p>
+                <?php endif; ?>
+
+
+                    <div class="newsletter-form">
+                    	<div id="fd-form-685421b840679baaea6652ec"></div>
+                            <script>
+                              window.fd('form', {
+                                formId: '685421b840679baaea6652ec',
+                                containerEl: '#fd-form-685421b840679baaea6652ec'
+                              });
+                            </script>
+                    </div>           
+            </div>
+        </div>
+    </div>
+        
+        <div class="footer-bottom">
+            <div id="advertiser-disclosure" class="adverticer">
+                <div class="container">
+                    <h2 class="adverticer__tile">
+                        <?= $socialMediaOpts['adverticer_title'] ?>
+                    </h2>
+                    <div class="adverticer__description">
+                        <?= $socialMediaOpts['advertiser_content'] ?>
+                    </div>
+                </div>
+            </div>
+            <nav class="footer-menu">
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'menu-footer',
+                        'menu_id'        => 'menu-footer',
+                    )
+                );
+                ?>
+            </nav>
+		</div>
+</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<?php wp_footer(); ?>
+
+</body>
+
+</html>

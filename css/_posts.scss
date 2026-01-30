@@ -1,0 +1,38 @@
+article[id*='postPage']{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: to-rem(140);
+  padding: 4rem 1rem;
+  .entry-content {
+    width: 100%;
+    max-width: 710px;
+  }
+  .entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    color: #F0A9AD;
+    text-transform: uppercase;
+  }
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+    width: 100%;
+    max-width: 250px;
+  }
+  .entry-title {
+    color: #222;
+    text-align: center;
+    font-size: to-rem(47.414);
+    font-style: normal;
+    font-weight: 400;
+  }
+  .post-thumbnail {
+    img {
+      width: 100%;
+    }
+  }
+}

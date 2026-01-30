@@ -1,0 +1,111 @@
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 1rem;
+  background-position: center;
+  @include fixed-bg;
+  
+  @media screen and (max-width: 991px) {
+    padding: 3rem 0;
+  }
+  &.bg- {
+    &center {
+      background-position: center;
+    }
+    &top {
+      background-position: top;
+    }
+    &bottom {
+      background-position: bottom;
+    }
+    &center-left {
+      background-position: center left;
+    }
+    &top-left {
+      background-position: top left;
+    }
+    &bottom-left {
+      background-position: bottom left;
+    }
+    &center-right {
+      background-position: center right;
+    }
+    &top-right {
+      background-position: top right;
+    }
+    &bottom-right {
+      background-position: bottom right;
+    }
+  }
+
+  &.content- {
+    &center {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    &left {
+      align-items: flex-start;
+      justify-content: center;
+    }
+    &right {
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
+  .hero-title {
+    margin: 0;
+    font-family: $styled;
+    font-size: 14rem;
+    line-height: 6rem;
+    font-weight: 400;
+    color: #000;
+    @media screen and (max-width: 991px) {
+      font-size: 10rem;
+    }
+  }
+  .hero-top-sub-title {
+    margin-bottom: 4rem;
+    font-family: $text;
+    font-size: to-rem(22);
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+  }
+  .hero-sub-title {
+    font-family: $text;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+  }
+  .hero-description {
+    color: #000;
+    text-align: center;
+  }
+
+  .social-medias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+    margin-top: 10rem;
+    @media screen and (max-width: 1100px) {
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: $titles;
+      font-size: to-rem(19.141);
+      font-style: normal;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+}

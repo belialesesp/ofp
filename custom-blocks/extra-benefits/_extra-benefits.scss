@@ -1,0 +1,66 @@
+.extra-benefits {
+  padding: to-rem(90) 0;
+  .container {
+    max-width: 1012px;
+  }
+  &__title {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-family: $titles;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 400;
+    @media screen and (max-width: 991px) {
+      font-size: 80px;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 50px;
+    }
+  }
+
+  &__benefits {
+    .benefit {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 74px 58px;
+      gap: 76px;
+      border-bottom: 1px solid #222;
+      text-align: center;
+      &:last-child {
+        border-bottom: 0;
+      }
+      .icon {
+        width: 110px;
+        @media screen and (max-width: 767px) {
+          width: 100%;
+        }
+      }
+      .content {
+        width: calc(100% - 110px - 76px);
+        .benefit-title {
+          margin: 0;
+          font-family: $titles;
+          font-size: 33.125px;
+          font-style: normal;
+          font-weight: 400;
+        }
+        .benefit-description {
+          font-family: $text;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+        }
+        @media screen and (max-width: 767px) {
+          width: 100%;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        margin-top: to-rem(30);
+        padding: to-rem(20);
+        gap: to-rem(20);
+      }
+    }
+  }
+}

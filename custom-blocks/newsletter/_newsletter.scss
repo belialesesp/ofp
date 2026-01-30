@@ -1,0 +1,62 @@
+.newsletter {
+  position: relative;
+  padding: 5rem 0;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    opacity: 0.33;
+  }
+  .container {
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+    z-index: 1;
+  }
+  &__title {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: to-rem(60px);
+  }
+  &__description {
+    max-width: 630px;
+    margin: 0 auto;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: to-rem(8px);
+    width: 100%;
+    max-width: 480px;
+    margin: 2rem auto 0;
+    input {
+      width: 100%;
+      padding: to-rem(11) to-rem(19);
+      font-family: $LeagueGothic;
+      font-size: 14px;
+      letter-spacing: to-rem(2.2);
+      text-transform: uppercase;
+      &::placeholder {
+        font-family: $LeagueGothic;
+        letter-spacing: to-rem(2.2);
+        text-transform: uppercase;
+        opacity: 1;
+      }
+    }
+    button {
+      border-radius: 0;
+      background-color: #FFD6D9;
+      font-family: $LeagueGothic;
+      font-size: 18px;
+      letter-spacing: to-rem(1.4);
+    }
+  }
+}
