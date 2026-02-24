@@ -56,6 +56,6 @@ function our_family_passport_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function our_family_passport_customize_preview_js() {
-	wp_enqueue_script( 'our-family-passport-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
+	wp_enqueue_script( 'our-family-passport-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), ofp_VERSION, true );
 }
 add_action( 'customize_preview_init', 'our_family_passport_customize_preview_js' );

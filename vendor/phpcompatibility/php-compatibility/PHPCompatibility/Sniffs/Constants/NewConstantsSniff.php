@@ -176,23 +176,23 @@ class NewConstantsSniff extends AbstractNewFeatureSniff
             '5.0' => false,
             '5.1' => true,
         ),
-        'POSIX_S_IFBLK' => array(
+        'POSIXofp_IFBLK' => array(
             '5.0' => false,
             '5.1' => true,
         ),
-        'POSIX_S_IFCHR' => array(
+        'POSIXofp_IFCHR' => array(
             '5.0' => false,
             '5.1' => true,
         ),
-        'POSIX_S_IFIFO' => array(
+        'POSIXofp_IFIFO' => array(
             '5.0' => false,
             '5.1' => true,
         ),
-        'POSIX_S_IFREG' => array(
+        'POSIXofp_IFREG' => array(
             '5.0' => false,
             '5.1' => true,
         ),
-        'POSIX_S_IFSOCK' => array(
+        'POSIXofp_IFSOCK' => array(
             '5.0' => false,
             '5.1' => true,
         ),
