@@ -81,6 +81,6 @@ function destinations_map_render($block)
 
 // REGISTER SCRIPTS FOR DESTINATIONS MAP
 function destinations_map() {
-	wp_enqueue_script( 'destinations-map-block-style', esc_url( get_stylesheet_directory_uri() . '/custom-blocks/destinations-map/destinations-map.js' ), array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'destinations-map-block-style', esc_url( get_stylesheet_directory_uri() . '/custom-blocks/destinations-map/destinations-map.js' ), array('jquery'), ofp_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'destinations_map' );

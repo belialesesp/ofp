@@ -31,6 +31,6 @@ function course_library_render($block)
 
 // REGISTER SCRIPTS
 function course_library_scripts() {
-	wp_enqueue_script( 'course-library-block-style', esc_url( get_stylesheet_directory_uri() . '/custom-blocks/course-library/course-library.js' ), array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'course-library-block-style', esc_url( get_stylesheet_directory_uri() . '/custom-blocks/course-library/course-library.js' ), array('jquery'), ofp_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'course_library_scripts' );

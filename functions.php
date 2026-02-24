@@ -8,9 +8,9 @@
  * @package our-family-passport
  */
 
-if (!defined('_S_VERSION')) {
+if (!defined('ofp_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '1.0.0');
+    define('ofp_VERSION', '1.0.0');
 }
 
 /**
@@ -194,17 +194,17 @@ add_action('widgets_init', 'our_family_passport_widgets_init');
  */
 function our_family_passport_scripts()
 {
-    wp_enqueue_style('our-family-passport-style', get_stylesheet_uri(), array(), _S_VERSION);
-    wp_enqueue_style('our-family-passport-custom-styles', esc_url(get_stylesheet_directory_uri() . '/css/ofp-styles.css'), array(), _S_VERSION);
+    wp_enqueue_style('our-family-passport-style', get_stylesheet_uri(), array(), ofp_VERSION);
+    wp_enqueue_style('our-family-passport-custom-styles', esc_url(get_stylesheet_directory_uri() . '/css/ofp-styles.css'), array(), ofp_VERSION);
     wp_enqueue_style('font-awesome-6', esc_url(get_stylesheet_directory_uri() . '/fontawesome/css/all.min.css'), array(), '6.5.1');
     wp_enqueue_style('splide-slider-styles', esc_url(get_stylesheet_directory_uri() . '/js/splide-slide/css/splide.min.css'), array(), '6.5.1');
     wp_style_add_data('our-family-passport-style', 'rtl', 'replace');
-	wp_enqueue_style('search-block-css', esc_url(get_stylesheet_directory_uri() . '/custom-blocks/search/_search.scss'), array(), _S_VERSION);
+	wp_enqueue_style('search-block-css', esc_url(get_stylesheet_directory_uri() . '/custom-blocks/search/_search.scss'), array(), ofp_VERSION);
 
 
-    wp_enqueue_script('our-family-passport-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+    wp_enqueue_script('our-family-passport-navigation', get_template_directory_uri() . '/js/navigation.js', array(), ofp_VERSION, true);
     wp_enqueue_script('splide-slider', get_template_directory_uri() . '/js/splide-slide/js/splide.min.js', array(), '4.1.2', true);
-    wp_enqueue_script('our-family-passport-functions', get_template_directory_uri() . '/js/ofp-functions.js', array(), _S_VERSION, true);
+    wp_enqueue_script('our-family-passport-functions', get_template_directory_uri() . '/js/ofp-functions.js', array(), ofp_VERSION, true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -214,7 +214,7 @@ add_action('wp_enqueue_scripts', 'our_family_passport_scripts');
 
 function our_family_passport_admin_scripts()
 {
-    wp_enqueue_script('our-family-passport-admin-functions', get_template_directory_uri() . '/js/admin-functions.js', array(), _S_VERSION, true);
+    wp_enqueue_script('our-family-passport-admin-functions', get_template_directory_uri() . '/js/admin-functions.js', array(), ofp_VERSION, true);
 }
 add_action('admin_enqueue_scripts', 'our_family_passport_admin_scripts');
 
