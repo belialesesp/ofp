@@ -1074,7 +1074,7 @@ function register_credit_cards_cpt() {
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => 5,
-        'menu_icon'          => 'dashicons-credit-card',
+        'menu_icon'          => 'dashicons-money',
         'supports'           => array('title', 'editor', 'thumbnail'),
         'show_in_rest'       => true,
     );

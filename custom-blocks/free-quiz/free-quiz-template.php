@@ -9,7 +9,7 @@ $quiz_title_line1 = get_field('small_text') ?: 'free';
 $quiz_title_line2 = get_field('title') ?: 'QUIZ';
 $quiz_description = get_field('description') ?: 'Find the perfect travel card for you in just 90 seconds with our free quiz!';
 $quiz_button_text = get_field('button_text') ?: 'TAKE THE QUIZ';
-$quiz_button_link = get_field('button_link') ?: '#';
+$quiz_button_link = get_field('button_link') ?: 'https://ofpbestcardquiz.replit.app/';
 
 // Process video URL
 $video_embed_url = '';

@@ -10,7 +10,10 @@
  * @package our-family-passport
  */
 $bannerOpts = get_field('banner', 'option');
-$takeQuizzOpts = get_field('take_the_quizz', 'option');
+// Get quiz fields from the homepage
+$home_id = get_option('page_on_front');
+$quizUrl = get_field('quizz_url', $home_id);
+$quizLabel = get_field('take_a_quizz_label', $home_id);
 $lookAroundOpts = get_field('menu_look_around', 'option');
 $socialMediaOpts = get_field('social_media', 'option');
 ?>
@@ -62,13 +65,13 @@ $socialMediaOpts = get_field('social_media', 'option');
 			<?php endif; ?>
 			<div class="look-around">
 				<div class="container align-items-center justify-content-between">
-					<?php if ($takeQuizzOpts): ?>
-						<div class="look-around__quiz-link">
-							<a class="take-quizz" href="<?= $takeQuizzOpts['quizz_url'] ?>" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer">
-								<?= $takeQuizzOpts['take_a_quizz_label'] ?>
-							</a>
-						</div>
-					<?php endif; ?>
+					<?php if ($quizUrl && $quizLabel): ?>
+    <div class="look-around__quiz-link">
+        <a class="take-quizz" href="<?= esc_url($quizUrl) ?>" target="_blank" rel="noopener noreferrer">
+            <?= esc_html($quizLabel) ?>
+        </a>
+    </div>
+<?php endif; ?>
 					<div class="look-around__big-menu">
 						<?php if ($lookAroundOpts): ?>
 							<div class="label">

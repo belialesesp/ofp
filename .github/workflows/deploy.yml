@@ -1,0 +1,38 @@
+name: Deploy to DreamHost
+
+on:
+  push:
+    branches:
+      - master  # or whatever your production branch is
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # needed for change detection
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install & Build
+        run: |
+          npm install
+          npm run compile:css
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./  # or ./dist/ if you have a build step
+          server-dir: /ourfamilypassport.dreamhosters.com/wp-content/themes/our-family-passport  # e.g. /example.com/wp-content/themes/your-theme/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            README.md
