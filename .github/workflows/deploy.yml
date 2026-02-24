@@ -1,0 +1,34 @@
+name: Deploy to DreamHost
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Deploy via SFTP
+        run: |
+          sudo apt-get install -y lftp
+          lftp -e "
+            set sftp:auto-confirm yes;
+            set net:timeout 10;
+            set net:max-retries 3;
+            open sftp://dh_5xyscn:${{ secrets.FTP_PASSWORD }}@pdx1-shared-a3-02.dreamhost.com;
+            mirror --reverse --delete --verbose \
+              --exclude .git \
+              --exclude .github \
+              --exclude node_modules \
+              --exclude sass \
+              --exclude package.json \
+              --exclude package-lock.json \
+              --exclude README.md \
+              ./ /home/dh_5xyscn/ourfamilypassport.dreamhosters.com/wp-content/themes/our-family-passport/;
+            bye
+          "

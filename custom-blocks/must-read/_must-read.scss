@@ -1,0 +1,68 @@
+.must-read {
+  padding: 4rem 0;
+  .container {
+    max-width: 1023px;
+    flex-direction: column;
+  }
+  &__title {
+    color: #101010;
+    text-align: center;
+    font-family: $titles;
+    font-size: to-rem(55.625);
+    font-style: normal;
+    font-weight: 400;
+    margin: 0 0 3rem 0;
+  }
+  &__posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  &__post {
+    position: relative;
+    width: calc(33.333% - (4rem / 3));
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+    .img.top__badge {
+      position: absolute;
+      top: -8%;
+      right: -11%;
+      @media screen and (max-width: 767px) {
+        right: 0;
+      }
+    }
+    .post-image {
+      img {
+        width: 303px;
+        height: 354px;
+        object-fit: cover;
+        @media screen and (max-width: 767px) {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    .categories {
+      color: #F0A9AD;
+      font-family: $LeagueGothic;
+      font-size: to-rem(20);
+      font-style: normal;
+      font-weight: 400;
+      line-height: to-rem(24);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .title {
+      color: #222;
+      font-family: $titles;
+      font-size: to-rem(20);
+      font-style: normal;
+      font-weight: 400;
+    }
+  }
+}

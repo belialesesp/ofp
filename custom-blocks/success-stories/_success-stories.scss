@@ -1,0 +1,84 @@
+.success-stories {
+  padding: 5rem 0;
+  .container {
+    overflow-x: hidden;
+  }
+  &__title {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 6rem;
+    font-family: $titles;
+    font-size: 5rem;
+    font-weight: 400;
+    text-align: center;
+    @media screen and (max-width: 767px) {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+  }
+  &__stories {
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4rem;
+    .splide__track {
+      overflow: visible;
+    }
+    .splide__arrows {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      .splide__arrow {
+        position: relative;
+        right: inherit;
+        left: inherit;
+        background-color: transparent;
+        width: 44px;
+        height: 44px;
+        svg {
+          width: 44px;
+          height: 44px;
+          fill: #222222;
+        }
+      }
+    }
+    .storie {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 6rem 2rem 2rem;
+      border-radius: 22px;
+      background-color: #F7F0E5;
+      overflow: visible;
+    }
+    .storie-image {
+      position: absolute;
+      top: -70px;
+      img {
+        width: 155px;
+        height: 155px;
+        object-fit: cover;
+        border: 9px solid;
+        border-radius: 200px;
+      }
+    }
+    .storie-description {
+      font-family: $text;
+      font-weight: 400;
+      font-size: 18px;
+    }   
+    .storie-author {
+      width: 100%;
+      font-family: $LeagueGothic;
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+}

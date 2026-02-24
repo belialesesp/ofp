@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+.credit-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 45px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    overflow: hidden;
+    .card-title {
+      display: block;
+      color: #61a7af;
+      font-weight: bold;
+      margin-bottom: 1.25rem;
+      text-decoration: none;
+    }
+    .card-img {
+      display: block;
+      margin: 0 auto;
+      transition: all 0.5s;
+      &:hover {
+        transform: scale(1.1) rotate(-10deg);
+      }
+    }
+    .reward-points {
+      color: #000;
+      margin: 15px 0;
+    }
+    .terms {
+      color: #7d7d7d;
+      margin-bottom: 15px;
+      font-style: italic;
+      a {
+        color: #7d7d7d;
+        text-decoration: underline;
+      }
+    }
+    .apply-link,
+    .apply-button {
+      position: relative;
+      padding: 0.25rem 2rem;
+      border-radius: 6px;
+      color: #61a7af;
+      font-weight: 700;
+      text-decoration: none;
+      text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #61a7af;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
+        transition: all 0.4s;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+    .mod-annual {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-top: 10px;
+    }
+    .annual-fee {
+      color: #006b77;
+      margin: 0;
+    }
+    .section-title {
+      color: #61a7af;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    hr {
+      height: 0;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    &.large {
+      width: 100%;
+      font-size: 14px;
+      .card-title {
+        font-size: 24px;
+      }
+      .apply-link,
+      .apply-button {
+        font-size: 18px;
+      }
+      .annual-fee {
+        font-size: 18px;
+      }
+      .section-title {
+        font-size: 16px;
+      }
+      .terms {
+        font-size: 12px;
+      }
+    }
+    &.medium {
+      max-width: 600px;
+      padding: 20px;
+      font-size: 12px;
+      .left {
+        width: 40%;
+      }
+      .right {
+        width: 60%;
+        padding-left: 15px;
+      }
+      .card-title {
+        font-size: 20px;
+      }
+      .mod-annual {
+        justify-content: center;
+      }
+      .annual-fee {
+        font-size: 14px;
+      }
+    }
+    &.small {
+      max-width: 260px;
+      flex-direction: column;
+      padding: 20px;
+      font-size: 11px;
+      text-align: center;
+      .card-title {
+        font-size: 16px;
+      }
+      .card-img {
+        max-width: 132px;
+        margin-bottom: 15px;
+      }
+      hr {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin: 0;
+        &.hidde-small {
+          display: none;
+        }
+      }
+      .mod-annual {
+        justify-content: center;
+        padding-top: 0;
+      }
+      .annual-fee {
+        display: none;
+      }
+    }
+  }
+}

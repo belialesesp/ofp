@@ -1,0 +1,140 @@
+.contact-form {
+  display: flex;
+  padding: 6rem 0;
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: 50%;
+  @media screen and (max-width: 991px) {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 2rem 0;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f6f2ef;
+      opacity: 0.8;
+    }
+  }
+   .container {
+    justify-content: flex-end;
+  }
+  &__content {
+    position: relative;
+    width: 50%;
+    padding: 0 2rem;
+    @media screen and (max-width: 991px) {
+      width: 100%;
+    }
+  }
+  &__title {
+    max-width: 337px;
+    position: relative;
+    left: -12%;
+    margin-bottom: 1rem;
+    font-size: to-rem(100);
+    line-height: to-rem(100);
+    @media screen and (max-width: 991px) {
+      left: 0;
+    }
+    @media screen and (max-width: 991px) {
+      font-size: to-rem(80);
+    }
+  }
+  &__contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    a {
+      color: #9bbfcd;
+      font-family: $LeagueGothic;
+      font-size: to-rem(40);
+      font-style: normal;
+      font-weight: 400;
+      line-height: to-rem(45.6);
+      letter-spacing: 1.9px;
+      text-transform: uppercase;
+      text-decoration: none;
+      @media screen and (max-width: 991px) {
+        font-size: to-rem(20);
+      }
+    }
+  }
+  &__contact-form {
+    margin-top: 2rem;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+    p {
+      margin: 0;
+    }
+    input,
+    textarea {
+      width: 100%;
+      padding: to-rem(11) to-rem(19);
+      border: 0;
+      font-family: $titles;
+      font-size: 14px;
+      letter-spacing: to-rem(2.2);
+      text-transform: uppercase;
+      &::placeholder {
+        font-family: $titles;
+        letter-spacing: to-rem(2.2);
+        text-transform: uppercase;
+        opacity: 1;
+      }
+    }
+    .wpcf7-form-control-wrap {
+      display: block;
+    }
+    .submit {
+      .wpcf7-submit {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 26px 48px;
+        border: 0;
+        border-radius: 100px;
+        background-color: #bed8ba;
+        color: #222;
+        text-align: center;
+        font-family: $text;
+        font-size: to-rem(18);
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: to-rem(3.6);
+        text-transform: uppercase;
+        @media screen and (max-width: 991px) {
+          padding: 18px 36px;
+          font-size: to-rem(14);
+        }
+      }
+    }
+    .wpcf7-response-output {
+      margin: 0;
+    }
+    .one-col {
+      width: 100%;
+    }
+    .two-col {
+      width: 100%;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .wpcf7-form-control-wrap {
+          width: calc(50% - 0.5rem);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+footer {
+  padding: 2rem 0 3rem;
+  .adverticer {
+    &__tile {
+      font-weight: 400;
+    }
+    @media screen and (max-width: 767px) {
+      text-align: justify;
+    }
+  }
+  .footer-menu {
+    .menu {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      .menu-item {
+        a {
+          display: block;
+          padding: 1rem;
+          font-family: $text;
+          font-weight: 700;
+          color: $black;
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

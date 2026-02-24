@@ -1,0 +1,213 @@
+.my-favorite-cards  {
+  padding: 5rem 0;
+  @media screen and (max-width: 991px) {
+    padding: 2rem 0;
+  }
+  .container  {
+    justify-content: space-between;
+    @media screen and (max-width: 991px) {
+      gap: 2rem;
+    }
+  }
+  &__left-col {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    @media screen and (max-width: 991px) {
+      width: 100%;
+      align-items: center;
+    }
+  }
+  &__title {
+    margin: 0;
+    color: #f7f0e6;
+    font-size: 14rem;
+    text-align: right;
+    text-transform: uppercase;
+    line-height: 0;
+    span {
+      font-family: $LeagueGothic;
+      font-size: 10rem;
+      font-weight: 400;
+      line-height: 12rem;
+    }
+    .styled {
+      font-family: $styled;
+      font-size: 6rem;
+      font-weight: 400;
+      text-transform: none;
+      line-height: 0;
+    }
+  }
+  &__image {
+    @media screen and (max-width: 991px) {
+      width: 50%;
+    }
+    @media screen and (max-width: 767px) {
+      width: 90%;
+    }
+  }
+  &__right-col {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media screen and (max-width: 991px) {
+      width: 100%;
+    }
+  }
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 2rem;
+  }
+  &__card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #f7f0e6;
+    @media screen and (max-width: 767px) {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+  &__card-img {
+    width: calc(35% - 0.5rem);
+    @media screen and (max-width: 767px) {
+      width: 60%;
+    }
+  }
+  &__card-content {
+    width: calc(65% - 0.5rem);
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+  &__card-title {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  &__card-offer {
+    font-family: $text;
+  }
+  &__card-cta {
+    padding: 0;
+    background-color: transparent;
+    font-family: $LeagueGothic;
+    color: #f0a8ad;
+    letter-spacing: 3px;
+    &:hover {
+      background-color: transparent;
+      color: #9abfcc;
+    }
+    &:visited {
+      color: #f0a8ad;
+      &:hover {
+        background-color: transparent;
+        color: #9abfcc;
+      }
+    }
+  }
+  &__cta {
+    background-color: transparent;
+    font-family: $LeagueGothic;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    span {
+      margin-right: 0.5rem;
+      text-decoration: underline;
+    }
+    &:hover {
+      background-color: transparent;
+      color: #f0a8ad;
+    }
+  }
+}
+
+.sidebar {
+  .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .my-favorite-cards {
+    padding: 16px;
+    background: #9abfcc;
+    &__left-col  {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    &__title  {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      text-align: center;
+      .styled {
+        font-size: 40px;
+        line-height: 40px;
+      }
+      span {
+        display: flex;
+        gap: 0.1rem;
+        font-size: 50px;
+        line-height: 40px;
+      }
+    }
+    &__image {
+      display: none;
+    }
+    &__right-col {
+      width: 100%;
+    }
+    &__cards {
+      gap: 2rem;
+    }
+    &__card {
+      padding: 0;
+      flex-direction: column;
+      background-color: transparent;
+    }
+    &__card-img {
+      width: 134px;
+    }
+    &__card-content {
+      width: 100%;
+    }
+    &__card-title {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    &__card-offer {
+      font-weight: 700;
+    }
+    &__card-cta {
+      padding: 0;
+      background-color: transparent;
+      font-family: $LeagueGothic;
+      color: #222;
+      letter-spacing: 3px;
+      &:hover {
+        background-color: transparent;
+        color: #9abfcc;
+      }
+      &:visited {
+        color: #f0a8ad;
+        &:hover {
+          background-color: transparent;
+          color: #9abfcc;
+        }
+      }
+    }
+    &__cta {
+      display: none;
+    }
+  }
+}
