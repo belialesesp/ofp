@@ -32,6 +32,6 @@ require 'sidebar-block/sidebar-block.php';
 // REGISTER STYLES AND SCRIPTS FOR CUSTOM BLOCKS
 function custom_blocks_scripts()
 {
-	wp_enqueue_style('credit-cards-block-style', esc_url(get_stylesheet_directory_uri() . '/custom-blocks/styles.css'), array(), _S_VERSION);
+	wp_enqueue_style('credit-cards-block-style', esc_url(get_stylesheet_directory_uri() . '/custom-blocks/styles.css'), array(), ofp_VERSION);
 }
 add_action('wp_enqueue_scripts', 'custom_blocks_scripts');
