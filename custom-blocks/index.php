@@ -66,12 +66,10 @@ add_action( 'acf/init', function () use ( $custom_blocks ) {
 // ── render_template blocks (require their own acf_register_block_type call) ─
 // These blocks use render_template instead of render_callback and have extra
 // supports — they cannot use the generic helper.
-require 'favorite-cards-small/favorite-cards-small.php';
 require 'enchanted-link/enchanted-link.php';
 require 'guides/guides.php';
 require 'free-quiz/free-quiz.php';
 require 'words-animation/words-animation.php';
-require 'credit-card-hero/credit-card-hero.php';
 
 // ── Extra logic files (fields, filters, enqueues) ───────────────────────────
 // These blocks are already registered above via $custom_blocks.
@@ -82,6 +80,16 @@ require 'unique-card/unique-card.php';
 require 'newsletter/newsletter.php';
 require 'lets-connect/lets-connect.php';
 require 'sidebar-block/sidebar-block.php';
+require 'time-line/time-line.php';
+require 'course-library/course-library.php';
+require 'destinations-map/destinations-map.php';
+require 'free-consultation/free-consultation.php';
+require 'free-resources/free-resources.php';
+require 'success-stories/success-stories.php';
+require 'unique-card-body-section/unique-card-body-section.php';
+require 'related-posts/related-posts.php';
+require 'ofp-calculator/ofp-calculator.php';
+require 'non-affiliate-disclosure/non-affiliate-disclosure.php';
 
 // ── Shared styles ────────────────────────────────────────────────────────────
 function custom_blocks_scripts() {
