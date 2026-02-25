@@ -5,7 +5,7 @@ function newsletter_scripts() {
     'newsletter-block-script',
     esc_url( get_stylesheet_directory_uri() . '/custom-blocks/newsletter/newsletter.js' ),
     array(),
-    _S_VERSION,
+    filemtime( get_template_directory() . '/custom-blocks/newsletter/newsletter.js' ),
     true
   );
 }

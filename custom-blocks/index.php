@@ -89,7 +89,7 @@ function custom_blocks_scripts() {
     'custom-blocks-style',
     esc_url( get_stylesheet_directory_uri() . '/custom-blocks/styles.css' ),
     array(),
-    ofp_VERSION
+    filemtime( get_template_directory() . '/custom-blocks/styles.css' )
   );
 }
 add_action( 'wp_enqueue_scripts', 'custom_blocks_scripts' );
