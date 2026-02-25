@@ -1290,16 +1290,6 @@ function register_automatic_related_posts_block() {
 }
 add_action('acf/init', 'register_automatic_related_posts_block');
 
-// Register blocks
-require get_template_directory() . '/custom-blocks/search/search.php';
-require get_template_directory() . '/custom-blocks/guides/guides.php';
-require get_template_directory() . '/custom-blocks/free-quiz/free-quiz.php';
-require get_template_directory() . '/custom-blocks/words-animation/words-animation.php';
-require get_template_directory() . '/custom-blocks/enchanted-link/enchanted-link.php';
-require get_template_directory() . '/custom-blocks/favorite-cards-small/favorite-cards-small.php';
-require get_template_directory() . '/custom-blocks/behind-the-screen/behind-the-screen.php';
-
-
 
 // Enqueue CSS
 function enqueue_custom_blocks_css() {
