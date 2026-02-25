@@ -954,17 +954,6 @@ function filter_page_widgets($instance, $widget, $args)
 }
 add_filter('widget_display_callback', 'filter_page_widgets', 10, 3);
 
-function enqueue_ofp_calculator_styles()
-{
-    wp_enqueue_style(
-        'ofp-calculator-styles',
-        get_template_directory_uri() . '/custom-blocks/ofp-calculator/ofp-calculator-styles.css',
-        array(),
-        '1.0.0'
-    );
-}
-add_action('wp_enqueue_scripts', 'enqueue_ofp_calculator_styles');
-include_once(get_template_directory() . '/custom-blocks/ofp-calculator/ofp-calculator.php');
 
 /**
  * Clean up sidebar blocks from post content
@@ -1127,28 +1116,6 @@ function populate_credit_cards_choices($field) {
 
 add_filter('acf/load_field/name=fc_card_option', 'populate_credit_cards_choices');
 
-// // Register Non-Affiliate Disclosure Block
-function register_non_affiliate_disclosure_block() {
-    if( function_exists('acf_register_block_type') ) {
-        
-        acf_register_block_type(array(
-            'name'              => 'non-affiliate-disclosure',
-            'title'             => 'Non-Affiliate Disclosure',
-            'description'       => 'Displays a non-affiliate disclosure message',
-            'render_template'   => 'custom-blocks/non-affiliate-disclosure/non-affiliate-disclosure-template.php',
-            'category'          => 'formatting',
-            'icon'              => 'info',
-            'keywords'          => array('disclosure', 'affiliate', 'legal'),
-            'mode'              => 'edit', // Começa no modo de edição
-            'supports'          => array(
-                'align' => array('wide', 'full'),
-                'mode' => true,
-            ),
-        ));
-    }
-}
-add_action('acf/init', 'register_non_affiliate_disclosure_block');
-
 // Blog Post Type
 register_sidebar(
     array(
@@ -1268,27 +1235,6 @@ function get_filtered_posts() {
     
     wp_send_json_success($response_data);
 }
-// Related Posts
-function register_automatic_related_posts_block() {
-    if( function_exists('acf_register_block_type') ) {
-        acf_register_block_type(array(
-            'name'              => 'related-posts-auto',
-            'title'             => __('Related Posts (Automatic)'),
-            'description'       => __('Display related posts automatically by category'),
-            'render_template'   => get_template_directory() . '/custom-blocks/related-posts/related-posts.php',
-            'category'          => 'formatting',
-            'icon'              => 'admin-links',
-            'keywords'          => array('posts', 'related', 'automatic'),
-            'mode'              => 'edit', 
-            'supports'          => array(
-                'align' => false,
-                'mode' => true,
-                'jsx' => true,
-            ),
-        ));
-    }
-}
-add_action('acf/init', 'register_automatic_related_posts_block');
 
 
 // Enqueue CSS
@@ -1412,5 +1358,3 @@ add_filter('acf/validate_save_post', function($errors) {
     error_log('ACF Validation Errors: ' . print_r($errors, true));
     return $errors;
 }, 999);
-
-require_once get_template_directory() . '/custom-blocks/unique-card-body-section/unique-card-body-section.php';
