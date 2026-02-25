@@ -39,7 +39,8 @@ if ($all_cards_query->have_posts()) {
             'affiliate' => $card_info['affiliate'] ?? null,
             'cci_card_type' => $card_info['cci_card_type'] ?? null,
             'cci_annual_fee' => $card_info['cci_annual_fee'] ?? null,
-            'cci_little_blurb' => $card_info['cci_little_blurb'] ?? null
+            'cci_little_blurb' => $card_info['cci_little_blurb'] ?? null,
+            'offer_points'     => $card_info['offer_points'] ?? null
         );
     }
     wp_reset_postdata();
