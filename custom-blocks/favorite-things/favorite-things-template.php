@@ -16,7 +16,7 @@ $rotating_image_data = get_field('rotating_image');
 
 $title = get_field('title');
 $subtitle = get_field('subtitle');
-$favorite_things = get_field('favorite_things');
+$favorite_things = get_field('favorite_things') ?: [];
 $totalFavoriteThings = count($favorite_things);
 $blockID = 'favorite-things-' . uniqid();
 $counter = 0;
