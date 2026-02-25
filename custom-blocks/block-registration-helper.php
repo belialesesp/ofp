@@ -1,4 +1,9 @@
 <?php
+if ( defined( 'CUSTOM_BLOCK_HELPER_LOADED' ) ) {
+  return;
+}
+define( 'CUSTOM_BLOCK_HELPER_LOADED', true );
+
 /**
  * Block Registration Helper
  *
