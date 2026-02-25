@@ -1,20 +1,6 @@
 <?php
-add_action('acf/init', 'register_favorite_cards_small_block');
-function register_favorite_cards_small_block() {
-    if( function_exists('acf_register_block_type') ) {
-        acf_register_block_type(array(
-            'name'              => 'favorite-cards-small',
-            'title'             => __('Favorite Cards Small'),
-            'description'       => __('Section to display favorite cards.'),
-            'render_template'   => 'custom-blocks/favorite-cards-small/favorite-cards-small-template.php', 
-            'category'          => 'formatting',
-            'icon'              => 'star-filled',
-            'keywords'          => array('favorite', 'cards', 'small', 'favorites', 'list'),
-            'mode'              => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'jsx'   => true
-            )
-        ));
-    }
-}
+// This block uses acf_register_block_type with render_template and extra supports,
+// so its registration is handled via the $custom_blocks config in index.php
+// using register_custom_block(). No additional logic is needed in this file.
+//
+// If block-specific ACF fields or enqueues are added in the future, place them here.
