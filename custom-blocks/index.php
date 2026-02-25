@@ -84,7 +84,11 @@ function custom_blocks_scripts() {
     'custom-blocks-style',
     esc_url( get_stylesheet_directory_uri() . '/custom-blocks/styles.css' ),
     array(),
+<<<<<<< HEAD
     ofp_VERSION
+=======
+    _S_VERSION
+>>>>>>> 5faa098 ([code] duplicated code in custom blocks)
   );
 }
 add_action( 'wp_enqueue_scripts', 'custom_blocks_scripts' );
