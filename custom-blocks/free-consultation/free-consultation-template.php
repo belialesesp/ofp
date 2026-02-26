@@ -16,42 +16,42 @@ if (!function_exists('get_field')) {
 }
 
 // Get widget mode setting
-$is_widget = get_field('is_widget');
+$is_widget = ofp_is_widget_mode() || (bool) get_field('is_widget');
 
 // Initialize variables
-$sub_title_left = '';
-$title_left = '';
-$title_right = '';
-$description_right = '';
-$cta_label_right = '';
-$cta_url_right = '';
-$background_color = '';
+$sub_title_left       = '';
+$title_left           = '';
+$title_right          = '';
+$description_right    = '';
+$cta_label_right      = '';
+$cta_url_right        = '';
+$background_color     = '';
 $box_background_color = '';
-$text_color = '';
+$text_color           = '';
 
 // Get values based on widget mode
 if ($is_widget) {
-    // Widget mode - use defaults from options page
-    $sub_title_left = get_field('widget_sub_title_left', 'option') ?: 'NEED HELP?';
-    $title_left = get_field('widget_title_left', 'option') ?: 'Get Expert Financial Guidance Today';
-    $title_right = get_field('widget_title_right', 'option') ?: 'Free Consultation';
-    $description_right = get_field('widget_description_right', 'option') ?: 'Take the first step towards financial freedom.';
-    $cta_label_right = get_field('widget_cta_label_right', 'option') ?: 'SCHEDULE NOW';
-    $cta_url_right = get_field('widget_cta_url_right', 'option') ?: '/contact';
-    $background_color = get_field('widget_background_color', 'option') ?: '#f7f7f7';
-    $box_background_color = get_field('widget_box_background_color', 'option') ?: '#ffffff';
-    $text_color = get_field('widget_text_color', 'option') ?: '#222222';
+    $opts                 = ofp_get_free_consultation_options();
+    $sub_title_left       = $opts['widget_sub_title_left']       ?: 'NEED HELP?';
+    $title_left           = $opts['widget_title_left']           ?: 'Get Expert Financial Guidance Today';
+    $title_right          = $opts['widget_title_right']          ?: 'Free Consultation';
+    $description_right    = $opts['widget_description_right']    ?: 'Take the first step towards financial freedom.';
+    $cta_label_right      = $opts['widget_cta_label_right']      ?: 'SCHEDULE NOW';
+    $cta_url_right        = $opts['widget_cta_url_right']        ?: '/contact';
+    $background_color     = $opts['widget_background_color']     ?: '#f7f7f7';
+    $box_background_color = $opts['widget_box_background_color'] ?: '#ffffff';
+    $text_color           = $opts['widget_text_color']           ?: '#222222';
 } else {
     // Custom mode - use block-specific values
-    $sub_title_left = get_field('sub_title_left') ?: 'NEED HELP?';
-    $title_left = get_field('title_left') ?: 'Get Expert Financial Guidance Today';
-    $title_right = get_field('title_right') ?: 'Free Consultation';
-    $description_right = get_field('description_right') ?: 'Take the first step towards financial freedom.';
-    $cta_label_right = get_field('cta_label_right') ?: 'SCHEDULE NOW';
-    $cta_url_right = get_field('cta_url_right') ?: '/contact';
-    $background_color = get_field('background_color') ?: '#f7f7f7';
+    $sub_title_left       = get_field('sub_title_left')       ?: 'NEED HELP?';
+    $title_left           = get_field('title_left')           ?: 'Get Expert Financial Guidance Today';
+    $title_right          = get_field('title_right')          ?: 'Free Consultation';
+    $description_right    = get_field('description_right')    ?: 'Take the first step towards financial freedom.';
+    $cta_label_right      = get_field('cta_label_right')      ?: 'SCHEDULE NOW';
+    $cta_url_right        = get_field('cta_url_right')        ?: '/contact';
+    $background_color     = get_field('background_color')     ?: '#f7f7f7';
     $box_background_color = get_field('box_background_color') ?: '#ffffff';
-    $text_color = get_field('text_color') ?: '#222222';
+    $text_color           = get_field('text_color')           ?: '#222222';
 }
 
 // Generate unique block ID
