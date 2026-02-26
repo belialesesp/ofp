@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 if ( defined( 'CUSTOM_BLOCKS_INDEX_LOADED' ) ) {
   return;
 }
@@ -51,10 +50,6 @@ $custom_blocks = array(
   array( 'name' => 'banner-cta-widget',   'title' => 'Banner CTA Widget',   'icon' => 'megaphone',           'keywords' => array( 'banner', 'cta', 'widget' ) ),
   array( 'name' => 'sidebar-block',       'title' => 'Custom Sidebar',      'icon' => 'admin-comments',      'keywords' => array( 'sidebar', 'widget', 'custom' ) ),
 
-  // ── Blocks with render_template (not render_callback) ───────────────────
-  // These use acf_register_block_type with render_template, so they are NOT
-  // registered via register_custom_block(). Their registration is below.
-  // favorite-cards-small, enchanted-link, guides, free-quiz, words-animation
 );
 
 // Register all standard blocks via the shared helper
@@ -64,17 +59,13 @@ add_action( 'acf/init', function () use ( $custom_blocks ) {
   }
 } );
 
-// ── render_template blocks (require their own acf_register_block_type call) ─
-// These blocks use render_template instead of render_callback and have extra
-// supports — they cannot use the generic helper.
+// ── render_template blocks ───────────────────────────────────────────────────
 require 'enchanted-link/enchanted-link.php';
 require 'guides/guides.php';
 require 'free-quiz/free-quiz.php';
 require 'words-animation/words-animation.php';
 
 // ── Extra logic files (fields, filters, enqueues) ───────────────────────────
-// These blocks are already registered above via $custom_blocks.
-// These files only contain ACF field groups, filter hooks, or enqueue calls.
 require 'credit-cards/credit-cards.php';
 require 'favorite-cards/favorite-cards.php';
 require 'unique-card/unique-card.php';
@@ -102,49 +93,3 @@ function custom_blocks_scripts() {
   );
 }
 add_action( 'wp_enqueue_scripts', 'custom_blocks_scripts' );
-=======
-// require 'credit-cards/credit-cards.php';
-// require 'credit-card-hero/credit-card-hero.php';
-// require 'destinations-map/destinations-map.php';
-// require 'hero-image/hero-image.php';
-// require 'favorite-cards/favorite-cards.php';
-// require 'course-library/course-library.php';
-// require 'success-stories/success-stories.php';
-// require 'lets-connect/lets-connect.php';
-// require 'hero-content/hero-content.php';
-// require 'free-resources/free-resources.php';
-// require 'free-resources-list/free-resources-list.php';
-// require 'free-consultation/free-consultation.php';
-// require 'the-blog/the-blog.php';
-// require 'newsletter/newsletter.php';
-// //require 'about-kam/about-kam.php';
-// require 'contact-form/contact-form.php';
-// require 'start-here/start-here.php';
-// require 'must-read/must-read.php';
-// require 'about-kam-widget/about-kam-widget.php';
-// require 'banner-cta-widget/banner-cta-widget.php';
-// require 'time-line/time-line.php';
-// require 'unique-card/unique-card.php';
-// require 'box-grid/box-grid.php';
-// require 'extra-benefits/extra-benefits.php';
-// require 'favorite-things/favorite-things.php';
-// require 'rotating-words/rotating-words.php';
-// require 'enchanting-links/enchanting-links.php';
-// require 'instagram-cb/instagram-cb.php';
-// require 'sidebar-block/sidebar-block.php';
-
-// require get_template_directory() . '/custom-blocks/search/search.php';
-// require get_template_directory() . '/custom-blocks/guides/guides.php';
-// require get_template_directory() . '/custom-blocks/free-quiz/free-quiz.php';
-// require get_template_directory() . '/custom-blocks/words-animation/words-animation.php';
-// require get_template_directory() . '/custom-blocks/enchanted-link/enchanted-link.php';
-// require get_template_directory() . '/custom-blocks/favorite-cards-small/favorite-cards-small.php';
-// require get_template_directory() . '/custom-blocks/behind-the-screen/behind-the-screen.php';
-
-// REGISTER STYLES AND SCRIPTS FOR CUSTOM BLOCKS
-// function custom_blocks_scripts()
-// {
-// 	wp_enqueue_style('credit-cards-block-style', esc_url(get_stylesheet_directory_uri() . '/custom-blocks/styles.css'), array(), ofp_VERSION);
-// }
-// add_action('wp_enqueue_scripts', 'custom_blocks_scripts');
->>>>>>> a808d66 ([code] oop pattern)

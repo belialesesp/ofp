@@ -2,9 +2,7 @@
 /**
  * Related Posts Block
  *
- * Migrated from: /custom-blocks/related-posts/related-posts.php
- * Location:      /inc/blocks/blocks/class-ofp-block-related-posts.php
- *
+ * Location: /inc/blocks/blocks/class-ofp-block-related-posts.php
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,9 +11,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class OFP_Block_Related_Posts extends OFP_Block_Base {
 
-    protected string $name        = 'related-posts';
-    protected string $title       = 'Related Posts';
-    protected string $description = 'Block to show Related Posts.';
-    protected string $icon        = 'layout';
-    protected array  $keywords    = [];
+    protected string $name        = 'related-posts-auto';
+    protected string $title       = 'Related Posts (Automatic)';
+    protected string $description = 'Display related posts automatically by category.';
+    protected string $icon        = 'admin-links';
+    protected array  $keywords    = [ 'posts', 'related', 'automatic' ];
+    protected string $css_file    = '/custom-blocks/related-posts/related-posts.css';
+
+    protected array $supports = [
+        'align' => false,
+        'mode'  => true,
+        'jsx'   => true,
+    ];
+
+    public function render( array $block ): void {
+        $template = get_theme_file_path( '/custom-blocks/related-posts/related-posts-template.php' );
+        if ( file_exists( $template ) ) {
+            include $template;
+        }
+    }
 }

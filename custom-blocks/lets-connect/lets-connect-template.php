@@ -19,12 +19,13 @@ if (!function_exists('get_field')) {
 $use_global = get_field('use_global');
 
 if ($use_global) {
-    // Get fields from options page
-    $background_color = get_field('lc_background_color', 'option');
-    $title = get_field('lc_title', 'option');
-    $image = get_field('lc_image', 'option');
-    $description = get_field('lc_description', 'option');
-    $social_medias = get_field('lc_social_medias', 'option');
+    // Get fields from options page (single cached fetch)
+    $opts             = ofp_get_lets_connect_options();
+    $background_color = $opts['lc_background_color'];
+    $title            = $opts['lc_title'];
+    $image            = $opts['lc_image'];
+    $description      = $opts['lc_description'];
+    $social_medias    = $opts['lc_social_medias'];
 } else {
     // Regular block fields
     $background_color = get_field('background_color');

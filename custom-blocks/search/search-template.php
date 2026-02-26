@@ -1,37 +1,32 @@
 <?php
-$background_color = get_field('background_color');
-$main_title = get_field('main_title');
-$search_title = get_field('search_title');
+$background_color   = get_field('background_color');
+$main_title         = get_field('main_title');
+$search_title       = get_field('search_title');
 $search_placeholder = get_field('search_placeholder');
-$trending_label = get_field('trending_label');
-$trending_items = get_field('trending_items');
-$main_title_color = get_field('main_title_color');
+$trending_label     = get_field('trending_label');
+$trending_items     = get_field('trending_items');
+$main_title_color   = get_field('main_title_color');
 $search_title_color = get_field('search_title_color');
-
-// Discover More fields
-$discover_more = get_field('discover_more');
-
-$blockID = 'search-hero-' . uniqid();
+$discover_more      = get_field('discover_more');
+$blockID            = 'search-hero-' . uniqid();
 ?>
 
 <div class="search-hero" style="background-color: <?php echo esc_attr($background_color); ?>;">
   <div class="container">
     <div class="search-hero__content">
-      
+
       <?php if ($main_title): ?>
-        <!-- Main Title -->
         <h2 class="search-hero__main-title" style="color: <?php echo esc_attr($main_title_color); ?>;">
           <?php echo esc_html($main_title); ?>
         </h2>
       <?php endif; ?>
-      
+
       <?php if ($search_title): ?>
-        <!-- Search Title -->
         <h1 class="search-hero__search-title">
           <?php echo esc_html($search_title); ?>
         </h1>
       <?php endif; ?>
-      
+
       <!-- Search Form -->
       <div class="search-hero__form">
         <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
@@ -40,18 +35,18 @@ $blockID = 'search-hero-' . uniqid();
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
-            <input 
-              type="search" 
-              class="search-field" 
-              placeholder="<?php echo esc_attr($search_placeholder); ?>" 
-              value="<?php echo get_search_query(); ?>" 
-              name="s" 
+            <input
+              type="search"
+              class="search-field"
+              placeholder="<?php echo esc_attr($search_placeholder); ?>"
+              value="<?php echo get_search_query(); ?>"
+              name="s"
               aria-label="<?php echo esc_attr($search_placeholder); ?>"
             />
           </div>
         </form>
       </div>
-      
+
       <!-- Trending Searches -->
       <?php if ($trending_items && $trending_label): ?>
         <div class="search-hero__trending">
@@ -61,9 +56,9 @@ $blockID = 'search-hero-' . uniqid();
           <div class="trending-buttons">
             <?php foreach ($trending_items as $item): ?>
               <?php if (!empty($item['text'])): ?>
-                <?php 
+                <?php
                 $text = $item['text'];
-                $url = !empty($item['url']) ? $item['url'] : home_url('/?s=' . urlencode($text));
+                $url  = !empty($item['url']) ? $item['url'] : home_url('/?s=' . urlencode($text));
                 ?>
                 <a href="<?php echo esc_url($url); ?>" class="trending-button">
                   <?php echo esc_html($text); ?>
@@ -73,7 +68,7 @@ $blockID = 'search-hero-' . uniqid();
           </div>
         </div>
       <?php endif; ?>
-      
+
     </div>
   </div>
 </div>
@@ -87,13 +82,13 @@ $blockID = 'search-hero-' . uniqid();
         <div class="discover-more__buttons">
           <?php foreach ($discover_more as $item): ?>
             <?php if (!empty($item['cta_label'])): ?>
-              <?php 
-              $label = $item['cta_label'];
-              $url = home_url('/?s=' . urlencode($label));
+              <?php
+              $label    = $item['cta_label'];
+              $url      = home_url('/?s=' . urlencode($label));
               $bg_color = !empty($item['cta_background_color']) ? $item['cta_background_color'] : '#f0f0f0';
               ?>
-              <a href="<?php echo esc_url($url); ?>" 
-                 class="discover-more__button" 
+              <a href="<?php echo esc_url($url); ?>"
+                 class="discover-more__button"
                  style="background-color: <?php echo esc_attr($bg_color); ?>;">
                 <?php echo esc_html($label); ?>
               </a>

@@ -16,19 +16,20 @@ if (!function_exists('get_field')) {
 }
 
 // Check if being used as a widget
-$is_widget = get_field('is_widget');
+$is_widget = ofp_is_widget_mode();
 
 if ($is_widget) {
-    // Get fields from options page
-    $float_icon = get_field('widget_float_icon', 'option');
-    $sub_title = get_field('widget_sub_title', 'option');
-    $title = get_field('widget_title', 'option') ?: 'Free Resources';
-    $description = get_field('widget_description', 'option');
-    $images_position = get_field('widget_images_position', 'option') ?: 'alternating';
-    $space_between_resources = get_field('widget_space_between_resources', 'option') ?: 0;
-    $title_color = get_field('widget_title_color', 'option') ?: '#222222';
-    $description_color = get_field('widget_description_color', 'option') ?: '#222222';
-    $resources = get_field('widget_resources', 'option');
+    // Get fields from options page (single cached fetch)
+    $opts = ofp_get_free_resources_options();
+    $float_icon               = $opts['widget_float_icon'];
+    $sub_title                = $opts['widget_sub_title'];
+    $title                    = $opts['widget_title']                    ?: 'Free Resources';
+    $description              = $opts['widget_description'];
+    $images_position          = $opts['widget_images_position']          ?: 'alternating';
+    $space_between_resources  = $opts['widget_space_between_resources']  ?: 0;
+    $title_color              = $opts['widget_title_color']              ?: '#222222';
+    $description_color        = $opts['widget_description_color']        ?: '#222222';
+    $resources                = $opts['widget_resources'];
 } else {
     // Regular block fields
     $float_icon = null; // Only available in widget mode

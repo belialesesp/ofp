@@ -1384,3 +1384,14 @@ add_filter('acf/validate_save_post', function($errors) {
     error_log('ACF Validation Errors: ' . print_r($errors, true));
     return $errors;
 }, 999);
+
+require get_template_directory() . '/inc/acf-helpers.php';
+
+add_action( 'wp_enqueue_scripts', function() {
+    wp_enqueue_style(
+        'related-posts-block',
+        get_template_directory_uri() . '/custom-blocks/related-posts/related-posts.css',
+        [],
+        '1.0.0'
+    );
+} );

@@ -40,31 +40,27 @@ class Favorite_Cards_Widget extends WP_Widget {
      * @param array $instance Saved values from database.
      */
     public function widget($args, $instance) {
-        echo $args['before_widget'];
-        
-        // Flag this as a widget
-        // This is critical - it tells the template to use widget mode
-        update_field('is_widget', true);
-        
-        // Add a unique wrapper class for easier targeting
-        echo '<div class="favorite-cards-widget-wrapper">';
-        
-        // Include the template file
-        if (file_exists(get_theme_file_path("/custom-blocks/favorite-cards/favorite-cards-template.php"))) {
-            // Also make instance data available to the template
-            global $favorite_cards_widget_instance;
-            $favorite_cards_widget_instance = $instance;
-            
-            include(get_theme_file_path("/custom-blocks/favorite-cards/favorite-cards-template.php"));
-            
-            // Clean up
-            unset($GLOBALS['favorite_cards_widget_instance']);
-        }
-        
-        echo '</div>';
-        
-        echo $args['after_widget'];
+    echo $args['before_widget'];
+
+    ofp_set_widget_mode( true );
+
+    echo '<div class="favorite-cards-widget-wrapper">';
+
+    if (file_exists(get_theme_file_path("/custom-blocks/favorite-cards/favorite-cards-template.php"))) {
+        global $favorite_cards_widget_instance;
+        $favorite_cards_widget_instance = $instance;
+
+        include(get_theme_file_path("/custom-blocks/favorite-cards/favorite-cards-template.php"));
+
+        unset($GLOBALS['favorite_cards_widget_instance']);
     }
+
+    echo '</div>';
+
+    ofp_set_widget_mode( false );
+
+    echo $args['after_widget'];
+}
 
     /**
      * Back-end widget form.

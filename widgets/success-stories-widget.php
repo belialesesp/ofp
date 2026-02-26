@@ -32,18 +32,18 @@ class Success_Stories_Widget extends WP_Widget {
      * @param array $instance Saved values from database.
      */
     public function widget($args, $instance) {
-        // Skip the before_widget to avoid extra div wrapping
-        
-        // Force widget mode
-        update_field('is_widget', true);
-        
-        // Include the template file
-        if (file_exists(get_theme_file_path("/custom-blocks/success-stories/success-stories-template.php"))) {
-            include(get_theme_file_path("/custom-blocks/success-stories/success-stories-template.php"));
-        }
-        
-        // Skip the after_widget to avoid extra div wrapping
+    // Skip the before_widget to avoid extra div wrapping
+
+    ofp_set_widget_mode( true );
+
+    if (file_exists(get_theme_file_path("/custom-blocks/success-stories/success-stories-template.php"))) {
+        include(get_theme_file_path("/custom-blocks/success-stories/success-stories-template.php"));
     }
+
+    ofp_set_widget_mode( false );
+
+    // Skip the after_widget to avoid extra div wrapping
+}
 
     /**
      * Back-end widget form.

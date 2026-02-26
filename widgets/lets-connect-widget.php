@@ -33,15 +33,15 @@ class Lets_Connect_Widget extends WP_Widget {
      */
     public function widget($args, $instance) {
         echo $args['before_widget'];
-        
-        // Force widget mode
-        update_field('is_widget', true);
-        
-        // Include the template file
+
+        ofp_set_widget_mode( true );
+
         if (file_exists(get_theme_file_path("/custom-blocks/lets-connect/lets-connect-template.php"))) {
             include(get_theme_file_path("/custom-blocks/lets-connect/lets-connect-template.php"));
         }
-        
+
+        ofp_set_widget_mode( false );
+
         echo $args['after_widget'];
     }
 

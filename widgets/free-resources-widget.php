@@ -33,15 +33,15 @@ class Free_Resources_Widget extends WP_Widget {
      */
     public function widget($args, $instance) {
         echo $args['before_widget'];
-        
-        // Force widget mode
-        update_field('is_widget', true);
-        
-        // Include the template file
+
+        ofp_set_widget_mode( true );
+
         if (file_exists(get_theme_file_path("/custom-blocks/free-resources/free-resources-template.php"))) {
             include(get_theme_file_path("/custom-blocks/free-resources/free-resources-template.php"));
         }
-        
+
+        ofp_set_widget_mode( false );
+
         echo $args['after_widget'];
     }
 
