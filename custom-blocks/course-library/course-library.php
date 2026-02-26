@@ -9,7 +9,7 @@ add_action( 'wp_enqueue_scripts', function () {
     'course-library-block-script',
     get_stylesheet_directory_uri() . '/custom-blocks/course-library/course-library.js',
     array( 'jquery' ),
-    ofp_VERSION,
+    filemtime( get_template_directory() . '/custom-blocks/course-library/course-library.js' ),
     true
   );
 } );
