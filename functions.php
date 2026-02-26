@@ -279,11 +279,11 @@ require get_template_directory() . '/inc/recursively-taxonomy.php';
  * Load Options Pages
  */
 require_once get_template_directory() . '/option-pages/index.php';
+
 /**
  * Load Custom Blocks
  */
-require get_template_directory() . '/custom-blocks/index.php';
-
+require get_template_directory() . '/inc/blocks/index.php';
 
 /**
  * Enable WebP Images
