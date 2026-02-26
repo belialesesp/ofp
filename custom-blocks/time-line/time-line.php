@@ -9,7 +9,7 @@ add_action( 'wp_enqueue_scripts', function () {
     'time-line-block-script',
     get_stylesheet_directory_uri() . '/custom-blocks/time-line/time-line.js',
     array( 'jquery' ),
-    ofp_VERSION,
+    filemtime( get_template_directory() . '/custom-blocks/time-line/time-line.js' ),
     true
   );
 } );
