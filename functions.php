@@ -209,12 +209,6 @@ function our_family_passport_scripts()
     wp_enqueue_style( 'font-awesome-6', esc_url( get_stylesheet_directory_uri() . '/fontawesome/css/all.min.css' ), array(), '6.5.1' );
     wp_enqueue_style( 'splide-slider-styles', esc_url( get_stylesheet_directory_uri() . '/js/splide-slide/css/splide.min.css' ), array(), '6.5.1' );
     wp_style_add_data( 'our-family-passport-style', 'rtl', 'replace' );
-    wp_enqueue_style(
-        'search-block-css',
-        esc_url( get_stylesheet_directory_uri() . '/custom-blocks/search/_search.scss' ),
-        array(),
-        filemtime( get_template_directory() . '/custom-blocks/search/_search.scss' )
-    );
 
     wp_enqueue_script(
         'our-family-passport-navigation',
