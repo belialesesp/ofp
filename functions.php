@@ -1098,24 +1098,6 @@ function register_credit_cards_cpt() {
 }
 add_action('init', 'register_credit_cards_cpt');
 
-// Register ACF blocks for Credit Cards
-function register_credit_card_blocks() {
-    if( function_exists('acf_register_block_type') ) {
-        
-        // Credit Card Hero Block
-        acf_register_block_type(array(
-            'name'              => 'credit-card-hero',
-            'title'             => 'Credit Card Hero',
-            'description'       => 'Displays the main hero section with card image and information',
-            'render_template'   => 'custom-blocks/credit-card-hero/credit-card-hero-template.php',
-            'category'          => 'formatting',
-            'icon'              => 'money-alt',
-            'keywords'          => array('credit', 'card', 'hero'),
-            'mode'              => 'preview',
-        ));
-    }
-}
-add_action('acf/init', 'register_credit_card_blocks');
 
 // Populate ACF field with CPT Credit Cards
 function populate_credit_cards_choices($field) {
