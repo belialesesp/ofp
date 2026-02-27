@@ -2,7 +2,7 @@
 $background_color = get_field('background_color');
 $title = get_field('title');
 $top_badge = get_field('top_badge');
-$posts = get_field('posts');
+$posts = get_field('posts') ?: [];
 ?>
 
 <div class="must-read" style="background-color: <?= $background_color ?>">

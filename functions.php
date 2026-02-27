@@ -1337,14 +1337,21 @@ function ofp_minimal_popup_control() {
     <?php
 }
 add_action('wp_footer', 'ofp_minimal_popup_control');
+
 function enqueue_blog_filter_data() {
     if (is_page_template('page-blog.php') || is_page('blog-page')) {
-        $categories = get_categories(array(
-            'hide_empty' => false,
-            'orderby' => 'name',
-            'order' => 'ASC'
-        ));
-        
+        $cache_key = 'ofp_blog_categories';
+        $categories = wp_cache_get( $cache_key );
+
+        if ( $categories === false ) {
+            $categories = get_categories(array(
+                'hide_empty' => false,
+                'orderby' => 'name',
+                'order' => 'ASC'
+            ));
+            wp_cache_set( $cache_key, $categories, '', 300 ); // 5 minutos
+        }
+
         $categories_data = array();
         foreach ($categories as $category) {
             $categories_data[$category->term_id] = array(
@@ -1355,11 +1362,21 @@ function enqueue_blog_filter_data() {
                 'count' => $category->count
             );
         }
-        
+
         wp_localize_script('your-script-handle', 'categoriesData', $categories_data);
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_blog_filter_data');
+
+add_action( 'created_category', function() {
+    wp_cache_delete( 'ofp_blog_categories' );
+});
+add_action( 'edited_category', function() {
+    wp_cache_delete( 'ofp_blog_categories' );
+});
+add_action( 'deleted_category', function() {
+    wp_cache_delete( 'ofp_blog_categories' );
+});
 
 // Debug ACF save errors
 add_filter('acf/validate_save_post', function($errors) {
