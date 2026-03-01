@@ -9,24 +9,18 @@
 get_header();
 ?>
 <main id="primary" class="site-main archives-page container">
-	<?php if (have_posts()) : ?>
+	<?php if ( have_posts() ) : ?>
 		<header class="archives-header">
-			<?php
-			the_archive_title('<h1 class="archives-title">', '</h1>');
-			?>
+			<?php the_archive_title( '<h1 class="archives-title">', '</h1>' ); ?>
 		</header><!-- .page-header -->
 		<div class="archive-posts">
-			<?php
-			/* Start the Loop */
-			while (have_posts()) :
-				the_post();
-			?>
+			<?php while ( have_posts() ) : the_post(); ?>
 				<div class="post">
 					<div class="post__image">
-						<?php echo the_post_thumbnail('full'); ?>
+						<?php the_post_thumbnail( 'full' ); ?>
 					</div>
-					<?php echo the_title('<h2 class="post__title">', '</h2>'); ?>
-					<a class="post__cta" href="<?php echo get_permalink(); ?>">
+					<?php the_title( '<h2 class="post__title">', '</h2>' ); ?>
+					<a class="post__cta" href="<?php echo esc_url( get_permalink() ); ?>">
 						<span>Read Post</span>
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<mask id="mask0_4328_198" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
@@ -38,43 +32,35 @@ get_header();
 						</svg>
 					</a>
 				</div>
-			<?php
-			endwhile;
-			?>
+			<?php endwhile; ?>
 		</div>
-		
-		<!-- Navegação customizada com ordem NEWER - OLDER -->
+
 		<?php
 		global $wp_query;
-		if ($wp_query->max_num_pages > 1) :
-			$next_link = get_next_posts_link('Older Posts');
-			$prev_link = get_previous_posts_link('Newer Posts');
-			
-			if ($prev_link || $next_link) :
+		if ( $wp_query->max_num_pages > 1 ) :
+			$next_link = get_next_posts_link( 'Older Posts' );
+			$prev_link = get_previous_posts_link( 'Newer Posts' );
+
+			if ( $prev_link || $next_link ) :
 		?>
 		<nav class="navigation posts-navigation" aria-label="Posts">
 			<div class="nav-links">
-				<?php if ($prev_link) : ?>
-					<div class="nav-previous"><?php echo $prev_link; ?></div>
+				<?php if ( $prev_link ) : ?>
+					<div class="nav-previous"><?php echo wp_kses_post( $prev_link ); ?></div>
 				<?php endif; ?>
-				
-				<?php if ($next_link) : ?>
-					<div class="nav-next"><?php echo $next_link; ?></div>
+				<?php if ( $next_link ) : ?>
+					<div class="nav-next"><?php echo wp_kses_post( $next_link ); ?></div>
 				<?php endif; ?>
 			</div>
 		</nav>
-		<?php 
+		<?php
 			endif;
 		endif;
 		?>
-		
-	<?php
-	else :
-		get_template_part('template-parts/content', 'none');
-	endif;
-	?>
+
+	<?php else : ?>
+		<?php get_template_part( 'template-parts/content', 'none' ); ?>
+	<?php endif; ?>
 </main><!-- #main -->
 <?php
-// get_sidebar();
 get_footer();
-?>

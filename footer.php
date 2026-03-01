@@ -9,97 +9,97 @@
  *
  * @package our-family-passport
  */
-$socialMediaOpts = get_field('footer', 'option');
-$popUps = get_field('pop-ups', 'option');
-$flodeskLoaded = false; // Track if Flodesk universal script is loaded
+$socialMediaOpts = get_field( 'footer', 'option' ) ?: array();
+$popUps          = get_field( 'pop-ups', 'option' ) ?: array();
+$flodeskLoaded   = false; // Track if Flodesk universal script is loaded
 ?>
 
-<?php foreach ($popUps as $popUp): ?>
-	<?php if ($popUp['show_on_entire_site']): ?>
+<?php foreach ( (array) $popUps as $popUp ) : ?>
+	<?php if ( ! empty( $popUp['show_on_entire_site'] ) ) : ?>
 		<?php
-		$popupID = 'popup-' . uniqid();
-		$background_type = $popUp['background_type'];
-		$background_color = $popUp['background_color'];
-		$background_color_start = $popUp['background_color_start'];
-		$background_color_end = $popUp['background_color_end'];
-		$rotation_deg = $popUp['rotation_deg'];
-		$background_image = $popUp['background_image'];
+		$popupID              = 'popup-' . uniqid();
+		$background_type      = $popUp['background_type']         ?? '';
+		$background_color     = $popUp['background_color']        ?? '';
+		$background_color_start = $popUp['background_color_start'] ?? '';
+		$background_color_end   = $popUp['background_color_end']   ?? '';
+		$rotation_deg         = $popUp['rotation_deg']            ?? 0;
+		$background_image     = $popUp['background_image']        ?? array();
 		?>
 
-		<?php if ($background_type == 'gradient'): ?>
+		<?php if ( $background_type === 'gradient' ) : ?>
 			<style>
-				#<?= $popupID ?> .right {
-					background: linear-gradient(<?= $rotation_deg ? $rotation_deg : 0 ?>deg,
-							<?= $background_color_start ?> 0%,
-							<?= $background_color_end ?> 100%);
+				#<?php echo esc_attr( $popupID ); ?> .right {
+					background: linear-gradient(<?php echo absint( $rotation_deg ); ?>deg,
+							<?php echo esc_attr( $background_color_start ); ?> 0%,
+							<?php echo esc_attr( $background_color_end ); ?> 100%);
 				}
 			</style>
 		<?php endif; ?>
-		<?php if ($background_type == 'image'): ?>
+		<?php if ( $background_type === 'image' ) : ?>
 			<style>
-				#<?= $popupID ?> .right {
-					background-image: url(<?= $background_image['url'] ?>);
+				#<?php echo esc_attr( $popupID ); ?> .right {
+					background-image: url(<?php echo esc_url( $background_image['url'] ?? '' ); ?>);
 				}
 			</style>
 		<?php endif; ?>
-		<?php if ($background_type == 'color'): ?>
+		<?php if ( $background_type === 'color' ) : ?>
 			<style>
-				#<?= $popupID ?> .right {
-					background-color: <?= $background_color ?>;
+				#<?php echo esc_attr( $popupID ); ?> .right {
+					background-color: <?php echo esc_attr( $background_color ); ?>;
 				}
 			</style>
 		<?php endif; ?>
 
-		<div id="<?= $popupID ?>" class="pop-up">
+		<div id="<?php echo esc_attr( $popupID ); ?>" class="pop-up">
 			<div class="popup-box">
-				<button class="close-btn" onclick="javascript:close_pop_up('<?= $popupID ?>')">
+				<button class="close-btn" onclick="javascript:close_pop_up('<?php echo esc_js( $popupID ); ?>')">
 					<svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none">
 						<path d="M46.6699 14.0336L44.9645 12.3281L29.5 27.7926L14.0355 12.3281L12.3301 14.0336L27.7945 29.498L12.3301 44.9625L14.0355 46.668L29.5 31.2035L44.9645 46.668L46.6699 44.9625L31.2055 29.498L46.6699 14.0336Z" fill="#2B2B2B" />
 					</svg>
 				</button>
-				<div class="left" style="background-image: url(<?= $popUp['left_image'] ? $popUp['left_image']['url'] : '' ?>);">
-					<div class="circular-image" style="background-color: <?= $popUp['icon_image_background_color'] ?>;">
-						<img src="<?= $popUp['icon_image'] ? $popUp['icon_image']['url'] : '' ?>" alt="<?= $popUp['icon_image'] ? $popUp['icon_image']['alt'] : '' ?>">
+				<div class="left" style="background-image: url(<?php echo esc_url( $popUp['left_image']['url'] ?? '' ); ?>);">
+					<div class="circular-image" style="background-color: <?php echo esc_attr( $popUp['icon_image_background_color'] ?? '' ); ?>;">
+						<img src="<?php echo esc_url( $popUp['icon_image']['url'] ?? '' ); ?>" alt="<?php echo esc_attr( $popUp['icon_image']['alt'] ?? '' ); ?>">
 					</div>
 				</div>
 				<div class="right">
-					<h3 style="color: <?= $popUp['sub-title_color'] ?>;"><?= $popUp['sub-title'] ?></h3>
-					<h2 style="color: <?= $popUp['title_color'] ?>;"><?= $popUp['title'] ?></h2>
-					<div class="description" style="color: <?= $popUp['description_color'] ?>;"><?= $popUp['description'] ?></div>
+					<h3 style="color: <?php echo esc_attr( $popUp['sub-title_color'] ?? '' ); ?>;"><?php echo esc_html( $popUp['sub-title'] ?? '' ); ?></h3>
+					<h2 style="color: <?php echo esc_attr( $popUp['title_color'] ?? '' ); ?>;"><?php echo esc_html( $popUp['title'] ?? '' ); ?></h2>
+					<div class="description" style="color: <?php echo esc_attr( $popUp['description_color'] ?? '' ); ?>;"><?php echo wp_kses_post( $popUp['description'] ?? '' ); ?></div>
 
 					<?php $formID = 'cta-' . uniqid(); ?>
 					<style>
-						#<?= $formID ?> button[type="submit"] {
-							color: <?= $popUp['cta_color'] ?>;
-							background-color: <?= $popUp['cta_background_color'] ?>;
+						#<?php echo esc_attr( $formID ); ?> button[type="submit"] {
+							color: <?php echo esc_attr( $popUp['cta_color'] ?? '' ); ?>;
+							background-color: <?php echo esc_attr( $popUp['cta_background_color'] ?? '' ); ?>;
 						}
 
-						#<?= $formID ?> button[type="submit"]:hover {
-							color: <?= $popUp['cta_hover_color'] ?>;
-							background-color: <?= $popUp['cta_background_hover_color'] ?>;
+						#<?php echo esc_attr( $formID ); ?> button[type="submit"]:hover {
+							color: <?php echo esc_attr( $popUp['cta_hover_color'] ?? '' ); ?>;
+							background-color: <?php echo esc_attr( $popUp['cta_background_hover_color'] ?? '' ); ?>;
 						}
 					</style>
-					<div id="<?= $formID ?>" class="popup-form">
+					<div id="<?php echo esc_attr( $formID ); ?>" class="popup-form">
 						<!-- Flodesk form container -->
-						<div class="flodesk-form-container" data-flodesk-id="<?= $popUp['form_id'] ?>"></div>
+						<div class="flodesk-form-container" data-flodesk-id="<?php echo esc_attr( $popUp['form_id'] ?? '' ); ?>"></div>
 					</div>
 
 					<?php $dimissID = 'dimiss-' . uniqid(); ?>
 					<style>
-						#<?= $dimissID ?> {
-							color: <?= $popUp['dimiss_color'] ?>;
+						#<?php echo esc_attr( $dimissID ); ?> {
+							color: <?php echo esc_attr( $popUp['dimiss_color'] ?? '' ); ?>;
 						}
 
-						#<?= $dimissID ?>:hover {
-							color: <?= $popUp['dimiss_hover_color'] ?>;
+						#<?php echo esc_attr( $dimissID ); ?>:hover {
+							color: <?php echo esc_attr( $popUp['dimiss_hover_color'] ?? '' ); ?>;
 						}
 					</style>
-					<button id="<?= $dimissID ?>" class="dimiss" onclick="javascript:close_pop_up('<?= $popupID ?>')"><?= $popUp['dimiss_label'] ?></button>
+					<button id="<?php echo esc_attr( $dimissID ); ?>" class="dimiss" onclick="javascript:close_pop_up('<?php echo esc_js( $popupID ); ?>')"><?php echo esc_html( $popUp['dimiss_label'] ?? '' ); ?></button>
 				</div>
 			</div>
 		</div>
 		
-		<?php if (!$flodeskLoaded): ?>
+		<?php if ( ! $flodeskLoaded ) : ?>
 			<!-- Load Flodesk universal script only once -->
 			<script>
 			  (function(w, d, t, h, s, n) {
@@ -127,14 +127,12 @@ $flodeskLoaded = false; // Track if Flodesk universal script is loaded
 		
 		<!-- Initialize Flodesk form for this popup -->
 		<script>
-		  // Wait for DOM and Flodesk to be ready
 		  document.addEventListener('DOMContentLoaded', function() {
-		    // Small delay to ensure Flodesk is loaded
 		    setTimeout(function() {
 		      if (window.fd) {
 		        window.fd('form', {
-		          formId: '<?= $popUp['form_id'] ?>',
-		          containerEl: document.querySelector('#<?= $formID ?> .flodesk-form-container')
+		          formId: '<?php echo esc_js( $popUp['form_id'] ?? '' ); ?>',
+		          containerEl: document.querySelector('#<?php echo esc_js( $formID ); ?> .flodesk-form-container')
 		        });
 		      }
 		    }, 100);
@@ -143,11 +141,11 @@ $flodeskLoaded = false; // Track if Flodesk universal script is loaded
 	<?php endif; ?>
 <?php endforeach; ?>
 
-<footer id="colophon" class="site-footer" style="background-color: <?= $socialMediaOpts['bacground_color'] ?>;">
+<footer id="colophon" class="site-footer" style="background-color: <?php echo esc_attr( $socialMediaOpts['bacground_color'] ?? '' ); ?>;">
     <div class="footer-container">
         <div class="footer-top container">        
             <div class="footer-left">            
-                <h3 class="footer-title"><?= $socialMediaOpts['footer_title'] ?></h3>
+                <h3 class="footer-title"><?php echo esc_html( $socialMediaOpts['footer_title'] ?? '' ); ?></h3>
 
                 <?php if ($socialMediaOpts['footer_socials']) : ?>
                     <div class="social-icons">
@@ -216,10 +214,10 @@ $flodeskLoaded = false; // Track if Flodesk universal script is loaded
             <div id="advertiser-disclosure" class="adverticer">
                 <div class="container">
                     <h2 class="adverticer__tile">
-                        <?= $socialMediaOpts['adverticer_title'] ?>
+                        <?php echo esc_html( $socialMediaOpts['adverticer_title'] ?? '' ); ?>
                     </h2>
                     <div class="adverticer__description">
-                        <?= $socialMediaOpts['advertiser_content'] ?>
+                        <?php echo wp_kses_post( $socialMediaOpts['advertiser_content'] ?? '' ); ?>
                     </div>
                 </div>
             </div>
