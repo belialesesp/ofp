@@ -28,12 +28,12 @@ $background_color = '#f1f1f1';
 
 // Get display settings based on mode
 if ($is_widget) {
-    // Widget mode - get background settings from options page
-    $background_type = get_field('widget_background_type', 'option') ?: 'gradient';
-    $rotation_deg = get_field('widget_rotation_deg', 'option') ?: 0;
-    $background_color_start = get_field('widget_background_color_start', 'option') ?: '#f1f1f1';
-    $background_color_end = get_field('widget_background_color_end', 'option') ?: '#ffffff';
-    $background_color = get_field('widget_background_color', 'option') ?: '#f1f1f1';
+    $opts = ofp_get_success_stories_options();
+    $background_type        = $opts['widget_background_type']        ?: 'gradient';
+    $rotation_deg           = $opts['widget_rotation_deg']           ?: 0;
+    $background_color_start = $opts['widget_background_color_start'] ?: '#f1f1f1';
+    $background_color_end   = $opts['widget_background_color_end']   ?: '#ffffff';
+    $background_color       = $opts['widget_background_color']       ?: '#f1f1f1';
 } else {
     // Block mode - get background settings from block
     $background_type = get_field('background_type') ?: 'gradient';
@@ -50,7 +50,7 @@ $stories = array();
 // Get stories based on widget mode
 if ($is_widget) {
     // Widget mode - use global stories
-    $all_stories = get_field('success_stories', 'option');
+    $all_stories = $opts['success_stories'];
     
     if ($all_stories && is_array($all_stories)) {
         // Get display mode

@@ -28,7 +28,8 @@ if ($is_widget) {
     
     // If no cards selected in widget, get from options as fallback
     if (empty($favorite_cards)) {
-        $favorite_cards = get_field('widget_favorite_cards', 'option');
+        $opts = ofp_get_favorite_cards_options();
+        $favorite_cards = $opts['widget_favorite_cards'];
     }
 } else {
     // Block mode - get all fields from block

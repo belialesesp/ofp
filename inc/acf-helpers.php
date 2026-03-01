@@ -152,6 +152,23 @@ function ofp_get_free_consultation_options(): array {
     ]);
 }
 
+function ofp_get_success_stories_options(): array {
+    return ofp_get_option_fields( 'success_stories', [
+        'widget_background_type',
+        'widget_rotation_deg',
+        'widget_background_color_start',
+        'widget_background_color_end',
+        'widget_background_color',
+        'success_stories',
+    ]);
+}
+
+function ofp_get_favorite_cards_options(): array {
+    return ofp_get_option_fields( 'favorite_cards_widget', [
+        'widget_favorite_cards',
+    ]);
+}
+
 // =============================================================================
 // 3. WIDGET MODE CONTEXT — NO DATABASE WRITES
 //    Replaces update_field('is_widget', true) in all widget classes.
@@ -279,10 +296,15 @@ function ofp_query_related_posts(
  * Invalidates related posts cache when a post is saved.
  */
 add_action( 'save_post', function( int $post_id ): void {
-    foreach ( [3, 4, 5, 6] as $qty ) {
-        delete_transient( "ofp_related_{$post_id}_{$qty}" );
-    }
-});
+    global $wpdb;
+    $wpdb->query(
+        $wpdb->prepare(
+            "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
+            '_transient_ofp_related_' . $post_id . '_%',
+            '_transient_timeout_ofp_related_' . $post_id . '_%'
+        )
+    );
+} );
 
 // =============================================================================
 // 5. POST META CACHE PRIMER — Prevents N+1 queries in loops
