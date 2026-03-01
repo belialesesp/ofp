@@ -69,27 +69,6 @@ get_header();
                 <div class="category-row category-row--tertiary" style="display: none;"></div>
             </nav>
 
-            <?php
-            $all_categories = get_categories(array(
-                'orderby'    => 'name',
-                'order'      => 'ASC',
-                'exclude'    => array(get_cat_ID('Uncategorized')),
-                'hide_empty' => true
-            ));
-            
-            $categories_data = array();
-            foreach ($all_categories as $cat) {
-                $categories_data[$cat->term_id] = array(
-                    'id'     => $cat->term_id,
-                    'name'   => $cat->name,
-                    'slug'   => $cat->slug,
-                    'parent' => $cat->parent
-                );
-            }
-            ?>
-            <script>
-                window.categoriesData = <?php echo json_encode($categories_data); ?>;
-            </script>
         </section>
         
         <?php

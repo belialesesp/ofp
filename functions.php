@@ -1349,6 +1349,29 @@ function restrict_search_to_posts($query) {
     return $query;
 }
 add_filter('pre_get_posts', 'restrict_search_to_posts');
+function enqueue_blog_filter_data() {
+    if ( is_page_template( 'page-blog.php' ) || is_page( 'blog' ) ) {
+        $categories = get_categories( array(
+            'hide_empty' => false,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        ) );
+
+        $categories_data = array();
+        foreach ( $categories as $category ) {
+            $categories_data[ $category->term_id ] = array(
+                'id'     => $category->term_id,
+                'name'   => $category->name,
+                'slug'   => $category->slug,
+                'parent' => $category->parent,
+                'count'  => $category->count,
+            );
+        }
+
+        wp_localize_script( 'our-family-passport-functions', 'categoriesData', $categories_data );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_blog_filter_data' );
 function ofp_minimal_popup_control() {
     ?>
     <style>
