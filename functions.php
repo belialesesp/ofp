@@ -12,6 +12,7 @@ if (!defined('ofp_VERSION')) {
     // Replace the version number of the theme on each release.
     define('ofp_VERSION', '1.0.0');
 }
+
 /**
  * Safely require a file. Logs a warning and continues if the file is missing.
  * Use instead of bare require/require_once for theme includes.
@@ -203,26 +204,30 @@ function our_family_passport_widgets_init()
 add_action('widgets_init', 'our_family_passport_widgets_init');
 
 /**
- * Returns filemtime() for a file, or the theme version as fallback.
- * Prevents fatal errors when a JS/CSS file is missing on the server.
- *
- * @param string $path Absolute path to the asset file.
- * @return string|false
+ * Enqueue scripts and styles.
  */
-function ofp_asset_version( string $path ) {
-    if ( file_exists( $path ) ) {
-        return filemtime( $path );
-    }
-    error_log( '[OFP] Asset file not found for versioning: ' . $path );
-    return wp_get_theme()->get( 'Version' );
-}
-function our_family_passport_scripts() {
+function our_family_passport_scripts()
+{
     wp_enqueue_style(
         'our-family-passport-style',
         get_stylesheet_uri(),
         array(),
-        wp_get_theme()->get( 'Version' )
+        filemtime( get_template_directory() . '/style.css' )
     );
+
+    $ofp_styles = get_template_directory() . '/css/ofp-styles.css';
+    if ( file_exists( $ofp_styles ) ) {
+        wp_enqueue_style(
+            'our-family-passport-custom-styles',
+            esc_url( get_stylesheet_directory_uri() . '/css/ofp-styles.css' ),
+            array(),
+            filemtime( $ofp_styles )
+        );
+    }
+
+    wp_enqueue_style( 'font-awesome-6', esc_url( get_stylesheet_directory_uri() . '/fontawesome/css/all.min.css' ), array(), '6.5.1' );
+    wp_enqueue_style( 'splide-slider-styles', esc_url( get_stylesheet_directory_uri() . '/js/splide-slide/css/splide.min.css' ), array(), '6.5.1' );
+    wp_style_add_data( 'our-family-passport-style', 'rtl', 'replace' );
 
     $nav_js = get_template_directory() . '/js/navigation.js';
     if ( file_exists( $nav_js ) ) {
@@ -246,20 +251,21 @@ function our_family_passport_scripts() {
             filemtime( $ofp_js ),
             true
         );
+        wp_localize_script( 'our-family-passport-functions', 'ofp_ajax', array(
+            'ajax_url'        => admin_url( 'admin-ajax.php' ),
+            'load_more_nonce' => wp_create_nonce( 'ofp_load_more_nonce' ),
+            'filter_nonce'    => wp_create_nonce( 'ofp_filter_nonce' ),
+        ) );
     }
-wp_localize_script( 'our-family-passport-functions', 'ofp_ajax', array(
-        'ajax_url'        => admin_url( 'admin-ajax.php' ),
-        'load_more_nonce' => wp_create_nonce( 'ofp_load_more_nonce' ),
-        'filter_nonce'    => wp_create_nonce( 'ofp_filter_nonce' ),
-    ) );
-    
+
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
 }
-add_action( 'wp_enqueue_scripts', 'our_family_passport_scripts' );
+add_action('wp_enqueue_scripts', 'our_family_passport_scripts');
 
-function our_family_passport_admin_scripts() {
+function our_family_passport_admin_scripts()
+{
     $admin_js = get_template_directory() . '/js/admin-functions.js';
     if ( file_exists( $admin_js ) ) {
         wp_enqueue_script(
@@ -271,48 +277,49 @@ function our_family_passport_admin_scripts() {
         );
     }
 }
-add_action( 'admin_enqueue_scripts', 'our_family_passport_admin_scripts' );
+add_action('admin_enqueue_scripts', 'our_family_passport_admin_scripts');
 
 /**
  * Implement the Custom Header feature.
  */
-ofp_require( get_template_directory() . '/inc/custom-header.php');
+ofp_require( get_template_directory() . '/inc/custom-header.php' );
 
 /**
  * Custom template tags for this theme.
  */
-ofp_require( get_template_directory() . '/inc/template-tags.php');
+ofp_require( get_template_directory() . '/inc/template-tags.php' );
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-ofp_require( get_template_directory() . '/inc/template-functions.php');
+ofp_require( get_template_directory() . '/inc/template-functions.php' );
 
 /**
  * Customizer additions.
  */
-ofp_require( get_template_directory() . '/inc/customizer.php');
+ofp_require( get_template_directory() . '/inc/customizer.php' );
 
 /**
  * Load Jetpack compatibility file.
  */
-if (defined('JETPACK__VERSION')) {
-    ofp_require( get_template_directory() . '/inc/jetpack.php');
+if ( defined( 'JETPACK__VERSION' ) ) {
+    ofp_require( get_template_directory() . '/inc/jetpack.php' );
 }
+
 /**
  * Load Recursively Taxonomy file.
  */
-ofp_require( get_template_directory() . '/inc/recursively-taxonomy.php');
+ofp_require( get_template_directory() . '/inc/recursively-taxonomy.php' );
 
 /**
  * Load Options Pages
  */
-ofp_require( get_template_directory() . '/option-pages/index.php');
+ofp_require( get_template_directory() . '/option-pages/index.php', true );
 
 /**
  * Load Custom Blocks
  */
-ofp_require( get_template_directory() . '/inc/blocks/index.php');
+ofp_require( get_template_directory() . '/inc/blocks/index.php' );
 
 /**
  * Enable WebP Images
@@ -1154,35 +1161,31 @@ function populate_credit_cards_choices($field) {
 add_filter('acf/load_field/name=fc_card_option', 'populate_credit_cards_choices');
 
 // Blog Post Type
-register_sidebar(
-    array(
-        'name' => esc_html__('Footer Widget Area - Blog Posts', 'our-family-passport'),
-        'id' => 'footer-widgets-blog',
-        'description' => esc_html__('Widgets for the footer area on blog posts only.', 'our-family-passport'),
-        'before_widget' => '<div id="%1$s" class="widget %2$s footer-widget">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>',
-    )
-);
+add_action( 'widgets_init', function() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Footer Widget Area - Blog Posts', 'our-family-passport' ),
+            'id'            => 'footer-widgets-blog',
+            'description'   => esc_html__( 'Widgets for the footer area on blog posts only.', 'our-family-passport' ),
+            'before_widget' => '<div id="%1$s" class="widget %2$s footer-widget">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="widget-title">',
+            'after_title'   => '</h3>',
+        )
+    );
+} );
 
 // AJAX "See more"
 add_action( 'wp_ajax_load_more_posts', 'load_more_posts' );
 add_action( 'wp_ajax_nopriv_load_more_posts', 'load_more_posts' );
 
 function load_more_posts() {
-    // Verify nonce
     if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'ofp_load_more_nonce' ) ) {
         wp_send_json_error( array( 'message' => 'Invalid request.' ), 403 );
     }
 
-    // Sanitize and validate input
     $page  = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 0;
     $paged = $page + 1;
-
-    if ( $paged < 1 ) {
-        wp_send_json_error( array( 'message' => 'Invalid page number.' ), 400 );
-    }
 
     $args = array(
         'post_type'      => 'post',
@@ -1201,7 +1204,7 @@ function load_more_posts() {
     while ( $query->have_posts() ) {
         $query->the_post();
         $post_categories = get_the_category();
-        $cat_classes     = '';
+        $cat_classes = '';
         foreach ( $post_categories as $cat ) {
             $cat_classes .= esc_attr( $cat->slug ) . ' ';
         }
@@ -1211,7 +1214,9 @@ function load_more_posts() {
             <div class="post-meta">
                 <span>Published on <?php echo esc_html( get_the_date() ); ?> by <?php the_author(); ?></span>
             </div>
-            <div class="post-excerpt"><?php the_excerpt(); ?></div>
+            <div class="post-excerpt">
+                <?php the_excerpt(); ?>
+            </div>
             <a href="<?php the_permalink(); ?>" class="read-more">Read more</a>
         </div>
         <?php
@@ -1226,28 +1231,22 @@ add_action('wp_ajax_get_filtered_posts', 'get_filtered_posts');
 add_action('wp_ajax_nopriv_get_filtered_posts', 'get_filtered_posts');
 
 function get_filtered_posts() {
-    // Verify nonce
     if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'ofp_filter_nonce' ) ) {
         wp_send_json_error( array( 'message' => 'Invalid request.' ), 403 );
     }
 
-    // Sanitize inputs — cap posts_per_page so clients can't request unlimited posts
     $category       = isset( $_POST['category'] ) ? sanitize_text_field( $_POST['category'] ) : 'all';
     $page           = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 1;
     $posts_per_page = isset( $_POST['posts_per_page'] ) ? min( absint( $_POST['posts_per_page'] ), 24 ) : 12;
-
-    if ( $page < 1 ) {
-        wp_send_json_error( array( 'message' => 'Invalid page number.' ), 400 );
-    }
-
+    
     $args = array(
         'post_type'      => 'post',
         'posts_per_page' => $posts_per_page,
         'paged'          => $page,
-        'post_status'    => 'publish',
+        'post_status'    => 'publish'
     );
-
-    if ( $category !== 'all' ) {
+    
+    if ($category !== 'all') {
         $args['category_name'] = $category;
     }
     
@@ -1397,7 +1396,8 @@ function ofp_minimal_popup_control() {
 }
 add_action('wp_footer', 'ofp_minimal_popup_control');
 
-ofp_require( get_template_directory() . '/inc/acf-helpers.php');
+
+ofp_require( get_template_directory() . '/inc/acf-helpers.php' );
 
 add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_style(
