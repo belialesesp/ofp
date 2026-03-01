@@ -10,7 +10,9 @@ $items = get_field('items');
     <h2 class="start-here__title"><?= $title ?></h2>
     <div class="start-here__content">
       <div class="start-here__image">
-        <img src="<?= esc_url($image['url']) ?>" alt="<?= $image['alt'] ?>">
+          <?php if ( ! empty( $image['url'] ) ) : ?>
+              <img src="<?= esc_url($image['url']) ?>" alt="<?= esc_attr( $image['alt'] ?? '' ) ?>">
+          <?php endif; ?>
       </div>
       <div class="start-here__items">
         <?php foreach($items as $item): ?>
