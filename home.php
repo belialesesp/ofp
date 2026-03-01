@@ -459,8 +459,9 @@ class BlogFilters {
             formData.append('action', 'get_filtered_posts');
             formData.append('category', categorySlug);
             formData.append('posts_per_page', '12');
+            formData.append('nonce', ofp_ajax.filter_nonce);
 
-            const response = await fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            const response = await fetch(ofp_ajax.ajax_url, {
                 method: 'POST',
                 body: formData
             });
@@ -573,8 +574,9 @@ class LoadMorePosts {
             formData.append('category', this.currentCategory);
             formData.append('page', this.currentPage);
             formData.append('posts_per_page', '12');
+            formData.append('nonce', ofp_ajax.filter_nonce);
 
-            const response = await fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+            const response = await fetch(ofp_ajax.ajax_url, {
                 method: 'POST',
                 body: formData
             });
