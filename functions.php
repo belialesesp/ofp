@@ -120,7 +120,28 @@ function our_family_passport_setup()
     );
 }
 add_action('after_setup_theme', 'our_family_passport_setup');
+/**
+ * Returns a wp_kses allowlist that permits inline SVG tags.
+ * Used for ACF fields that intentionally store SVG markup (e.g. pop-up sub-title).
+ *
+ * Extends wp_kses_allowed_html('post') with the SVG/clipPath/defs tags
+ * needed for simple inline icon SVGs.
+ */
+function ofp_kses_svg(): array {
+    $allowed = wp_kses_allowed_html( 'post' );
 
+    $svg_tags = [
+        'svg'      => [ 'xmlns' => true, 'width' => true, 'height' => true, 'viewbox' => true, 'fill' => true, 'class' => true, 'aria-hidden' => true ],
+        'g'        => [ 'clip-path' => true, 'fill' => true ],
+        'path'     => [ 'd' => true, 'fill' => true, 'fill-rule' => true, 'clip-rule' => true ],
+        'rect'     => [ 'width' => true, 'height' => true, 'fill' => true, 'transform' => true, 'rx' => true, 'ry' => true ],
+        'circle'   => [ 'cx' => true, 'cy' => true, 'r' => true, 'fill' => true ],
+        'defs'     => [],
+        'clippath' => [ 'id' => true ],
+    ];
+
+    return array_merge( $allowed, $svg_tags );
+}
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *

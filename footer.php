@@ -52,10 +52,10 @@ $flodeskLoaded   = false; // Track if Flodesk universal script is loaded
 
 		<div id="<?php echo esc_attr( $popupID ); ?>" class="pop-up">
 			<div class="popup-box">
-				<button class="close-btn" onclick="javascript:close_pop_up('<?php echo esc_js( $popupID ); ?>')">
-					<svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none">
-						<path d="M46.6699 14.0336L44.9645 12.3281L29.5 27.7926L14.0355 12.3281L12.3301 14.0336L27.7945 29.498L12.3301 44.9625L14.0355 46.668L29.5 31.2035L44.9645 46.668L46.6699 44.9625L31.2055 29.498L46.6699 14.0336Z" fill="#2B2B2B" />
-					</svg>
+				<button class="close-btn"
+				        onclick="javascript:close_pop_up('<?php echo esc_js( $popupID ); ?>')"
+				        aria-label="<?php esc_attr_e( 'Close', 'our-family-passport' ); ?>">
+					<span class="close-btn__x" aria-hidden="true"></span>
 				</button>
 				<div class="left" style="background-image: url(<?php echo esc_url( $popUp['left_image']['url'] ?? '' ); ?>);">
 					<div class="circular-image" style="background-color: <?php echo esc_attr( $popUp['icon_image_background_color'] ?? '' ); ?>;">
@@ -63,8 +63,8 @@ $flodeskLoaded   = false; // Track if Flodesk universal script is loaded
 					</div>
 				</div>
 				<div class="right">
-					<h3 style="color: <?php echo esc_attr( $popUp['sub-title_color'] ?? '' ); ?>;"><?php echo esc_html( $popUp['sub-title'] ?? '' ); ?></h3>
-					<h2 style="color: <?php echo esc_attr( $popUp['title_color'] ?? '' ); ?>;"><?php echo esc_html( $popUp['title'] ?? '' ); ?></h2>
+					<h3 style="color: <?php echo esc_attr( $popUp['sub-title_color'] ?? '' ); ?>;"><?php echo wp_kses( $popUp['sub-title'] ?? '', ofp_kses_svg() ); ?></h3>
+					<h2 style="color: <?php echo esc_attr( $popUp['title_color'] ?? '' ); ?>;"><?php echo wp_kses( $popUp['title'] ?? '', ofp_kses_svg() ); ?></h2>
 					<div class="description" style="color: <?php echo esc_attr( $popUp['description_color'] ?? '' ); ?>;"><?php echo wp_kses_post( $popUp['description'] ?? '' ); ?></div>
 
 					<?php $formID = 'cta-' . uniqid(); ?>

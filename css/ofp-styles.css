@@ -615,7 +615,37 @@ article[id*=postPage] .entry-title {
 article[id*=postPage] .post-thumbnail img {
   width: 100%;
 }
+/* ── Popup close button: CSS-only × (replaces stripped SVG) ────────────────
+   Add this block anywhere in ofp-styles.css, or inside _pop-up.scss then
+   recompile. The existing .close-btn positioning rules are unchanged.
+   ─────────────────────────────────────────────────────────────────────── */
 
+.close-btn__x {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.close-btn__x::before,
+.close-btn__x::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2B2B2B;
+  border-radius: 1px;
+}
+
+.close-btn__x::before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.close-btn__x::after {
+  transform: translateY(-50%) rotate(-45deg);
+}
 .pop-up {
   position: fixed;
   top: 0;
@@ -802,3 +832,13 @@ article[id*=postPage] .post-thumbnail img {
     left: 0;
   }
 }
+/* Flodesk SVG fix */
+.pop-up .popup-box .right .popup-form { overflow: hidden; }
+.pop-up .popup-box .right .popup-form svg { display: none !important; }
+
+/* Close button */
+.pop-up .popup-box .close-btn { width: 59px; height: 59px; display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 0; color: transparent; }
+.close-btn__x { display: block; position: relative; width: 30px; height: 30px; flex-shrink: 0; }
+.close-btn__x::before, .close-btn__x::after { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background-color: #2B2B2B; border-radius: 1px; }
+.close-btn__x::before { transform: translateY(-50%) rotate(45deg); }
+.close-btn__x::after  { transform: translateY(-50%) rotate(-45deg); }
