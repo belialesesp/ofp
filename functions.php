@@ -1440,7 +1440,6 @@ function ofp_minimal_popup_control() {
 }
 add_action('wp_footer', 'ofp_minimal_popup_control');
 
-
 ofp_require( get_template_directory() . '/inc/acf-helpers.php' );
 
 add_action( 'wp_enqueue_scripts', function() {
