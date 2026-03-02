@@ -1,7 +1,5 @@
-# Ignorar tudo
 /*
 
-# Exceto o tema (e o próprio .gitignore)
 !.gitignore
 !wp-content/
 wp-content/*
@@ -10,7 +8,6 @@ wp-content/themes/*
 !wp-content/themes/our-family-passport/
 !wp-content/themes/our-family-passport/**
 
-# Opcional: ignorar também plugins de terceiros, uploads, etc
 wp-content/uploads/
 wp-content/upgrade/
 wp-content/cache/
@@ -19,7 +16,7 @@ wp-content/cache/
 node_modules/
 vendor/
 
-# Compiled assets (if you compile locally and don't want maps in repo)
+# Compiled assets
 *.css.map
 style.css.map
 
