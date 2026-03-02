@@ -186,14 +186,3 @@ $block_id = 'free-quiz-' . uniqid();
         </div>
     </div>
 </section>
-
-<?php if (current_user_can('edit_posts')): ?>
-<!-- Debug info for admins only -->
-<script>
-console.log('Free Quiz Block Debug:');
-console.log('Block ID: <?php echo $block_id; ?>');
-console.log('Video URL: <?php echo $video_embed_url; ?>');
-console.log('Section width:', document.getElementById('<?php echo $block_id; ?>').offsetWidth);
-console.log('Viewport width:', window.innerWidth);
-</script>
-<?php endif; ?>

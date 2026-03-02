@@ -469,13 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 iframe.style.height = (scale * 100) + '%';
                 iframe.style.transform = 'translate(-50%, -50%)';
                 
-                // Log for debugging
-                console.log('Vimeo aggressive scaling:', {
-                    containerAspect: containerAspect.toFixed(2),
-                    videoAspect: videoAspect.toFixed(2),
-                    scaleFactor: scale.toFixed(2),
-                    finalWidth: (scale * 100) + '%'
-                });
+                
             }
         }
         
@@ -489,45 +483,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Also try alternative approach with transform scale
         setTimeout(function() {
-            if (iframe) {
-                // Get current computed styles
-                const currentTransform = window.getComputedStyle(iframe).transform;
-                
-                // If black bars still visible, increase scale even more
-                const testElement = document.createElement('div');
-                testElement.style.position = 'absolute';
-                testElement.style.top = '0';
-                testElement.style.width = '100%';
-                testElement.style.height = '1px';
-                testElement.style.background = 'red';
-                testElement.style.zIndex = '9999';
-                
-                // Check if we need more scaling by testing visibility
-                container = heroElement.querySelector('.hero-video-bg');
-                if (container) {
-                    container.appendChild(testElement);
-                    
-                    setTimeout(() => {
-                        testElement.remove();
-                        
-                        // Force even more aggressive scaling if needed
-                        const rect = iframe.getBoundingClientRect();
-                        const containerRect = container.getBoundingClientRect();
-                        
-                        if (rect.height < containerRect.height * 1.5) {
-                            iframe.style.transform = 'translate(-50%, -50%) scale(2)';
-                        }
-                    }, 100);
-                }
-            }
-        }, 500);
+    if (iframe) {
+        const rect = iframe.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        
+        if (rect.height < containerRect.height * 1.5) {
+            iframe.style.transform = 'translate(-50%, -50%) scale(2)';
+        }
+    }
+}, 500);
     }
 });
 
-// Detect and log actual video dimensions for debugging
-if (window.location.search.includes('debug')) {
-    console.log('Hero Video Debug Mode - Vimeo ID: <?= esc_js($vimeo_id) ?>');
-}
 </script>
 <?php endif; ?>
 
