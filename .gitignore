@@ -8,6 +8,7 @@ wp-content/*
 !wp-content/themes/
 wp-content/themes/*
 !wp-content/themes/our-family-passport/
+!wp-content/themes/our-family-passport/**
 
 # Opcional: ignorar também plugins de terceiros, uploads, etc
 wp-content/uploads/
