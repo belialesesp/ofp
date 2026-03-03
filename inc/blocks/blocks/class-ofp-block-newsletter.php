@@ -1,10 +1,14 @@
-
 <?php
 /**
  * Newsletter Block
  * Note: ACF fields managed via ACF UI.
  * Has dedicated JS + AJAX localization — override enqueue_assets().
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 class OFP_Block_Newsletter extends OFP_Block_Base {
     protected string $name        = 'newsletter';
     protected string $title       = 'Newsletter';
@@ -13,6 +17,10 @@ class OFP_Block_Newsletter extends OFP_Block_Base {
     protected array  $keywords    = [ 'newsletter', 'subscribe', 'email' ];
 
     public function enqueue_assets(): void {
+        if ( is_admin() ) {
+            return;
+        }
+
         wp_enqueue_script(
             'ofp-block-newsletter',
             get_template_directory_uri() . '/custom-blocks/newsletter/newsletter.js',
