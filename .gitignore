@@ -8,13 +8,14 @@ wp-content/themes/*
 !wp-content/themes/our-family-passport/
 !wp-content/themes/our-family-passport/**
 
+# Dependencies — full paths required due to ** whitelist above
+wp-content/themes/our-family-passport/vendor/
+wp-content/themes/our-family-passport/node_modules/
+
+# WordPress generated
 wp-content/uploads/
 wp-content/upgrade/
 wp-content/cache/
-
-# Dependencies
-node_modules/
-vendor/
 
 # Compiled assets
 *.css.map

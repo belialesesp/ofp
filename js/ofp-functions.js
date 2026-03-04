@@ -57,6 +57,7 @@ function enhancedPageSidebarDetection() {
 
 // Execute the enhanced detection
 enhancedPageSidebarDetection();
+
 /**
  * Flodesk popup SVG cleanup
  *
@@ -146,3 +147,200 @@ enhancedPageSidebarDetection();
   });
 
 })();
+
+/**
+ * OFP Slider Manager
+ *
+ * Centralises all Splide slider initialisation for the theme.
+ * PHP templates no longer need inline <script> blocks — they just output
+ * standard Splide HTML markup with an optional data-splide attribute for
+ * per-instance option overrides.
+ *
+ * HOW IT WORKS
+ * ------------
+ * 1. On DOMContentLoaded, OFPSlider.init() scans the page for every
+ *    element with the class "splide" that has not yet been initialised.
+ *
+ * 2. Options are resolved in this priority order (lowest → highest):
+ *    a. Built-in CONFIGS keyed by an extra class on the slider element
+ *       (e.g. class="splide success-stories-splide" picks the
+ *       'success-stories-splide' config).
+ *    b. The data-splide JSON attribute on the element itself (Splide
+ *       reads this natively; we also handle it explicitly for safe
+ *       error handling).
+ *
+ * 3. All mounted instances are tracked in a WeakMap so:
+ *    - Double-mounting the same element is silently prevented.
+ *    - Instances can be destroyed cleanly (useful after AJAX re-renders).
+ *
+ * ADDING A NEW SLIDER TYPE
+ * ------------------------
+ * Add an entry to the CONFIGS object below. The key must match a CSS
+ * class that will be present on the .splide root element. Options follow
+ * the standard Splide API.
+ *
+ * AJAX / DYNAMIC CONTENT
+ * ----------------------
+ * After injecting new slider HTML into the DOM, call:
+ *   OFPSlider.init();          // mounts any new, uninitialised sliders
+ *   OFPSlider.mountOne(el);    // mount a specific element
+ *   OFPSlider.destroyOne(el);  // destroy before re-rendering
+ */
+var OFPSlider = (function() {
+  'use strict';
+
+  // ─── Named slider configurations ────────────────────────────────────────────
+  // Key = CSS class present on the .splide root element.
+  // Values = Splide options (https://splidejs.com/guides/options/).
+  var CONFIGS = {
+
+    // custom-blocks/success-stories/success-stories-template.php
+    'success-stories-splide': {
+      type:       'loop',
+      perPage:    2,
+      perMove:    1,
+      gap:        '1rem',
+      pagination: false,
+      arrows:     true,
+      breakpoints: {
+        991: { perPage: 1 }
+      }
+    },
+
+    // custom-blocks/course-library/course-library-template.php
+    'course-library-splide': {
+      type:        'loop',
+      heightRatio: 0,
+      pagination:  false,
+      arrows:      true,
+      perPage:     2,
+      gap:         '1rem',
+      arrowPath:   'M29.6548 23.8359H7.33398V20.1693H29.6548L19.3882 9.9026L22.0007 7.33594L36.6673 22.0026L22.0007 36.6693L19.3882 34.1026L29.6548 23.8359Z',
+      breakpoints: {
+        991: { perPage: 1 }
+      }
+    }
+
+  };
+
+  // ─── Internal state ──────────────────────────────────────────────────────────
+  // WeakMap so entries are automatically released when elements are removed
+  // from the DOM — no manual cleanup needed for garbage-collected nodes.
+  var instances = new WeakMap();
+
+  // ─── Private helpers ─────────────────────────────────────────────────────────
+
+  /**
+   * Resolve the merged options for a given slider element.
+   * Named config (from class) is the base; data-splide JSON overrides on top.
+   *
+   * @param  {Element} el
+   * @return {Object}
+   */
+  function resolveOptions(el) {
+    var config = {};
+
+    // Apply named config if the element carries the matching class
+    Object.keys(CONFIGS).forEach(function(key) {
+      if (el.classList.contains(key)) {
+        // Shallow-clone so mutations don't pollute the shared CONFIGS entry
+        config = Object.assign({}, CONFIGS[key]);
+        // Deep-clone breakpoints sub-object if present
+        if (config.breakpoints) {
+          config.breakpoints = Object.assign({}, config.breakpoints);
+        }
+      }
+    });
+
+    // data-splide attribute overrides named config
+    var dataAttr = el.getAttribute('data-splide');
+    if (dataAttr) {
+      try {
+        config = Object.assign(config, JSON.parse(dataAttr));
+      } catch (e) {
+        console.warn('OFPSlider: Ignoring invalid JSON in data-splide on', el, e);
+      }
+    }
+
+    return config;
+  }
+
+  // ─── Public API ──────────────────────────────────────────────────────────────
+
+  /**
+   * Mount a single Splide element.
+   * Safe to call on an already-mounted element — will be skipped.
+   *
+   * @param {Element} el  The .splide root element.
+   */
+  function mountOne(el) {
+    // Guard: already tracked by us
+    if (instances.has(el)) return;
+
+    // Guard: Splide itself marks mounted elements with this class
+    if (el.classList.contains('is-initialized')) return;
+
+    if (typeof Splide === 'undefined') {
+      console.warn('OFPSlider: Splide library is not loaded. Cannot mount slider.', el);
+      return;
+    }
+
+    var options = resolveOptions(el);
+
+    try {
+      var splide = new Splide(el, options);
+      splide.mount();
+      instances.set(el, splide);
+    } catch (e) {
+      console.error('OFPSlider: Failed to mount slider on', el, e);
+    }
+  }
+
+  /**
+   * Destroy a mounted slider instance.
+   * Useful before AJAX re-renders that replace slider HTML.
+   *
+   * @param {Element} el  The .splide root element.
+   */
+  function destroyOne(el) {
+    if (!instances.has(el)) return;
+
+    try {
+      instances.get(el).destroy();
+    } catch (e) {
+      console.warn('OFPSlider: Error while destroying slider on', el, e);
+    }
+
+    instances.delete(el);
+  }
+
+  /**
+   * Scan the page and mount every uninitialised .splide element.
+   * Safe to call multiple times — already-mounted sliders are skipped.
+   * Call this after injecting dynamic content via AJAX.
+   */
+  function init() {
+    if (typeof Splide === 'undefined') {
+      console.warn('OFPSlider: Splide library is not loaded. Skipping init.');
+      return;
+    }
+
+    document.querySelectorAll('.splide').forEach(function(el) {
+      mountOne(el);
+    });
+  }
+
+  return {
+    init:       init,
+    mountOne:   mountOne,
+    destroyOne: destroyOne
+  };
+
+})();
+
+// Initialise all sliders once the DOM is ready.
+// Using DOMContentLoaded (not window load) is intentional: Splide does not
+// need images to be loaded to calculate layout correctly.
+document.addEventListener('DOMContentLoaded', function() {
+  OFPSlider.init();
+});

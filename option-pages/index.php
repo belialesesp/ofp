@@ -1,4 +1,5 @@
 <?php
+add_action('acf/init', function() {
 // REGISTER OPTION PAGES
 if (function_exists('acf_add_options_page')) {
 
@@ -68,7 +69,7 @@ if (function_exists('acf_add_options_page')) {
     'parent_slug'   => 'ofp-options',
   ));
 }
-
+});
 // Import pages Options
 require 'credit-cards.php';
 require 'map-settings.php';
