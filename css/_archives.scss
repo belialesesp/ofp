@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 .archives-page {
   flex-direction: column;
   padding: 4rem 0;
@@ -11,7 +13,7 @@
     align-items: center;
     justify-content: center;
     padding: 1rem 2rem;
-    font-family: $text;
+    font-family: $font-glacial;
     font-weight: 700;
     color: #222;
     font-weight: 700;
