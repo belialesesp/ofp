@@ -3,8 +3,11 @@
  *
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
+ *
  */
 ( function() {
+	'use strict';
+
 	const siteNavigation = document.getElementById( 'site-navigation' );
 
 	// Return early if the navigation doesn't exist.
@@ -31,69 +34,79 @@
 		menu.classList.add( 'nav-menu' );
 	}
 
-	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
+	// ── Hamburger toggle ────────────────────────────────────────────────────
 	button.addEventListener( 'click', function() {
+		const expanded = button.getAttribute( 'aria-expanded' ) === 'true';
 		siteNavigation.classList.toggle( 'toggled' );
-
-		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {
-			button.setAttribute( 'aria-expanded', 'false' );
-		} else {
-			button.setAttribute( 'aria-expanded', 'true' );
-		}
+		button.setAttribute( 'aria-expanded', String( ! expanded ) );
 	} );
 
-	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
+	// ── Outside-click: close the menu ───────────────────────────────────────
+	// Only mutates the DOM when the nav is actually open, avoiding needless
+	// reflows on every click elsewhere on the page.
 	document.addEventListener( 'click', function( event ) {
-		const isClickInside = siteNavigation.contains( event.target );
-
-		if ( ! isClickInside ) {
+		if ( ! siteNavigation.classList.contains( 'toggled' ) ) {
+			return;
+		}
+		if ( ! siteNavigation.contains( event.target ) ) {
 			siteNavigation.classList.remove( 'toggled' );
 			button.setAttribute( 'aria-expanded', 'false' );
 		}
 	} );
 
-	// Get all the link elements within the menu.
-	const links = menu.getElementsByTagName( 'a' );
-
-	// Get all the link elements with children within the menu.
-	const linksWithChildren = menu.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
-
-	// Toggle focus each time a menu link is focused or blurred.
-	for ( const link of links ) {
-		link.addEventListener( 'focus', toggleFocus, true );
-		link.addEventListener( 'blur', toggleFocus, true );
-	}
-
-	// Toggle focus each time a menu link with children receive a touch event.
-	for ( const link of linksWithChildren ) {
-		link.addEventListener( 'touchstart', toggleFocus, false );
-	}
+	// ── Focus management: delegated listeners on the menu ───────────────────
+	// Previously attached one focus + one blur + one touchstart handler per
+	// <a> element. Delegation cuts that to two listeners total regardless of
+	// how many menu items exist, and it works for items injected later.
 
 	/**
-	 * Sets or removes .focus class on an element.
+	 * Walk up from `el` to the nearest .nav-menu ancestor, toggling the
+	 * .focus class on each <li> encountered on the way.
+	 *
+	 * @param {Element} el   - The element to start from.
+	 * @param {boolean} add  - true to add .focus, false to remove it.
 	 */
-	function toggleFocus() {
-		if ( event.type === 'focus' || event.type === 'blur' ) {
-			let self = this;
-			// Move up through the ancestors of the current link until we hit .nav-menu.
-			while ( ! self.classList.contains( 'nav-menu' ) ) {
-				// On li elements toggle the class .focus.
-				if ( 'li' === self.tagName.toLowerCase() ) {
-					self.classList.toggle( 'focus' );
-				}
-				self = self.parentNode;
+	function setFocusChain( el, add ) {
+		let node = el;
+		while ( node && ! node.classList.contains( 'nav-menu' ) ) {
+			if ( node.tagName.toLowerCase() === 'li' ) {
+				node.classList.toggle( 'focus', add );
 			}
-		}
-
-		if ( event.type === 'touchstart' ) {
-			const menuItem = this.parentNode;
-			event.preventDefault();
-			for ( const link of menuItem.parentNode.children ) {
-				if ( menuItem !== link ) {
-					link.classList.remove( 'focus' );
-				}
-			}
-			menuItem.classList.toggle( 'focus' );
+			node = node.parentNode;
 		}
 	}
+
+	// Delegated focus listener (useCapture = true so it fires for all
+	// descendants, matching the original per-element capture behaviour).
+	menu.addEventListener( 'focus', function( event ) {
+		if ( event.target.tagName.toLowerCase() === 'a' ) {
+			setFocusChain( event.target, true );
+		}
+	}, true );
+
+	menu.addEventListener( 'blur', function( event ) {
+		if ( event.target.tagName.toLowerCase() === 'a' ) {
+			setFocusChain( event.target, false );
+		}
+	}, true );
+
+	// Delegated touchstart for parent items (dropdown open on touch).
+	menu.addEventListener( 'touchstart', function( event ) {
+		const link = event.target.closest( '.menu-item-has-children > a, .page_item_has_children > a' );
+		if ( ! link ) {
+			return;
+		}
+
+		const menuItem = link.parentNode;
+		event.preventDefault();
+
+		// Remove .focus from all siblings, then toggle it on the tapped item.
+		for ( const sibling of menuItem.parentNode.children ) {
+			if ( sibling !== menuItem ) {
+				sibling.classList.remove( 'focus' );
+			}
+		}
+		menuItem.classList.toggle( 'focus' );
+	}, false );
+
 }() );
