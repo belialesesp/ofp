@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 footer {
   padding: 2rem 0 3rem;
   .adverticer {
@@ -21,9 +23,9 @@ footer {
         a {
           display: block;
           padding: 1rem;
-          font-family: $text;
+          font-family: $font-glacial;
           font-weight: 700;
-          color: $black;
+          color: $color-black;
           text-decoration: none;
           text-transform: uppercase;
         }

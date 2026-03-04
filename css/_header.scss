@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 #colophonBtn {
   position: absolute;
   top: 1rem;
@@ -38,7 +40,7 @@
   &__img {
     width: calc(14% - (10rem / 3));
     img {
-      border: 6px solid $black;
+      border: 6px solid $color-black;
       border-radius: 6px;
       box-shadow: 10px 10px 20px rgba($color: #000000, $alpha: 0.4);
       @media screen and (max-width: 767px) {
@@ -56,7 +58,7 @@
     width: calc(46% - (10rem / 3));
     &__title {
       font-size: 2rem;
-      font-family: $titles;
+      font-family: $font-versailles;
       font-weight: 400;
       text-transform: uppercase;
       @media screen and (max-width: 767px) {
@@ -66,7 +68,7 @@
       }
     }
     &__description {
-      font-family: $text;
+      font-family: $font-glacial;
       @media screen and (max-width: 767px) {
         display: none;
       }
@@ -85,12 +87,12 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    font-family: $text;
+    font-family: $font-glacial;
     font-weight: 700;
     a {
       padding: 20px 30px;
       letter-spacing: 5px;
-      color: $black;
+      color: $color-black;
       @media screen and (max-width: 1439px) {
         letter-spacing: 3px;
       }
@@ -114,12 +116,12 @@
 .look-around {
   position: relative;
   padding: 0.5rem 0 0.25rem;
-  background-color: $sand;
+  background-color: $color-sand;
   &__quiz-link {
     a {
-      font-family: $LeagueGothic;
+      font-family: $font-gothic;
       font-size: 2rem;
-      color: $green2;
+      color: $color-green2;
       text-decoration: underline;
       text-transform: uppercase;
       @media screen and (max-width: 767px) {
@@ -137,7 +139,7 @@
       align-items: flex-end;
       text-transform: lowercase;
       span {
-        font-family: $styled;
+        font-family: $font-moontime;
         font-size: 3rem;
         line-height: 2rem;
         @media screen and (max-width: 767px) {
@@ -173,7 +175,7 @@
       justify-content: space-between;
       width: calc(50% - (48px / 2));
       padding: 2rem 3rem;
-      background-color: $sand;
+      background-color: $color-sand;
       text-align: center;
       @media screen and (max-width: 767px) {
         display: none;
@@ -209,12 +211,12 @@
       align-items: center;
       justify-content: center;
       padding: 0.75rem;
-      background-color: $blue;
+      background-color: $color-blue-light;
       span {
         writing-mode: vertical-lr;
-        font-family: $LeagueGothic;
+        font-family: $font-gothic;
         font-size: 1rem;
-        color: $white;
+        color: $color-white;
         text-transform: uppercase;
         transform: rotate(180deg);
       }
@@ -256,7 +258,7 @@
               bottom: -2px;
               width: 0;
               height: 2px;
-              background-color: $blue;
+              background-color: $color-blue-light;
               transition: all 0.4s;
             }
             &:hover {
@@ -268,7 +270,7 @@
           }
         }
         a {
-          font-family: $titles;
+          font-family: $font-versailles;
           color: inherit;
           text-decoration: none;
         }
@@ -344,14 +346,14 @@
     .menu-item {
       a {
         padding: 2rem 1rem;
-        font-family: $text;
+        font-family: $font-glacial;
         font-size: 20px;
         font-weight: 700;
         color: white;
         text-transform: uppercase;
         transition: all 0.3s;
         &:hover {
-          color: $green2;
+          color: $color-green2;
         }
       }
     }
