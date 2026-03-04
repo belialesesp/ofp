@@ -13,6 +13,14 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Minify JS
+        run: |
+          npx --yes terser js/navigation.js        -o js/navigation.js        --compress --mangle
+          npx         terser js/ofp-functions.js   -o js/ofp-functions.js     --compress --mangle
+          npx         terser custom-blocks/course-library/course-library.js   -o custom-blocks/course-library/course-library.js   --compress --mangle
+          npx         terser custom-blocks/newsletter/newsletter.js           -o custom-blocks/newsletter/newsletter.js           --compress --mangle
+          npx         terser custom-blocks/destinations-map/destinations-map.js -o custom-blocks/destinations-map/destinations-map.js --compress --mangle
+
       - name: Deploy via SFTP
         run: |
           sudo apt-get install -y lftp
@@ -21,10 +29,11 @@ jobs:
             set net:timeout 10;
             set net:max-retries 3;
             open sftp://dh_5xyscn:${{ secrets.FTP_PASSWORD }}@pdx1-shared-a3-02.dreamhost.com;
-            mirror --reverse --delete --verbose \
+            mirror --reverse --delete --verbose --only-newer \
               --exclude .git \
               --exclude .github \
               --exclude node_modules \
+              --exclude vendor \
               --exclude sass \
               --exclude package.json \
               --exclude package-lock.json \
