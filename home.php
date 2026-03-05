@@ -172,456 +172,334 @@ if ($blog_page_id) {
 </main>
 
 <script>
-class BlogFilters {
-    constructor() {
-        this.posts = document.querySelectorAll('.post-list div[id^="post-"]');
-        this.categoryRows = {
-            primary: document.querySelector('.category-row--primary'),
-            secondary: document.querySelector('.category-row--secondary'),
-            tertiary: document.querySelector('.category-row--tertiary')
-        };
-        this.categoriesData = window.categoriesData || {};
-        this.currentSelection = {
-            primary: null,
-            secondary: null,
-            tertiary: null
-        };
-        this.loadingOverlay = document.getElementById('blog-loading-overlay');
-        this.isLoading = false;
-        this.init();
-    }
 
-    init() {
-        this.bindEventListeners();
-    }
+(function () {
+    'use strict';
 
-    bindEventListeners() {
-    document.addEventListener('click', (e) => {
-        let button = null;
-        
-        if (e.target.classList.contains('category-button')) {
-            button = e.target;
-        } else if (e.target.closest('.category-button')) {
-            button = e.target.closest('.category-button');
-        }
-        
-        if (button && !button.disabled && !this.isLoading) {
-            this.handleCategoryClick(button);
-        }
-    });
-}
+    // Defensive namespace bootstrap — ofp-functions.js normally does this first.
+    window.OFP = window.OFP || {};
 
-    showLoading(message = 'Carregando...') {
-        if (this.loadingOverlay) {
-            const loadingText = this.loadingOverlay.querySelector('.blog-loading-text');
-            if (loadingText) {
-                loadingText.textContent = message;
-            }
-            this.loadingOverlay.classList.add('active');
-            this.isLoading = true;
-            this.disableAllButtons();
-        }
-    }
-
-    hideLoading() {
-        if (this.loadingOverlay) {
-            this.loadingOverlay.classList.remove('active');
-            this.isLoading = false;
-            this.enableAllButtons();
-        }
-    }
-
-    disableAllButtons() {
-        document.querySelectorAll('.category-button').forEach(btn => {
-            btn.disabled = true;
-        });
-        document.body.style.pointerEvents = 'none';
-        this.loadingOverlay.style.pointerEvents = 'auto';
-    }
-
-    enableAllButtons() {
-        document.querySelectorAll('.category-button').forEach(btn => {
-            btn.disabled = false;
-        });
-        document.body.style.pointerEvents = 'auto';
-    }
-
-    async handleCategoryClick(button) {
-        const filter = button.getAttribute('data-filter');
-        const categoryId = button.getAttribute('data-category-id');
-        const hasChildren = button.getAttribute('data-has-children') === 'true';
-        const level = button.getAttribute('data-level') || 'primary';
-
-        if (filter === 'all') {
-            this.showLoading('Loading');
-        } else if (hasChildren) {
-            this.showLoading('Loading');
-        } else {
-            this.showLoading('Loading');
-        }
-
-        try {
-            await new Promise(resolve => setTimeout(resolve, 100));
-
-            this.updateSelectionState(level, categoryId, filter);
-            
-            this.updateActiveButton(button, level);
-
-            if (filter === 'all') {
-                this.clearAllSelections();
-                this.hideAllSubcategories();
-                await this.loadCategoryPosts('all');
-                return;
-            }
-
-            await this.handleCategoryLevel(level, categoryId, filter, hasChildren);
-
-        } catch (error) {
-            console.error('Erro ao processar categoria:', error);
-        } finally {
-            this.hideLoading();
-        }
-    }
-
-    updateSelectionState(level, categoryId, filter) {
-        if (level === 'primary') {
-            this.currentSelection.primary = { id: categoryId, filter: filter };
-            this.currentSelection.secondary = null;
-            this.currentSelection.tertiary = null;
-        } else if (level === 'secondary') {
-            this.currentSelection.secondary = { id: categoryId, filter: filter };
-            this.currentSelection.tertiary = null;
-        } else if (level === 'tertiary') {
-            this.currentSelection.tertiary = { id: categoryId, filter: filter };
-        }
-    }
-
-    async handleCategoryLevel(level, categoryId, filter, hasChildren) {
-        switch (level) {
-            case 'primary':
-                this.hideSubcategories('secondary');
-                this.hideSubcategories('tertiary');
-                
-                if (hasChildren) {
-                    await new Promise(resolve => setTimeout(resolve, 300));
-                    this.showSubcategories(categoryId, 'secondary');
-                } else {
-                    await this.loadCategoryPosts(filter);
-                }
-                break;
-
-            case 'secondary':
-                this.hideSubcategories('tertiary');
-                
-                if (hasChildren) {
-                    await new Promise(resolve => setTimeout(resolve, 300));
-                    this.showSubcategories(categoryId, 'tertiary');
-                } else {
-                    await this.loadCategoryPosts(filter);
-                }
-                break;
-
-            case 'tertiary':
-                await this.loadCategoryPosts(filter);
-                break;
-        }
-    }
-
-    showSubcategories(parentId, targetLevel) {
-        const subcategories = this.getChildCategories(parentId);
-        
-        if (subcategories.length === 0) {
-            return;
-        }
-
-        const parentColor = this.getParentColor(targetLevel);
-        const targetRow = this.categoryRows[targetLevel];
-        
-        let html = '';
-
-        subcategories.forEach(category => {
-            const childCategories = this.getChildCategories(category.id);
-            const hasChildren = childCategories.length > 0;
-            
-            html += `<button class="category-button" 
-                            data-filter="${category.slug}"
-                            data-category-id="${category.id}"
-                            data-has-children="${hasChildren}"
-                            data-level="${targetLevel}"
-                            style="background-color: ${parentColor};">
-                        ${category.name}
-                        ${hasChildren ? '<span class="has-children-indicator">▼</span>' : ''}
-                    </button>`;
-        });
-
-        targetRow.innerHTML = html;
-        targetRow.style.display = 'block';
-        
-        targetRow.style.opacity = '0';
-        targetRow.style.transform = 'translateY(-10px)';
-        
-        setTimeout(() => {
-            targetRow.style.opacity = '1';
-            targetRow.style.transform = 'translateY(0)';
-            targetRow.style.transition = 'all 0.3s ease';
-        }, 50);
-    }
-
-    getParentColor(targetLevel) {
-        if (targetLevel === 'secondary') {
-            const activeButton = document.querySelector('.category-row--primary .category-button--active');
-            return activeButton ? activeButton.style.backgroundColor : '#FFD6D9';
-        } else if (targetLevel === 'tertiary') {
-            const activeButton = document.querySelector('.category-row--secondary .category-button--active');
-            return activeButton ? activeButton.style.backgroundColor : '#FFD6D9';
-        }
-        return '#FFD6D9';
-    }
-
-    hideSubcategories(level) {
-        if (this.categoryRows[level]) {
-            this.categoryRows[level].style.display = 'none';
-            this.categoryRows[level].innerHTML = '';
-        }
-    }
-
-    hideAllSubcategories() {
-        this.hideSubcategories('secondary');
-        this.hideSubcategories('tertiary');
-    }
-
-    clearAllSelections() {
-        this.currentSelection = {
-            primary: null,
-            secondary: null,
-            tertiary: null
-        };
-    }
-
-    updateActiveButton(activeButton, level) {
-        const levelClass = `.category-row--${level}`;
-        document.querySelectorAll(`${levelClass} .category-button`).forEach(btn => {
-            btn.classList.remove('category-button--active');
-            btn.setAttribute('aria-pressed', 'false');
-        });
-        
-        if (activeButton.getAttribute('data-filter') !== 'all') {
-            if (level === 'primary') {
-                document.querySelectorAll('.category-row--secondary .category-button, .category-row--tertiary .category-button').forEach(btn => {
-                    btn.classList.remove('category-button--active');
-                    btn.setAttribute('aria-pressed', 'false');
-                });
-            } else if (level === 'secondary') {
-                document.querySelectorAll('.category-row--tertiary .category-button').forEach(btn => {
-                    btn.classList.remove('category-button--active');
-                    btn.setAttribute('aria-pressed', 'false');
-                });
-            }
-        } else {
-            document.querySelectorAll('.category-button').forEach(btn => {
-                if (btn !== activeButton) {
-                    btn.classList.remove('category-button--active');
-                    btn.setAttribute('aria-pressed', 'false');
-                }
-            });
-        }
-        
-        activeButton.classList.add('category-button--active');
-        activeButton.setAttribute('aria-pressed', 'true');
-    }
-
-    async loadCategoryPosts(categorySlug) {
-        const postsContainer = document.querySelector('.post-list');
-        
-        try {
-            const formData = new FormData();
-            formData.append('action', 'get_filtered_posts');
-            formData.append('category', categorySlug);
-            formData.append('posts_per_page', '12');
-            formData.append('nonce', ofp_ajax.filter_nonce);
-
-            const response = await fetch(ofp_ajax.ajax_url, {
-                method: 'POST',
-                body: formData
-            });
-
-            const data = await response.json();
-            
-            if (data.success) {
-                postsContainer.innerHTML = data.data.posts;
-                this.updateLoadMoreButton(data.data.has_more, 1, data.data.max_pages, categorySlug);
-                this.posts = document.querySelectorAll('.post-list div[id^="post-"]');
-                this.hideNoPostsMessage();
-                
-                if (data.data.post_count === 0) {
-                    this.showNoPostsMessage(categorySlug);
-                }
-            }
-        } catch (error) {
-            console.error('Error loading category posts:', error);
-        }
-    }
-
-    updateLoadMoreButton(hasMore, currentPage, maxPages, category) {
-        const loadMoreBtn = document.getElementById('load-more');
-        const loadMoreContainer = document.querySelector('.load-more-container');
-        
-        if (loadMoreBtn && loadMoreContainer) {
-            if (hasMore) {
-                loadMoreBtn.style.display = 'block';
-                loadMoreContainer.style.display = 'block';
-                loadMoreBtn.setAttribute('data-page', currentPage);
-                loadMoreBtn.setAttribute('data-max-pages', maxPages);
-                loadMoreBtn.setAttribute('data-category', category);
-                
-                if (window.loadMoreInstance) {
-                    window.loadMoreInstance.currentPage = currentPage;
-                    window.loadMoreInstance.currentCategory = category;
-                }
-            } else {
-                loadMoreBtn.style.display = 'none';
-                loadMoreContainer.style.display = 'none';
-            }
-        }
-    }
-
-    getChildCategories(parentId) {
-        return Object.values(this.categoriesData).filter(cat => 
-            parseInt(cat.parent) === parseInt(parentId)
-        );
-    }
-
-    showNoPostsMessage(filter) {
-        let messageDiv = document.querySelector('.no-posts-filtered');
-        
-        if (!messageDiv) {
-            messageDiv = document.createElement('div');
-            messageDiv.className = 'no-posts-filtered';
-            document.querySelector('.post-list').appendChild(messageDiv);
-        }
-        
-        const categoryName = this.getCurrentCategoryName(filter);
-        messageDiv.innerHTML = `<p>Nenhum post encontrado na categoria "${categoryName}".</p>`;
-        messageDiv.style.display = 'block';
-    }
-
-    hideNoPostsMessage() {
-        const messageDiv = document.querySelector('.no-posts-filtered');
-        if (messageDiv) {
-            messageDiv.style.display = 'none';
-        }
-    }
-
-    getCurrentCategoryName(slug) {
-        const category = Object.values(this.categoriesData).find(cat => cat.slug === slug);
-        return category ? category.name : slug;
-    }
-}
-
-class LoadMorePosts {
-    constructor() {
-        this.loadMoreBtn = document.getElementById('load-more');
-        this.postsContainer = document.querySelector('.post-list');
-        this.currentPage = 1;
-        this.currentCategory = 'all';
-        this.isLoading = false;
-        
-        if (this.loadMoreBtn) {
+    // ── BlogFilters ───────────────────────────────────────────────────────────
+    class BlogFilters {
+        constructor() {
+            this.posts = document.querySelectorAll('.post-list div[id^="post-"]');
+            this.categoryRows = {
+                primary:   document.querySelector('.category-row--primary'),
+                secondary: document.querySelector('.category-row--secondary'),
+                tertiary:  document.querySelector('.category-row--tertiary')
+            };
+            this.categoriesData    = window.categoriesData || {};
+            this.currentSelection  = { primary: null, secondary: null, tertiary: null };
+            this.loadingOverlay    = document.getElementById('blog-loading-overlay');
+            this.isLoading         = false;
             this.init();
         }
-    }
 
-    init() {
-        this.loadMoreBtn.addEventListener('click', () => this.loadMore());
-    }
-
-    async loadMore() {
-        if (this.isLoading) return false;
-
-        this.isLoading = true;
-        this.updateButtonState(true);
-        this.currentPage++;
-
-        const blogFilters = window.blogFiltersInstance;
-        if (blogFilters) {
-            blogFilters.showLoading('Carregando mais posts...');
+        init() {
+            this.bindEventListeners();
         }
 
-        try {
-            const formData = new FormData();
-            formData.append('action', 'get_filtered_posts');
-            formData.append('category', this.currentCategory);
-            formData.append('page', this.currentPage);
-            formData.append('posts_per_page', '12');
-            formData.append('nonce', ofp_ajax.filter_nonce);
+        bindEventListeners() {
+            document.addEventListener('click', (e) => {
+                let button = null;
+                if (e.target.classList.contains('category-button')) {
+                    button = e.target;
+                } else if (e.target.closest('.category-button')) {
+                    button = e.target.closest('.category-button');
+                }
+                if (button && !button.disabled && !this.isLoading) {
+                    this.handleCategoryClick(button);
+                }
+            });
+        }
 
-            const response = await fetch(ofp_ajax.ajax_url, {
-                method: 'POST',
-                body: formData
+        showLoading(message = 'Carregando...') {
+            if (this.loadingOverlay) {
+                const loadingText = this.loadingOverlay.querySelector('.blog-loading-text');
+                if (loadingText) loadingText.textContent = message;
+                this.loadingOverlay.classList.add('active');
+                this.isLoading = true;
+                this.disableAllButtons();
+            }
+        }
+
+        hideLoading() {
+            if (this.loadingOverlay) {
+                this.loadingOverlay.classList.remove('active');
+                this.isLoading = false;
+                this.enableAllButtons();
+            }
+        }
+
+        disableAllButtons() {
+            document.querySelectorAll('.category-button').forEach(btn => { btn.disabled = true; });
+            document.body.style.pointerEvents = 'none';
+            this.loadingOverlay.style.pointerEvents = 'auto';
+        }
+
+        enableAllButtons() {
+            document.querySelectorAll('.category-button').forEach(btn => { btn.disabled = false; });
+            document.body.style.pointerEvents = 'auto';
+        }
+
+        async handleCategoryClick(button) {
+            const filter      = button.getAttribute('data-filter');
+            const categoryId  = button.getAttribute('data-category-id');
+            const hasChildren = button.getAttribute('data-has-children') === 'true';
+            const level       = button.getAttribute('data-level') || 'primary';
+
+            this.showLoading('Loading');
+
+            try {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                this.updateSelectionState(level, categoryId, filter);
+                this.updateActiveButton(button, level);
+
+                if (filter === 'all') {
+                    this.clearAllSelections();
+                    this.hideAllSubcategories();
+                    await this.loadCategoryPosts('all');
+                    return;
+                }
+
+                await this.handleCategoryLevel(level, categoryId, filter, hasChildren);
+
+            } catch (error) {
+                console.error('Erro ao processar categoria:', error);
+            } finally {
+                this.hideLoading();
+            }
+        }
+
+        updateSelectionState(level, categoryId, filter) {
+            if (level === 'primary') {
+                this.currentSelection.primary   = { id: categoryId, filter };
+                this.currentSelection.secondary = null;
+                this.currentSelection.tertiary  = null;
+            } else if (level === 'secondary') {
+                this.currentSelection.secondary = { id: categoryId, filter };
+                this.currentSelection.tertiary  = null;
+            }
+        }
+
+        updateActiveButton(activeButton, level) {
+            const levelClass = `.category-row--${level}`;
+            document.querySelectorAll(`${levelClass} .category-button`).forEach(btn => {
+                btn.classList.remove('category-button--active');
+                btn.setAttribute('aria-pressed', 'false');
             });
 
-            const data = await response.json();
-
-            if (data.success && data.data.posts.trim() !== '') {
-                this.postsContainer.insertAdjacentHTML('beforeend', data.data.posts);
-                this.updatePostsReference();
-                
-                if (!data.data.has_more) {
-                    this.hideLoadMoreButton();
+            if (activeButton.getAttribute('data-filter') !== 'all') {
+                if (level === 'primary') {
+                    document.querySelectorAll(
+                        '.category-row--secondary .category-button, .category-row--tertiary .category-button'
+                    ).forEach(btn => {
+                        btn.classList.remove('category-button--active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+                } else if (level === 'secondary') {
+                    document.querySelectorAll('.category-row--tertiary .category-button').forEach(btn => {
+                        btn.classList.remove('category-button--active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
                 }
-                
-                return true;
             } else {
-                this.hideLoadMoreButton();
+                document.querySelectorAll('.category-button').forEach(btn => {
+                    if (btn !== activeButton) {
+                        btn.classList.remove('category-button--active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    }
+                });
+            }
+
+            activeButton.classList.add('category-button--active');
+            activeButton.setAttribute('aria-pressed', 'true');
+        }
+
+        async loadCategoryPosts(categorySlug) {
+            const postsContainer = document.querySelector('.post-list');
+            try {
+                const formData = new FormData();
+                formData.append('action', 'get_filtered_posts');
+                formData.append('category', categorySlug);
+                formData.append('posts_per_page', '12');
+                formData.append('nonce', ofp_ajax.filter_nonce);
+
+                const response = await fetch(ofp_ajax.ajax_url, { method: 'POST', body: formData });
+                const data = await response.json();
+
+                if (data.success) {
+                    postsContainer.innerHTML = data.data.posts;
+                    this.updateLoadMoreButton(data.data.has_more, 1, data.data.max_pages, categorySlug);
+                    this.posts = document.querySelectorAll('.post-list div[id^="post-"]');
+                    this.hideNoPostsMessage();
+                    if (data.data.post_count === 0) this.showNoPostsMessage(categorySlug);
+                }
+            } catch (error) {
+                console.error('Error loading category posts:', error);
+            }
+        }
+
+        updateLoadMoreButton(hasMore, currentPage, maxPages, category) {
+            const loadMoreBtn       = document.getElementById('load-more');
+            const loadMoreContainer = document.querySelector('.load-more-container');
+            if (loadMoreBtn && loadMoreContainer) {
+                if (hasMore) {
+                    loadMoreBtn.style.display       = 'block';
+                    loadMoreContainer.style.display = 'block';
+                    loadMoreBtn.setAttribute('data-page',      currentPage);
+                    loadMoreBtn.setAttribute('data-max-pages', maxPages);
+                    loadMoreBtn.setAttribute('data-category',  category);
+                    // Keep the LoadMorePosts instance in sync.
+                    const lm = window.OFP.loadMore;
+                    if (lm) {
+                        lm.currentPage     = currentPage;
+                        lm.currentCategory = category;
+                    }
+                } else {
+                    loadMoreBtn.style.display       = 'none';
+                    loadMoreContainer.style.display = 'none';
+                }
+            }
+        }
+
+        getChildCategories(parentId) {
+            return Object.values(this.categoriesData).filter(
+                cat => parseInt(cat.parent) === parseInt(parentId)
+            );
+        }
+
+        showNoPostsMessage(filter) {
+            let messageDiv = document.querySelector('.no-posts-filtered');
+            if (!messageDiv) {
+                messageDiv = document.createElement('div');
+                messageDiv.className = 'no-posts-filtered';
+                document.querySelector('.post-list').appendChild(messageDiv);
+            }
+            const categoryName = this.getCurrentCategoryName(filter);
+            messageDiv.innerHTML = `<p>Nenhum post encontrado na categoria "${categoryName}".</p>`;
+            messageDiv.style.display = 'block';
+        }
+
+        hideNoPostsMessage() {
+            const messageDiv = document.querySelector('.no-posts-filtered');
+            if (messageDiv) messageDiv.style.display = 'none';
+        }
+
+        getCurrentCategoryName(slug) {
+            const category = Object.values(this.categoriesData).find(cat => cat.slug === slug);
+            return category ? category.name : slug;
+        }
+
+        // Stub — implement subcategory rendering here if needed.
+        async handleCategoryLevel(level, categoryId, filter, hasChildren) {
+            await this.loadCategoryPosts(filter);
+        }
+
+        hideSubcategories(level) {
+            if (this.categoryRows[level]) {
+                this.categoryRows[level].style.display = 'none';
+                this.categoryRows[level].innerHTML = '';
+            }
+        }
+
+        hideAllSubcategories() {
+            this.hideSubcategories('secondary');
+            this.hideSubcategories('tertiary');
+        }
+
+        clearAllSelections() {
+            this.currentSelection = { primary: null, secondary: null, tertiary: null };
+        }
+    }
+
+    // ── LoadMorePosts ─────────────────────────────────────────────────────────
+    class LoadMorePosts {
+        constructor() {
+            this.loadMoreBtn    = document.getElementById('load-more');
+            this.postsContainer = document.querySelector('.post-list');
+            this.currentPage    = 1;
+            this.currentCategory = 'all';
+            this.isLoading      = false;
+            if (this.loadMoreBtn) this.init();
+        }
+
+        init() {
+            this.loadMoreBtn.addEventListener('click', () => this.loadMore());
+        }
+
+        async loadMore() {
+            if (this.isLoading) return false;
+            this.isLoading = true;
+            this.updateButtonState(true);
+            this.currentPage++;
+
+            // Use the namespaced reference.
+            const blogFilters = window.OFP.blogFilters;
+            if (blogFilters) blogFilters.showLoading('Carregando mais posts...');
+
+            try {
+                const formData = new FormData();
+                formData.append('action',        'get_filtered_posts');
+                formData.append('category',      this.currentCategory);
+                formData.append('page',          this.currentPage);
+                formData.append('posts_per_page','12');
+                formData.append('nonce',         ofp_ajax.filter_nonce);
+
+                const response = await fetch(ofp_ajax.ajax_url, { method: 'POST', body: formData });
+                const data     = await response.json();
+
+                if (data.success && data.data.posts.trim() !== '') {
+                    this.postsContainer.insertAdjacentHTML('beforeend', data.data.posts);
+                    this.updatePostsReference();
+                    if (!data.data.has_more) this.hideLoadMoreButton();
+                    return true;
+                } else {
+                    this.hideLoadMoreButton();
+                    return false;
+                }
+            } catch (error) {
+                console.error('Error loading more posts:', error);
+                this.currentPage--;
                 return false;
+            } finally {
+                this.isLoading = false;
+                this.updateButtonState(false);
+                if (blogFilters) blogFilters.hideLoading();
             }
-        } catch (error) {
-            console.error('Error loading more posts:', error);
-            this.currentPage--;
-            return false;
-        } finally {
-            this.isLoading = false;
-            this.updateButtonState(false);
-            
+        }
+
+        updateButtonState(loading) {
+            if (!this.loadMoreBtn) return;
+            const text   = this.loadMoreBtn.querySelector('.load-more-btn__text');
+            const loader = this.loadMoreBtn.querySelector('.load-more-btn__loader');
+            if (text && loader) {
+                text.style.display   = loading ? 'none'   : 'inline';
+                loader.style.display = loading ? 'inline' : 'none';
+            }
+            this.loadMoreBtn.disabled = loading;
+        }
+
+        updatePostsReference() {
+            const blogFilters = window.OFP.blogFilters;
             if (blogFilters) {
-                blogFilters.hideLoading();
+                blogFilters.posts = document.querySelectorAll('.post-list div[id^="post-"]');
+                blogFilters.hideNoPostsMessage();
             }
         }
-    }
 
-    updateButtonState(loading) {
-        if (!this.loadMoreBtn) return;
-        
-        const text = this.loadMoreBtn.querySelector('.load-more-btn__text');
-        const loader = this.loadMoreBtn.querySelector('.load-more-btn__loader');
-        
-        if (text && loader) {
-            text.style.display = loading ? 'none' : 'inline';
-            loader.style.display = loading ? 'inline' : 'none';
-        }
-        
-        this.loadMoreBtn.disabled = loading;
-    }
-
-    updatePostsReference() {
-        const blogFilters = window.blogFiltersInstance;
-        if (blogFilters) {
-            blogFilters.posts = document.querySelectorAll('.post-list div[id^="post-"]');
-            blogFilters.hideNoPostsMessage();
+        hideLoadMoreButton() {
+            if (this.loadMoreBtn) this.loadMoreBtn.style.display = 'none';
         }
     }
 
-    hideLoadMoreButton() {
-        if (this.loadMoreBtn) {
-            this.loadMoreBtn.style.display = 'none';
-        }
-    }
-}
+    // ── Boot ──────────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function () {
+        window.OFP.blogFilters = new BlogFilters();
+        window.OFP.loadMore    = new LoadMorePosts();
+    });
 
-document.addEventListener('DOMContentLoaded', function() {
-    window.blogFiltersInstance = new BlogFilters();
-    window.loadMoreInstance = new LoadMorePosts();
-});
+}());
 </script>
 
 <style>

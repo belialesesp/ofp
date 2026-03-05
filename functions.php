@@ -261,8 +261,24 @@ function our_family_passport_scripts()
         );
     }
 
-    wp_enqueue_script( 'splide-slider', get_template_directory_uri() . '/js/splide-slide/js/splide.min.js', array(), '4.1.2', true );
+$splide_blocks = array( 'acf/success-stories', 'acf/course-library' );
+$needs_splide  = false;
+foreach ( $splide_blocks as $block ) {
+    if ( has_block( $block ) ) {
+        $needs_splide = true;
+        break;
+    }
+}
 
+if ( $needs_splide ) {
+    wp_enqueue_script(
+        'splide-slider',
+        get_template_directory_uri() . '/js/splide-slide/js/splide.min.js',
+        array(),
+        '4.1.2',
+        true
+    );
+}
     $ofp_js = get_template_directory() . '/js/ofp-functions.js';
     if ( file_exists( $ofp_js ) ) {
         wp_enqueue_script(
