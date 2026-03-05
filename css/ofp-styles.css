@@ -703,6 +703,14 @@ article[id*=postPage] .post-thumbnail img {
   }
 }
 
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .blog .main-navigation .menu .menu-item a {
   color: #9BBFCD;
 }
@@ -842,10 +850,20 @@ h2.post-title a {
 }
 .load-more-container button.load-more-btn {
   border-radius: 50px;
-  background: #BED8BA;
-  padding: 1rem 5rem;
+  padding: 10px 20px;
+  font-weight: 700;
+  text-decoration: none;
   text-transform: uppercase;
-  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: #BED8BA;
+  color: #fff;
+}
+.load-more-container button.load-more-btn:hover, .load-more-container button.load-more-btn:focus {
+  background-color: rgb(159.3055555556, 197.5833333333, 153.4166666667);
+}
+.load-more-container button.load-more-btn {
+  padding: 1rem 5rem;
 }
 
 .no-posts-filtered {
@@ -1198,7 +1216,7 @@ a.take-quizz {
 }
 
 .hero-content__image.animate .animated__img {
-  animation: rotation 15s linear infinite 0s !important;
+  animation: rotation 15s linear infinite 0s;
 }
 
 .hero-content__image.decorative-edge > img {
