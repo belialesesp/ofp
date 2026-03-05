@@ -261,8 +261,24 @@ function our_family_passport_scripts()
         );
     }
 
-    wp_enqueue_script( 'splide-slider', get_template_directory_uri() . '/js/splide-slide/js/splide.min.js', array(), '4.1.2', true );
+$splide_blocks = array( 'acf/success-stories', 'acf/course-library' );
+$needs_splide  = false;
+foreach ( $splide_blocks as $block ) {
+    if ( has_block( $block ) ) {
+        $needs_splide = true;
+        break;
+    }
+}
 
+if ( $needs_splide ) {
+    wp_enqueue_script(
+        'splide-slider',
+        get_template_directory_uri() . '/js/splide-slide/js/splide.min.js',
+        array(),
+        '4.1.2',
+        true
+    );
+}
     $ofp_js = get_template_directory() . '/js/ofp-functions.js';
     if ( file_exists( $ofp_js ) ) {
         wp_enqueue_script(
@@ -1381,45 +1397,70 @@ add_action( 'wp_enqueue_scripts', 'enqueue_blog_filter_data' );
 function ofp_minimal_popup_control() {
     ?>
     <style>
-    .pop-up { 
+    .pop-up {
         opacity: 0 !important;
         visibility: hidden !important;
         transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     }
-    
     .pop-up.show-popup {
         opacity: 1 !important;
         visibility: visible !important;
     }
     </style>
-    
+
     <script>
-    setTimeout(function() {
-        if (!sessionStorage.getItem('popup_shown')) {
-            var popup = document.querySelector('.pop-up');
-            if (popup) {
+    (function() {
+        'use strict';
+
+        // Exit immediately if there is no popup on this page.
+        var popup = document.querySelector('.pop-up');
+        if (!popup) return;
+
+        // ── Show popup after 3 s (once per session) ──────────────────────
+        var showTimer = setTimeout(function() {
+            showTimer = null;
+            if (!sessionStorage.getItem('popup_shown')) {
                 popup.classList.add('show-popup');
                 sessionStorage.setItem('popup_shown', '1');
             }
-        }
-    }, 3000);
-    
-    document.addEventListener('click', function(e) {
-        var popup = document.querySelector('.pop-up.show-popup');
-        if (!popup) return;
-        
-        // Close if clicked on close/dismiss buttons
-        if (e.target.closest('.close-btn') || e.target.closest('.dimiss')) {
+        }, 3000);
+
+        // Cancel the timer if the page is unloaded before it fires (e.g. fast
+        // navigation). Prevents a deferred classList mutation on a detached node.
+        window.addEventListener('pagehide', function() {
+            if (showTimer !== null) {
+                clearTimeout(showTimer);
+            }
+        }, { once: true });
+
+        // ── Dismiss logic ─────────────────────────────────────────────────
+        function dismissPopup() {
             popup.classList.remove('show-popup');
-            return;
+            // Remove the delegated listener once dismissed — no further clicks
+            // should be intercepted for popup purposes this session.
+            document.removeEventListener('click', onDocumentClick);
         }
-        
-        // Close if clicked outside popup content
-        var popupBox = popup.querySelector('.popup-box');
-        if (popupBox && !popupBox.contains(e.target) && popup.contains(e.target)) {
-            popup.classList.remove('show-popup');
+
+        // Named reference so we can remove it.
+        function onDocumentClick(e) {
+            // Only act when the popup is actually visible.
+            if (!popup.classList.contains('show-popup')) return;
+
+            // Close button or dismiss button inside the popup.
+            if (e.target.closest('.close-btn') || e.target.closest('.dimiss')) {
+                dismissPopup();
+                return;
+            }
+
+            // Click on the overlay (inside .pop-up but outside .popup-box).
+            var popupBox = popup.querySelector('.popup-box');
+            if (popupBox && !popupBox.contains(e.target) && popup.contains(e.target)) {
+                dismissPopup();
+            }
         }
-    });
+
+        document.addEventListener('click', onDocumentClick);
+    })();
     </script>
     <?php
 }

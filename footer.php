@@ -53,10 +53,10 @@ $flodeskLoaded   = false; // Track if Flodesk universal script is loaded
 		<div id="<?php echo esc_attr( $popupID ); ?>" class="pop-up">
 			<div class="popup-box">
 				<button class="close-btn"
-				        onclick="javascript:close_pop_up('<?php echo esc_js( $popupID ); ?>')"
-				        aria-label="<?php esc_attr_e( 'Close', 'our-family-passport' ); ?>">
-					<span class="close-btn__x" aria-hidden="true"></span>
-				</button>
+        onclick="OFP.closePopup('<?php echo esc_js( $popupID ); ?>')"
+        aria-label="<?php esc_attr_e( 'Close', 'our-family-passport' ); ?>">
+    <span class="close-btn__x" aria-hidden="true"></span>
+</button>
 				<div class="left" style="background-image: url(<?php echo esc_url( $popUp['left_image']['url'] ?? '' ); ?>);">
 					<div class="circular-image" style="background-color: <?php echo esc_attr( $popUp['icon_image_background_color'] ?? '' ); ?>;">
 						<img src="<?php echo esc_url( $popUp['icon_image']['url'] ?? '' ); ?>" alt="<?php echo esc_attr( $popUp['icon_image']['alt'] ?? '' ); ?>">
@@ -94,7 +94,8 @@ $flodeskLoaded   = false; // Track if Flodesk universal script is loaded
 							color: <?php echo esc_attr( $popUp['dimiss_hover_color'] ?? '' ); ?>;
 						}
 					</style>
-					<button id="<?php echo esc_attr( $dimissID ); ?>" class="dimiss" onclick="javascript:close_pop_up('<?php echo esc_js( $popupID ); ?>')"><?php echo esc_html( $popUp['dimiss_label'] ?? '' ); ?></button>
+<button id="<?php echo esc_attr( $dimissID ); ?>" class="dimiss"
+        onclick="OFP.closePopup('<?php echo esc_js( $popupID ); ?>')"><?php echo esc_html( $popUp['dimiss_label'] ?? '' ); ?></button>
 				</div>
 			</div>
 		</div>
