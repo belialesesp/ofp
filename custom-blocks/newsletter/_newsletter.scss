@@ -1,3 +1,17 @@
+// =============================================================================
+// Newsletter Block
+//
+// ARCHITECTURE NOTE:
+// The current newsletter-template.php generates a unique $blockID per instance
+// and scopes all layout/sizing/color rules under #blockID selectors in an
+// inline <style> block. Those styles are intentionally dynamic (per-instance
+// background, title color, description color, video sizing) and must remain
+// inline in the PHP template.
+//
+// The rules below apply to static, instance-independent styles only —
+// primarily the legacy form variant and shared typographic defaults.
+// =============================================================================
+
 .newsletter {
   position: relative;
   padding: 5rem 0;
@@ -5,6 +19,8 @@
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+
+  // Dark overlay — static, always applied regardless of background type.
   &::before {
     position: absolute;
     content: '';
@@ -15,21 +31,27 @@
     background-color: #222;
     opacity: 0.33;
   }
+
   .container {
     position: relative;
     flex-direction: column;
     text-align: center;
     z-index: 1;
   }
+
   &__title {
     max-width: 850px;
     margin: 0 auto;
     font-size: to-rem(60px);
   }
+
   &__description {
     max-width: 630px;
-    margin: 0 auto;
+    margin: 1rem auto 0 auto;
   }
+
+  // --- Legacy form (non-Flodesk instances) ----------------------------------
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -37,6 +59,7 @@
     width: 100%;
     max-width: 480px;
     margin: 2rem auto 0;
+
     input {
       width: 100%;
       padding: to-rem(11) to-rem(19);
@@ -44,6 +67,7 @@
       font-size: 14px;
       letter-spacing: to-rem(2.2);
       text-transform: uppercase;
+
       &::placeholder {
         font-family: $LeagueGothic;
         letter-spacing: to-rem(2.2);
@@ -51,11 +75,13 @@
         opacity: 1;
       }
     }
+
     button {
       border-radius: 0;
       background-color: #FFD6D9;
       font-family: $LeagueGothic;
       font-size: 18px;
+      font-weight: 400;
       letter-spacing: to-rem(1.4);
     }
   }

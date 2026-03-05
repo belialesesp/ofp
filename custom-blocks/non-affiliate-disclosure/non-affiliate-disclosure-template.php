@@ -26,35 +26,3 @@ if( !empty($block['align']) ) {
         <p class="disclosure-text"><?php echo wp_kses_post($disclosure_text); ?></p>
     </div>
 </div>
-
-<style>
-.non-affiliate-disclosure-block {
-    margin: 1rem 5rem;
-    background-color: transparent;
-    text-align: center;
-}
-
-.non-affiliate-disclosure-block .disclosure-content {
-    max-width: 100%;
-}
-
-.non-affiliate-disclosure-block .disclosure-text {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #666;
-    font-style: italic;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .non-affiliate-disclosure-block {
-        padding: 15px;
-        margin: 20px 0;
-    }
-    
-    .non-affiliate-disclosure-block .disclosure-text {
-        font-size: 13px;
-    }
-}
-</style>

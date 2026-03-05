@@ -16,7 +16,6 @@ class OFP_Block_Related_Posts extends OFP_Block_Base {
     protected string $description = 'Display related posts automatically by category.';
     protected string $icon        = 'admin-links';
     protected array  $keywords    = [ 'posts', 'related', 'automatic' ];
-    protected string $css_file    = '/custom-blocks/related-posts/related-posts.css';
 
     protected array $supports = [
         'align' => false,

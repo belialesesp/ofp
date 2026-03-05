@@ -1,114 +1,203 @@
+@use '../../css/variables' as *;
+
 .about-kam {
-  padding: 6rem 0 8rem;
+  padding: 10rem 0 8rem;
   text-align: center;
+
   .container {
     position: relative;
     max-width: 880px;
     flex-direction: column;
     align-items: center;
   }
-  &__sub-title  {
+
+  &__sub-title {
     margin: 0;
-    font-family: $LeagueGothic;
+    font-family: $font-gothic;
     font-size: to-rem(50);
     font-weight: 400;
     line-height: to-rem(50);
   }
-  &__title  {
+
+  &__title {
     position: relative;
     margin: 0 0 -5rem;
     font-size: to-rem(220);
     line-height: to-rem(220);
-    @media screen and (max-width: 991px) {
+
+    @media screen and (max-width: $bp-lg) {
       font-size: to-rem(110);
       line-height: to-rem(110);
       margin-bottom: 1rem;
     }
-    @media screen and (max-width: 767px) {
+
+    @media screen and (max-width: $bp-sm) {
       font-size: to-rem(80);
       line-height: to-rem(80);
       margin-bottom: 1rem;
     }
   }
-  &__main-image  {
+
+  &__main-image {
     margin-bottom: 1rem;
   }
-  &__description  {
+
+  &__description {
     font-size: to-rem(30);
-    @media screen and (max-width: 991px) {
+
+    p {
+      color: $color-text;
+      text-align: center !important;
+      font-family: $font-glacial;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 56px;
+      display: flex;
+      width: 888px;
+      flex-direction: column;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+
+    @media screen and (max-width: $bp-lg) {
       font-size: to-rem(20);
+    }
+
+    @media screen and (max-width: $bp-sm) {
+      p {
+        font-size: 1.5rem;
+        width: auto;
+        margin: 0;
+      }
     }
   }
 
   &__float-image {
     position: absolute;
-    top: 28%;
+    top: 10%;
     left: -10%;
+    width: 20rem;
+    height: 20rem;
+    max-width: 100%;
+
     img {
       width: 100%;
       height: 100%;
-	  max-width: 20rem;		  
-      border-radius: 1000px;
+      border-radius: 50%;
       border: 9px solid;
       object-fit: cover;
     }
-	  .about-kam__float-image {
-  position: absolute;
-  top: 28%;
-  left: -10%;
-  width: 20rem;  
-  height: 20rem; 
-  max-width: 100%; 
-  
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; 
-    border: 9px solid;
-    object-fit: cover;
-  }
-}
 
-/* For responsive behavior on smaller screens */
-@media (max-width: 768px) {
-  .about-kam__float-image {
-    width: 15rem;
-    height: 15rem;
-    position: relative;
-    left: 0;
-    margin: 0 auto 2rem;
-  }
-}
     @media screen and (max-width: 1024px) {
-        left: -6%;
+      left: -6%;
+    }
+
+    @media screen and (max-width: $bp-sm) {
+      display: block;
+      position: relative;
+      top: 10rem;
+      left: 1rem;
+      z-index: 9;
+      width: 15rem;
+      height: 15rem;
     }
   }
+
+  // Video variant of the float circle
+  &__float-video {
+    background: transparent;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      box-shadow: inset 0 0 3px rgba($color-black, 0.1);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    iframe,
+    video {
+      transform: translate(-50%, -50%) scale(1.4);
+      width: 200%;
+      height: 200%;
+      min-width: 200%;
+      min-height: 200%;
+
+      @media screen and (max-width: $bp-sm) {
+        transform: translate(-50%, -50%) scale(1.5);
+      }
+    }
+
+    iframe[src*="youtube"] {
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+
+    iframe[src*="vimeo"] {
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+
+    @supports (-webkit-mask-image: radial-gradient(white, black)) {
+      -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+      mask-image: radial-gradient(circle, white 100%, black 100%);
+    }
+  }
+
   &__float-box {
     position: absolute;
-    top: 40%;
-    right: 3%;
+    top: 12%;
+    right: 0;
     width: 100%;
     max-width: 270px;
     padding: to-rem(24);
     text-align: left;
+
     .first {
       font-size: to-rem(18px);
       font-weight: 700;
+
       p {
         margin: 0 0 to-rem(11px);
       }
     }
+
     .second {
       p {
         margin: 0;
+        color: $color-text;
+        font-family: $font-glacial;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 19px;
       }
     }
-    @media screen and (max-width: 991px) {
-      position: relative;
-      top: inherit;
-      right: inherit;
-      max-width: 580px;
-      margin: 0 auto;
+
+    @media screen and (max-width: $bp-lg) {
+      display: none;
     }
   }
+
+  // Mobile layout override
+  @media screen and (max-width: $bp-sm) {
+    padding-top: 3rem;
+
+    .container {
+      flex-direction: row;
+    }
+  }
+}
+
+// Page-specific override (About Kam page)
+.page-id-161122 .about-kam__description p {
+  font-size: 1.5rem;
 }

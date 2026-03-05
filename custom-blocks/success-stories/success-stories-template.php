@@ -190,50 +190,5 @@ if ($background_type === 'gradient') {
                 </p>
             </div>
         <?php endif; ?>
-
-    </div><!-- /.container -->
-</div><!-- /.success-stories -->
-
-<style>
-.success-stories {
-    padding: 3rem 0;
-}
-
-.no-stories-message {
-    text-align: center;
-    padding: 3rem;
-    background: rgba(0,0,0,0.05);
-    border-radius: 8px;
-    margin: 2rem 0;
-}
-
-.no-stories-message p {
-    margin: 0;
-    color: #666;
-}
-
-.storie {
-    text-align: center;
-}
-
-.storie-image {
-    margin-bottom: 1rem;
-}
-
-.storie-image img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid;
-}
-
-.storie-description {
-    margin-bottom: 1rem;
-    padding: 0 1rem;
-}
-
-.storie-author {
-    font-weight: bold;
-}
-</style>
+    </div>
+</div>

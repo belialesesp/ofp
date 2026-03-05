@@ -560,17 +560,17 @@ function backup_timeline_page()
 /**
  * Enqueue Sidebar Block CSS
  */
-function enqueue_sidebar_block_styles()
-{
-    wp_enqueue_style(
-        'sidebar-block-styles',
-        get_template_directory_uri() . '/css/sidebar-block.css',
-        array(),
-        '1.0'
-    );
-}
-add_action('wp_enqueue_scripts', 'enqueue_sidebar_block_styles');
-add_action('enqueue_block_editor_assets', 'enqueue_sidebar_block_styles');
+// function enqueue_sidebar_block_styles()
+// {
+//     wp_enqueue_style(
+//         'sidebar-block-styles',
+//         get_template_directory_uri() . '/css/sidebar-block.css',
+//         array(),
+//         '1.0'
+//     );
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_sidebar_block_styles');
+// add_action('enqueue_block_editor_assets', 'enqueue_sidebar_block_styles');
 
 function has_sidebar_block($post_id = null, $specific_block = null)
 {
@@ -1341,35 +1341,20 @@ function get_filtered_posts() {
 
 
 // Enqueue CSS
-function enqueue_custom_blocks_css() {
+// function enqueue_custom_blocks_css() {
     
-    if (has_block('acf/enchanted-link')) {
-        wp_enqueue_style('enchanted-link-block-css', 
-            get_template_directory_uri() . '/custom-blocks/enchanted-link/enchanted-link.css'
-        );
-    }
-	if (has_block('acf/guides')) {
-        wp_enqueue_style('guides-block-css', 
-            get_template_directory_uri() . '/custom-blocks/guides/guides.css'
-        );
-    }
-	if (has_block('acf/favorite-cards-small')) {
-        wp_enqueue_style('favorite-cards-small-css', 
-            get_template_directory_uri() . '/custom-blocks/favorite-cards-small/favorite-cards-small.css'
-        );
-    }
-	if (has_block('acf/behind-the-screen')) {
-        wp_enqueue_style('behind-the-screen-css', 
-            get_template_directory_uri() . '/custom-blocks/behind-the-screen/behind-the-screen.css'
-        );
-    }
-	if (has_block('acf/free-quiz')) {
-        wp_enqueue_style('free-quiz-css', 
-            get_template_directory_uri() . '/custom-blocks/free-quiz/free-quiz.css'
-        );
-    }    
-}
-add_action('wp_enqueue_scripts', 'enqueue_custom_blocks_css');
+// 	if (has_block('acf/guides')) {
+//         wp_enqueue_style('guides-block-css', 
+//             get_template_directory_uri() . '/custom-blocks/guides/guides.css'
+//         );
+//     }
+// 	if (has_block('acf/free-quiz')) {
+//         wp_enqueue_style('free-quiz-css', 
+//             get_template_directory_uri() . '/custom-blocks/free-quiz/free-quiz.css'
+//         );
+//     }    
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_custom_blocks_css');
 
 
 // Prevent WordPress from converting && to HTML entities in ACF blocks
@@ -1483,11 +1468,11 @@ add_action('wp_footer', 'ofp_minimal_popup_control');
 
 ofp_require( get_template_directory() . '/inc/acf-helpers.php' );
 
-add_action( 'wp_enqueue_scripts', function() {
-    wp_enqueue_style(
-        'related-posts-block',
-        get_template_directory_uri() . '/custom-blocks/related-posts/related-posts.css',
-        [],
-        '1.0.0'
-    );
-} );
+// add_action( 'wp_enqueue_scripts', function() {
+//     wp_enqueue_style(
+//         'related-posts-block',
+//         get_template_directory_uri() . '/custom-blocks/related-posts/related-posts.css',
+//         [],
+//         '1.0.0'
+//     );
+// } );

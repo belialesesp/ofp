@@ -1,45 +1,53 @@
+@use '../../css/variables' as *;
+
 .destinations-map {
   .container {
     max-width: 1110px;
     align-items: flex-start;
     gap: 1rem;
   }
+
   .sub-title {
     width: 100%;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin: 0;
-    font-family: $titles;
+    font-family: $font-versailles;
     font-size: 2.5rem;
     font-weight: 400;
     line-height: 2.5rem;
     text-transform: uppercase;
   }
+
   .title {
     width: 100%;
     margin: 0 0 4rem;
-    font-family: $LeagueGothic;
+    font-family: $font-gothic;
     font-size: 7rem;
     line-height: 7rem;
-    color: #BED8BA;
+    color: $color-green;
     text-transform: uppercase;
-    @media screen and (max-width: 767px) {
+
+    @media screen and (max-width: $bp-sm) {
       font-size: 6rem;
       line-height: 6rem;
     }
   }
+
   .destinations-list-container {
     width: calc(27% - 0.5rem);
     border: 1px solid #dddddd;
     text-transform: uppercase;
     font-size: 14px;
     padding: 20px;
+
     .expand-title {
       margin-bottom: 20px;
       font-size: 12px;
       font-weight: 400;
     }
+
     .destination-list {
       display: flex;
       flex-direction: column;
@@ -47,18 +55,21 @@
       margin: 0;
       padding: 0;
       list-style: none;
-      [class*="destination-list-childs-"] {
+
+      [class*='destination-list-childs-'] {
         margin: 16px 0 0;
         display: none;
         padding: 0;
         list-style: none;
       }
+
       a {
         color: #61a7af;
         text-decoration: none;
         font-size: 14px;
       }
     }
+
     .expand-list-destinantion-button {
       display: flex;
       align-items: center;
@@ -69,37 +80,45 @@
       background-color: transparent;
       font-size: 14px;
       text-transform: uppercase;
+
       .expand-icon {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         gap: 5px;
         color: #61a7af;
+
         .destination-counter {
-          min-width: 10px
-        };
+          min-width: 10px;
+        }
       }
     }
-    @media screen and ( max-width: 991px) {
+
+    @media screen and (max-width: $bp-lg) {
       width: 100%;
     }
   }
+
   .map-container {
     width: calc(73% - 0.5rem);
+
     .filters {
       display: flex;
       gap: 1rem;
       width: 100%;
       align-items: center;
+
       .select-destination {
         width: 50%;
         height: 32px;
         padding: 8px 20px;
         font-size: 12px;
       }
+
       .search-input {
         width: 50%;
         position: relative;
+
         input {
           width: 100%;
           height: 32px;
@@ -108,6 +127,7 @@
           font-size: 12px;
           background-color: #f6f5f3;
         }
+
         .icon {
           position: absolute;
           right: 10px;
@@ -117,14 +137,18 @@
         }
       }
     }
+
     .map {
       position: relative;
+
       .map-img {
         width: 100%;
         height: auto;
       }
+
       .map-destination {
         position: absolute;
+
         .map-destination-number {
           display: flex;
           align-items: center;
@@ -136,12 +160,14 @@
           height: 20px;
           border-radius: 20px;
           background-color: #61a7af;
-          color: white;
+          color: $color-white;
           font-size: 12px;
         }
+
         .map-destination-image {
           padding: 6px;
           border: 1px solid #61a7af;
+
           img {
             width: 72px;
             height: 72px;
@@ -150,10 +176,12 @@
         }
       }
     }
-    @media screen and ( max-width: 991px) {
+
+    @media screen and (max-width: $bp-lg) {
       width: 100%;
     }
-    @media screen and ( max-width: 767px) {
+
+    @media screen and (max-width: $bp-sm) {
       display: none;
     }
   }

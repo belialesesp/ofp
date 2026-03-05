@@ -18,5 +18,4 @@ class OFP_Block_Unique_Card extends OFP_Block_Base {
     protected string $description = 'Block to show a Unique Card.';
     protected string $icon        = 'money-alt';
     protected array  $keywords    = [ 'cards', 'favorite', 'banner' ];
-    protected string $css_file    = '/custom-blocks/unique-card/unique-card.css';
 }

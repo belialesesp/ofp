@@ -1,22 +1,32 @@
+@use '../../css/variables' as *;
+
 .about-kam-widget {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
   justify-content: center;
+
   &__image {
     max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
   }
+
   &__title {
-    margin: 0;
-    color: #222;
+    margin: 0 0 10px;
+    color: $color-text;
     text-align: center;
     font-size: to-rem(29.063);
     font-style: normal;
     font-weight: 400;
   }
+
   &__description {
+    font-size: 0.9em;
+    line-height: 1.5;
     text-align: center;
+
     p {
       &:first-child {
         margin-top: 0;
@@ -26,4 +36,23 @@
       }
     }
   }
+}
+
+// Sidebar context overrides
+.page-sidebar-widget,
+.page-sidebar-block {
+  .about-kam-widget__title {
+    font-size: 1.4em;
+    color: $color-black-soft;
+  }
+
+  .about-kam-widget__description {
+    font-size: 0.85em;
+  }
+}
+
+// Page-specific override (About Kam page)
+.page-id-161122 .about-kam-widget__image {
+  height: 300px;
+  width: 300px;
 }

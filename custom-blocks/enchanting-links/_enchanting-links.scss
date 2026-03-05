@@ -1,3 +1,17 @@
-a {
-  color: inherit;
+// =============================================================================
+// Enchanting Links Block
+// Partial — compiled via custom-blocks/styles.scss
+// Note: block content not yet implemented — styles minimal intentionally.
+// =============================================================================
+
+.enchanting-links {
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

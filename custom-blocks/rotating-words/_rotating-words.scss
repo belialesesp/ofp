@@ -1,0 +1,20 @@
+// =============================================================================
+// Rotating Words Block
+//
+// NOTE: Despite its name, this block renders .unique-card markup and shares
+// all structural styles with the unique-card block (_unique-card.scss /
+// unique-card.css). No block-specific static styles exist here.
+//
+// All inline styles in rotating-words-template.php are intentionally dynamic:
+//   - .unique-card__card-title color       → ACF: title_color
+//   - .unique-card__card-new-offer color   → ACF: new_offer_color
+//   - .unique-card__card-old-offer color   → ACF: old_offer_color
+//   - .unique-card__card-current-offer     → ACF: current_offer_color
+//   - .unique-card__card-cta color         → ACF: learn_more_color / hover
+//   - .unique-card__card-fees color        → ACF: rates_and_fees_color / hover
+//   - #blockID background                  → ACF: background_type (color/gradient/image)
+//
+// TODO: The template incorrectly uses $blockID = 'hero-content-' . uniqid()
+// as the ID prefix. This is a copy/paste bug — should be 'rotating-words-'.
+// Renaming does not affect styles but improves debuggability.
+// =============================================================================

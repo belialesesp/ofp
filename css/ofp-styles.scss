@@ -117,3 +117,13 @@ button,
 .justify-content-start   { justify-content: flex-start; }
 .justify-content-end     { justify-content: flex-end; }
 .justify-content-between { justify-content: space-between; }
+
+// Vai para: css/ofp-styles.scss (ou _blog.scss / _posts.scss, dependendo do contexto)
+.ff-685421b840679baaea6652ec__title,
+.ff-685421b840679baaea6652ec__subtitle {
+  display: none !important;
+}
+
+.single-post .widget {
+  margin: 0;
+}

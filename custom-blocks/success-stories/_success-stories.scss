@@ -1,8 +1,10 @@
 .success-stories {
   padding: 5rem 0;
+
   .container {
     overflow-x: hidden;
   }
+
   &__title {
     width: 100%;
     margin-top: 0;
@@ -11,20 +13,24 @@
     font-size: 5rem;
     font-weight: 400;
     text-align: center;
+
     @media screen and (max-width: 767px) {
       font-size: 4rem;
       line-height: 4rem;
     }
   }
+
   &__stories {
     width: 100%;
     overflow: visible;
     display: flex;
     flex-direction: column-reverse;
     gap: 4rem;
+
     .splide__track {
       overflow: visible;
     }
+
     .splide__arrows {
       width: 100%;
       position: relative;
@@ -32,6 +38,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+
       .splide__arrow {
         position: relative;
         right: inherit;
@@ -39,6 +46,7 @@
         background-color: transparent;
         width: 44px;
         height: 44px;
+
         svg {
           width: 44px;
           height: 44px;
@@ -46,6 +54,7 @@
         }
       }
     }
+
     .storie {
       position: relative;
       display: flex;
@@ -55,30 +64,52 @@
       gap: 1rem;
       padding: 6rem 2rem 2rem;
       border-radius: 22px;
-      background-color: #F7F0E5;
+      background-color: #f7f0e5;
       overflow: visible;
+      text-align: center;
     }
+
     .storie-image {
       position: absolute;
       top: -70px;
+      margin-bottom: 1rem;
+
       img {
         width: 155px;
         height: 155px;
         object-fit: cover;
-        border: 9px solid;
+        border: 9px solid; // Dynamic: border-color set inline via ACF field 'image_border_color__author_color'
         border-radius: 200px;
       }
     }
+
     .storie-description {
       font-family: $text;
       font-weight: 400;
       font-size: 18px;
-    }   
+      margin-bottom: 1rem;
+      padding: 0 1rem;
+    }
+
     .storie-author {
       width: 100%;
       font-family: $LeagueGothic;
       font-size: 24px;
       font-weight: 400;
+      // Dynamic: color set inline via ACF field 'image_border_color__author_color'
     }
+  }
+}
+
+.no-stories-message {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  margin: 2rem 0;
+
+  p {
+    margin: 0;
+    color: #666;
   }
 }

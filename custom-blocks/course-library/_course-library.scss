@@ -1,133 +1,144 @@
+@use '../../css/variables' as *;
+
 .course-library {
-  position: relative;
-  top: 0;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 5rem;
-  width: 100%;
-  overflow: scroll;
-  padding: 5rem 0 4rem;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  &.fixed-top {
-    position: fixed;
-    top: 0;
+  overflow: hidden;
+
+  @media screen and (min-width: 1441px) {
+    padding: 5rem 1rem 2rem;
   }
+
+  @media screen and (max-width: $bp-lg) {
+    padding: 5rem 1rem 1rem;
+  }
+
+  @media screen and (max-width: $bp-sm) {
+    padding: 10rem 1rem 10rem;
+  }
+
   &__item {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    margin-top: 36px;
-    border-radius: 10px 10px 0px 0px;
   }
+
   &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
-    max-width: 780px;
-    background-color: #f6f0e4;
-    border-radius: 10px 10px 0px 0px;
-    .box-content {
-      display: flex;
-      flex-direction: column;
-      padding: to-rem(58) to-rem(75) to-rem(75);
-      @media screen and (max-width: 767px) {
-        padding: to-rem(24);
-      }
-    }
+
     .tab-title {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
       position: relative;
-      padding: 10px 20px;
-      border-radius: 0 10px 0px 0px;
-      font-family: $LeagueGothic;
-      font-size: to-rem(45);
+      padding: 0.5rem 1rem;
+      font-family: $font-gothic;
+      font-size: to-rem(40);
       font-style: normal;
       font-weight: 400;
       line-height: 88%;
       text-align: right;
       text-transform: uppercase;
-      color: #222;
-      @media screen and (max-width: 767px) {
-        font-size: to-rem(24);
+      color: $color-text;
+
+      @media screen and (max-width: $bp-sm) {
+        font-size: 1.5rem;
       }
     }
+
+    .box-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem;
+      min-height: 463px;
+    }
+
     .identifier {
       display: flex;
       align-items: center;
       gap: 1rem;
+
       &__number {
-        font-family: $titles;
+        font-family: $font-versailles;
         font-size: 45px;
         font-style: normal;
         font-weight: 400;
         line-height: 39.6px;
         text-transform: uppercase;
-        @media screen and (max-width: 767px) {
+
+        @media screen and (max-width: $bp-sm) {
           font-size: to-rem(36);
           line-height: 88%;
         }
       }
+
       &__title {
-        color: #222;
-        font-family: $text;
+        color: $color-text;
+        font-family: $font-glacial;
         font-size: 25px;
         font-style: normal;
         font-weight: 400;
         line-height: 158.4%;
         text-transform: uppercase;
-        @media screen and (max-width: 767px) {
+
+        @media screen and (max-width: $bp-sm) {
           font-size: to-rem(20);
         }
       }
     }
+
     .title {
-      color: #222;
+      color: $color-text;
       font-size: to-rem(30);
       font-style: normal;
       font-weight: 400;
       line-height: 132%;
       text-transform: uppercase;
-      @media screen and (max-width: 767px) {
+
+      @media screen and (max-width: $bp-sm) {
         font-size: to-rem(24);
       }
     }
+
     .description {
-      color: #222;
+      color: $color-text;
       font-size: 20.797px;
       font-style: normal;
       font-weight: 400;
       line-height: 39.6px;
-      @media screen and (max-width: 767px) {
+
+      @media screen and (max-width: $bp-sm) {
         font-size: to-rem(16);
         line-height: to-rem(30);
       }
     }
+
     .cta {
       display: flex;
       align-items: center;
       align-self: flex-end;
       gap: 0.5rem;
       text-align: center;
-      font-family: $text;
+      font-family: $font-glacial;
       font-size: 18px;
       font-style: normal;
       font-weight: 700;
       line-height: 413.333%;
       letter-spacing: 3.6px;
       text-transform: uppercase;
-      text-decoration: none;
+      text-decoration: underline;
       transition: all 0.4s;
+
       &:hover {
         opacity: 0.6;
       }
-      @media screen and (max-width: 767px) {
+
+      @media screen and (max-width: $bp-sm) {
         font-size: to-rem(16);
       }
     }
   }
+
   .splide__arrows {
     width: 100%;
     position: relative;
@@ -135,6 +146,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+
     .splide__arrow {
       position: relative;
       right: inherit;
@@ -142,25 +154,18 @@
       background-color: transparent;
       width: 44px;
       height: 44px;
+
       svg {
         width: 44px;
         height: 44px;
-        fill: #FFF;
+        fill: $color-white;
       }
     }
   }
-  @media screen and (min-width: 1441px) {
-    padding: 5rem 1rem 2rem;
-  }
-  @media screen and (max-width: 991px) {
-    padding: 5rem 1rem 1rem;
-  }
-  @media screen and (max-width: 767px) {
-    padding: 10rem 1rem 10rem;
-  }
 }
 
-div[class*=course-library__tab--] {
+// Tab shape elements (generated with dynamic class names)
+div[class*='course-library__tab--'] {
   width: 150px;
   height: 36px;
   position: absolute;
@@ -170,37 +175,40 @@ div[class*=course-library__tab--] {
   margin-right: 50px;
   cursor: pointer;
   z-index: 2;
-  @media screen and (max-width: 767px) {
+
+  @media screen and (max-width: $bp-sm) {
     width: 100px;
     height: 24px;
     top: -23px;
     left: 24px;
   }
+
   &::before {
     height: 36px;
     width: 30px;
-    content: "";
+    content: '';
     position: absolute;
     left: -20px;
-    top: 0px;
-    -webkit-transform: skewX(-20deg);
+    top: 0;
     transform: skewX(-20deg);
     z-index: -1;
-    @media screen and (max-width: 767px) {
+
+    @media screen and (max-width: $bp-sm) {
       height: 24px;
     }
   }
+
   &::after {
     height: 36px;
     width: 30px;
-    content: "";
+    content: '';
     position: absolute;
     right: -20px;
-    top: 0px;
-    -webkit-transform: skewX(20deg);
+    top: 0;
     transform: skewX(20deg);
     z-index: -1;
-    @media screen and (max-width: 767px) {
+
+    @media screen and (max-width: $bp-sm) {
       height: 24px;
     }
   }

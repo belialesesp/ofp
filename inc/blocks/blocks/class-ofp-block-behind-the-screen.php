@@ -18,5 +18,4 @@ class OFP_Block_Behind_The_Screen extends OFP_Block_Base {
     protected string $description = 'Block to show a Behind The Screen.';
     protected string $icon        = 'heart';
     protected array  $keywords    = [ 'cards', 'favorite', 'banner' ];
-    protected string $css_file    = '/custom-blocks/behind-the-screen/behind-the-screen.css';
 }
