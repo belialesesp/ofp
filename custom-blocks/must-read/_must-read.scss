@@ -1,52 +1,72 @@
+// =============================================================================
+// Must Read Block
+// Dynamic styles (background-color) remain inline in the PHP template.
+// =============================================================================
+
 .must-read {
   padding: 4rem 0;
+
   .container {
     max-width: 1023px;
     flex-direction: column;
   }
+
   &__title {
+    margin: 0 0 3rem 0;
     color: #101010;
     text-align: center;
     font-family: $titles;
     font-size: to-rem(55.625);
     font-style: normal;
     font-weight: 400;
-    margin: 0 0 3rem 0;
   }
+
   &__posts {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
   }
+
+  // --- Individual post card -------------------------------------------------
+
   &__post {
     position: relative;
     width: calc(33.333% - (4rem / 3));
-    text-decoration: none;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    text-decoration: none;
+
     @media screen and (max-width: 767px) {
       width: 100%;
     }
-    .img.top__badge {
+
+    // Top badge — positioned absolutely over the card image.
+    // Note: the global .top__badge animation (rotation 15s) is defined
+    // in ofp-styles.scss / customize.css and applies here via cascade.
+    .top__badge {
       position: absolute;
       top: -8%;
       right: -11%;
+
       @media screen and (max-width: 767px) {
         right: 0;
       }
     }
+
     .post-image {
       img {
         width: 303px;
         height: 354px;
         object-fit: cover;
+
         @media screen and (max-width: 767px) {
           width: 100%;
           height: auto;
         }
       }
     }
+
     .categories {
       color: #F0A9AD;
       font-family: $LeagueGothic;
@@ -57,6 +77,7 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
+
     .title {
       color: #222;
       font-family: $titles;

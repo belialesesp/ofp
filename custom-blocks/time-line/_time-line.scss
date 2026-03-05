@@ -1,15 +1,20 @@
 .time-line {
   position: relative;
   padding: 5rem 0;
+  background-color: #f5f2ef; // Migrated from customize.css (static default)
+
   .container {
     flex-wrap: wrap;
   }
+
   .line {
     position: absolute;
     width: 2px;
     height: calc(100% - 10rem);
     top: 5rem;
     left: 50%;
+    // Dynamic: background-color set inline via ACF field 'time_line_color'
+
     .point {
       position: absolute;
       top: 0;
@@ -17,50 +22,78 @@
       width: 16px;
       height: 16px;
       border-radius: 32px;
+      // Dynamic: background-color set inline via ACF field 'time_line_color'
     }
+
     @media screen and (max-width: 767px) {
       left: 96%;
     }
   }
+
   &__item {
     position: relative;
     width: 50%;
     padding: 64px;
     display: flex;
     flex-direction: column;
+
     &.right {
       align-items: flex-start;
       text-align: left;
+
       &::before {
         position: absolute;
         top: 84px;
         left: 0;
         content: '';
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent;
+        // Dynamic: border-left-color set inline via ACF field 'time_line_color'
+
         @media screen and (max-width: 767px) {
           display: none;
         }
       }
+
+      &::after {
+        display: none;
+        position: absolute;
+        top: 42px;
+        right: 0;
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+
+        @media screen and (max-width: 767px) {
+          display: block;
+        }
+      }
+
       @media screen and (max-width: 767px) {
         align-items: flex-end;
         text-align: right;
       }
     }
+
     &.left {
       align-items: flex-end;
       text-align: right;
+
       &::before {
         position: absolute;
         top: 84px;
         right: 0;
         content: '';
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
         border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent; 
+        border-bottom: 10px solid transparent;
+        // Dynamic: border-right-color set inline via ACF field 'time_line_color'
+
         @media screen and (max-width: 767px) {
           display: none;
         }
@@ -76,21 +109,25 @@
       font-weight: 400;
       line-height: 114.913%;
       letter-spacing: 5px;
+      // Dynamic: color set inline via ACF field 'year_color'
     }
 
     .history {
       position: relative;
       top: -2.3rem;
       z-index: 2;
+
       &__item {
         padding: 12px 0;
         border-bottom: 1px solid #f1cab9;
         font-family: $titles;
+        font-size: 1rem; // Reconciled: customize.css overrides to 1rem
         font-style: normal;
         font-weight: 400;
         line-height: 142.222%;
         letter-spacing: 0.88px;
         text-transform: uppercase;
+
         &:last-child {
           border-bottom: 0;
         }
@@ -99,11 +136,16 @@
 
     .image {
       position: relative;
+
       img {
         border: 12px solid #fff;
+        max-width: 326px; // Migrated from customize.css
+        height: auto;
+        width: auto;
       }
+
       .floating-text {
-        max-width: 120px;
+        max-width: 100%; // Migrated from customize.css (overrides original 120px)
         position: absolute;
         color: #9bbfcd;
         font-family: $titles;
@@ -114,8 +156,8 @@
         letter-spacing: 2.1px;
         text-transform: uppercase;
         text-align: center;
+
         @media screen and (max-width: 991px) {
-          max-width: 100%;
           position: relative !important;
           top: inherit !important;
           bottom: inherit !important;
@@ -123,6 +165,7 @@
           right: inherit !important;
         }
       }
+
       @media screen and (max-width: 991px) {
         position: relative !important;
         top: inherit !important;
@@ -131,38 +174,33 @@
         right: inherit !important;
       }
     }
-    &::after {
-      display: none;
-      position: absolute;
-      top: 42px;
-      right: 0;
-      content: '';
-      width: 0; 
-      height: 0; 
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent; 
-      @media screen and (max-width: 767px) {
-        display: block;
-      }
-    }
+
     @media screen and (max-width: 767px) {
       width: 100%;
       padding: 16px;
+      // Dynamic: margin-top set inline via PHP $timeline_spacing array
+
+      .time-line .container &[data-timeline-item],
+      .time-line .container &[data-timeline-index] {
+        margin-top: 2rem !important; // Migrated from customize.css
+      }
     }
   }
+
   .title-description {
     .first {
       display: flex;
       align-items: flex-start;
       justify-content: flex-end;
+
       @media screen and (max-width: 991px) {
         flex-direction: column;
         align-items: flex-end;
         gap: 3rem;
       }
+
       h2 {
         margin: 0;
-        text-align: center;
         font-family: $LeagueGothic;
         font-size: 70px;
         font-style: normal;
@@ -171,10 +209,13 @@
         letter-spacing: 2.15px;
         text-transform: uppercase;
         text-align: right;
+        // Dynamic: color set inline via ACF field 'title__date_color'
+
         @media screen and (max-width: 991px) {
           font-size: 60px;
         }
       }
+
       h3 {
         margin: 0;
         max-width: 320px;
@@ -184,14 +225,18 @@
         font-style: normal;
         font-weight: 400;
         line-height: 111.036%;
+        // Dynamic: color set inline via ACF field 'title__date_color'
+
         @media screen and (max-width: 991px) {
-          font-family: 85px;
+          font-size: 85px;
         }
+
         @media screen and (max-width: 767px) {
           font-size: 70px;
         }
       }
     }
+
     .second {
       text-align: right;
       font-family: $text;

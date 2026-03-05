@@ -1,27 +1,38 @@
-.banner-cta{
+@use '../../css/variables' as *;
+
+.banner-cta {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 20px;
   min-height: 250px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #f5f5f5;
+  background-size: cover;
+  position: relative;
+
   &__icon {
     width: 48px;
     height: 50px;
     max-width: 100%;
   }
+
   &__title {
     margin: 0;
-    color: #222;
+    color: $color-text;
     text-align: center;
     font-style: normal;
     font-weight: 400;
   }
+
   &__description {
     text-align: center;
-    font-family: $GlacialIndifference;
+    font-family: $font-glacial;
     line-height: 25.2px;
+
     p {
       &:first-child {
         margin-top: 0;
@@ -31,10 +42,19 @@
       }
     }
   }
+
   &__cta {
     padding: 0.5rem 1rem;
     text-decoration: none;
-    font-family: $LeagueGothic;
+    font-family: $font-gothic;
     text-transform: uppercase;
+  }
+}
+
+// Sidebar context override
+.page-sidebar-widget,
+.page-sidebar-block {
+  .banner-cta {
+    padding: 15px;
   }
 }

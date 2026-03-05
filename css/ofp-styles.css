@@ -2382,4 +2382,13 @@ button:hover, button:focus,
   justify-content: space-between;
 }
 
+.ff-685421b840679baaea6652ec__title,
+.ff-685421b840679baaea6652ec__subtitle {
+  display: none !important;
+}
+
+.single-post .widget {
+  margin: 0;
+}
+
 /*# sourceMappingURL=ofp-styles.css.map */

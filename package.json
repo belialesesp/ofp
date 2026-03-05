@@ -36,8 +36,9 @@
     "map": false
   },
   "scripts": {
-"watch": "sass --watch css/ofp-styles.scss:css/ofp-styles.css custom-blocks/styles.scss:custom-blocks/styles.css",
-"compile:css": "sass css/ofp-styles.scss:css/ofp-styles.css custom-blocks/styles.scss:custom-blocks/styles.css --no-source-map",    "compile:rtl": "rtlcss style.css style-rtl.css",
+    "watch": "sass --watch css/ofp-styles.scss:css/ofp-styles.css custom-blocks/styles.scss:custom-blocks/styles.css --silence-deprecation=import --silence-deprecation=global-builtin --silence-deprecation=color-functions",
+    "compile:css": "sass css/ofp-styles.scss:css/ofp-styles.css custom-blocks/styles.scss:custom-blocks/styles.css --no-source-map --silence-deprecation=import --silence-deprecation=global-builtin --silence-deprecation=color-functions",
+    "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'",
     "bundle": "dir-archiver --src . --dest ../_s.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"

@@ -1,13 +1,18 @@
+@use '../../css/variables' as *;
+
 .box-grid {
   padding: 5rem 0;
+
   .container {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-    @media screen and (max-width: 991px) {
+
+    @media screen and (max-width: $bp-lg) {
       justify-content: center;
     }
   }
+
   &__box {
     display: flex;
     flex-direction: column;
@@ -15,12 +20,15 @@
     justify-content: flex-start;
     width: calc(33.333% - (50px / 3));
     padding: 20px 20px 34px;
-    @media screen and (max-width: 991px) {
+
+    @media screen and (max-width: $bp-lg) {
       width: calc(50% - 25px);
     }
-    @media screen and (max-width: 767px) {
+
+    @media screen and (max-width: $bp-sm) {
       width: 100%;
     }
+
     .title {
       width: 100%;
       margin: 0;
@@ -28,7 +36,7 @@
       background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
-      font-family: $LeagueGothic;
+      font-family: $font-gothic;
       font-size: 22px;
       font-style: normal;
       font-weight: 400;
@@ -37,12 +45,13 @@
       text-transform: uppercase;
       text-align: center;
     }
+
     a[id^='cta-'] {
       display: flex;
       align-items: center;
       gap: 1rem;
       position: relative;
-      font-family: $text;
+      font-family: $font-glacial;
       font-size: 20px;
       font-style: normal;
       font-weight: 700;
@@ -50,6 +59,7 @@
       text-transform: uppercase;
       text-decoration: none;
       transition: all 0.4s;
+
       &::after {
         position: absolute;
         width: calc(100% - 1rem - 15px);
@@ -58,24 +68,29 @@
         content: '';
         border: 1px solid;
       }
-      @media screen and (max-width: 991px) {
+
+      @media screen and (max-width: $bp-lg) {
         font-size: 16px;
       }
-    } 
+    }
+
     .items-list {
       margin-top: 20px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+
       .item {
         display: flex;
         gap: 24px;
         align-items: flex-start;
+
         .item-description {
-          font-family: $text;
+          font-family: $font-glacial;
           font-size: 16px;
           font-style: normal;
           font-weight: 400;
+
           p {
             margin: 0;
           }
@@ -83,15 +98,16 @@
       }
     }
 
-    .amount  {
+    .amount {
       margin: 20px;
-      font-family: $text;
+      font-family: $font-glacial;
       font-size: 80px;
       font-style: normal;
       font-weight: 400;
     }
-    .fee-description  {
-      font-family: $text;
+
+    .fee-description {
+      font-family: $font-glacial;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;

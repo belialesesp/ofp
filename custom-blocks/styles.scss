@@ -1,61 +1,80 @@
+// =============================================================================
+// CUSTOM BLOCKS — Main Stylesheet
+// custom-blocks/styles.scss
+// =============================================================================
+
 @use 'sass:math';
+@use '../css/variables' as *;
+@use '../css/mixins' as *;
 
-$NetMoonTime: "Net MoonTime", sans-serif;
-$GlacialIndifference: "GlacialIndifference", sans-serif;
-$LeagueGothicCondesed: "LeagueGothic Condensed", sans-serif;
+// -----------------------------------------------------------------------------
+// Compatibility aliases
+// Blocks still use the old variable names ($titles, $text, $ofp-blue, etc.).
+// These will be removed once each block SCSS is updated to @use directly.
+// -----------------------------------------------------------------------------
+$NetMoonTime:              "Net MoonTime", sans-serif;
+$GlacialIndifference:      $font-glacial;
+$LeagueGothicCondesed:     "LeagueGothic Condensed", sans-serif;
 $LeagueGothicSemiCondesed: "LeagueGothic SemiCondensed", sans-serif;
-$LeagueGothic: "LeagueGothic", sans-serif;
-$Versailles: "Versailles", sans-serif;
+$LeagueGothic:             "LeagueGothic", sans-serif;
+$Versailles:               $font-versailles;
 
-$text: $GlacialIndifference;
-$titles: $Versailles;
-$styled: $NetMoonTime;
+$text:     $font-glacial;
+$titles:   $font-versailles;
+$styled:   "Net MoonTime", sans-serif; 
 
-$ofp-blue: #66B1BB;
+$ofp-blue: $color-blue;
 
+// -----------------------------------------------------------------------------
+// Functions (shared with ofp-styles.scss — kept here for block partials)
+// -----------------------------------------------------------------------------
 @function stripUnit($value) {
   @return math.div($value, $value * 0 + 1);
 }
 @function to-rem($pxValue) {
-  @return #{math.div(stripUnit($pxValue) , stripUnit(16px))}rem;
+  @return #{math.div(stripUnit($pxValue), stripUnit(16px))}rem;
 }
 
-@mixin fixed-bg {
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  @media (max-width: 767px) {
-    background-size: auto 100%;
-    background-attachment: scroll;
-  }
-}
-
-@import 'credit-cards/credit-cards';
-@import 'credit-card-hero/credit-card-hero';
-@import 'destinations-map/destinations-map';
-@import 'hero-image/hero-image';
-@import 'favorite-cards/favorite-cards';
-@import 'course-library/course-library';
-@import 'success-stories/success-stories';
-@import 'lets-connect/lets-connect';
-@import 'hero-content/hero-content';
-@import 'free-resources/free-resources';
-@import 'free-resources-list/free-resources-list';
-@import 'free-consultation/free-consultation';
-@import 'the-blog/the-blog';
-@import 'newsletter/newsletter';
+// -----------------------------------------------------------------------------
+// Block partials
+// -----------------------------------------------------------------------------
 @import 'about-kam/about-kam';
-@import 'contact-form/contact-form';
-@import 'start-here/start-here';
-@import 'must-read/must-read';
 @import 'about-kam-widget/about-kam-widget';
 @import 'banner-cta-widget/banner-cta-widget';
-@import 'time-line/time-line';
+@import 'behind-the-screen/behind-the-screen';
 @import 'box-grid/box-grid';
-@import 'extra-benefits/extra-benefits';
-@import 'favorite-things/favorite-things';
-@import 'rotating-words/rotating-words';
+@import 'contact-form/contact-form';
+@import 'course-library/course-library';
+@import 'credit-card-hero/credit-card-hero';
+@import 'credit-cards/credit-cards';
+@import 'destinations-map/destinations-map';
+@import 'enchanted-link/enchanted-link';
 @import 'enchanting-links/enchanting-links';
+@import 'extra-benefits/extra-benefits';
+@import 'favorite-cards/favorite-cards';
+@import 'favorite-cards-small/favorite-cards-small';
+@import 'favorite-things/favorite-things';
+@import 'free-consultation/free-consultation';
+@import 'free-quiz/free-quiz';
+@import 'free-resources/free-resources';
+@import 'free-resources-list/free-resources-list';
+@import 'guides/guides';
+@import 'hero-content/hero-content';
+@import 'hero-image/hero-image';
 @import 'instagram-cb/instagram-cb';
+@import 'lets-connect/lets-connect';
+@import 'must-read/must-read';
+@import 'newsletter/newsletter';
+@import 'non-affiliate-disclosure/non-affiliate-disclosure';
+@import 'ofp-calculator/ofp-calculator';
+@import 'related-posts/related-posts';
+@import 'rotating-words/rotating-words';
 @import 'search/search';
+@import 'sidebar-block/sidebar-block';
+@import 'start-here/start-here';
+@import 'success-stories/success-stories';
+@import 'the-blog/the-blog';
+@import 'time-line/time-line';
+@import 'unique-card/unique-card';
+@import 'unique-card-body-section/unique-card-body-section';
+@import 'words-animation/words-animation';
