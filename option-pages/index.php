@@ -12,14 +12,14 @@ if (function_exists('acf_add_options_page')) {
   ));
 
   //  ADD A SUBPAGES
-  acf_add_options_sub_page(array(
-    'page_title'    => 'Credit Cards',
-    'menu_title'    => 'Credit Cards',
-    'menu_slug'     => 'credit-cards-settings',
-    'parent_slug'   => 'ofp-options',
-    'capability'    => 'edit_posts',
-    'redirect'      => false
-  ));
+  // acf_add_options_sub_page(array(
+  //   'page_title'    => 'Credit Cards',
+  //   'menu_title'    => 'Credit Cards',
+  //   'menu_slug'     => 'credit-cards-settings',
+  //   'parent_slug'   => 'ofp-options',
+  //   'capability'    => 'edit_posts',
+  //   'redirect'      => false
+  // ));
   
   acf_add_options_sub_page(array(
     'page_title'    => 'Map Setting',
@@ -55,6 +55,13 @@ if (function_exists('acf_add_options_page')) {
     'menu_slug'     => 'free-resources',
     'parent_slug'   => 'ofp-options',
   ));
+
+  acf_add_options_sub_page(array(
+    'page_title'    => 'Free Consultation',
+    'menu_title'    => 'Free Consultation',
+    'menu_slug'     => 'free-consultation',
+    'parent_slug'   => 'ofp-options',
+  ));
   
   acf_add_options_sub_page(array(
     'page_title'    => 'Newsletter',
@@ -62,12 +69,14 @@ if (function_exists('acf_add_options_page')) {
     'menu_slug'     => 'newsletter',
     'parent_slug'   => 'ofp-options',
   ));
-   acf_add_options_sub_page(array(
-    'page_title'    => 'Free Consultation',
-    'menu_title'    => 'Free Consultation',
-    'menu_slug'     => 'free-consultation',
-    'parent_slug'   => 'ofp-options',
+
+  acf_add_options_sub_page(array(
+    'page_title'  => 'Favorite Cards',
+    'menu_title'  => 'Favorite Cards',
+    'menu_slug'   => 'favorite-cards',
+    'parent_slug' => 'ofp-options',
   ));
+
 }
 });
 // Import pages Options
@@ -78,3 +87,4 @@ require 'lets-connect.php';
 require 'free-resources.php';
 require 'newsletter.php';
 require 'free-consultation.php';
+require 'favorite-cards.php';

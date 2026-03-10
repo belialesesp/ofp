@@ -16,7 +16,8 @@ if (!function_exists('get_field')) {
 }
 
 // Check if being used as a widget
-$is_widget = (bool) get_field('is_widget');
+$is_widget = ( function_exists('ofp_is_widget_mode') && ofp_is_widget_mode() )
+             || (bool) get_field('is_widget');
 
 if ($is_widget) {
     $float_icon               = get_field('widget_float_icon', 'option');

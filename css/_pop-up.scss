@@ -149,22 +149,20 @@
       height: 150px;
       border-radius: 200px;
     }
-    .close-btn {
-      position: absolute;
-      top: 0;
-      right: 0;
-      border: 0;
-      background: transparent;
-      z-index: 2;
-      &:hover,
-      &:active,
-      &:focus {
-        background: transparent;
-      }
-      @media screen and (max-width: 991px) {
-        right: inherit;
-        left: 0;
-      }
-    }
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: transparent;
+  z-index: 2;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  @media screen and (max-width: 991px) {
+    right: inherit;
+    left: 0;
+  }
+}
   }
 }

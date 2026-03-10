@@ -8,56 +8,25 @@
  */
 
 // ─── Determine rendering context ──────────────────────────────────────────────
-$is_widget = function_exists('ofp_is_widget_mode') ? ofp_is_widget_mode() : false;
+$is_widget = ( function_exists('ofp_is_widget_mode') && ofp_is_widget_mode() )
+             || (bool) get_field('is_widget');
 
 // ─── Source: widget mode vs block mode ────────────────────────────────────────
 $stories = array();
 
 if ($is_widget) {
-    // Widget mode — pull from ACF options page
-    $all_stories = get_field('success_stories_items', 'option') ?: array();
-    $source_type = get_field('ssb_source_type') ?: 'all';
+    // Widget mode — pull from ACF options page using helper
+    $stories_raw = function_exists('get_widget_success_stories')
+            ? get_widget_success_stories()
+            : ( get_field('success_stories', 'option') ?: array() );
 
-    switch ($source_type) {
-        case 'specific':
-            $specific_indices = get_field('ssb_specific_stories') ?: array();
-            foreach ($specific_indices as $idx) {
-                if (isset($all_stories[$idx])) {
-                    $s = $all_stories[$idx];
-                    $stories[] = array(
-                        'image'                          => $s['ssi_image'] ?? null,
-                        'storie'                         => $s['ssi_story'] ?? '',
-                        'author'                         => $s['ssi_author'] ?? '',
-                        'image_border_color__author_color' => $s['ssi_author_color'] ?? '#61a7af',
-                    );
-                }
-            }
-            break;
-
-        case 'random':
-            $count = get_field('ssb_story_count') ?: 3;
-            shuffle($all_stories);
-            foreach (array_slice($all_stories, 0, $count) as $s) {
-                $stories[] = array(
-                    'image'                          => $s['ssi_image'] ?? null,
-                    'storie'                         => $s['ssi_story'] ?? '',
-                    'author'                         => $s['ssi_author'] ?? '',
-                    'image_border_color__author_color' => $s['ssi_author_color'] ?? '#61a7af',
-                );
-            }
-            break;
-
-        case 'all':
-        default:
-            foreach ($all_stories as $s) {
-                $stories[] = array(
-                    'image'                          => $s['ssi_image'] ?? null,
-                    'storie'                         => $s['ssi_story'] ?? '',
-                    'author'                         => $s['ssi_author'] ?? '',
-                    'image_border_color__author_color' => $s['ssi_author_color'] ?? '#61a7af',
-                );
-            }
-            break;
+    foreach ($stories_raw as $s) {
+        $stories[] = array(
+            'image'                            => $s['ssi_image']        ?? null,
+            'storie'                           => $s['ssi_story']        ?? '',
+            'author'                           => $s['ssi_author']       ?? '',
+            'image_border_color__author_color' => $s['ssi_author_color'] ?? '#61a7af',
+        );
     }
 } else {
     // Block mode — use stories attached to this block instance
@@ -80,14 +49,23 @@ if ($is_widget) {
 // ─── Meta ─────────────────────────────────────────────────────────────────────
 $blockID         = 'success-storie-' . uniqid();
 $container_class = $is_widget ? 'success-stories widget-mode' : 'success-stories';
-$title           = get_field('title');
 
-// Background style
-$background_type        = get_field('background_type') ?: 'solid';
-$background_color       = get_field('background_color') ?: '#ffffff';
-$background_color_start = get_field('background_color_start') ?: '#ffffff';
-$background_color_end   = get_field('background_color_end') ?: '#ffffff';
-$rotation_deg           = (int) ( get_field('rotation_deg') ?: 90 );
+if ($is_widget) {
+    $opts                   = function_exists('ofp_get_success_stories_options') ? ofp_get_success_stories_options() : array();
+    $title                  = $opts['widget_title']                ?? get_field('widget_title', 'option') ?: 'Success Stories';
+    $background_type        = $opts['widget_background_type']      ?? 'gradient';
+    $background_color       = $opts['widget_background_color']     ?? '#ffffff';
+    $background_color_start = $opts['widget_background_color_start'] ?? '#ffffff';
+    $background_color_end   = $opts['widget_background_color_end']   ?? '#ffffff';
+    $rotation_deg           = (int) ( $opts['widget_rotation_deg'] ?? 90 );
+} else {
+    $title                  = get_field('title');
+    $background_type        = get_field('background_type')        ?: 'solid';
+    $background_color       = get_field('background_color')       ?: '#ffffff';
+    $background_color_start = get_field('background_color_start') ?: '#ffffff';
+    $background_color_end   = get_field('background_color_end')   ?: '#ffffff';
+    $rotation_deg           = (int) ( get_field('rotation_deg')   ?: 90 );
+}
 
 if ($background_type === 'gradient') {
     $background_style = sprintf(

@@ -45,7 +45,7 @@ function register_custom_block( array $config ) {
 
   $name = $config['name'];
 
-  acf_register_block( array(
+acf_register_block( array(
     'name'            => $name,
     'title'           => __( $config['title'] ),
     'description'     => __( $config['description'] ?? "Block to show {$config['title']}." ),
@@ -53,5 +53,8 @@ function register_custom_block( array $config ) {
     'category'        => 'formatting',
     'icon'            => $config['icon'] ?? 'admin-generic',
     'keywords'        => $config['keywords'] ?? array(),
-  ) );
+    'supports'        => array(
+        'mode' => 'edit',
+    ),
+) );
 }

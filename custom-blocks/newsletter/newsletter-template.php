@@ -16,7 +16,8 @@ if (!function_exists('get_field')) {
 }
 
 // Get widget mode setting
-$is_widget = get_field('is_widget');
+$is_widget = ( function_exists('ofp_is_widget_mode') && ofp_is_widget_mode() )
+             || (bool) get_field('is_widget');
 
 // Initialize variables
 $background_color = '';

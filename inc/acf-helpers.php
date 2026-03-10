@@ -165,7 +165,12 @@ function ofp_get_success_stories_options(): array {
 
 function ofp_get_favorite_cards_options(): array {
     return ofp_get_option_fields( 'favorite_cards_widget', [
+        'widget_title_line_1',
+        'widget_title_line_2',
+        'widget_left_image',
         'widget_favorite_cards',
+        'widget_cta_label',
+        'widget_cta_url',
     ]);
 }
 

@@ -16,7 +16,8 @@ if (!function_exists('get_field')) {
 }
 
 // Check if using global settings
-$use_global = get_field('use_global');
+$use_global = ( function_exists('ofp_is_widget_mode') && ofp_is_widget_mode() )
+              || (bool) get_field('use_global');
 
 if ($use_global) {
     // Get fields from options page (single cached fetch)

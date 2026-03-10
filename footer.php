@@ -53,10 +53,12 @@ $flodeskLoaded   = false; // Track if Flodesk universal script is loaded
 		<div id="<?php echo esc_attr( $popupID ); ?>" class="pop-up">
 			<div class="popup-box">
 				<button class="close-btn"
-        onclick="OFP.closePopup('<?php echo esc_js( $popupID ); ?>')"
-        aria-label="<?php esc_attr_e( 'Close', 'our-family-passport' ); ?>">
-    <span class="close-btn__x" aria-hidden="true"></span>
-</button>
+						onclick="OFP.closePopup('<?php echo esc_js( $popupID ); ?>')"
+						aria-label="<?php esc_attr_e( 'Close', 'our-family-passport' ); ?>">
+							<svg xmlns="http://www.w3.org/2000/svg" width="59" height="59" viewBox="0 0 59 59" fill="none">
+								<path d="M46.6699 14.0336L44.9645 12.3281L29.5 27.7926L14.0355 12.3281L12.3301 14.0336L27.7945 29.498L12.3301 44.9625L14.0355 46.668L29.5 31.2035L44.9645 46.668L46.6699 44.9625L31.2055 29.498L46.6699 14.0336Z" fill="#2B2B2B" />
+							</svg>
+				</button>
 				<div class="left" style="background-image: url(<?php echo esc_url( $popUp['left_image']['url'] ?? '' ); ?>);">
 					<div class="circular-image" style="background-color: <?php echo esc_attr( $popUp['icon_image_background_color'] ?? '' ); ?>;">
 						<img src="<?php echo esc_url( $popUp['icon_image']['url'] ?? '' ); ?>" alt="<?php echo esc_attr( $popUp['icon_image']['alt'] ?? '' ); ?>">

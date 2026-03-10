@@ -1715,7 +1715,7 @@ div[class*=course-library__tab--]::after {
   }
 }
 .my-favorite-cards .container {
-  justify-content: space-between;
+  justify-content: space-around;
 }
 @media screen and (max-width: 991px) {
   .my-favorite-cards .container {
@@ -1756,6 +1756,13 @@ div[class*=course-library__tab--]::after {
   text-transform: none;
   line-height: 0;
 }
+.my-favorite-cards__title-heart {
+  display: inline-block;
+  vertical-align: middle;
+}
+.my-favorite-cards__image {
+  aspect-ratio: 1;
+}
 @media screen and (max-width: 991px) {
   .my-favorite-cards__image {
     width: 50%;
@@ -1771,6 +1778,7 @@ div[class*=course-library__tab--]::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 @media screen and (max-width: 991px) {
   .my-favorite-cards__right-col {
@@ -1791,7 +1799,7 @@ div[class*=course-library__tab--]::after {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 20px;
-  border-radius: 30px;
+  border-radius: 20px;
   background-color: #f7f0e6;
 }
 @media screen and (max-width: 768px) {
@@ -1817,17 +1825,20 @@ div[class*=course-library__tab--]::after {
   }
 }
 .my-favorite-cards__card-title {
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 400;
 }
 .my-favorite-cards__card-offer {
   font-family: "GlacialIndifference", sans-serif;
+  font-weight: 400;
+  font-size: 1.17em;
 }
 .my-favorite-cards__card-cta {
   padding: 0;
   background-color: transparent;
-  font-family: "League Gothic", sans-serif;
-  color: #f0a8ad;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 1rem;
+  color: #f0a9ad;
   letter-spacing: 3px;
 }
 .my-favorite-cards__card-cta:hover {
@@ -1835,17 +1846,23 @@ div[class*=course-library__tab--]::after {
   color: #9abfcc;
 }
 .my-favorite-cards__card-cta:visited {
-  color: #f0a8ad;
+  color: #f0a9ad;
 }
 .my-favorite-cards__card-cta:visited:hover {
   background-color: transparent;
   color: #9abfcc;
+}
+.my-favorite-cards__card-rates {
+  text-decoration: none;
+  font-size: small;
+  color: #404040;
 }
 .my-favorite-cards__cta {
   background-color: transparent;
   font-family: "League Gothic", sans-serif;
   font-size: 1.2rem;
   letter-spacing: 3px;
+  transition: color 0.3s ease;
 }
 .my-favorite-cards__cta span {
   margin-right: 0.5rem;
@@ -1853,7 +1870,7 @@ div[class*=course-library__tab--]::after {
 }
 .my-favorite-cards__cta:hover {
   background-color: transparent;
-  color: #f0a8ad;
+  color: #f0a9ad;
 }
 
 .sidebar .container {
@@ -1924,7 +1941,7 @@ div[class*=course-library__tab--]::after {
   color: #9abfcc;
 }
 .sidebar .my-favorite-cards__card-cta:visited {
-  color: #f0a8ad;
+  color: #f0a9ad;
 }
 .sidebar .my-favorite-cards__card-cta:visited:hover {
   background-color: transparent;
@@ -4310,6 +4327,12 @@ div[class*=course-library__tab--]::after {
   }
 }
 
+.sidebar {
+  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .sidebar-display .sidebar {
   width: 100%;
   max-width: 100%;
@@ -4406,6 +4429,7 @@ div[class*=course-library__tab--]::after {
   font-family: "Versailles", sans-serif;
   font-size: 5rem;
   text-align: center;
+  width: 100%;
 }
 @media screen and (max-width: 768px) {
   .success-stories__title {
