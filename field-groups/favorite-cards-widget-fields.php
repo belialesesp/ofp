@@ -83,7 +83,7 @@ function register_favorite_cards_widget_fields() {
                 array(
                     'param' => 'options_page',
                     'operator' => '==',
-                    'value' => 'acf-options-favorite-cards',
+                    'value' => 'favorite-cards',
                 ),
             ),
         ),

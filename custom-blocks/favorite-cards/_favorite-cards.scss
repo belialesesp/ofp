@@ -7,7 +7,7 @@
 
 // Local tokens (not yet in global variables)
 $fc-cream: #f7f0e6;
-$fc-pink:  #f0a8ad;
+$fc-pink:  #f0a9ad; // Updated to match customize.css value
 $fc-blue:  #9abfcc;
 
 .my-favorite-cards {
@@ -18,7 +18,7 @@ $fc-blue:  #9abfcc;
 	}
 
 	.container {
-		justify-content: space-between;
+		justify-content: space-around;
 
 		@media screen and (max-width: $bp-lg) {
 			gap: 2rem;
@@ -60,9 +60,16 @@ $fc-blue:  #9abfcc;
 			text-transform: none;
 			line-height: 0;
 		}
+
+		&-heart {
+			display: inline-block;
+			vertical-align: middle;
+		}
 	}
 
 	&__image {
+
+		aspect-ratio: 1;
 
 		@media screen and (max-width: $bp-lg) {
 			width: 50%;
@@ -78,6 +85,7 @@ $fc-blue:  #9abfcc;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 
 		@media screen and (max-width: $bp-lg) {
 			width: 100%;
@@ -99,7 +107,7 @@ $fc-blue:  #9abfcc;
 		flex-wrap: wrap;
 		gap: 1rem;
 		padding: 20px;
-		border-radius: 30px;
+		border-radius: 20px; // Absorbed from customize.css (was 30px)
 		background-color: $fc-cream;
 
 		@media screen and (max-width: $bp-sm) {
@@ -125,18 +133,21 @@ $fc-blue:  #9abfcc;
 	}
 
 	&__card-title {
-		font-size: 1rem;
+		font-size: 18px; // Absorbed from customize.css (was 1rem)
 		font-weight: 400;
 	}
 
 	&__card-offer {
 		font-family: $text;
+		font-weight: 400;   // Absorbed from customize.css
+		font-size: 1.17em;  // Absorbed from customize.css
 	}
 
 	&__card-cta {
 		padding: 0;
 		background-color: transparent;
-		font-family: $font-gothic;
+		font-family: $font-glacial; // Absorbed from customize.css (was $font-gothic)
+		font-size: 1rem;            // Absorbed from customize.css
 		color: $fc-pink;
 		letter-spacing: 3px;
 
@@ -155,11 +166,18 @@ $fc-blue:  #9abfcc;
 		}
 	}
 
+	&__card-rates {
+		text-decoration: none; // Absorbed from customize.css
+		font-size: small;      // Absorbed from customize.css
+		color: #404040;
+	}
+
 	&__cta {
 		background-color: transparent;
 		font-family: $font-gothic;
 		font-size: 1.2rem;
 		letter-spacing: 3px;
+		transition: color 0.3s ease;
 
 		span {
 			margin-right: 0.5rem;
@@ -173,7 +191,10 @@ $fc-blue:  #9abfcc;
 	}
 }
 
+// =============================================================================
 // Sidebar context overrides
+// Intentional — cannot be converted to BEM without HTML changes.
+// =============================================================================
 .sidebar {
 
 	.container {
