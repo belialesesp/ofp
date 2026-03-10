@@ -45,20 +45,23 @@ $query = new WP_Query($args);
       </div>
     <?php endif; ?>
     <div class="the-blog__bar">
-  <?php
-  // Get the newest post title
-  $latest_post = wp_get_recent_posts(array(
-      'numberposts' => 1,
-      'post_status' => 'publish'
-  ));
-  
-  if (!empty($latest_post)) :
-      $newest_title = get_the_title($latest_post[0]['ID']);
-  ?>
-    <span class="newest-post-title"><?= esc_html($newest_title) ?></span>
-  <?php endif; ?>
-  <span>NEWEST</span>
-</div>
+      <?php
+      $latest_post = wp_get_recent_posts(array(
+          'numberposts' => 1,
+          'post_status' => 'publish'
+      ));
+
+      if (!empty($latest_post)) :
+          $newest_id    = $latest_post[0]['ID'];
+          $newest_title = get_the_title($newest_id);
+          $newest_url   = get_permalink($newest_id);
+      ?>
+        <a class="newest-post-title" href="<?= esc_url($newest_url) ?>">
+          <?= esc_html($newest_title) ?>
+        </a>
+      <?php endif; ?>
+      <span>NEWEST</span>
+    </div>
     <div class="the-blog__posts">
       <!-- the loop -->
       <?php while ($query->have_posts()) : $query->the_post(); ?>

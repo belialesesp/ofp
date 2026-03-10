@@ -1,6 +1,6 @@
 <?php
 $icon = get_field('icon');
-$title = get_field('tilte');
+$title = get_field('title');
 $description = get_field('description');
 $cta_label = get_field('cta_label');
 $cta_url = get_field('cta_url');

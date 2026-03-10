@@ -93,6 +93,8 @@
       padding: 20px 30px;
       letter-spacing: 5px;
       color: $color-black;
+      background-color: $color-cream-dark;
+      border-radius: 50px;
       @media screen and (max-width: 1439px) {
         letter-spacing: 3px;
       }

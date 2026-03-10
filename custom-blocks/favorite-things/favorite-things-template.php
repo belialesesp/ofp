@@ -16,6 +16,7 @@ $rotating_image_data = get_field('rotating_image');
 
 $title = get_field('title');
 $subtitle = get_field('subtitle');
+$title_icon = get_field('title_icon');
 $favorite_things = get_field('favorite_things') ?: [];
 $totalFavoriteThings = count($favorite_things);
 $blockID = 'favorite-things-' . uniqid();
@@ -81,7 +82,7 @@ $favoriteThingsCounter = 0;
     width: 100%;
     height: 100%;
     animation: rotate 10s linear infinite;
-    z-index: 1;
+    z-index: 0;
   }
   
   @keyframes rotate {
@@ -111,7 +112,16 @@ $favoriteThingsCounter = 0;
   
   <div class="container">
     <div class="title-container">
-      <h2 class="title" style="color: <?= $title_color ?>;"><?= $title ?></h2>
+<?php
+$title_parts = $title_icon ? explode('|', $title) : [$title];
+?>
+<h2 class="title" style="color: <?= $title_color ?>;">
+    <?= esc_html($title_parts[0] ?? '') ?>
+    <?php if ($title_icon): ?>
+        <img src="<?= esc_url($title_icon['url']) ?>" alt="<?= esc_attr($title_icon['alt']) ?>">
+    <?php endif; ?>
+    <?= esc_html($title_parts[1] ?? '') ?>
+</h2>
       <h3 class="sub-title" style="color: <?= $sub_title_color ?>"><?= $subtitle ?></h3>
     </div>
     <div class="things">

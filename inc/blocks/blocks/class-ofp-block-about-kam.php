@@ -2,8 +2,6 @@
 /**
  * About Kam Block
  *
- * Migrated from: /custom-blocks/about-kam/about-kam.php
- * Location:      /inc/blocks/blocks/class-ofp-block-about-kam.php
  *
  */
 

@@ -1,88 +1,83 @@
 // =============================================================================
 // Newsletter Block
+// Partial — compiled via custom-blocks/styles.scss
 //
 // ARCHITECTURE NOTE:
-// The current newsletter-template.php generates a unique $blockID per instance
-// and scopes all layout/sizing/color rules under #blockID selectors in an
-// inline <style> block. Those styles are intentionally dynamic (per-instance
-// background, title color, description color, video sizing) and must remain
-// inline in the PHP template.
-//
-// The rules below apply to static, instance-independent styles only —
-// primarily the legacy form variant and shared typographic defaults.
+// Per-instance styles (background, title color, description color, video
+// sizing) are scoped under #blockID in inline <style> in the PHP template.
+// Rules below cover static, instance-independent styles only.
 // =============================================================================
 
 .newsletter {
-  position: relative;
-  padding: 5rem 0;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
+	position: relative;
+	padding: 5rem 0;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
 
-  // Dark overlay — static, always applied regardless of background type.
-  &::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #222;
-    opacity: 0.33;
-  }
+	&::before {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #222;
+		opacity: 0.33;
+	}
 
-  .container {
-    position: relative;
-    flex-direction: column;
-    text-align: center;
-    z-index: 1;
-  }
+	.container {
+		position: relative;
+		flex-direction: column;
+		text-align: center;
+		z-index: 1;
+	}
 
-  &__title {
-    max-width: 850px;
-    margin: 0 auto;
-    font-size: to-rem(60px);
-  }
+	&__title {
+		max-width: 850px;
+		margin: 0 auto;
+		font-size: to-rem(60px);
+	}
 
-  &__description {
-    max-width: 630px;
-    margin: 1rem auto 0 auto;
-  }
+	&__description {
+		max-width: 630px;
+		margin: 1rem auto 0;
+	}
 
-  // --- Legacy form (non-Flodesk instances) ----------------------------------
+	// --- Legacy form (non-Flodesk instances) ----------------------------------
 
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: to-rem(8px);
-    width: 100%;
-    max-width: 480px;
-    margin: 2rem auto 0;
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: to-rem(8px);
+		width: 100%;
+		max-width: 480px;
+		margin: 2rem auto 0;
 
-    input {
-      width: 100%;
-      padding: to-rem(11) to-rem(19);
-      font-family: $LeagueGothic;
-      font-size: 14px;
-      letter-spacing: to-rem(2.2);
-      text-transform: uppercase;
+		input {
+			width: 100%;
+			padding: to-rem(11px) to-rem(19px);
+			font-family: $LeagueGothic;
+			font-size: 14px;
+			letter-spacing: to-rem(2.2px);
+			text-transform: uppercase;
 
-      &::placeholder {
-        font-family: $LeagueGothic;
-        letter-spacing: to-rem(2.2);
-        text-transform: uppercase;
-        opacity: 1;
-      }
-    }
+			&::placeholder {
+				font-family: $LeagueGothic;
+				letter-spacing: to-rem(2.2px);
+				text-transform: uppercase;
+				opacity: 1;
+			}
+		}
 
-    button {
-      border-radius: 0;
-      background-color: #FFD6D9;
-      font-family: $LeagueGothic;
-      font-size: 18px;
-      font-weight: 400;
-      letter-spacing: to-rem(1.4);
-    }
-  }
+		button {
+			border-radius: 0;
+			background-color: #ffd6d9;
+			font-family: $LeagueGothic;
+			font-size: 18px;
+			font-weight: 400;
+			letter-spacing: to-rem(1.4px);
+		}
+	}
 }

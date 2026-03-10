@@ -1,122 +1,140 @@
+@use "../../css/variables" as *;
+
 .the-blog {
-  display: flex;
-  padding: 4rem 0;
-  // Dynamic: background-color set inline via ACF field 'background_color'
+	display: flex;
+	padding: 4rem 0;
+	// Dynamic: background-color set inline via ACF field 'background_color'
 
-  .container {
-    flex-direction: column;
-    gap: 3rem;
-  }
+	.container {
+		flex-direction: column;
+		gap: 3rem;
+	}
 
-  &__title {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    margin: 0;
-    font-weight: 400;
-    font-size: 5rem;
-    color: #fda5ac;
+	&__title {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		margin: 0;
+		font-size: 5rem;
+		color: #fda5ac;
 
-    span {
-      font-family: $styled;
-      font-size: 5rem;
-      line-height: 5rem;
-    }
-  }
+		span {
+			font-family: $styled;
+			font-size: 5rem;
+			line-height: 5rem;
+		}
+	}
 
-  &__categories {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+	&__categories {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
 
-    @media screen and (max-width: 767px) {
-      gap: 0.6rem;
-    }
+		@media screen and (max-width: $bp-sm) {
+			gap: 0.6rem;
+		}
 
-    .categorie {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 2rem;
-      font-family: $text;
-      font-weight: 700;
-      color: #222;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      background-color: #ffd6d9;
+		.categorie {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 1rem 2rem;
+			font-family: $text;
+			font-weight: 700;
+			color: #222;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			text-decoration: none;
+			background-color: #ffd6d9;
 
-      &.green { background-color: #bed8ba; }
-      &.blue  { background-color: #9bbfcd; }
+			&.green {
+				background-color: #bed8ba;
+			}
 
-      @media screen and (max-width: 767px) {
-        padding: 0.3rem 0.8rem;
-        font-size: 0.8rem;
-      }
-    }
-  }
+			&.blue {
+				background-color: #9bbfcd;
+			}
 
-  &__bar {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    border-top: 1px solid #bed8ba;
-    border-bottom: 1px solid #bed8ba;
-    font-family: $text;
-    font-size: 1.5rem;
-    text-transform: uppercase;
+			@media screen and (max-width: $bp-sm) {
+				padding: 0.3rem 0.8rem;
+				font-size: 0.8rem;
+			}
+		}
+	}
 
-    a {
-      color: inherit;
-      font-family: $titles;
-      text-decoration: none;
-    }
+	&__bar {
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem 2rem;
+		border-top: 1px solid #bed8ba;
+		border-bottom: 1px solid #bed8ba;
+		font-family: $text;
+		font-size: 1.5rem;
+		text-transform: uppercase;
 
-    @media screen and (max-width: 767px) {
-      padding: 1rem 0;
-      font-size: 1rem;
-    }
-  }
+		.newest-post-title {
+			color: inherit;
+			font-family: $titles;
+			text-decoration: none;
+			transition: color 0.3s ease;
 
-  &__posts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+			&:hover {
+				color: #fda5ac;
+			}
+		}
 
-    .post {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: calc(33.33% - (2rem / 3));
-      text-align: center;
+		a {
+			color: inherit;
+			font-family: $titles;
+			text-decoration: none;
+		}
 
-      &__image {
-        img {
-          width: 100%;
-          height: 544px;
-          object-fit: cover;
+		@media screen and (max-width: $bp-sm) {
+			padding: 1rem 0;
+			font-size: 1rem;
+		}
+	}
 
-          @media screen and (max-width: 767px) {
-            height: 248px;
-          }
-        }
-      }
+	&__posts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
 
-      &__title {
-        margin: 0;
-        font-size: 1rem;
-      }
+		.post {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			width: calc(33.33% - (2rem / 3));
+			text-align: center;
 
-      &__cta {
-        color: #66b1bb;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
+			&__image {
 
-      @media screen and (max-width: 767px) {
-        width: calc(50% - 0.5rem);
-      }
-    }
-  }
+				img {
+					width: 100%;
+					height: 544px;
+					object-fit: cover;
+
+					@media screen and (max-width: $bp-sm) {
+						height: 248px;
+					}
+				}
+			}
+
+			&__title {
+				margin: 0;
+				font-size: 1rem;
+			}
+
+			&__cta {
+				color: #66b1bb;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+			}
+
+			@media screen and (max-width: $bp-sm) {
+				width: calc(50% - 0.5rem);
+			}
+		}
+	}
 }

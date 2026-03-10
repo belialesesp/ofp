@@ -3,9 +3,9 @@
 // custom-blocks/styles.scss
 // =============================================================================
 
-@use 'sass:math';
-@use '../css/variables' as *;
-@use '../css/mixins' as *;
+@use "sass:math";
+@use "../css/variables" as *;
+@use "../css/mixins" as *;
 
 // -----------------------------------------------------------------------------
 // Compatibility aliases
@@ -21,7 +21,7 @@ $Versailles:               $font-versailles;
 
 $text:     $font-glacial;
 $titles:   $font-versailles;
-$styled:   "Net MoonTime", sans-serif; 
+$styled:   "Net MoonTime", sans-serif;
 
 $ofp-blue: $color-blue;
 
@@ -29,52 +29,55 @@ $ofp-blue: $color-blue;
 // Functions (shared with ofp-styles.scss — kept here for block partials)
 // -----------------------------------------------------------------------------
 @function stripUnit($value) {
-  @return math.div($value, $value * 0 + 1);
+
+	@return math.div($value, $value * 0 + 1);
 }
+
 @function to-rem($pxValue) {
-  @return #{math.div(stripUnit($pxValue), stripUnit(16px))}rem;
+
+	@return #{math.div(stripUnit($pxValue), stripUnit(16px))}rem;
 }
 
 // -----------------------------------------------------------------------------
 // Block partials
 // -----------------------------------------------------------------------------
-@import 'about-kam/about-kam';
-@import 'about-kam-widget/about-kam-widget';
-@import 'banner-cta-widget/banner-cta-widget';
-@import 'behind-the-screen/behind-the-screen';
-@import 'box-grid/box-grid';
-@import 'contact-form/contact-form';
-@import 'course-library/course-library';
-@import 'credit-card-hero/credit-card-hero';
-@import 'credit-cards/credit-cards';
-@import 'destinations-map/destinations-map';
-@import 'enchanted-link/enchanted-link';
-@import 'enchanting-links/enchanting-links';
-@import 'extra-benefits/extra-benefits';
-@import 'favorite-cards/favorite-cards';
-@import 'favorite-cards-small/favorite-cards-small';
-@import 'favorite-things/favorite-things';
-@import 'free-consultation/free-consultation';
-@import 'free-quiz/free-quiz';
-@import 'free-resources/free-resources';
-@import 'free-resources-list/free-resources-list';
-@import 'guides/guides';
-@import 'hero-content/hero-content';
-@import 'hero-image/hero-image';
-@import 'instagram-cb/instagram-cb';
-@import 'lets-connect/lets-connect';
-@import 'must-read/must-read';
-@import 'newsletter/newsletter';
-@import 'non-affiliate-disclosure/non-affiliate-disclosure';
-@import 'ofp-calculator/ofp-calculator';
-@import 'related-posts/related-posts';
-@import 'rotating-words/rotating-words';
-@import 'search/search';
-@import 'sidebar-block/sidebar-block';
-@import 'start-here/start-here';
-@import 'success-stories/success-stories';
-@import 'the-blog/the-blog';
-@import 'time-line/time-line';
-@import 'unique-card/unique-card';
-@import 'unique-card-body-section/unique-card-body-section';
-@import 'words-animation/words-animation';
+@import "about-kam/about-kam";
+@import "about-kam-widget/about-kam-widget";
+@import "banner-cta-widget/banner-cta-widget";
+@import "behind-the-screen/behind-the-screen";
+@import "box-grid/box-grid";
+@import "contact-form/contact-form";
+@import "course-library/course-library";
+@import "credit-card-hero/credit-card-hero";
+@import "credit-cards/credit-cards";
+@import "destinations-map/destinations-map";
+@import "enchanted-link/enchanted-link";
+@import "enchanting-links/enchanting-links";
+@import "extra-benefits/extra-benefits";
+@import "favorite-cards/favorite-cards";
+@import "favorite-cards-small/favorite-cards-small";
+@import "favorite-things/favorite-things";
+@import "free-consultation/free-consultation";
+@import "free-quiz/free-quiz";
+@import "free-resources/free-resources";
+@import "free-resources-list/free-resources-list";
+@import "guides/guides";
+@import "hero-content/hero-content";
+@import "hero-image/hero-image";
+@import "instagram-cb/instagram-cb";
+@import "lets-connect/lets-connect";
+@import "must-read/must-read";
+@import "newsletter/newsletter";
+@import "non-affiliate-disclosure/non-affiliate-disclosure";
+@import "ofp-calculator/ofp-calculator";
+@import "related-posts/related-posts";
+@import "rotating-words/rotating-words";
+@import "search/search";
+@import "sidebar-block/sidebar-block";
+@import "start-here/start-here";
+@import "success-stories/success-stories";
+@import "the-blog/the-blog";
+@import "time-line/time-line";
+@import "unique-card/unique-card";
+@import "unique-card-body-section/unique-card-body-section";
+@import "words-animation/words-animation";

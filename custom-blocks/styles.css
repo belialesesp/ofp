@@ -78,37 +78,33 @@
 }
 .about-kam__float-image {
   position: absolute;
-  top: 10%;
-  left: -10%;
-  width: 20rem;
-  height: 20rem;
-  max-width: 100%;
+  bottom: 50px;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid;
+  z-index: 10;
+  background: #000;
+  -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
 }
 .about-kam__float-image img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  border: 9px solid;
   object-fit: cover;
-}
-@media screen and (max-width: 1024px) {
-  .about-kam__float-image {
-    left: -6%;
-  }
+  border-radius: 50%;
 }
 @media screen and (max-width: 768px) {
   .about-kam__float-image {
-    display: block;
-    position: relative;
-    top: 10rem;
-    left: 1rem;
-    z-index: 9;
-    width: 15rem;
-    height: 15rem;
+    width: 150px;
+    height: 150px;
+    bottom: 30px;
+    left: 30px;
   }
 }
 .about-kam__float-video {
-  background: transparent;
+  background: #000;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -128,17 +124,16 @@
 }
 .about-kam__float-video iframe,
 .about-kam__float-video video {
-  transform: translate(-50%, -50%) scale(1.4);
-  width: 200%;
-  height: 200%;
-  min-width: 200%;
-  min-height: 200%;
-}
-@media screen and (max-width: 768px) {
-  .about-kam__float-video iframe,
-  .about-kam__float-video video {
-    transform: translate(-50%, -50%) scale(1.5);
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 177%;
+  height: 177%;
+  min-width: 177%;
+  min-height: 177%;
+  object-fit: cover;
+  border: none;
 }
 .about-kam__float-video iframe[src*=youtube] {
   transform: translate(-50%, -50%) scale(1.5);
@@ -146,10 +141,10 @@
 .about-kam__float-video iframe[src*=vimeo] {
   transform: translate(-50%, -50%) scale(1.4);
 }
-@supports (-webkit-mask-image: radial-gradient(white, black)) {
+@supports (-webkit-mask-image: radial-gradient(#fff, #000)) {
   .about-kam__float-video {
-    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
-    mask-image: radial-gradient(circle, white 100%, black 100%);
+    -webkit-mask-image: -webkit-radial-gradient(circle, #fff 100%, #000 100%);
+    mask-image: radial-gradient(circle, #fff 100%, #000 100%);
   }
 }
 .about-kam__float-box {
@@ -292,7 +287,7 @@
 }
 
 .family-passport-section {
-  background: linear-gradient(264deg, #FED7D8 0%, #F8C8B4 100%);
+  background: linear-gradient(264deg, #fed7d8 0%, #f8c8b4 100%);
 }
 .family-passport-section .container {
   padding: 6rem 0;
@@ -304,8 +299,7 @@
     padding: 60px 0;
   }
 }
-
-.passport-content {
+.family-passport-section .passport-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
@@ -313,77 +307,68 @@
   min-height: 500px;
 }
 @media (max-width: 968px) {
-  .passport-content {
+  .family-passport-section .passport-content {
     gap: 40px;
   }
 }
 @media (max-width: 768px) {
-  .passport-content {
+  .family-passport-section .passport-content {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
   }
 }
-
-.image-column {
+.family-passport-section .image-column {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.main-image-wrapper {
+.family-passport-section .main-image-wrapper {
   position: relative;
   max-width: 100%;
 }
-
-.main-image {
+.family-passport-section .main-image {
   width: 100%;
   max-width: 450px;
   height: auto;
 }
-
-.logo-overlay {
+.family-passport-section .logo-overlay {
   position: absolute;
   top: 43px;
   left: -86px;
 }
 @media (max-width: 968px) {
-  .logo-overlay {
+  .family-passport-section .logo-overlay {
     top: -30px;
     left: 15px;
   }
 }
-
-.logo-1 {
+.family-passport-section .logo-1 {
   position: absolute;
   top: 45px;
   left: 45px;
   z-index: 1;
 }
-
-.logo-2 {
+.family-passport-section .logo-2 {
   animation: rotation 15s linear infinite 0s;
 }
-
-.content-wrapper {
+.family-passport-section .content-wrapper {
   display: flex;
   max-width: 500px;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
 }
-
 @media (max-width: 768px) {
-  .content-align-left .content-wrapper,
-  .content-align-right .content-wrapper,
-  .content-align-center .content-wrapper {
+  .family-passport-section .content-align-left .content-wrapper,
+  .family-passport-section .content-align-right .content-wrapper,
+  .family-passport-section .content-align-center .content-wrapper {
     margin: 0 auto;
     text-align: center;
   }
 }
-
-.small-title {
+.family-passport-section .small-title {
   font-family: "Net MoonTime", sans-serif;
   color: #222222;
   text-align: center;
@@ -392,12 +377,11 @@
   font-weight: 400;
   line-height: 41.8px;
 }
-
-.main-title {
+.family-passport-section .main-title {
   text-align: center;
 }
-.main-title .title-line-1,
-.main-title .title-line-2 {
+.family-passport-section .main-title .title-line-1,
+.family-passport-section .main-title .title-line-2 {
   color: #222222;
   text-align: center;
   font-family: "Versailles", sans-serif;
@@ -408,16 +392,15 @@
   text-transform: uppercase;
 }
 @media (max-width: 968px) {
-  .main-title .title-line-1,
-  .main-title .title-line-2 {
+  .family-passport-section .main-title .title-line-1,
+  .family-passport-section .main-title .title-line-2 {
     font-size: 40px;
   }
 }
-.main-title .title-line-2 {
+.family-passport-section .main-title .title-line-2 {
   margin-top: -8px;
 }
-
-.subtitle {
+.family-passport-section .subtitle {
   color: #222222;
   text-align: center;
   font-family: "League Gothic", sans-serif;
@@ -428,8 +411,7 @@
   letter-spacing: 0.75px;
   text-transform: uppercase;
 }
-
-.description {
+.family-passport-section .description {
   color: #222222;
   text-align: center;
   font-family: "GlacialIndifference", sans-serif;
@@ -440,10 +422,10 @@
   margin: 2rem 0 0;
   padding: 0 2rem;
 }
-.description p {
+.family-passport-section .description p {
   margin-bottom: 20px;
 }
-.description p:last-child {
+.family-passport-section .description p:last-child {
   margin-bottom: 0;
 }
 
@@ -489,7 +471,7 @@
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
-  line-height: 106.364%;
+  line-height: 1.06364;
   letter-spacing: 1.95px;
   text-transform: uppercase;
   text-align: center;
@@ -597,9 +579,8 @@
 .contact-form__content,
 .contact-form .contact-formcontent {
   position: relative;
-  width: 50%;
   max-width: 685px;
-  padding: 0 2rem;
+  padding: 0;
   z-index: 2;
 }
 @media screen and (max-width: 991px) {
@@ -612,21 +593,20 @@
 .contact-form .contact-formtitle {
   max-width: 337px;
   position: relative;
-  left: -12%;
+  margin-left: -3rem;
   margin-bottom: 1rem;
   color: #222222;
   font-family: "Versailles", sans-serif;
   font-size: 6.25rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 6.25rem;
+  line-height: 5.625rem;
 }
 @media screen and (max-width: 991px) {
   .contact-form__title,
   .contact-form .contact-formtitle {
-    left: 0;
-    font-size: 5rem;
     margin-left: 0;
+    font-size: 5rem;
   }
 }
 .contact-form__description p,
@@ -644,6 +624,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: flex-start;
 }
 .contact-form__contact-items a,
 .contact-form .contact-formcontact-items a {
@@ -738,40 +719,56 @@
 }
 
 .course-library {
-  overflow: hidden;
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 5rem;
+  width: 100%;
+  overflow: scroll;
+  padding: 5rem 0 4rem;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-@media screen and (min-width: 1441px) {
-  .course-library {
-    padding: 5rem 1rem 2rem;
-  }
-}
-@media screen and (max-width: 991px) {
-  .course-library {
-    padding: 5rem 1rem 1rem;
-  }
-}
-@media screen and (max-width: 768px) {
-  .course-library {
-    padding: 10rem 1rem 10rem;
-  }
+.course-library.fixed-top {
+  position: fixed;
+  top: 0;
 }
 .course-library__item {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 36px;
+  border-radius: 10px 10px 0 0;
 }
 .course-library__content {
+  width: 100%;
+  max-width: 780px;
+  background-color: #f6f0e4;
+  border-radius: 10px 10px 0 0;
+}
+.course-library__content .box-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 100%;
+  padding: 3.625rem 4.6875rem 4.6875rem;
+  gap: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  .course-library__content .box-content {
+    padding: 1.5rem;
+  }
 }
 .course-library__content .tab-title {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
   position: relative;
-  padding: 0.5rem 1rem;
+  padding: 10px 20px;
+  border-radius: 0 10px 0 0;
   font-family: "League Gothic", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.8125rem;
   font-style: normal;
   font-weight: 400;
   line-height: 88%;
@@ -783,13 +780,6 @@
   .course-library__content .tab-title {
     font-size: 1.5rem;
   }
-}
-.course-library__content .box-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  min-height: 463px;
 }
 .course-library__content .identifier {
   display: flex;
@@ -895,6 +885,30 @@
   height: 44px;
   fill: #FFFFFF;
 }
+@media screen and (min-width: 1441px) {
+  .course-library {
+    padding: 5rem 1rem 2rem;
+  }
+}
+@media screen and (max-width: 991px) {
+  .course-library {
+    padding: 5rem 1rem 1rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .course-library {
+    padding: 10rem 1rem 10rem;
+  }
+}
+
+.course-library__tab {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
 
 div[class*=course-library__tab--] {
   width: 150px;
@@ -948,143 +962,152 @@ div[class*=course-library__tab--]::after {
 
 .credit-card-hero-simple {
   background-color: #f8f5f1;
-  padding: 60px 0;
   font-family: "Rubik", sans-serif;
 }
-.credit-card-hero-simple .hero-container {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-}
 .credit-card-hero-simple .hero-container.container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
-.credit-card-hero-simple .hero-container .hero-left.col-8 {
-  flex: 0 0 66.666%;
-  max-width: 66.666%;
-}
-.credit-card-hero-simple .hero-container .hero-left .credit-card-hero-animation {
+.credit-card-hero-simple .hero-left {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 30px;
+  padding: 3rem 0 0;
+  max-width: 490px;
 }
-.credit-card-hero-simple .hero-container .hero-left .credit-card-hero-animation .hello-travel {
-  max-height: 50px;
-  width: auto;
+.credit-card-hero-simple .hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0 0;
+  min-width: 350px;
+  width: 493px;
 }
-.credit-card-hero-simple .hero-container .hero-left .credit-card-hero-animation .ofp-logo {
-  max-height: 100px;
-  width: auto;
-  opacity: 0.3;
-}
-.credit-card-hero-simple .hero-container .hero-left h1 {
-  font-size: 48px;
-  font-weight: 300;
-  line-height: 1.2;
-  color: #1a1a1a;
-  margin-bottom: 20px;
-  letter-spacing: -1px;
-}
-.credit-card-hero-simple .hero-container .hero-left .offer-points h2 {
-  font-size: 36px;
-  font-weight: 300;
-  color: #d4a574;
-  margin-bottom: 10px;
-  letter-spacing: -0.5px;
-}
-.credit-card-hero-simple .hero-container .hero-left .old-offer p {
-  font-size: 16px;
-  color: #999;
-  text-decoration: line-through;
-  margin-bottom: 20px;
-}
-.credit-card-hero-simple .hero-container .hero-left .current-offer p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 30px;
-}
-.credit-card-hero-simple .hero-container .hero-left .learn-more-section .btn-learn-apply {
-  display: inline-block;
-  position: relative;
-  color: #7db9ca;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-decoration: none;
-  padding-bottom: 2px;
-  transition: all 0.3s ease;
-}
-.credit-card-hero-simple .hero-container .hero-left .learn-more-section .btn-learn-apply::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: #7db9ca;
-  transition: width 0.3s ease;
-}
-.credit-card-hero-simple .hero-container .hero-left .learn-more-section .btn-learn-apply:hover {
-  color: rgb(72.5491803279, 154.6803278689, 177.9508196721);
-}
-.credit-card-hero-simple .hero-container .hero-left .learn-more-section .btn-learn-apply:hover::after {
-  width: 100%;
-}
-.credit-card-hero-simple .hero-container .hero-right.col-4 {
-  flex: 0 0 33.333%;
-  max-width: 33.333%;
-  text-align: center;
-}
-.credit-card-hero-simple .hero-container .hero-right img {
+.credit-card-hero-simple .hero-right img {
   max-width: 100%;
   height: auto;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
-  margin-bottom: 20px;
 }
-.credit-card-hero-simple .hero-container .hero-right .rates-fees-section .rates-fees-link {
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  color: #999;
-  text-decoration: none;
+.credit-card-hero-simple .hero-right .rates-fees-section .rates-fees-link {
+  color: #9a9a9a;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 74.4px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  text-underline-offset: 0.5rem;
+  text-decoration: underline;
   transition: all 0.3s ease;
 }
-.credit-card-hero-simple .hero-container .hero-right .rates-fees-section .rates-fees-link:hover {
+.credit-card-hero-simple .hero-right .rates-fees-section .rates-fees-link:hover {
   color: #666;
 }
+.credit-card-hero-simple .credit-card-hero-animation {
+  width: 152px;
+  height: auto;
+  position: relative;
+}
+.credit-card-hero-simple .credit-card-hero-animation .ofp-logo {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  height: 66px;
+}
+.credit-card-hero-simple .hero-left h1 {
+  color: #222;
+  font-family: "Versailles", sans-serif;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 51px;
+}
+.credit-card-hero-simple .offer-points h2 {
+  color: #f0a9ad;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+.credit-card-hero-simple .old-offer p {
+  color: #939393;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-decoration: line-through;
+  text-transform: uppercase;
+}
+.credit-card-hero-simple .current-offer p {
+  color: #222;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 17.719px;
+  font-weight: 400;
+}
+.credit-card-hero-simple .learn-more-section .btn-learn-apply {
+  color: #9bbfcd;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 74.4px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-underline-offset: 0.5rem;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+.credit-card-hero-simple .learn-more-section .btn-learn-apply i.fas.fa-arrow-right {
+  margin-left: 1rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  animation: spin 15s linear infinite;
+}
+
 @media (max-width: 768px) {
   .credit-card-hero-simple {
     padding: 40px 0;
   }
-  .credit-card-hero-simple .hero-container {
-    flex-direction: column;
-    gap: 40px;
+  .credit-card-hero-simple .hero-container.container {
+    flex-wrap: wrap;
   }
-  .credit-card-hero-simple .hero-container .hero-left.col-8 {
+  .credit-card-hero-simple .credit-card-hero-animation {
+    margin: -5rem 0;
+  }
+  .credit-card-hero-simple .hero-left,
+  .credit-card-hero-simple .hero-right {
     flex: 0 0 100%;
     max-width: 100%;
+    width: 100%;
+    min-width: unset;
     text-align: center;
+  }
+  .credit-card-hero-simple .hero-left {
     order: 2;
   }
-  .credit-card-hero-simple .hero-container .hero-left .credit-card-hero-animation {
-    justify-content: center;
-  }
-  .credit-card-hero-simple .hero-container .hero-left h1 {
+  .credit-card-hero-simple .hero-left h1 {
     font-size: 36px;
   }
-  .credit-card-hero-simple .hero-container .hero-left .offer-points h2 {
+  .credit-card-hero-simple .hero-left .offer-points h2 {
     font-size: 28px;
   }
-  .credit-card-hero-simple .hero-container .hero-right.col-4 {
-    flex: 0 0 100%;
-    max-width: 100%;
+  .credit-card-hero-simple .hero-right {
     order: 1;
   }
 }
-
 .credit-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -1289,7 +1312,7 @@ div[class*=course-library__tab--]::after {
 }
 .destinations-map .destinations-list-container {
   width: calc(27% - 0.5rem);
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   text-transform: uppercase;
   font-size: 14px;
   padding: 20px;
@@ -1424,7 +1447,7 @@ div[class*=course-library__tab--]::after {
 
 .enchanted-link {
   padding: 4rem 2rem;
-  background-color: #F5F2EF;
+  background-color: #f5f2ef;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1433,7 +1456,7 @@ div[class*=course-library__tab--]::after {
 .enchanted-link .pre-title {
   color: #222;
   text-align: center;
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   font-size: 1.5625rem;
   font-weight: 400;
   line-height: 1.5rem;
@@ -1442,7 +1465,7 @@ div[class*=course-library__tab--]::after {
 }
 .enchanted-link .section-title {
   font-family: "Net MoonTime", sans-serif;
-  color: var(--OFP-CTA, #F0A9AD);
+  color: var(--OFP-CTA, #f0a9ad);
   text-align: center;
   font-size: 7.8125rem;
   font-weight: 400;
@@ -1468,7 +1491,7 @@ div[class*=course-library__tab--]::after {
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   position: relative;
 }
 .enchanted-link .links-grid::before {
@@ -1478,7 +1501,7 @@ div[class*=course-library__tab--]::after {
   top: 20px;
   bottom: 20px;
   width: 1px;
-  background-color: #D7D7D7;
+  background-color: #d7d7d7;
   transform: translateX(-50%);
 }
 .enchanted-link .link-item {
@@ -1498,7 +1521,7 @@ div[class*=course-library__tab--]::after {
   left: 20px;
   right: 20px;
   height: 1px;
-  background-color: #D7D7D7;
+  background-color: #d7d7d7;
 }
 .enchanted-link .link-item:nth-child(1)::after, .enchanted-link .link-item:nth-child(2)::after, .enchanted-link .link-item:nth-child(3)::after, .enchanted-link .link-item:nth-child(4)::after {
   content: "";
@@ -1507,7 +1530,7 @@ div[class*=course-library__tab--]::after {
   left: 20px;
   right: 20px;
   height: 1px;
-  background-color: #D7D7D7;
+  background-color: #d7d7d7;
 }
 .enchanted-link .link-content {
   padding: 2rem 1.5rem;
@@ -1531,7 +1554,7 @@ div[class*=course-library__tab--]::after {
 }
 .enchanted-link .link-number {
   text-align: right;
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   font-size: 3.125rem;
   font-weight: 400;
   line-height: 3.125rem;
@@ -1563,7 +1586,7 @@ div[class*=course-library__tab--]::after {
     left: 20px;
     right: 20px;
     height: 1px;
-    background-color: #D7D7D7;
+    background-color: #d7d7d7;
   }
   .enchanted-link .links-grid .link-item:nth-child(n+2)::before {
     display: none;
@@ -1624,7 +1647,6 @@ div[class*=course-library__tab--]::after {
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 6.25rem;
-  font-style: normal;
   font-weight: 400;
 }
 @media screen and (max-width: 991px) {
@@ -1632,7 +1654,7 @@ div[class*=course-library__tab--]::after {
     font-size: 5rem;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .extra-benefits__title {
     font-size: 3.125rem;
   }
@@ -1652,37 +1674,35 @@ div[class*=course-library__tab--]::after {
 .extra-benefits__benefits .benefit .icon {
   width: 110px;
 }
-@media screen and (max-width: 767px) {
-  .extra-benefits__benefits .benefit .icon {
-    width: 100%;
-  }
-}
 .extra-benefits__benefits .benefit .content {
   width: calc(100% - 110px - 76px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
 }
 .extra-benefits__benefits .benefit .content .benefit-title {
   margin: 0;
   font-family: "Versailles", sans-serif;
   font-size: 2.0703125rem;
-  font-style: normal;
   font-weight: 400;
 }
 .extra-benefits__benefits .benefit .content .benefit-description {
   font-family: "GlacialIndifference", sans-serif;
   font-size: 0.9375rem;
-  font-style: normal;
   font-weight: 400;
 }
-@media screen and (max-width: 767px) {
-  .extra-benefits__benefits .benefit .content {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .extra-benefits__benefits .benefit {
     margin-top: 1.875rem;
     padding: 1.25rem;
     gap: 1.25rem;
+  }
+  .extra-benefits__benefits .benefit .icon {
+    width: 100%;
+  }
+  .extra-benefits__benefits .benefit .content {
+    width: 100%;
   }
 }
 
@@ -1724,7 +1744,7 @@ div[class*=course-library__tab--]::after {
   line-height: 0;
 }
 .my-favorite-cards__title span {
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   font-size: 10rem;
   font-weight: 400;
   line-height: 12rem;
@@ -1741,7 +1761,7 @@ div[class*=course-library__tab--]::after {
     width: 50%;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .my-favorite-cards__image {
     width: 90%;
   }
@@ -1774,7 +1794,7 @@ div[class*=course-library__tab--]::after {
   border-radius: 30px;
   background-color: #f7f0e6;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .my-favorite-cards__card {
     text-align: center;
     justify-content: center;
@@ -1783,7 +1803,7 @@ div[class*=course-library__tab--]::after {
 .my-favorite-cards__card-img {
   width: calc(35% - 0.5rem);
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .my-favorite-cards__card-img {
     width: 60%;
   }
@@ -1791,7 +1811,7 @@ div[class*=course-library__tab--]::after {
 .my-favorite-cards__card-content {
   width: calc(65% - 0.5rem);
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .my-favorite-cards__card-content {
     width: 100%;
   }
@@ -1806,7 +1826,7 @@ div[class*=course-library__tab--]::after {
 .my-favorite-cards__card-cta {
   padding: 0;
   background-color: transparent;
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   color: #f0a8ad;
   letter-spacing: 3px;
 }
@@ -1823,7 +1843,7 @@ div[class*=course-library__tab--]::after {
 }
 .my-favorite-cards__cta {
   background-color: transparent;
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   font-size: 1.2rem;
   letter-spacing: 3px;
 }
@@ -1834,6 +1854,84 @@ div[class*=course-library__tab--]::after {
 .my-favorite-cards__cta:hover {
   background-color: transparent;
   color: #f0a8ad;
+}
+
+.sidebar .container {
+  flex-direction: column;
+  gap: 2rem;
+}
+.sidebar .my-favorite-cards {
+  padding: 16px;
+  background: #9abfcc;
+}
+.sidebar .my-favorite-cards__left-col {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.sidebar .my-favorite-cards__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+.sidebar .my-favorite-cards__title .styled {
+  font-size: 40px;
+  line-height: 40px;
+}
+.sidebar .my-favorite-cards__title span {
+  display: flex;
+  gap: 0.1rem;
+  font-size: 50px;
+  line-height: 40px;
+}
+.sidebar .my-favorite-cards__image {
+  display: none;
+}
+.sidebar .my-favorite-cards__right-col {
+  width: 100%;
+}
+.sidebar .my-favorite-cards__cards {
+  gap: 2rem;
+}
+.sidebar .my-favorite-cards__card {
+  padding: 0;
+  flex-direction: column;
+  background-color: transparent;
+}
+.sidebar .my-favorite-cards__card-img {
+  width: 134px;
+}
+.sidebar .my-favorite-cards__card-content {
+  width: 100%;
+}
+.sidebar .my-favorite-cards__card-title {
+  font-size: 18px;
+  font-weight: 400;
+}
+.sidebar .my-favorite-cards__card-offer {
+  font-weight: 700;
+}
+.sidebar .my-favorite-cards__card-cta {
+  padding: 0;
+  background-color: transparent;
+  font-family: "League Gothic", sans-serif;
+  color: #222;
+  letter-spacing: 3px;
+}
+.sidebar .my-favorite-cards__card-cta:hover {
+  background-color: transparent;
+  color: #9abfcc;
+}
+.sidebar .my-favorite-cards__card-cta:visited {
+  color: #f0a8ad;
+}
+.sidebar .my-favorite-cards__card-cta:visited:hover {
+  background-color: transparent;
+  color: #9abfcc;
+}
+.sidebar .my-favorite-cards__cta {
+  display: none;
 }
 
 .favorite-cards-section {
@@ -1868,7 +1966,6 @@ div[class*=course-library__tab--]::after {
   text-align: center;
   font-family: "Net MoonTime", sans-serif;
   font-size: 6.25rem;
-  font-weight: 400;
   line-height: 74.4px;
 }
 .favorite-cards-section .section-header .title h2 .second-line {
@@ -1877,7 +1974,6 @@ div[class*=course-library__tab--]::after {
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 6.25rem;
-  font-weight: 400;
   line-height: 74.4px;
   text-transform: uppercase;
 }
@@ -1921,7 +2017,7 @@ div[class*=course-library__tab--]::after {
   margin: 0;
 }
 .favorite-cards-section .learn-more {
-  color: var(--OFP-CTA, #F0A9AD);
+  color: var(--OFP-CTA, #f0a9ad);
   text-align: center;
   font-family: "GlacialIndifference", sans-serif;
   text-decoration: none;
@@ -1932,9 +2028,9 @@ div[class*=course-library__tab--]::after {
   transition: color 0.3s ease;
 }
 .favorite-cards-section .learn-more:hover {
-  color: #9BBFCD;
+  color: #9bbfcd;
 }
-@media (max-width: 968px) {
+@media screen and (max-width: 968px) {
   .favorite-cards-section .cards-wrapper {
     gap: 30px;
   }
@@ -1942,7 +2038,7 @@ div[class*=course-library__tab--]::after {
     width: 260px;
   }
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .favorite-cards-section {
     padding: 60px 0;
   }
@@ -1972,7 +2068,7 @@ div[class*=course-library__tab--]::after {
     padding: 30px 25px;
   }
 }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .favorite-cards-section .container {
     padding: 0 15px;
   }
@@ -2001,13 +2097,20 @@ div[class*=course-library__tab--]::after {
 
 .favorite-things {
   padding: 8rem 0 4rem;
-  background-color: #F5F2EF;
+  background-color: #f5f2ef;
 }
 .favorite-things .container {
+  margin-top: 4rem;
   flex-direction: column;
   max-width: 1320px;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
+}
+.favorite-things .title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 .favorite-things .title-container .title {
   display: flex;
@@ -2018,6 +2121,7 @@ div[class*=course-library__tab--]::after {
   font-size: 120px;
   font-weight: 400;
   line-height: 62%;
+  z-index: 1;
 }
 @media screen and (max-width: 1439px) {
   .favorite-things .title-container .title {
@@ -2120,17 +2224,14 @@ div[class*=course-library__tab--]::after {
   gap: 0.5rem;
   text-align: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .free-consultation__left {
     padding: 2rem 1rem;
   }
 }
 .free-consultation__left-sub-title {
   font-family: "GlacialIndifference", sans-serif;
-  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 2.475rem;
-  text-transform: uppercase;
   margin: 0;
 }
 .free-consultation__left-title {
@@ -2139,7 +2240,7 @@ div[class*=course-library__tab--]::after {
   font-weight: 400;
   font-size: 2rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .free-consultation__left-title {
     font-size: 1rem;
   }
@@ -2162,7 +2263,7 @@ div[class*=course-library__tab--]::after {
   top: 1rem;
   left: -1px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .free-consultation__right {
     padding: 2rem 1rem;
   }
@@ -2174,15 +2275,14 @@ div[class*=course-library__tab--]::after {
   font-weight: 400;
   line-height: 4rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .free-consultation__right-title {
     font-size: 3rem;
     line-height: 2rem;
   }
 }
 .free-consultation__right-description {
-  font-size: 1.125rem;
-  line-height: 2.475rem;
+  font-size: 1.1rem;
 }
 .free-consultation__right-cta {
   display: flex;
@@ -2190,13 +2290,6 @@ div[class*=course-library__tab--]::after {
   gap: 0.5rem;
   font-weight: 400;
   letter-spacing: 2px;
-}
-.free-consultation__right-cta span {
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 2.8px;
-  text-transform: uppercase;
-  text-align: center;
 }
 
 .free-quiz-section {
@@ -2231,7 +2324,7 @@ div[class*=course-library__tab--]::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2241,14 +2334,12 @@ div[class*=course-library__tab--]::after {
 .free-quiz-container {
   width: 100%;
   max-width: 1200px;
-  margin: auto;
   display: flex;
 }
 
 .free-quiz-card {
-  background: #F7F0E5;
+  background-color: #f7f0e5;
   padding: 4rem 5rem;
-  border-radius: 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
@@ -2300,7 +2391,7 @@ div[class*=course-library__tab--]::after {
 }
 
 .free-quiz-button {
-  color: var(--OFP-CTA, #F0A9AD);
+  color: var(--OFP-CTA, #f0a9ad);
   text-align: center;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 1.125rem;
@@ -2352,7 +2443,7 @@ div[class*=course-library__tab--]::after {
 }
 .free-resources {
   padding: 4rem 0;
-  background-color: #F6F2EF;
+  background-color: #f6f2ef;
 }
 .free-resources .container {
   max-width: 840px;
@@ -2466,11 +2557,10 @@ div[class*=course-library__tab--]::after {
 
 .free-resources-list {
   padding: 4rem 0;
-  background-color: #F6F2EF;
+  background-color: #f6f2ef;
 }
 .free-resources-list .container {
   max-width: 1020px;
-  flex-wrap: nowrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -2510,7 +2600,6 @@ div[class*=course-library__tab--]::after {
   }
 }
 .free-resources-list__description {
-  width: 100%;
   text-align: center;
 }
 .free-resources-list__resources {
@@ -2541,7 +2630,7 @@ div[class*=course-library__tab--]::after {
   bottom: 6px;
   width: 100%;
   height: 1px;
-  background-color: #E5AF9A;
+  background-color: #e5af9a;
 }
 .free-resources-list__discover-more .ctas {
   display: flex;
@@ -2558,9 +2647,9 @@ div[class*=course-library__tab--]::after {
 
 .resource-list {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 2rem 0;
-  border-bottom: 1px solid #222222;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.2509803922);
 }
 @media screen and (max-width: 768px) {
   .resource-list {
@@ -2636,7 +2725,7 @@ div[class*=course-library__tab--]::after {
 
 .guides-section {
   padding: 6rem 15rem;
-  background: #F5F2EF;
+  background-color: #f5f2ef;
 }
 .guides-section__title {
   color: #070707;
@@ -2666,7 +2755,7 @@ div[class*=course-library__tab--]::after {
 }
 
 .guides-cta-button {
-  color: var(--OFP-CTA, #F0A9AD);
+  color: var(--OFP-CTA, #f0a9ad);
   text-align: center;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 1.125rem;
@@ -2779,10 +2868,10 @@ div[class*=course-library__tab--]::after {
     min-height: 250px;
   }
   .guide-card__title {
-    font-size: 2rem !important;
-    width: 250px !important;
-    height: 60px !important;
-    line-height: 35px !important;
+    font-size: 2rem;
+    width: 250px;
+    height: 60px;
+    line-height: 35px;
   }
   .guides-cta-button {
     padding: 0.8rem 1.5rem;
@@ -2908,7 +2997,7 @@ div[class*=course-library__tab--]::after {
     padding: 3rem 0;
   }
 }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .hero-image {
     min-height: 350px;
     height: 60vh;
@@ -2970,17 +3059,17 @@ div[class*=course-library__tab--]::after {
   background-position: center center;
   display: block;
 }
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .hero-image .desktop-bg {
     background-attachment: scroll;
   }
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .hero-image .desktop-bg {
     display: block !important;
   }
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero-image .desktop-bg {
     display: none !important;
   }
@@ -2990,7 +3079,7 @@ div[class*=course-library__tab--]::after {
   background-position: center center;
   display: none;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero-image .mobile-bg {
     display: block !important;
   }
@@ -3021,27 +3110,27 @@ div[class*=course-library__tab--]::after {
   min-height: 100%;
   transform: translate(-50%, -50%);
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .hero-image .hero-video-bg iframe,
   .hero-image .hero-video-bg video {
     width: 177.77vh;
     height: 56.25vw;
   }
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero-image .hero-video-bg iframe,
   .hero-image .hero-video-bg video {
     width: 300%;
     height: 300%;
   }
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero-image.has-vimeo .hero-video-bg iframe {
     width: 300%;
     height: 300%;
   }
 }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .hero-image.has-vimeo .hero-video-bg iframe {
     width: 400%;
     height: 400%;
@@ -3053,7 +3142,7 @@ div[class*=course-library__tab--]::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 .hero-image .hero-content {
@@ -3067,13 +3156,13 @@ div[class*=course-library__tab--]::after {
   align-items: center;
   padding: 2rem;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .hero-image .hero-content {
     min-height: 400px;
     padding: 1.5rem;
   }
 }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .hero-image .hero-content {
     min-height: 350px;
     padding: 1rem;
@@ -3083,8 +3172,7 @@ div[class*=course-library__tab--]::after {
   margin: 0;
   font-family: "Net MoonTime", sans-serif;
   font-size: 14rem;
-  line-height: 6rem;
-  font-weight: 400;
+  line-height: 10rem;
 }
 @media screen and (max-width: 991px) {
   .hero-image .hero-title {
@@ -3126,8 +3214,6 @@ div[class*=course-library__tab--]::after {
   gap: 1rem;
   font-family: "Versailles", sans-serif;
   font-size: 1.1963125rem;
-  font-style: normal;
-  font-weight: 400;
   text-transform: uppercase;
   text-decoration: none;
 }
@@ -3212,7 +3298,7 @@ div[class*=course-library__tab--]::after {
 }
 .lets-connect__content .title {
   margin: 0;
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   font-size: 5.5rem;
   font-weight: 400;
   color: #66B1BB;
@@ -3284,7 +3370,7 @@ div[class*=course-library__tab--]::after {
   object-fit: contain;
 }
 .lets-connect__content .social-links__link:hover {
-  background-color: #FFD6D9;
+  background-color: #ffd6d9;
 }
 
 .must-read {
@@ -3295,12 +3381,11 @@ div[class*=course-library__tab--]::after {
   flex-direction: column;
 }
 .must-read__title {
-  margin: 0 0 3rem 0;
+  margin: 0 0 3rem;
   color: #101010;
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 3.4765625rem;
-  font-style: normal;
   font-weight: 400;
 }
 .must-read__posts {
@@ -3316,7 +3401,7 @@ div[class*=course-library__tab--]::after {
   gap: 1rem;
   text-decoration: none;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .must-read__post {
     width: 100%;
   }
@@ -3326,7 +3411,7 @@ div[class*=course-library__tab--]::after {
   top: -8%;
   right: -11%;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .must-read__post .top__badge {
     right: 0;
   }
@@ -3336,17 +3421,16 @@ div[class*=course-library__tab--]::after {
   height: 354px;
   object-fit: cover;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .must-read__post .post-image img {
     width: 100%;
     height: auto;
   }
 }
 .must-read__post .categories {
-  color: #F0A9AD;
-  font-family: "LeagueGothic", sans-serif;
+  color: #f0a9ad;
+  font-family: "League Gothic", sans-serif;
   font-size: 1.25rem;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.5rem;
   letter-spacing: 1.5px;
@@ -3356,7 +3440,6 @@ div[class*=course-library__tab--]::after {
   color: #222;
   font-family: "Versailles", sans-serif;
   font-size: 1.25rem;
-  font-style: normal;
   font-weight: 400;
 }
 
@@ -3391,7 +3474,7 @@ div[class*=course-library__tab--]::after {
 }
 .newsletter__description {
   max-width: 630px;
-  margin: 1rem auto 0 auto;
+  margin: 1rem auto 0;
 }
 .newsletter__form {
   display: flex;
@@ -3417,7 +3500,7 @@ div[class*=course-library__tab--]::after {
 }
 .newsletter__form button {
   border-radius: 0;
-  background-color: #FFD6D9;
+  background-color: #ffd6d9;
   font-family: "LeagueGothic", sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -3426,11 +3509,7 @@ div[class*=course-library__tab--]::after {
 
 .non-affiliate-disclosure-block {
   margin: 1rem 5rem;
-  background-color: transparent;
   text-align: center;
-}
-.non-affiliate-disclosure-block .disclosure-content {
-  max-width: 100%;
 }
 .non-affiliate-disclosure-block .disclosure-text {
   margin: 0;
@@ -3439,7 +3518,7 @@ div[class*=course-library__tab--]::after {
   color: #666;
   font-style: italic;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .non-affiliate-disclosure-block {
     padding: 15px;
     margin: 20px 0;
@@ -3613,8 +3692,8 @@ div[class*=course-library__tab--]::after {
   display: inline-block;
 }
 .ofp-calculator-container .btn-primary:hover {
-  background-color: #9BBFCD;
-  border-color: #9BBFCD;
+  background-color: #9bbfcd;
+  border-color: #9bbfcd;
   transform: translateY(-1px);
   color: white;
   text-decoration: none;
@@ -3801,7 +3880,7 @@ div[class*=course-library__tab--]::after {
 }
 
 .related-posts-auto-block {
-  background: #F7F0E5;
+  background-color: #f7f0e5;
   padding: 3rem 0;
   margin-bottom: -1.5rem;
 }
@@ -3831,14 +3910,14 @@ div[class*=course-library__tab--]::after {
   gap: 2rem;
   align-items: center;
   padding: 2rem 0;
-  border-bottom: 1px solid #F0A9AD;
+  border-bottom: 1px solid #f0a9ad;
   max-width: 750px;
 }
 .related-post-item:last-child {
-  border-bottom: none;
+  border-bottom: 0;
 }
 .related-post-item:nth-child(2) .related-post-category p {
-  color: #9BBFCD;
+  color: #9bbfcd;
 }
 
 .related-post-thumb a img {
@@ -3850,12 +3929,17 @@ div[class*=course-library__tab--]::after {
   aspect-ratio: 1/1;
 }
 
+.related-post-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .related-post-category p {
   margin: 0;
-  color: #F0A9AD;
+  color: #f0a9ad;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 28.8px;
   text-transform: uppercase;
@@ -3865,7 +3949,6 @@ div[class*=course-library__tab--]::after {
   color: #222;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 18px;
-  font-style: normal;
   font-weight: 400;
   line-height: 26.4px;
   text-decoration: none;
@@ -3876,6 +3959,7 @@ div[class*=course-library__tab--]::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--OFP-Gradient, linear-gradient(264deg, #d7f2f8 0%, #9bbfcd 100%));
 }
 .search-hero .container {
   width: 100%;
@@ -3884,6 +3968,27 @@ div[class*=course-library__tab--]::after {
   padding: 0 2rem;
   display: flex;
   justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .search-hero {
+    padding: 4rem 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .search-hero {
+    padding: 3rem 0;
+  }
+  .search-hero .container {
+    padding: 0 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .search-hero {
+    padding: 2rem 0;
+  }
+  .search-hero .container {
+    padding: 0 0.5rem;
+  }
 }
 
 .search-hero__content {
@@ -3895,29 +4000,59 @@ div[class*=course-library__tab--]::after {
 
 .search-hero__main-title {
   text-align: center;
-  font-family: "League Gothic";
+  font-family: "League Gothic", sans-serif;
   font-size: 24px;
-  font-style: normal;
   font-weight: 400;
   line-height: 28.8px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   animation: fadeInUp 1s ease-out 0.2s both;
 }
+@media screen and (max-width: 768px) {
+  .search-hero__main-title {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 1px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .search-hero__main-title {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+  }
+}
 
 .search-hero__search-title {
-  color: #F7F0E5;
+  color: #f7f0e5;
   text-align: center;
-  font-family: Versailles;
+  font-family: "Versailles", sans-serif;
   font-size: 126.055px;
-  font-style: normal;
   font-weight: 400;
   line-height: 126px;
   animation: fadeInUp 1s ease-out 0.4s both;
 }
+@media screen and (max-width: 1024px) {
+  .search-hero__search-title {
+    font-size: 80px;
+    line-height: 80px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .search-hero__search-title {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .search-hero__search-title {
+    font-size: 40px;
+    line-height: 40px;
+  }
+}
 
 .search-hero__form {
-  margin: 1rem 0 3rem 0;
+  margin: 1rem 0 3rem;
   animation: fadeInUp 1s ease-out 0.6s both;
 }
 .search-hero__form .search-form {
@@ -3963,88 +4098,14 @@ div[class*=course-library__tab--]::after {
   color: #999;
   font-style: italic;
 }
-
-.search-hero__trending {
-  display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
-  align-items: center;
-  animation: fadeInUp 1s ease-out 0.8s both;
-}
-.search-hero__trending .trending-label {
-  color: #F7F0E5;
-  text-align: center;
-  font-family: "League Gothic";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16.8px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  max-width: 70px;
-}
-.search-hero__trending .trending-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-.search-hero__trending .trending-button {
-  color: #222;
-  font-family: Versailles;
-  font-size: clamp(11px, 1.2vw, 16.094px);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
-  text-underline-offset: 0.5rem;
-  white-space: nowrap;
-}
-.search-hero__trending .trending-button:hover, .search-hero__trending .trending-button:active {
-  color: #F7F0E5;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 @media screen and (max-width: 1024px) {
-  .search-hero {
-    padding: 4rem 0;
-  }
-  .search-hero__search-title {
-    font-size: 80px;
-    line-height: 80px;
-  }
   .search-hero__form .search-input-container {
     padding: 0 1.5rem;
   }
-  .search-hero__trending .trending-buttons {
-    gap: 1.5rem;
-  }
 }
 @media screen and (max-width: 768px) {
-  .search-hero {
-    padding: 3rem 0;
-  }
-  .search-hero .container {
-    padding: 0 1rem;
-  }
-  .search-hero__main-title {
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: 1px;
-  }
-  .search-hero__search-title {
-    font-size: 60px;
-    line-height: 60px;
-  }
   .search-hero__form {
-    margin: 1.5rem 0 2rem 0;
+    margin: 1.5rem 0 2rem;
   }
   .search-hero__form .search-input-container {
     padding: 0 1rem;
@@ -4058,6 +4119,66 @@ div[class*=course-library__tab--]::after {
     height: 18px;
     margin-right: 0.8rem;
   }
+}
+@media screen and (max-width: 480px) {
+  .search-hero__form {
+    margin: 1rem 0 1.5rem;
+  }
+  .search-hero__form .search-input-container {
+    padding: 0 0.8rem;
+  }
+  .search-hero__form .search-field {
+    padding: 0.8rem 0;
+    font-size: 0.9rem;
+  }
+  .search-hero__form .search-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.6rem;
+  }
+}
+
+.search-hero__trending {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  animation: fadeInUp 1s ease-out 0.8s both;
+}
+.search-hero__trending .trending-label {
+  color: #f7f0e5;
+  text-align: center;
+  font-family: "League Gothic", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 16.8px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  max-width: 70px;
+}
+.search-hero__trending .trending-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.search-hero__trending .trending-button {
+  color: #222;
+  font-family: "Versailles", sans-serif;
+  font-size: clamp(11px, 1.2vw, 16.094px);
+  font-weight: 400;
+  line-height: 22px;
+  text-underline-offset: 0.5rem;
+  white-space: nowrap;
+}
+.search-hero__trending .trending-button:hover, .search-hero__trending .trending-button:active {
+  color: #f7f0e5;
+}
+@media screen and (max-width: 1024px) {
+  .search-hero__trending .trending-buttons {
+    gap: 1.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
   .search-hero__trending {
     flex-direction: column;
     gap: 1rem;
@@ -4076,36 +4197,6 @@ div[class*=course-library__tab--]::after {
   }
 }
 @media screen and (max-width: 480px) {
-  .search-hero {
-    padding: 2rem 0;
-  }
-  .search-hero .container {
-    padding: 0 0.5rem;
-  }
-  .search-hero__main-title {
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: 0.8px;
-  }
-  .search-hero__search-title {
-    font-size: 40px;
-    line-height: 40px;
-  }
-  .search-hero__form {
-    margin: 1rem 0 1.5rem 0;
-  }
-  .search-hero__form .search-input-container {
-    padding: 0 0.8rem;
-  }
-  .search-hero__form .search-field {
-    padding: 0.8rem 0;
-    font-size: 0.9rem;
-  }
-  .search-hero__form .search-icon {
-    width: 16px;
-    height: 16px;
-    margin-right: 0.6rem;
-  }
   .search-hero__trending .trending-label {
     font-size: 16px;
     line-height: 18px;
@@ -4114,9 +4205,25 @@ div[class*=course-library__tab--]::after {
     gap: 0.8rem;
   }
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .discover-more {
-  background: #F5F2EF;
+  background: #f5f2ef;
   padding: 2rem 0;
+}
+@media screen and (max-width: 480px) {
+  .discover-more {
+    padding: 1.5rem 0;
+  }
 }
 
 .discover-more__content {
@@ -4128,13 +4235,21 @@ div[class*=course-library__tab--]::after {
   border-top: 1px solid rgba(34, 34, 34, 0.25);
   padding: 3rem 0;
 }
+@media screen and (max-width: 768px) {
+  .discover-more__content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    margin-top: 0;
+  }
+}
 
 .discover-more__title {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  font-family: Versailles;
+  font-family: "Versailles", sans-serif;
   font-size: 1.3rem;
   line-height: 1rem;
   margin: 0;
@@ -4145,16 +4260,32 @@ div[class*=course-library__tab--]::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 6px;
+  bottom: -6px;
   width: 100%;
   height: 1px;
-  background-color: #E5AF9A;
+  background-color: #e5af9a;
+}
+@media screen and (max-width: 768px) {
+  .discover-more__title {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .discover-more__title {
+    font-size: 1rem;
+  }
 }
 
 .discover-more__buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .discover-more__buttons {
+    justify-content: center;
+    gap: 0.8rem;
+  }
 }
 
 .discover-more__button {
@@ -4166,38 +4297,19 @@ div[class*=course-library__tab--]::after {
   font-family: "GlacialIndifference", sans-serif;
   font-size: 14px;
 }
-
 @media screen and (max-width: 768px) {
-  .discover-more__content {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-    margin-top: 0;
-  }
-  .discover-more__title {
-    font-size: 1.1rem;
-  }
-  .discover-more__buttons {
-    justify-content: center;
-    gap: 0.8rem;
-  }
   .discover-more__button {
     padding: 0.8rem 1.5rem;
     font-size: 12px;
   }
 }
 @media screen and (max-width: 480px) {
-  .discover-more {
-    padding: 1.5rem 0;
-  }
-  .discover-more__title {
-    font-size: 1rem;
-  }
   .discover-more__button {
     padding: 0.6rem 1.2rem;
     font-size: 11px;
   }
 }
+
 .sidebar-display .sidebar {
   width: 100%;
   max-width: 100%;
@@ -4206,25 +4318,23 @@ div[class*=course-library__tab--]::after {
 .start-here {
   padding: 4rem 0;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .start-here {
     padding: 2rem 0;
   }
 }
 .start-here .container {
   justify-content: center;
+  gap: 1rem;
 }
 .start-here__title {
-  width: 100%;
   color: #222;
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 4.46775rem;
-  font-style: normal;
-  font-weight: 400;
   line-height: 6.25rem;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .start-here__title {
     font-size: 3.125rem;
   }
@@ -4234,12 +4344,16 @@ div[class*=course-library__tab--]::after {
   align-items: flex-start;
   gap: 3rem;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .start-here__content {
     flex-wrap: wrap;
   }
 }
-@media screen and (max-width: 767px) {
+.start-here__image {
+  height: 100%;
+  align-content: center;
+}
+@media screen and (max-width: 768px) {
   .start-here__image {
     display: none;
   }
@@ -4248,7 +4362,7 @@ div[class*=course-library__tab--]::after {
   display: flex;
   flex-direction: column;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .start-here__items {
     width: 100%;
   }
@@ -4263,8 +4377,6 @@ div[class*=course-library__tab--]::after {
 .start-here__item .identifier {
   font-family: "Versailles", sans-serif;
   font-size: 3.640125rem;
-  font-style: normal;
-  font-weight: 400;
 }
 @media screen and (max-width: 991px) {
   .start-here__item .identifier {
@@ -4275,8 +4387,6 @@ div[class*=course-library__tab--]::after {
   color: #222;
   font-family: "Versailles", sans-serif;
   font-size: 1.875rem;
-  font-style: normal;
-  font-weight: 400;
 }
 @media screen and (max-width: 991px) {
   .start-here__item a {
@@ -4291,15 +4401,13 @@ div[class*=course-library__tab--]::after {
   overflow-x: hidden;
 }
 .success-stories__title {
-  width: 100%;
   margin-top: 0;
   margin-bottom: 6rem;
   font-family: "Versailles", sans-serif;
   font-size: 5rem;
-  font-weight: 400;
   text-align: center;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .success-stories__title {
     font-size: 4rem;
     line-height: 4rem;
@@ -4334,7 +4442,7 @@ div[class*=course-library__tab--]::after {
 .success-stories__stories .splide__arrows .splide__arrow svg {
   width: 44px;
   height: 44px;
-  fill: #222222;
+  fill: #222;
 }
 .success-stories__stories .storie {
   position: relative;
@@ -4363,22 +4471,20 @@ div[class*=course-library__tab--]::after {
 }
 .success-stories__stories .storie-description {
   font-family: "GlacialIndifference", sans-serif;
-  font-weight: 400;
   font-size: 18px;
   margin-bottom: 1rem;
   padding: 0 1rem;
 }
 .success-stories__stories .storie-author {
   width: 100%;
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   font-size: 24px;
-  font-weight: 400;
 }
 
 .no-stories-message {
   text-align: center;
   padding: 3rem;
-  background: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   margin: 2rem 0;
 }
@@ -4400,7 +4506,6 @@ div[class*=course-library__tab--]::after {
   align-items: center;
   gap: 0.25rem;
   margin: 0;
-  font-weight: 400;
   font-size: 5rem;
   color: #fda5ac;
 }
@@ -4415,7 +4520,7 @@ div[class*=course-library__tab--]::after {
   flex-wrap: wrap;
   gap: 1rem;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .the-blog__categories {
     gap: 0.6rem;
   }
@@ -4439,7 +4544,7 @@ div[class*=course-library__tab--]::after {
 .the-blog__categories .categorie.blue {
   background-color: #9bbfcd;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .the-blog__categories .categorie {
     padding: 0.3rem 0.8rem;
     font-size: 0.8rem;
@@ -4455,12 +4560,21 @@ div[class*=course-library__tab--]::after {
   font-size: 1.5rem;
   text-transform: uppercase;
 }
+.the-blog__bar .newest-post-title {
+  color: inherit;
+  font-family: "Versailles", sans-serif;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.the-blog__bar .newest-post-title:hover {
+  color: #fda5ac;
+}
 .the-blog__bar a {
   color: inherit;
   font-family: "Versailles", sans-serif;
   text-decoration: none;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .the-blog__bar {
     padding: 1rem 0;
     font-size: 1rem;
@@ -4483,7 +4597,7 @@ div[class*=course-library__tab--]::after {
   height: 544px;
   object-fit: cover;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .the-blog__posts .post__image img {
     height: 248px;
   }
@@ -4497,7 +4611,7 @@ div[class*=course-library__tab--]::after {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .the-blog__posts .post {
     width: calc(50% - 0.5rem);
   }
@@ -4526,7 +4640,7 @@ div[class*=course-library__tab--]::after {
   height: 16px;
   border-radius: 32px;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .time-line .line {
     left: 96%;
   }
@@ -4552,7 +4666,7 @@ div[class*=course-library__tab--]::after {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .time-line__item.right::before {
     display: none;
   }
@@ -4568,12 +4682,12 @@ div[class*=course-library__tab--]::after {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .time-line__item.right::after {
     display: block;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .time-line__item.right {
     align-items: flex-end;
     text-align: right;
@@ -4593,7 +4707,7 @@ div[class*=course-library__tab--]::after {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .time-line__item.left::before {
     display: none;
   }
@@ -4603,8 +4717,6 @@ div[class*=course-library__tab--]::after {
   text-align: right;
   font-family: "Versailles", sans-serif;
   font-size: 78.32px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 114.913%;
   letter-spacing: 5px;
 }
@@ -4618,8 +4730,6 @@ div[class*=course-library__tab--]::after {
   border-bottom: 1px solid #f1cab9;
   font-family: "Versailles", sans-serif;
   font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
   line-height: 142.222%;
   letter-spacing: 0.88px;
   text-transform: uppercase;
@@ -4642,8 +4752,6 @@ div[class*=course-library__tab--]::after {
   color: #9bbfcd;
   font-family: "Versailles", sans-serif;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 180%;
   letter-spacing: 2.1px;
   text-transform: uppercase;
@@ -4667,7 +4775,7 @@ div[class*=course-library__tab--]::after {
     right: inherit !important;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .time-line__item {
     width: 100%;
     padding: 16px;
@@ -4690,10 +4798,8 @@ div[class*=course-library__tab--]::after {
 }
 .time-line .title-description .first h2 {
   margin: 0;
-  font-family: "LeagueGothic", sans-serif;
+  font-family: "League Gothic", sans-serif;
   font-size: 70px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 73.714%;
   letter-spacing: 2.15px;
   text-transform: uppercase;
@@ -4710,8 +4816,6 @@ div[class*=course-library__tab--]::after {
   text-align: right;
   font-family: "Versailles", sans-serif;
   font-size: 109.424px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 111.036%;
 }
 @media screen and (max-width: 991px) {
@@ -4719,7 +4823,7 @@ div[class*=course-library__tab--]::after {
     font-size: 85px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .time-line .title-description .first h3 {
     font-size: 70px;
   }
@@ -4728,8 +4832,6 @@ div[class*=course-library__tab--]::after {
   text-align: right;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 16.922px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 190.877%;
   letter-spacing: 0.19px;
 }
@@ -4749,6 +4851,7 @@ div[class*=course-library__tab--]::after {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+  justify-content: space-around;
 }
 @media screen and (max-width: 767px) {
   .unique-card__card {
@@ -4917,7 +5020,7 @@ div[class*=course-library__tab--]::after {
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
-  line-height: 620%;
+  line-height: 100%;
   letter-spacing: 2.4px;
   text-transform: uppercase;
 }
@@ -4946,7 +5049,7 @@ div[class*=course-library__tab--]::after {
   flex-wrap: wrap;
   gap: 2rem;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .unique-card__body-section__card {
     text-align: center;
     justify-content: center;
@@ -4968,12 +5071,12 @@ div[class*=course-library__tab--]::after {
   left: -53%;
   animation: rotation 15s linear infinite 0s;
 }
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 769px) and (max-width: 991px) {
   .unique-card__body-section__rotating-img {
     display: none;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .unique-card__body-section__rotating-img {
     position: absolute;
     top: 4rem;
@@ -4988,12 +5091,12 @@ div[class*=course-library__tab--]::after {
   align-items: flex-start;
   gap: 26px;
 }
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 769px) and (max-width: 991px) {
   .unique-card__body-section__card-content {
     width: calc(70% - 1rem);
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .unique-card__body-section__card-content {
     width: 100%;
     justify-content: center;
@@ -5004,12 +5107,7 @@ div[class*=course-library__tab--]::after {
   width: calc(50% - 1rem);
   text-align: center;
 }
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .unique-card__body-section__card-img {
-    width: calc(50% - 1rem);
-  }
-}
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .unique-card__body-section__card-img {
     width: 60%;
   }
@@ -5018,25 +5116,22 @@ div[class*=course-library__tab--]::after {
   margin: 0;
   font-family: "Versailles", sans-serif;
   font-size: 45px;
-  font-style: normal;
   font-weight: 400;
   line-height: 51px;
 }
 .unique-card__body-section__offers-container {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 .unique-card__body-section__card-new-offer {
   margin: 0;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 30px;
-  font-style: normal;
   font-weight: 700;
   letter-spacing: 6px;
   text-transform: uppercase;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .unique-card__body-section__card-new-offer {
     font-size: 26px;
   }
@@ -5045,7 +5140,6 @@ div[class*=course-library__tab--]::after {
   margin: 0;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 20px;
-  font-style: normal;
   font-weight: 700;
   letter-spacing: 4px;
   text-decoration-line: line-through;
@@ -5055,13 +5149,11 @@ div[class*=course-library__tab--]::after {
   margin: 0;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 17.719px;
-  font-style: normal;
   font-weight: 400;
   line-height: 162.54%;
 }
 .unique-card__body-section__card-current-offer .offer-ends {
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 205.714%;
   text-transform: uppercase;
@@ -5072,7 +5164,6 @@ div[class*=course-library__tab--]::after {
   background-color: transparent;
   font-family: "Versailles", sans-serif;
   font-size: 25px;
-  font-style: normal;
   font-weight: 700;
   line-height: 297.6%;
   letter-spacing: 5px;
@@ -5089,18 +5180,18 @@ div[class*=course-library__tab--]::after {
   border: 1px solid;
   content: "";
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .unique-card__body-section__card-cta::after {
     width: calc(100% - 1rem - 18px);
     bottom: 12px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 769px) and (max-width: 991px) {
   .unique-card__body-section__card-cta {
     font-size: 22px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .unique-card__body-section__card-cta {
     font-size: 18px;
   }
@@ -5111,7 +5202,6 @@ div[class*=course-library__tab--]::after {
   background-color: transparent;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 12px;
-  font-style: normal;
   font-weight: 700;
   line-height: 620%;
   letter-spacing: 2.4px;
@@ -5137,9 +5227,9 @@ div[class*=course-library__tab--]::after {
   align-items: center;
   min-height: 120px;
   padding: 24px 0;
-  border-bottom: 1px solid #D7D7D7;
+  border-bottom: 1px solid #d7d7d7;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .words-animation-section {
     height: auto !important;
     min-height: 80px;
@@ -5170,7 +5260,6 @@ div[class*=course-library__tab--]::after {
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 110px;
-  font-style: normal;
   font-weight: 400;
   line-height: 121px;
   margin: 0 2rem;
@@ -5178,7 +5267,7 @@ div[class*=course-library__tab--]::after {
   text-transform: uppercase;
   opacity: 1;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .animated-word {
     font-size: 60px;
     line-height: 66px;
@@ -5197,13 +5286,12 @@ div[class*=course-library__tab--]::after {
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 110px;
-  font-style: normal;
   font-weight: 400;
   line-height: 121px;
   margin: 0 2rem;
   opacity: 1;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .word-separator {
     font-size: 60px;
     line-height: 66px;

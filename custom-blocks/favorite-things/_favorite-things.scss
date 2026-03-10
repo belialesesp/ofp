@@ -5,121 +5,128 @@
 // =============================================================================
 
 .favorite-things {
-  padding: 8rem 0 4rem;
-  background-color: #F5F2EF;
+	padding: 8rem 0 4rem;
+	background-color: #f5f2ef;
 
-  .container {
-    flex-direction: column;
-    max-width: 1320px;
-    align-items: center;
-    justify-content: center;
-  }
+	.container {
+		margin-top: 4rem;
+		flex-direction: column;
+		max-width: 1320px;
+		align-items: center;
+		justify-content: center;
+		gap: 2rem;
+	}
 
-  // ── Title block ─────────────────────────────────────────────────────────────
-  .title-container {
-    .title {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      text-align: center;
-      font-family: $titles;
-      font-size: 120px;
-      font-weight: 400;
-      line-height: 62%;
+	// ── Title block ─────────────────────────────────────────────────────────────
+	.title-container {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
 
-      @media screen and (max-width: 1439px) {
-        font-size: 80px;
-      }
+		.title {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			text-align: center;
+			font-family: $titles;
+			font-size: 120px;
+			font-weight: 400;
+			line-height: 62%;
+			z-index: 1;
 
-      @media screen and (max-width: 767px) {
-        font-size: 30px;
-      }
-    }
+			@media screen and (max-width: 1439px) {
+				font-size: 80px;
+			}
 
-    .sub-title {
-      text-align: center;
-      font-family: $styled;
-      font-size: 100px;
-      font-weight: 400;
-      line-height: 32.3%;
-      letter-spacing: 0.95px;
+			@media screen and (max-width: 767px) {
+				font-size: 30px;
+			}
+		}
 
-      @media screen and (max-width: 767px) {
-        font-size: 50px;
-        line-height: 0;
-      }
-    }
-  }
+		.sub-title {
+			text-align: center;
+			font-family: $styled;
+			font-size: 100px;
+			font-weight: 400;
+			line-height: 32.3%;
+			letter-spacing: 0.95px;
 
-  // ── Things list ──────────────────────────────────────────────────────────────
-  .things {
-    margin-bottom: 3rem;
-  }
+			@media screen and (max-width: 767px) {
+				font-size: 50px;
+				line-height: 0;
+			}
+		}
+	}
 
-  .thing-containter {
-    display: none;
+	// ── Things list ──────────────────────────────────────────────────────────────
+	.things {
+		margin-bottom: 3rem;
+	}
 
-    .row {
-      display: flex;
-      gap: to-rem(56px);
-      margin-top: to-rem(56px);
-      flex-wrap: wrap;
-    }
+	.thing-containter {
+		display: none;
 
-    .thing {
-      width: calc(33.333% - (to-rem(112px) / 3));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 1rem;
+		.row {
+			display: flex;
+			gap: to-rem(56px);
+			margin-top: to-rem(56px);
+			flex-wrap: wrap;
+		}
 
-      @media screen and (max-width: 991px) {
-        width: 100%;
-      }
+		.thing {
+			width: calc(33.333% - (to-rem(112px) / 3));
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 1rem;
 
-      h3 {
-        text-align: center;
-        font-family: $text;
-        font-size: to-rem(30px);
-        font-weight: 400;
-        text-transform: uppercase;
-      }
+			@media screen and (max-width: 991px) {
+				width: 100%;
+			}
 
-      .description {
-        margin: 0;
-        min-height: 130px;
-        text-align: center;
-        font-family: $text;
-        font-size: to-rem(18px);
-        font-weight: 400;
-      }
+			h3 {
+				text-align: center;
+				font-family: $text;
+				font-size: to-rem(30px);
+				font-weight: 400;
+				text-transform: uppercase;
+			}
 
-      .cta {
-        text-align: center;
-        font-family: $text;
-        font-size: to-rem(14px);
-        font-weight: 700;
-        letter-spacing: 2.8px;
-        text-transform: uppercase;
-        text-underline-offset: 0.5rem;
-      }
-    }
-  }
+			.description {
+				margin: 0;
+				min-height: 130px;
+				text-align: center;
+				font-family: $text;
+				font-size: to-rem(18px);
+				font-weight: 400;
+			}
 
-  // ── Load more button ─────────────────────────────────────────────────────────
-  .load-more {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: to-rem(26px) to-rem(60px);
-    border: 0;
-    border-radius: 4rem;
-    text-align: center;
-    font-family: $text;
-    font-size: to-rem(18px);
-    font-weight: 700;
-    letter-spacing: 3.6px;
-    text-transform: uppercase;
-  }
+			.cta {
+				text-align: center;
+				font-family: $text;
+				font-size: to-rem(14px);
+				font-weight: 700;
+				letter-spacing: 2.8px;
+				text-transform: uppercase;
+				text-underline-offset: 0.5rem;
+			}
+		}
+	}
+
+	// ── Load more button ─────────────────────────────────────────────────────────
+	.load-more {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: to-rem(26px) to-rem(60px);
+		border: 0;
+		border-radius: 4rem;
+		text-align: center;
+		font-family: $text;
+		font-size: to-rem(18px);
+		font-weight: 700;
+		letter-spacing: 3.6px;
+		text-transform: uppercase;
+	}
 }
