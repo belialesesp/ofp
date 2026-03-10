@@ -94,11 +94,11 @@ if ($background_type === 'video' && $background_video) {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%) scale(1.2);
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.78vh;
+    transform: translate(-50%, -50%);
     z-index: 0;
     pointer-events: none;
     border: none;
@@ -153,7 +153,6 @@ if ($background_type === 'video' && $background_video) {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1;
 }
 </style>
 

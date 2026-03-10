@@ -1052,17 +1052,17 @@ textarea {
   font-style: italic;
 }
 @font-face {
-  font-family: "LeagueGothic Condensed";
+  font-family: "League Gothic Condensed";
   src: url("fonts/LeagueGothic_Condensed-Regular.ttf");
   font-weight: normal;
 }
 @font-face {
-  font-family: "LeagueGothic SemiCondensed";
+  font-family: "League Gothic SemiCondensed";
   src: url("fonts/LeagueGothic_SemiCondensed-Regular.ttf");
   font-weight: normal;
 }
 @font-face {
-  font-family: "LeagueGothic";
+  font-family: "League Gothic";
   src: url("fonts/LeagueGothic-Regular.ttf");
   font-weight: normal;
 }

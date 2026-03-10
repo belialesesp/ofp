@@ -1,27 +1,27 @@
 <?php
-$card_id            = get_field( 'card_to_show' );
-$image              = get_field( 'image' );
-$rotating_image     = get_field( 'rotating_image' );
+$card_id        = get_field( 'card_to_show' );
+$image          = get_field( 'image' );
+$rotating_image = get_field( 'rotating_image' );
 
+// Background settings
 $background_type        = get_field( 'background_type' );
-$background_color       = get_field( 'background_color' )        ?: '';
-$background_color_start = get_field( 'background_color_start' )  ?: '';
-$background_color_end   = get_field( 'background_color_end' )    ?: '';
+$background_color       = get_field( 'background_color' )       ?: '';
+$background_color_start = get_field( 'background_color_start' ) ?: '';
+$background_color_end   = get_field( 'background_color_end' )   ?: '';
 $rotation_deg           = absint( get_field( 'rotation_deg' ) );
-$background_image       = get_field( 'background_image' )        ?: array();
+$background_image       = get_field( 'background_image' )       ?: array();
 
-$title_color              = get_field( 'title_color' )              ?: '';
-$new_offer_color          = get_field( 'new_offer_color' )          ?: '';
-$old_offer_color          = get_field( 'old_offer_color' )          ?: '';
-$current_offer_color      = get_field( 'current_offer_color' )      ?: '';
-$learn_more_color         = get_field( 'learn_more_color' )         ?: '';
-$learn_more_hover_color   = get_field( 'learn_more_hover_color' )   ?: '';
-$rates_and_fees_color     = get_field( 'rates_and_fees_color' )     ?: '';
+// Color settings
+$title_color                = get_field( 'title_color' )                ?: '';
+$new_offer_color            = get_field( 'new_offer_color' )            ?: '';
+$old_offer_color            = get_field( 'old_offer_color' )            ?: '';
+$current_offer_color        = get_field( 'current_offer_color' )        ?: '';
+$learn_more_color           = get_field( 'learn_more_color' )           ?: '';
+$learn_more_hover_color     = get_field( 'learn_more_hover_color' )     ?: '';
+$rates_and_fees_color       = get_field( 'rates_and_fees_color' )       ?: '';
 $rates_and_fees_hover_color = get_field( 'rates_and_fees_hover_color' ) ?: '';
 
-// Get card data from options repeater
-$all_cards = get_field( 'credit_cards', 'option' );
-
+// Card data from CPT
 $card_name       = '';
 $card_image      = array();
 $new_offer       = '';
@@ -31,16 +31,19 @@ $offer_ends      = '';
 $learn_more_link = '';
 $rates_and_fees  = '';
 
-if ( $all_cards && isset( $all_cards[ $card_id ] ) ) {
-	$card_data       = $all_cards[ $card_id ];
-	$card_name       = $card_data['cci_card_name']       ?? '';
-	$card_image      = $card_data['cci_card_image']       ?? array();
-	$new_offer       = $card_data['cci_new_offer']        ?? '';
-	$old_offer       = $card_data['cci_old_offer']        ?? '';
-	$current_offer   = $card_data['cci_current_offer']    ?? '';
-	$offer_ends      = $card_data['cci_offer_ends']       ?? '';
-	$learn_more_link = $card_data['cci_learn_more_link']  ?? '';
-	$rates_and_fees  = $card_data['cci_rates_and_fees']   ?? '';
+if ( $card_id ) {
+	$credit_cards = get_field( 'credit_cards', $card_id );
+	if ( $credit_cards && isset( $credit_cards[0] ) ) {
+		$card_data       = $credit_cards[0];
+		$card_name       = get_the_title( $card_id );
+		$card_image      = $card_data['cci_card_image']    ?? array();
+		$new_offer       = $card_data['cci_new_offer']     ?? '';
+		$old_offer       = $card_data['cci_old_offer']     ?? '';
+		$current_offer   = $card_data['cci_current_offer'] ?? '';
+		$offer_ends      = $card_data['cci_offer_ends']    ?? '';
+		$learn_more_link = $card_data['cci_learn_more_link'] ?? get_permalink( $card_id );
+		$rates_and_fees  = $card_data['cci_rates_and_fees'] ?? '';
+	}
 }
 
 $blockID = 'unique-card-' . uniqid();

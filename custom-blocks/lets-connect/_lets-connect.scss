@@ -4,143 +4,137 @@
 // =============================================================================
 
 .lets-connect {
-  padding: 4rem 0;
+	padding: 4rem 0;
 
-  // Container: flex layout + spacing override relative to global .container.
-  .container {
-    max-width: 1110px;
-    align-items: center;
-    justify-content: space-around;
-  }
+	// Container: flex layout + spacing override relative to global .container.
+	.container {
+		max-width: 1110px;
+		align-items: center;
+		justify-content: space-around;
+	}
 
-  // --- Two-column layout ---------------------------------------------------
+	// --- Two-column layout ---------------------------------------------------
 
-  &__image,
-  &__content {
-    width: auto;
+	&__image,
+	&__content {
+		width: auto;
 
-    @media screen and (max-width: 991px) {
-      width: 100%;
-    }
-  }
+		@media screen and (max-width: 991px) {
+			width: 100%;
+		}
+	}
 
-  &__image {
-    max-width: 454px;
-    margin: 0;
+	&__image {
+		max-width: 454px;
+		margin: 0;
 
-    img {
-      width: 100%;
-      max-width: 454px;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 1 / 1;
+		img {
+			width: 100%;
+			max-width: 454px;
+			height: auto;
+			display: block;
+			object-fit: cover;
+			aspect-ratio: 1 / 1;
+		}
 
-      // TODO: replace localhost URL with get_template_directory_uri() value
-      // before enabling mask — currently defined in customize.css via inline WP Customizer.
-      // -webkit-mask-image: url('...Vector-1.png');
-      // -webkit-mask-size: 100% 100%;
-      // mask-image: url('...Vector-1.png');
-      // mask-size: 100% 100%;
-    }
+		@media screen and (max-width: 991px) {
+			text-align: center;
+			margin: 0 auto;
+		}
+	}
 
-    @media screen and (max-width: 991px) {
-      text-align: center;
-      margin: 0 auto;
-    }
-  }
+	// --- Content column -------------------------------------------------------
 
-  // --- Content column -------------------------------------------------------
+	&__content {
 
-  &__content {
-    @media screen and (max-width: 991px) {
-      text-align: center;
-    }
+		@media screen and (max-width: 991px) {
+			text-align: center;
+		}
 
-    .title {
-      margin: 0;
-      font-family: $LeagueGothic;
-      font-size: 5.5rem;
-      font-weight: 400;
-      color: $ofp-blue;
-    }
+		.title {
+			margin: 0;
+			font-family: $font-gothic;
+			font-size: 5.5rem;
+			font-weight: 400;
+			color: $ofp-blue;
+		}
 
-    .description {
-      max-width: 375px;
-      font-family: $text;
+		.description {
+			max-width: 375px;
+			font-family: $text;
 
-      p {
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 27px;
-      }
+			p {
+				font-weight: 400;
+				font-size: 1rem;
+				line-height: 27px;
+			}
 
-      @media screen and (max-width: 991px) {
-        margin: 0 auto;
-      }
-    }
+			@media screen and (max-width: 991px) {
+				margin: 0 auto;
+			}
+		}
 
-    // --- Social links list --------------------------------------------------
+		// --- Social links list --------------------------------------------------
 
-    .social-links {
-      max-width: 375px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+		.social-links {
+			max-width: 375px;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			margin: 0;
+			padding: 0;
+			list-style: none;
 
-      @media screen and (max-width: 991px) {
-        margin: 0 auto;
-      }
+			@media screen and (max-width: 991px) {
+				margin: 0 auto;
+			}
 
-      &__link {
-        background-color: white;
-        font-family: $titles;
-        transition: all 0.4s;
-        margin-bottom: 10px;
+			&__link {
+				background-color: white;
+				font-family: $titles;
+				transition: all 0.4s;
+				margin-bottom: 10px;
 
-        a {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          width: 100%;
-          padding: 0.5rem;
-          text-decoration: none;
-          color: inherit;
-          font-family: $titles;
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 19.8px;
-          text-transform: uppercase;
-        }
+				a {
+					display: flex;
+					align-items: center;
+					gap: 10px;
+					width: 100%;
+					padding: 0.5rem;
+					text-decoration: none;
+					color: inherit;
+					font-family: $titles;
+					font-weight: 400;
+					font-size: 14px;
+					line-height: 19.8px;
+					text-transform: uppercase;
+				}
 
-        .icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 30px;
-          height: 30px;
-        }
+				.icon {
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
+					width: 30px;
+					height: 30px;
+				}
 
-        .dashicons {
-          font-size: 24px;
-          width: auto;
-          height: auto;
-          line-height: 1;
-        }
+				.dashicons {
+					font-size: 24px;
+					width: auto;
+					height: auto;
+					line-height: 1;
+				}
 
-        img {
-          width: 24px;
-          height: 24px;
-          object-fit: contain;
-        }
+				img {
+					width: 24px;
+					height: 24px;
+					object-fit: contain;
+				}
 
-        &:hover {
-          background-color: #FFD6D9;
-        }
-      }
-    }
-  }
+				&:hover {
+					background-color: #ffd6d9;
+				}
+			}
+		}
+	}
 }

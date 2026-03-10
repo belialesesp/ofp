@@ -1,116 +1,116 @@
-@use '../../css/variables' as *;
+@use "../../css/variables" as *;
 
 .box-grid {
-  padding: 5rem 0;
+	padding: 5rem 0;
 
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 25px;
 
-    @media screen and (max-width: $bp-lg) {
-      justify-content: center;
-    }
-  }
+		@media screen and (max-width: $bp-lg) {
+			justify-content: center;
+		}
+	}
 
-  &__box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: calc(33.333% - (50px / 3));
-    padding: 20px 20px 34px;
+	&__box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		width: calc(33.333% - (50px / 3));
+		padding: 20px 20px 34px;
 
-    @media screen and (max-width: $bp-lg) {
-      width: calc(50% - 25px);
-    }
+		@media screen and (max-width: $bp-lg) {
+			width: calc(50% - 25px);
+		}
 
-    @media screen and (max-width: $bp-sm) {
-      width: 100%;
-    }
+		@media screen and (max-width: $bp-sm) {
+			width: 100%;
+		}
 
-    .title {
-      width: 100%;
-      margin: 0;
-      padding: 2.5rem 0;
-      background-size: contain;
-      background-position: center center;
-      background-repeat: no-repeat;
-      font-family: $font-gothic;
-      font-size: 22px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 106.364%;
-      letter-spacing: 1.95px;
-      text-transform: uppercase;
-      text-align: center;
-    }
+		.title {
+			width: 100%;
+			margin: 0;
+			padding: 2.5rem 0;
+			background-size: contain;
+			background-position: center center;
+			background-repeat: no-repeat;
+			font-family: $font-gothic;
+			font-size: 22px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.06364;
+			letter-spacing: 1.95px;
+			text-transform: uppercase;
+			text-align: center;
+		}
 
-    a[id^='cta-'] {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      position: relative;
-      font-family: $font-glacial;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.4s;
+		a[id^="cta-"] {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			position: relative;
+			font-family: $font-glacial;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 700;
+			letter-spacing: 4px;
+			text-transform: uppercase;
+			text-decoration: none;
+			transition: all 0.4s;
 
-      &::after {
-        position: absolute;
-        width: calc(100% - 1rem - 15px);
-        left: 0;
-        bottom: -3px;
-        content: '';
-        border: 1px solid;
-      }
+			&::after {
+				position: absolute;
+				width: calc(100% - 1rem - 15px);
+				left: 0;
+				bottom: -3px;
+				content: "";
+				border: 1px solid;
+			}
 
-      @media screen and (max-width: $bp-lg) {
-        font-size: 16px;
-      }
-    }
+			@media screen and (max-width: $bp-lg) {
+				font-size: 16px;
+			}
+		}
 
-    .items-list {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+		.items-list {
+			margin-top: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
 
-      .item {
-        display: flex;
-        gap: 24px;
-        align-items: flex-start;
+			.item {
+				display: flex;
+				gap: 24px;
+				align-items: flex-start;
 
-        .item-description {
-          font-family: $font-glacial;
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 400;
+				.item-description {
+					font-family: $font-glacial;
+					font-size: 16px;
+					font-style: normal;
+					font-weight: 400;
 
-          p {
-            margin: 0;
-          }
-        }
-      }
-    }
+					p {
+						margin: 0;
+					}
+				}
+			}
+		}
 
-    .amount {
-      margin: 20px;
-      font-family: $font-glacial;
-      font-size: 80px;
-      font-style: normal;
-      font-weight: 400;
-    }
+		.amount {
+			margin: 20px;
+			font-family: $font-glacial;
+			font-size: 80px;
+			font-style: normal;
+			font-weight: 400;
+		}
 
-    .fee-description {
-      font-family: $font-glacial;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-    }
-  }
+		.fee-description {
+			font-family: $font-glacial;
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 400;
+		}
+	}
 }

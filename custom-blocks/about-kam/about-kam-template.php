@@ -50,65 +50,6 @@ if ($float_video) {
 }
 ?>
 
-<style>
-/* Ensure parent container has relative positioning */
-.about-kam .container {
-    position: relative;
-}
-
-/* Float image/video circular container */
-.about-kam__float-image {
-    position: absolute;
-    width: 200px; /* Adjust to match your design */
-    height: 200px; /* Adjust to match your design */
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid;
-    bottom: 50px; /* Adjust positioning as needed */
-    left: 50px; /* Adjust positioning as needed */
-    z-index: 10;
-    background: #000; /* Black background for videos */
-    -webkit-mask-image: -webkit-radial-gradient(white, black); /* Ensures border-radius works in Safari */
-}
-
-/* Ensure images fill the circle properly */
-.about-kam__float-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Video-specific styling */
-.about-kam__float-video {
-    background: #000; /* Black background for videos */
-}
-
-.about-kam__float-video iframe,
-.about-kam__float-video video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 177%; /* Scale to cover circle fully */
-    height: 177%; /* Scale to cover circle fully */
-    min-width: 177%;
-    min-height: 177%;
-    object-fit: cover;
-    border: none;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .about-kam__float-image {
-        width: 150px;
-        height: 150px;
-        bottom: 30px;
-        left: 30px;
-    }
-}
-</style>
-
 <div class="about-kam" style="background-color: <?= $background_color ?>;">
   <div class="container">
     <h3 class="about-kam__sub-title" style="color: <?= $sub_title_color ?>">
