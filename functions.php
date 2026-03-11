@@ -227,81 +227,147 @@ add_action('widgets_init', 'our_family_passport_widgets_init');
 /**
  * Enqueue scripts and styles.
  */
-function our_family_passport_scripts()
-{
+/**
+ * Enqueue scripts and styles.
+ *
+ * Changes from previous version:
+ * - ofp-styles.css and custom-blocks/styles.css are now non-blocking (preload + onload swap)
+ * - splide.min.css is now conditional — only enqueued on pages that use the slider
+ * - style.css remains render-blocking (required for base layout)
+ */
+function our_family_passport_scripts() {
+
+    // ------------------------------------------------------------------
+    // Base theme stylesheet — render-blocking (intentional)
+    // ------------------------------------------------------------------
     wp_enqueue_style(
         'our-family-passport-style',
         get_stylesheet_uri(),
-        array(),
+        [],
         filemtime( get_template_directory() . '/style.css' )
     );
+    wp_style_add_data( 'our-family-passport-style', 'rtl', 'replace' );
 
-    $ofp_styles = get_template_directory() . '/css/ofp-styles.css';
-    if ( file_exists( $ofp_styles ) ) {
+    // ------------------------------------------------------------------
+    // Main theme stylesheet — non-blocking preload
+    // ------------------------------------------------------------------
+    $ofp_styles_path = get_template_directory() . '/css/ofp-styles.css';
+    if ( file_exists( $ofp_styles_path ) ) {
+        $ofp_styles_ver = filemtime( $ofp_styles_path );
+        $ofp_styles_url = esc_url( get_stylesheet_directory_uri() . '/css/ofp-styles.css' );
+
+        // Register so other handles can declare dependency on it.
+        wp_register_style( 'our-family-passport-custom-styles', $ofp_styles_url, [], $ofp_styles_ver );
+
+        // Emit a <link rel="preload"> instead of a blocking <link rel="stylesheet">.
+        add_action( 'wp_head', function () use ( $ofp_styles_url, $ofp_styles_ver ) {
+            echo '<link rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"'
+               . ' href="' . $ofp_styles_url . '?ver=' . $ofp_styles_ver . '">' . "\n";
+            // Fallback for JS-disabled browsers.
+            echo '<noscript><link rel="stylesheet" href="' . $ofp_styles_url . '?ver=' . $ofp_styles_ver . '"></noscript>' . "\n";
+        }, 2 );
+    }
+
+    // ------------------------------------------------------------------
+    // Custom blocks stylesheet — non-blocking preload
+    // ------------------------------------------------------------------
+    $blocks_styles_path = get_template_directory() . '/custom-blocks/styles.css';
+    if ( file_exists( $blocks_styles_path ) ) {
+        $blocks_ver = defined( 'OFP_VERSION' ) ? OFP_VERSION : wp_get_theme()->get( 'Version' );
+        $blocks_url = esc_url( get_stylesheet_directory_uri() . '/custom-blocks/styles.css' );
+
+        add_action( 'wp_head', function () use ( $blocks_url, $blocks_ver ) {
+            echo '<link rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"'
+               . ' href="' . $blocks_url . '?ver=' . $blocks_ver . '">' . "\n";
+            echo '<noscript><link rel="stylesheet" href="' . $blocks_url . '?ver=' . $blocks_ver . '"></noscript>' . "\n";
+        }, 3 );
+    }
+
+    // ------------------------------------------------------------------
+    // FontAwesome — global, render-blocking (used in header/nav)
+    // ------------------------------------------------------------------
+    wp_enqueue_style(
+        'font-awesome-6',
+        esc_url( get_stylesheet_directory_uri() . '/fontawesome/css/all.min.css' ),
+        [],
+        '6.5.1'
+    );
+
+    // ------------------------------------------------------------------
+    // Splide CSS — conditional: only on pages with slider blocks
+    // ------------------------------------------------------------------
+    $splide_blocks = [ 'acf/success-stories', 'acf/course-library' ];
+    $needs_splide  = false;
+    foreach ( $splide_blocks as $block ) {
+        if ( has_block( $block ) ) {
+            $needs_splide = true;
+            break;
+        }
+    }
+
+    if ( $needs_splide ) {
         wp_enqueue_style(
-            'our-family-passport-custom-styles',
-            esc_url( get_stylesheet_directory_uri() . '/css/ofp-styles.css' ),
-            array(),
-            filemtime( $ofp_styles )
+            'splide-slider-styles',
+            esc_url( get_stylesheet_directory_uri() . '/js/splide-slide/css/splide.min.css' ),
+            [],
+            '4.1.2'
+        );
+        wp_enqueue_script(
+            'splide-slider',
+            get_template_directory_uri() . '/js/splide-slide/js/splide.min.js',
+            [],
+            '4.1.2',
+            true
         );
     }
 
-    wp_enqueue_style( 'font-awesome-6', esc_url( get_stylesheet_directory_uri() . '/fontawesome/css/all.min.css' ), array(), '6.5.1' );
-    wp_enqueue_style( 'splide-slider-styles', esc_url( get_stylesheet_directory_uri() . '/js/splide-slide/css/splide.min.css' ), array(), '6.5.1' );
-    wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css', array(), '5.3.0' );
-wp_enqueue_script( 'bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js', array(), '5.3.0', true );
-    wp_style_add_data( 'our-family-passport-style', 'rtl', 'replace' );
+    // ------------------------------------------------------------------
+    // Bootstrap — global (used theme-wide)
+    // ------------------------------------------------------------------
+    wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css', [], '5.3.0' );
+    wp_enqueue_script( 'bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js', [], '5.3.0', true );
 
+    // ------------------------------------------------------------------
+    // Navigation JS
+    // ------------------------------------------------------------------
     $nav_js = get_template_directory() . '/js/navigation.js';
     if ( file_exists( $nav_js ) ) {
         wp_enqueue_script(
             'our-family-passport-navigation',
             get_template_directory_uri() . '/js/navigation.js',
-            array(),
+            [],
             filemtime( $nav_js ),
             true
         );
     }
 
-$splide_blocks = array( 'acf/success-stories', 'acf/course-library' );
-$needs_splide  = false;
-foreach ( $splide_blocks as $block ) {
-    if ( has_block( $block ) ) {
-        $needs_splide = true;
-        break;
-    }
-}
-
-if ( $needs_splide ) {
-    wp_enqueue_script(
-        'splide-slider',
-        get_template_directory_uri() . '/js/splide-slide/js/splide.min.js',
-        array(),
-        '4.1.2',
-        true
-    );
-}
+    // ------------------------------------------------------------------
+    // Main theme JS
+    // ------------------------------------------------------------------
     $ofp_js = get_template_directory() . '/js/ofp-functions.js';
     if ( file_exists( $ofp_js ) ) {
         wp_enqueue_script(
             'our-family-passport-functions',
             get_template_directory_uri() . '/js/ofp-functions.js',
-            array(),
+            [],
             filemtime( $ofp_js ),
             true
         );
-        wp_localize_script( 'our-family-passport-functions', 'ofp_ajax', array(
+        wp_localize_script( 'our-family-passport-functions', 'ofp_ajax', [
             'ajax_url'        => admin_url( 'admin-ajax.php' ),
             'load_more_nonce' => wp_create_nonce( 'ofp_load_more_nonce' ),
             'filter_nonce'    => wp_create_nonce( 'ofp_filter_nonce' ),
-        ) );
+        ] );
     }
 
+    // ------------------------------------------------------------------
+    // Comment reply (only where needed)
+    // ------------------------------------------------------------------
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
 }
-add_action('wp_enqueue_scripts', 'our_family_passport_scripts');
+add_action( 'wp_enqueue_scripts', 'our_family_passport_scripts' );
 
 function our_family_passport_admin_scripts()
 {
@@ -1174,30 +1240,30 @@ function register_credit_cards_cpt() {
 add_action('init', 'register_credit_cards_cpt');
 
 
-// Populate ACF field with CPT Credit Cards
-function populate_credit_cards_choices($field) {
-    $field['choices'] = array();
+// Populate ACF field with CPT Credit Cards --- TODO: see if it's deprecatd, since ACF is populated via post object
+// function populate_credit_cards_choices($field) {
+//     $field['choices'] = array();
     
-    $posts = get_posts(array(
-        'post_type' => 'credit_cards',
-        'posts_per_page' => -1,
-        'post_status' => 'publish',
-        'orderby' => 'title',
-        'order' => 'ASC'
-    ));
+//     $posts = get_posts(array(
+//         'post_type' => 'credit_cards',
+//         'posts_per_page' => -1,
+//         'post_status' => 'publish',
+//         'orderby' => 'title',
+//         'order' => 'ASC'
+//     ));
     
-    $field['choices'][''] = 'Select a card...';
+//     $field['choices'][''] = 'Select a card...';
     
-    if ($posts) {
-        foreach ($posts as $post) {
-            $field['choices'][$post->ID] = $post->post_title;
-        }
-    }
+//     if ($posts) {
+//         foreach ($posts as $post) {
+//             $field['choices'][$post->ID] = $post->post_title;
+//         }
+//     }
     
-    return $field;
-}
+//     return $field;
+// }
 
-add_filter('acf/load_field/name=fc_card_option', 'populate_credit_cards_choices');
+// add_filter('acf/load_field/name=fc_card_option', 'populate_credit_cards_choices');
 
 // Blog Post Type
 add_action( 'widgets_init', function() {
@@ -1478,3 +1544,80 @@ ofp_require( get_template_directory() . '/inc/acf-helpers.php' );
 //         '1.0.0'
 //     );
 // } );
+
+
+// =============================================================================
+// Image Loading Optimization
+//
+// 1. Global lazy loading — adds loading="lazy" to all wp_get_attachment_image()
+//    calls that don't already have an explicit loading attribute.
+//
+// 2. LCP preload — hero-image and hero-content use background-image via inline
+//    <style> tags, not <img> elements. The wp_get_attachment_image_attributes
+//    filter has no effect on them. Instead, we read the ACF field value server-
+//    side and emit a <link rel="preload"> in wp_head so the browser fetches the
+//    LCP image as early as possible, before parsing the block's inline <style>.
+// =============================================================================
+
+function ofp_lazy_load_attachment_images( $attrs ) {
+    if ( ! isset( $attrs['loading'] ) ) {
+        $attrs['loading'] = 'lazy';
+    }
+    return $attrs;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'ofp_lazy_load_attachment_images' );
+
+/**
+ * Emit a <link rel="preload"> for the LCP background image on pages that
+ * contain a hero-image or hero-content block.
+ *
+ */
+function ofp_preload_hero_lcp_image() {
+    if ( ! ( is_singular() || is_front_page() || is_home() ) ) {
+        return;
+    }
+
+    $preload_url    = '';
+    $preload_url_mobile = '';
+
+    if ( has_block( 'acf/hero-image' ) ) {
+        $bg = get_field( 'background_image', get_the_ID() );
+        if ( ! empty( $bg['url'] ) ) {
+            $preload_url = $bg['url'];
+        }
+
+        $bg_mobile = get_field( 'background_mobile', get_the_ID() );
+        if ( ! empty( $bg_mobile['url'] ) ) {
+            $preload_url_mobile = $bg_mobile['url'];
+        }
+    }
+
+    if ( ! $preload_url && has_block( 'acf/hero-content' ) ) {
+        $bg_type = get_field( 'background_type', get_the_ID() );
+        if ( $bg_type === 'image' ) {
+            $bg = get_field( 'background_image', get_the_ID() );
+            if ( ! empty( $bg['url'] ) ) {
+                $preload_url = $bg['url'];
+            }
+        }
+    }
+
+    if ( ! $preload_url ) {
+        return;
+    }
+
+    echo '<link rel="preload" as="image" href="' . esc_url( $preload_url ) . '"';
+
+    if ( $preload_url_mobile ) {
+        echo ' media="(min-width: 768px)"';
+    }
+
+    echo ' fetchpriority="high">' . "\n";
+
+    if ( $preload_url_mobile ) {
+        echo '<link rel="preload" as="image" href="' . esc_url( $preload_url_mobile ) . '" media="(max-width: 767px)" fetchpriority="high">' . "\n";
+    }
+}
+add_action( 'wp_head', 'ofp_preload_hero_lcp_image', 1 );
+
+require get_template_directory() . '/inc/performance.php';
