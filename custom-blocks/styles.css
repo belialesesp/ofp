@@ -4327,6 +4327,7 @@ div[class*=course-library__tab--]::after {
   }
 }
 
+<<<<<<< Updated upstream
 .sidebar {
   gap: 3rem;
   display: flex;
@@ -5339,4 +5340,6 @@ div[class*=course-library__tab--]::after {
   }
 }
 
+=======
+>>>>>>> Stashed changes
 /*# sourceMappingURL=styles.css.map */

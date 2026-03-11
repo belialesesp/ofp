@@ -786,6 +786,7 @@ footer .footer-menu .menu .menu-item a {
   }
 }
 
+<<<<<<< Updated upstream
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -2411,4 +2412,6 @@ button:hover, button:focus,
   margin: 0;
 }
 
+=======
+>>>>>>> Stashed changes
 /*# sourceMappingURL=ofp-styles.css.map */
