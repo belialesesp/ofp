@@ -607,7 +607,7 @@ footer .footer-menu .menu .menu-item a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
@@ -635,6 +635,7 @@ footer .footer-menu .menu .menu-item a {
     height: calc(100vh - 4rem);
     overflow-x: hidden;
     overflow-y: scroll;
+    max-width: 80%;
   }
 }
 .pop-up .popup-box .left {
@@ -768,6 +769,16 @@ footer .footer-menu .menu .menu-item a {
   width: 150px;
   height: 150px;
   border-radius: 200px;
+}
+@media screen and (max-width: 991px) {
+  .pop-up .popup-box .circular-image {
+    right: 10%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .pop-up .popup-box .circular-image {
+    display: none;
+  }
 }
 .pop-up .popup-box .close-btn {
   position: absolute;
@@ -1329,7 +1340,7 @@ a.take-quizz {
 
 .main-navigation .menu .menu-item a {
   color: #9BBFCD;
-  padding: 2rem 1rem 0.5rem;
+  padding: 2rem 1rem 0.5rem !important;
 }
 
 .main-navigation li {
@@ -1677,8 +1688,7 @@ a.take-quizz {
     mask-image: radial-gradient(circle, white 100%, black 100%);
   }
 }
-.page-id-161122 .hero-content .hero-content__image.decorative-edge img,
-.about-kam-widget__image {
+.page-id-161122 .hero-content .hero-content__image.decorative-edge img {
   height: 300px;
   width: 300px;
 }

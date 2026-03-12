@@ -704,6 +704,12 @@ textarea {
   text-decoration: none;
 }
 
+@media screen and (max-width: 856px) {
+  nav#main-navigation {
+    display: none;
+  }
+}
+
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
