@@ -1,5 +1,13 @@
 @use 'variables' as *;
 
+// =============================================================================
+// HEADER
+// css/_header.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Advertiser disclosure link
+// -----------------------------------------------------------------------------
 #colophonBtn {
   position: absolute;
   top: 0;
@@ -19,6 +27,9 @@
   }
 }
 
+// -----------------------------------------------------------------------------
+// Header banner
+// -----------------------------------------------------------------------------
 .header-banner {
   padding: 1rem 0;
   background: linear-gradient(
@@ -106,6 +117,12 @@
         text-align: center;
         font-size: 1rem;
       }
+      // Hover state — migrated from _pages.scss
+      &:hover,
+      &:active,
+      &:focus {
+        background: $color-green;
+      }
     }
     @media screen and (max-width: $bp-lg) {
       width: 100%;
@@ -115,9 +132,20 @@
   }
 }
 
+// -----------------------------------------------------------------------------
+// btn-header — CTA button in the header banner
+// -----------------------------------------------------------------------------
+.btn-header {
+  background-color: $color-cream;
+  border-radius: 50px;
+}
+
+// -----------------------------------------------------------------------------
+// Look Around bar
+// -----------------------------------------------------------------------------
 .look-around {
   position: relative;
-  padding: 0.5rem 0 0.25rem;
+  padding: 0.5rem 0 1rem;
   background-color: $color-sand;
   &__quiz-link {
     a {
@@ -173,6 +201,7 @@
     &.showing {
       opacity: 1;
       right: 0;
+      z-index: 11;
     }
     .about-ofp {
       display: flex;
@@ -315,6 +344,9 @@
   }
 }
 
+// -----------------------------------------------------------------------------
+// Hamburger button
+// -----------------------------------------------------------------------------
 .hamburguer-menu {
   .hamburguer-menu__button {
     padding: 0;
@@ -333,18 +365,14 @@
 }
 
 @keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-    transform: translateY(3px);
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 1; }
+  50% { opacity: 0; transform: translateY(3px); }
+  100% { opacity: 1; }
 }
 
+// -----------------------------------------------------------------------------
+// Main navigation (desktop)
+// -----------------------------------------------------------------------------
 .main-navigation {
   position: relative;
   margin-bottom: -94px;
@@ -361,7 +389,8 @@
     justify-content: center;
     .menu-item {
       a {
-        padding: 2rem 1rem;
+        // padding override from _pages.scss
+        padding: 2rem 1rem 0.5rem !important;
         font-family: $font-glacial;
         font-size: 20px;
         font-weight: 700;
@@ -434,4 +463,48 @@
       opacity: 1;
     }
   }
+  li {
+    text-align: center;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Main menu colors — page-specific overrides
+// Migrated from _pages.scss
+// -----------------------------------------------------------------------------
+.page-id-161584 .main-navigation .menu .menu-item a,
+.page-id-161223 .main-navigation .menu .menu-item a,
+.page-id-161406 .main-navigation .menu .menu-item a {
+  color: $color-white;
+}
+
+.page-id-161122 #primary-menu a,
+.page-id-163767 #primary-menu a,
+.page-id-161058 #primary-menu a,
+.single-post #primary-menu a,
+.page-id-161443 #primary-menu a,
+.page-id-164270 #primary-menu a {
+  color: $color-green2;
+}
+
+.page-id-161122 #primary-menu a:hover,
+.page-id-163767 #primary-menu a:hover,
+.page-id-161058 #primary-menu a:hover,
+.single-post #primary-menu a:hover,
+.page-id-161443 #primary-menu a:hover {
+  color: $color-pink-cta;
+}
+
+.single-post .menu-main-menu-container,
+.page-id-161443 .menu-main-menu-container {
+  margin-bottom: 2rem;
+}
+
+.page-id-161443 .main-navigation .menu {
+  background-color: $color-cream;
+}
+
+.single-credit_cards .main-navigation .menu .menu-item a,
+.error404 .main-navigation .menu .menu-item a {
+  color: $color-blue-light;
 }

@@ -1,18 +1,43 @@
 @use 'variables' as *;
 
+// =============================================================================
+// FOOTER
+// css/_footer.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Footer wrapper
+// -----------------------------------------------------------------------------
 footer {
-  padding: 2rem 0 3rem;
+  padding: 0 0 3rem;
+
   .adverticer {
     &__tile {
       font-weight: 400;
+      font-family: $font-versailles;
+      line-height: 27px;
+      color: $color-text;
+      margin: 2rem 0 1.5rem;
     }
-    @media screen and (max-width: 767px) {
+    &__description {
+      font-family: $font-glacial;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 27px;
+      color: $color-text;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    @media screen and (max-width: $bp-sm) {
       text-align: justify;
     }
   }
+
   .footer-menu {
     .menu {
-      margin: 0;
+      margin: 1rem 0;
       padding: 0;
       list-style: none;
       display: flex;
@@ -31,5 +56,228 @@ footer {
         }
       }
     }
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  a.social-icon {
+    font-size: 25px;
+    color: $color-white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Footer container & layout
+// -----------------------------------------------------------------------------
+.footer-container {
+  padding: 3rem 0 2rem 0;
+  background: $color-blue-light;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6rem;
+  padding: 0 6rem;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.footer-right {
+  align-items: flex-start;
+}
+
+// -----------------------------------------------------------------------------
+// Footer typography
+// -----------------------------------------------------------------------------
+h3.footer-title {
+  color: $color-white;
+  text-align: center;
+  font-family: $font-glacial;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+.footer-description {
+  color: $color-white;
+  text-align: center;
+  font-family: $font-glacial;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  margin: 1rem 0;
+}
+
+h3.form-title {
+  color: $color-white;
+  text-align: center;
+  font-family: $font-gothic;
+  font-size: 31.477px;
+  font-weight: 400;
+  line-height: 37.4px;
+  text-transform: uppercase;
+}
+
+p.form-description {
+  color: $color-white;
+  font-family: $font-glacial;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.7px;
+  margin: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Newsletter form
+// -----------------------------------------------------------------------------
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+// Flodesk footer form overrides
+footer form.ff-685421b840679baaea6652ec__form {
+  padding: 0 !important;
+
+  label {
+    color: $color-white !important;
+    font-family: $font-versailles !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
+    letter-spacing: 0.1px !important;
+    text-transform: uppercase !important;
+  }
+
+  input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid $color-white !important;
+  }
+
+  button {
+    background: transparent !important;
+    border: none !important;
+    color: $color-white !important;
+    text-decoration: underline !important;
+    text-underline-offset: 0.5rem;
+    transition: color 0.3s ease;
+    padding: 12px !important;
+
+    &:hover {
+      color: $color-pink-cta !important;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive
+// -----------------------------------------------------------------------------
+@media (max-width: $bp-md) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-top.container {
+    padding: 2rem;
+    flex-direction: column;
+  }
+
+  footer p.form-description {
+    text-align: left;
+  }
+
+  .footer-center {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+
+  .footer-left,
+  .footer-right {
+    text-align: center;
+  }
+
+  .newsletter-form {
+    margin: 2rem auto;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .newsletter-footer-section {
+    padding: 60px 0 40px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-right {
+    text-align: center;
+  }
+
+  .form-title {
+    font-size: 20px;
+  }
+
+  .main-logo img {
+    max-width: 250px;
+  }
+
+  .social-icons {
+    // already inherited from footer scope above — kept for specificity
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .newsletter-footer-section {
+    padding: 40px 0 30px;
+  }
+
+  .footer-container {
+    padding: 0 15px;
+    gap: 30px;
+  }
+
+  .main-logo img {
+    max-width: 200px;
+  }
+
+  .form-title {
+    font-size: 18px;
+  }
+
+  .social-icons {
+    gap: 15px;
+  }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
   }
 }
