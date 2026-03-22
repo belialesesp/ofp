@@ -1,0 +1,51 @@
+// =============================================================================
+// VARIABLES
+// css/_variables.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Colors
+// -----------------------------------------------------------------------------
+$color-blue:        #66B1BB;   // OFP primary blue
+$color-blue-light:  #9BBFCD;   // OFP light blue / menu links
+$color-blue-pale:   #D7F2F8;   // gradient start
+$color-pink:        #F0A9AC;   // links visited / hover
+$color-pink-light:  #FFD6D9;   // light pink accent
+$color-pink-soft:   #FDA5AC;   // blog titles
+$color-pink-cta:    #F0A9AD;   // card CTA
+$color-green:       #BED8BA;   // buttons / load more
+$color-green2:      #67B1BB;   // alternate green/teal
+$color-cream:       #F5F2EF;   // backgrounds
+$color-cream-dark:  #F6F2EF;   // alternate cream
+$color-white2:      #F4F2EE;   // off white
+$color-sand:        #F7F0E5;   // sand
+
+$color-text:        #222222;   // main text
+$color-text-mid:    #404040;   // links default
+$color-text-light:  #555555;   // subtitles
+$color-text-muted:  #9A9A9A;   // error code, muted
+$color-white:       #FFFFFF;
+$color-black:       #000000;
+$color-black-soft:  #282828;   // headings, text dark
+
+// Gradients
+$gradient-blue: linear-gradient(264deg, #D7F2F8 0%, #9BBFCD 100%);
+
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+$font-glacial:      "GlacialIndifference", sans-serif;
+$font-versailles:   "Versailles", sans-serif;
+$font-moontime:     "Net MoonTime", sans-serif;
+$font-gothic:       "League Gothic", sans-serif;
+$font-jost:         "Jost", sans-serif;
+
+// -----------------------------------------------------------------------------
+// Breakpoints
+// -----------------------------------------------------------------------------
+$bp-xs:   480px;
+$bp-sm:   768px;
+$bp-md:   968px;
+$bp-lg:   991px;
+$bp-xl:   1132px;
+$bp-xxl:  1738px;
