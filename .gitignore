@@ -1,25 +1,14 @@
-/*
+# =============================================================================
+# .gitignore
+# Repository root: wp-content/themes/our-family-passport/
+# =============================================================================
 
-!.gitignore
-!wp-content/
-wp-content/*
-!wp-content/themes/
-wp-content/themes/*
-!wp-content/themes/our-family-passport/
-!wp-content/themes/our-family-passport/**
+# Dependencies
+vendor/
+node_modules/
 
-# Dependencies — full paths required due to ** whitelist above
-wp-content/themes/our-family-passport/vendor/
-wp-content/themes/our-family-passport/node_modules/
-
-# WordPress generated
-wp-content/uploads/
-wp-content/upgrade/
-wp-content/cache/
-
-# Compiled assets
+# Compiled asset maps (generated, not needed in repo)
 *.css.map
-style.css.map
 
 # OS files
 .DS_Store
@@ -34,3 +23,8 @@ Thumbs.db
 
 # Distribution
 *.zip
+
+# WordPress generated (not applicable at theme root, but kept as safety net)
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
