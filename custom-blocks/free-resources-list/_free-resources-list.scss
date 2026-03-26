@@ -2,7 +2,7 @@
 
 .free-resources-list {
 	padding: 4rem 0;
-	background-color: #f6f2ef;
+	background-color: $color-cream-dark;
 
 	.container {
 		max-width: 1020px;
@@ -80,7 +80,7 @@
 				bottom: 6px;
 				width: 100%;
 				height: 1px;
-				background-color: #e5af9a;
+				background-color: $color-peach-start;
 			}
 		}
 
@@ -104,7 +104,7 @@
 	display: flex;
 	align-items: flex-start;
 	padding: 2rem 0;
-	border-bottom: 1px solid #22222240;
+	border-bottom: 1px solid $color-text40;
 
 	@media screen and (max-width: $bp-sm) {
 		flex-direction: column;

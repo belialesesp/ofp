@@ -16,7 +16,7 @@
 		gap: 0.25rem;
 		margin: 0;
 		font-size: 5rem;
-		color: #fda5ac;
+		color: $color-pink-soft;
 
 		span {
 			font-family: $styled;
@@ -42,18 +42,18 @@
 			padding: 1rem 2rem;
 			font-family: $text;
 			font-weight: 700;
-			color: #222;
+			color: $color-text;
 			letter-spacing: 2px;
 			text-transform: uppercase;
 			text-decoration: none;
-			background-color: #ffd6d9;
+			background-color: $color-pink-light;
 
 			&.green {
-				background-color: #bed8ba;
+				background-color: $color-green;
 			}
 
 			&.blue {
-				background-color: #9bbfcd;
+				background-color: $color-blue-light;
 			}
 
 			@media screen and (max-width: $bp-sm) {
@@ -67,8 +67,8 @@
 		display: flex;
 		justify-content: space-between;
 		padding: 1rem 2rem;
-		border-top: 1px solid #bed8ba;
-		border-bottom: 1px solid #bed8ba;
+		border-top: 1px solid $color-green;
+		border-bottom: 1px solid $color-green;
 		font-family: $text;
 		font-size: 1.5rem;
 		text-transform: uppercase;
@@ -80,7 +80,7 @@
 			transition: color 0.3s ease;
 
 			&:hover {
-				color: #fda5ac;
+				color: $color-pink-soft;
 			}
 		}
 
@@ -127,7 +127,7 @@
 			}
 
 			&__cta {
-				color: #66b1bb;
+				color: $color-blue;
 				text-transform: uppercase;
 				letter-spacing: 2px;
 			}
