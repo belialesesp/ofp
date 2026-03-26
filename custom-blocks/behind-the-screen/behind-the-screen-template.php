@@ -1,4 +1,9 @@
 <?php
+/**
+ * Behind The Screen Block Template
+ * Location: /custom-blocks/behind-the-screen/behind-the-screen-template.php
+ */
+
 $background_type = get_field('background_type');
 $background_color = get_field('background_color');
 $section_style = '';

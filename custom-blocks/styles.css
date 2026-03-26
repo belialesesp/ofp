@@ -86,8 +86,8 @@
   overflow: hidden;
   border: 5px solid;
   z-index: 10;
-  background: #000;
-  -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+  background: #000000;
+  -webkit-mask-image: -webkit-radial-gradient(#FFFFFF, #000000);
 }
 .about-kam__float-image img {
   width: 100%;
@@ -104,7 +104,7 @@
   }
 }
 .about-kam__float-video {
-  background: #000;
+  background: #000000;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -141,10 +141,10 @@
 .about-kam__float-video iframe[src*=vimeo] {
   transform: translate(-50%, -50%) scale(1.4);
 }
-@supports (-webkit-mask-image: radial-gradient(#fff, #000)) {
+@supports (-webkit-mask-image: radial-gradient(#FFFFFF, #000000)) {
   .about-kam__float-video {
-    -webkit-mask-image: -webkit-radial-gradient(circle, #fff 100%, #000 100%);
-    mask-image: radial-gradient(circle, #fff 100%, #000 100%);
+    -webkit-mask-image: -webkit-radial-gradient(circle, #FFFFFF 100%, #000000 100%);
+    mask-image: radial-gradient(circle, #FFFFFF 100%, #000000 100%);
   }
 }
 .about-kam__float-box {
@@ -247,7 +247,7 @@
   min-height: 250px;
   border-radius: 10px;
   text-align: center;
-  background-color: #f5f5f5;
+  background-color: #F5F2EF;
   background-size: cover;
   position: relative;
 }
@@ -605,7 +605,7 @@
 .course-library__content {
   width: 100%;
   max-width: 780px;
-  background-color: #f6f0e4;
+  background-color: #F5F2EF;
   border-radius: 10px 10px 0 0;
 }
 .course-library__content .box-content {
@@ -817,7 +817,7 @@ div[class*=course-library__tab--]::after {
 }
 
 .credit-card-hero-simple {
-  background-color: #f8f5f1;
+  background-color: #F5F2EF;
   font-family: "Rubik", sans-serif;
 }
 .credit-card-hero-simple .hero-container.container {
@@ -850,7 +850,7 @@ div[class*=course-library__tab--]::after {
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
 }
 .credit-card-hero-simple .hero-right .rates-fees-section .rates-fees-link {
-  color: #9a9a9a;
+  color: #9A9A9A;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 12px;
   font-weight: 600;
@@ -862,7 +862,7 @@ div[class*=course-library__tab--]::after {
   transition: all 0.3s ease;
 }
 .credit-card-hero-simple .hero-right .rates-fees-section .rates-fees-link:hover {
-  color: #666;
+  color: #555555;
 }
 .credit-card-hero-simple .credit-card-hero-animation {
   width: 152px;
@@ -876,14 +876,14 @@ div[class*=course-library__tab--]::after {
   height: 66px;
 }
 .credit-card-hero-simple .hero-left h1 {
-  color: #222;
+  color: #222222;
   font-family: "Versailles", sans-serif;
   font-size: 45px;
   font-weight: 400;
   line-height: 51px;
 }
 .credit-card-hero-simple .offer-points h2 {
-  color: #f0a9ad;
+  color: #F0A9AD;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 30px;
   font-weight: 700;
@@ -891,7 +891,7 @@ div[class*=course-library__tab--]::after {
   text-transform: uppercase;
 }
 .credit-card-hero-simple .old-offer p {
-  color: #939393;
+  color: #9A9A9A;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -900,13 +900,13 @@ div[class*=course-library__tab--]::after {
   text-transform: uppercase;
 }
 .credit-card-hero-simple .current-offer p {
-  color: #222;
+  color: #222222;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 17.719px;
   font-weight: 400;
 }
 .credit-card-hero-simple .learn-more-section .btn-learn-apply {
-  color: #9bbfcd;
+  color: #9BBFCD;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 25px;
   font-weight: 700;
@@ -971,7 +971,7 @@ div[class*=course-library__tab--]::after {
   align-items: flex-start;
   gap: 20px;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #F5F2EF;
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -981,7 +981,7 @@ div[class*=course-library__tab--]::after {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #E0E0E0;
   border-radius: 8px;
   padding: 45px;
   background-color: #FFFFFF;
@@ -990,7 +990,7 @@ div[class*=course-library__tab--]::after {
 }
 .credit-card-container .card .card-title {
   display: block;
-  color: #61a7af;
+  color: #66B1BB;
   font-weight: bold;
   margin-bottom: 1.25rem;
   text-decoration: none;
@@ -1008,12 +1008,12 @@ div[class*=course-library__tab--]::after {
   margin: 15px 0;
 }
 .credit-card-container .card .terms {
-  color: #7d7d7d;
+  color: #555555;
   margin-bottom: 15px;
   font-style: italic;
 }
 .credit-card-container .card .terms a {
-  color: #7d7d7d;
+  color: #555555;
   text-decoration: underline;
 }
 .credit-card-container .card .apply-link,
@@ -1021,7 +1021,7 @@ div[class*=course-library__tab--]::after {
   position: relative;
   padding: 0.25rem 2rem;
   border-radius: 6px;
-  color: #61a7af;
+  color: #66B1BB;
   font-weight: 700;
   text-decoration: none;
   text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
@@ -1035,7 +1035,7 @@ div[class*=course-library__tab--]::after {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #61a7af;
+  background-color: #66B1BB;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
   transition: all 0.4s;
 }
@@ -1051,11 +1051,11 @@ div[class*=course-library__tab--]::after {
   padding-top: 10px;
 }
 .credit-card-container .card .annual-fee {
-  color: #006b77;
+  color: #006B77;
   margin: 0;
 }
 .credit-card-container .card .section-title {
-  color: #61a7af;
+  color: #66B1BB;
   margin-top: 20px;
   margin-bottom: 10px;
   font-weight: bold;
@@ -1168,7 +1168,7 @@ div[class*=course-library__tab--]::after {
 }
 .destinations-map .destinations-list-container {
   width: calc(27% - 0.5rem);
-  border: 1px solid #ddd;
+  border: 1px solid #E0E0E0;
   text-transform: uppercase;
   font-size: 14px;
   padding: 20px;
@@ -1193,7 +1193,7 @@ div[class*=course-library__tab--]::after {
   list-style: none;
 }
 .destinations-map .destinations-list-container .destination-list a {
-  color: #61a7af;
+  color: #66B1BB;
   text-decoration: none;
   font-size: 14px;
 }
@@ -1213,7 +1213,7 @@ div[class*=course-library__tab--]::after {
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
-  color: #61a7af;
+  color: #66B1BB;
 }
 .destinations-map .destinations-list-container .expand-list-destinantion-button .expand-icon .destination-counter {
   min-width: 10px;
@@ -1245,10 +1245,10 @@ div[class*=course-library__tab--]::after {
 .destinations-map .map-container .filters .search-input input {
   width: 100%;
   height: 32px;
-  border-color: #f6f5f3;
+  border-color: #F5F2EF;
   padding: 8px 20px;
   font-size: 12px;
-  background-color: #f6f5f3;
+  background-color: #F5F2EF;
 }
 .destinations-map .map-container .filters .search-input .icon {
   position: absolute;
@@ -1277,13 +1277,13 @@ div[class*=course-library__tab--]::after {
   width: 20px;
   height: 20px;
   border-radius: 20px;
-  background-color: #61a7af;
+  background-color: #66B1BB;
   color: #FFFFFF;
   font-size: 12px;
 }
 .destinations-map .map-container .map .map-destination .map-destination-image {
   padding: 6px;
-  border: 1px solid #61a7af;
+  border: 1px solid #66B1BB;
 }
 .destinations-map .map-container .map .map-destination .map-destination-image img {
   width: 72px;
@@ -1340,7 +1340,7 @@ div[class*=course-library__tab--]::after {
   align-items: center;
   padding: 74px 58px;
   gap: 76px;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #222222;
   text-align: center;
 }
 .extra-benefits__benefits .benefit:last-child {
@@ -1412,7 +1412,7 @@ div[class*=course-library__tab--]::after {
 }
 .my-favorite-cards__title {
   margin: 0;
-  color: #f7f0e6;
+  color: #F5F2EF;
   font-size: 14rem;
   text-align: right;
   text-transform: uppercase;
@@ -1475,7 +1475,7 @@ div[class*=course-library__tab--]::after {
   gap: 1rem;
   padding: 20px;
   border-radius: 20px;
-  background-color: #f7f0e6;
+  background-color: #F5F2EF;
 }
 @media screen and (max-width: 768px) {
   .my-favorite-cards__card {
@@ -1513,19 +1513,19 @@ div[class*=course-library__tab--]::after {
   background-color: transparent;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 1rem;
-  color: #f0a9ad;
+  color: #F0A9AD;
   letter-spacing: 3px;
 }
 .my-favorite-cards__card-cta:hover {
   background-color: transparent;
-  color: #9abfcc;
+  color: #9BBFCD;
 }
 .my-favorite-cards__card-cta:visited {
-  color: #f0a9ad;
+  color: #F0A9AD;
 }
 .my-favorite-cards__card-cta:visited:hover {
   background-color: transparent;
-  color: #9abfcc;
+  color: #9BBFCD;
 }
 .my-favorite-cards__card-rates {
   text-decoration: none;
@@ -1545,7 +1545,7 @@ div[class*=course-library__tab--]::after {
 }
 .my-favorite-cards__cta:hover {
   background-color: transparent;
-  color: #f0a9ad;
+  color: #F0A9AD;
 }
 
 .sidebar .container {
@@ -1554,7 +1554,7 @@ div[class*=course-library__tab--]::after {
 }
 .sidebar .my-favorite-cards {
   padding: 16px;
-  background: #9abfcc;
+  background: #9BBFCD;
 }
 .sidebar .my-favorite-cards__left-col {
   width: 100%;
@@ -1608,19 +1608,19 @@ div[class*=course-library__tab--]::after {
   padding: 0;
   background-color: transparent;
   font-family: "League Gothic", sans-serif;
-  color: #222;
+  color: #222222;
   letter-spacing: 3px;
 }
 .sidebar .my-favorite-cards__card-cta:hover {
   background-color: transparent;
-  color: #9abfcc;
+  color: #9BBFCD;
 }
 .sidebar .my-favorite-cards__card-cta:visited {
-  color: #f0a9ad;
+  color: #F0A9AD;
 }
 .sidebar .my-favorite-cards__card-cta:visited:hover {
   background-color: transparent;
-  color: #9abfcc;
+  color: #9BBFCD;
 }
 .sidebar .my-favorite-cards__cta {
   display: none;
@@ -1628,7 +1628,7 @@ div[class*=course-library__tab--]::after {
 
 .favorite-things {
   padding: 8rem 0 4rem;
-  background-color: #f5f2ef;
+  background-color: #F5F2EF;
 }
 .favorite-things .container {
   margin-top: 4rem;
@@ -1825,7 +1825,7 @@ div[class*=course-library__tab--]::after {
 
 .free-resources {
   padding: 4rem 0;
-  background-color: #f6f2ef;
+  background-color: #F6F2EF;
 }
 .free-resources .container {
   max-width: 840px;
@@ -1939,7 +1939,7 @@ div[class*=course-library__tab--]::after {
 
 .free-resources-list {
   padding: 4rem 0;
-  background-color: #f6f2ef;
+  background-color: #F6F2EF;
 }
 .free-resources-list .container {
   max-width: 1020px;
@@ -2012,7 +2012,7 @@ div[class*=course-library__tab--]::after {
   bottom: 6px;
   width: 100%;
   height: 1px;
-  background-color: #e5af9a;
+  background-color: #F9C9B4;
 }
 .free-resources-list__discover-more .ctas {
   display: flex;
@@ -2031,7 +2031,7 @@ div[class*=course-library__tab--]::after {
   display: flex;
   align-items: flex-start;
   padding: 2rem 0;
-  border-bottom: 1px solid rgba(34, 34, 34, 0.2509803922);
+  border-bottom: 1px solid rgba(34, 34, 34, 0.4);
 }
 @media screen and (max-width: 768px) {
   .resource-list {
@@ -2217,7 +2217,7 @@ div[class*=course-library__tab--]::after {
   width: 100%;
   overflow: hidden;
   padding: 0 1rem;
-  background-color: #000;
+  background-color: #000000;
 }
 @media screen and (max-width: 991px) {
   .hero-image {
@@ -2597,7 +2597,7 @@ div[class*=course-library__tab--]::after {
   object-fit: contain;
 }
 .lets-connect__content .social-links__link:hover {
-  background-color: #ffd6d9;
+  background-color: #FFD6D9;
 }
 
 .must-read {
@@ -2609,7 +2609,7 @@ div[class*=course-library__tab--]::after {
 }
 .must-read__title {
   margin: 0 0 3rem;
-  color: #101010;
+  color: #222222;
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 3.4765625rem;
@@ -2655,7 +2655,7 @@ div[class*=course-library__tab--]::after {
   }
 }
 .must-read__post .categories {
-  color: #f0a9ad;
+  color: #F0A9AD;
   font-family: "League Gothic", sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
@@ -2664,7 +2664,7 @@ div[class*=course-library__tab--]::after {
   text-transform: uppercase;
 }
 .must-read__post .title {
-  color: #222;
+  color: #222222;
   font-family: "Versailles", sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
@@ -2685,7 +2685,7 @@ div[class*=course-library__tab--]::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #222;
+  background-color: #222222;
   opacity: 0.33;
 }
 .newsletter .container {
@@ -2727,7 +2727,7 @@ div[class*=course-library__tab--]::after {
 }
 .newsletter__form button {
   border-radius: 0;
-  background-color: #ffd6d9;
+  background-color: #FFD6D9;
   font-family: "LeagueGothic", sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -2739,7 +2739,7 @@ div[class*=course-library__tab--]::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--OFP-Gradient, linear-gradient(264deg, #d7f2f8 0%, #9bbfcd 100%));
+  background: var(--OFP-Gradient, linear-gradient(264deg, #D7F2F8 0%, #9BBFCD 100%));
 }
 .search-hero .container {
   width: 100%;
@@ -2804,7 +2804,7 @@ div[class*=course-library__tab--]::after {
 }
 
 .search-hero__search-title {
-  color: #f7f0e5;
+  color: #F7F0E5;
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 126.055px;
@@ -2860,7 +2860,7 @@ div[class*=course-library__tab--]::after {
   background: rgb(255, 255, 255);
 }
 .search-hero__form .search-icon {
-  color: #999;
+  color: #9A9A9A;
   margin-right: 1rem;
   flex-shrink: 0;
 }
@@ -2872,10 +2872,10 @@ div[class*=course-library__tab--]::after {
   font-size: 1.1rem;
   font-family: "GlacialIndifference", sans-serif;
   outline: none;
-  color: #333;
+  color: #222222;
 }
 .search-hero__form .search-field::placeholder {
-  color: #999;
+  color: #9A9A9A;
   font-style: italic;
 }
 @media screen and (max-width: 1024px) {
@@ -2926,7 +2926,7 @@ div[class*=course-library__tab--]::after {
   animation: fadeInUp 1s ease-out 0.8s both;
 }
 .search-hero__trending .trending-label {
-  color: #f7f0e5;
+  color: #F7F0E5;
   text-align: center;
   font-family: "League Gothic", sans-serif;
   font-size: 20px;
@@ -2942,7 +2942,7 @@ div[class*=course-library__tab--]::after {
   gap: 2rem;
 }
 .search-hero__trending .trending-button {
-  color: #222;
+  color: #222222;
   font-family: "Versailles", sans-serif;
   font-size: clamp(11px, 1.2vw, 16.094px);
   font-weight: 400;
@@ -2951,7 +2951,7 @@ div[class*=course-library__tab--]::after {
   white-space: nowrap;
 }
 .search-hero__trending .trending-button:hover, .search-hero__trending .trending-button:active {
-  color: #f7f0e5;
+  color: #F7F0E5;
 }
 @media screen and (max-width: 1024px) {
   .search-hero__trending .trending-buttons {
@@ -2997,7 +2997,7 @@ div[class*=course-library__tab--]::after {
   }
 }
 .discover-more {
-  background: #f5f2ef;
+  background: #F5F2EF;
   padding: 2rem 0;
 }
 @media screen and (max-width: 480px) {
@@ -3033,7 +3033,7 @@ div[class*=course-library__tab--]::after {
   font-size: 1.3rem;
   line-height: 1rem;
   margin: 0;
-  color: #222;
+  color: #222222;
   text-transform: uppercase;
 }
 .discover-more__title::after {
@@ -3043,7 +3043,7 @@ div[class*=course-library__tab--]::after {
   bottom: -6px;
   width: 100%;
   height: 1px;
-  background-color: #e5af9a;
+  background-color: #F9C9B4;
 }
 @media screen and (max-width: 768px) {
   .discover-more__title {
@@ -3073,7 +3073,7 @@ div[class*=course-library__tab--]::after {
   text-decoration: none;
   font-weight: 700;
   text-transform: uppercase;
-  color: #222;
+  color: #222222;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 14px;
 }
@@ -3114,7 +3114,7 @@ div[class*=course-library__tab--]::after {
   gap: 1rem;
 }
 .start-here__title {
-  color: #222;
+  color: #222222;
   text-align: center;
   font-family: "Versailles", sans-serif;
   font-size: 4.46775rem;
@@ -3158,7 +3158,7 @@ div[class*=course-library__tab--]::after {
   align-items: center;
   gap: 1rem;
   padding: 14px 0;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #222222;
 }
 .start-here__item .identifier {
   font-family: "Versailles", sans-serif;
@@ -3170,7 +3170,7 @@ div[class*=course-library__tab--]::after {
   }
 }
 .start-here__item a {
-  color: #222;
+  color: #222222;
   font-family: "Versailles", sans-serif;
   font-size: 1.875rem;
 }
@@ -3229,7 +3229,7 @@ div[class*=course-library__tab--]::after {
 .success-stories__stories .splide__arrows .splide__arrow svg {
   width: 44px;
   height: 44px;
-  fill: #222;
+  fill: #222222;
 }
 .success-stories__stories .storie {
   position: relative;
@@ -3240,7 +3240,7 @@ div[class*=course-library__tab--]::after {
   gap: 1rem;
   padding: 6rem 2rem 2rem;
   border-radius: 22px;
-  background-color: #f7f0e5;
+  background-color: #F7F0E5;
   overflow: visible;
   text-align: center;
 }
@@ -3277,7 +3277,7 @@ div[class*=course-library__tab--]::after {
 }
 .no-stories-message p {
   margin: 0;
-  color: #666;
+  color: #555555;
 }
 
 .the-blog {
@@ -3294,7 +3294,7 @@ div[class*=course-library__tab--]::after {
   gap: 0.25rem;
   margin: 0;
   font-size: 5rem;
-  color: #fda5ac;
+  color: #FDA5AC;
 }
 .the-blog__title span {
   font-family: "Net MoonTime", sans-serif;
@@ -3319,17 +3319,17 @@ div[class*=course-library__tab--]::after {
   padding: 1rem 2rem;
   font-family: "GlacialIndifference", sans-serif;
   font-weight: 700;
-  color: #222;
+  color: #222222;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: #ffd6d9;
+  background-color: #FFD6D9;
 }
 .the-blog__categories .categorie.green {
-  background-color: #bed8ba;
+  background-color: #BED8BA;
 }
 .the-blog__categories .categorie.blue {
-  background-color: #9bbfcd;
+  background-color: #9BBFCD;
 }
 @media screen and (max-width: 768px) {
   .the-blog__categories .categorie {
@@ -3341,8 +3341,8 @@ div[class*=course-library__tab--]::after {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  border-top: 1px solid #bed8ba;
-  border-bottom: 1px solid #bed8ba;
+  border-top: 1px solid #BED8BA;
+  border-bottom: 1px solid #BED8BA;
   font-family: "GlacialIndifference", sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -3354,7 +3354,7 @@ div[class*=course-library__tab--]::after {
   transition: color 0.3s ease;
 }
 .the-blog__bar .newest-post-title:hover {
-  color: #fda5ac;
+  color: #FDA5AC;
 }
 .the-blog__bar a {
   color: inherit;
@@ -3394,7 +3394,7 @@ div[class*=course-library__tab--]::after {
   font-size: 1rem;
 }
 .the-blog__posts .post__cta {
-  color: #66b1bb;
+  color: #66B1BB;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -3407,7 +3407,7 @@ div[class*=course-library__tab--]::after {
 .time-line {
   position: relative;
   padding: 5rem 0;
-  background-color: #f5f2ef;
+  background-color: #F5F2EF;
 }
 .time-line .container {
   flex-wrap: wrap;
@@ -3514,7 +3514,7 @@ div[class*=course-library__tab--]::after {
 }
 .time-line__item .history__item {
   padding: 12px 0;
-  border-bottom: 1px solid #f1cab9;
+  border-bottom: 1px solid #F9C9B4;
   font-family: "Versailles", sans-serif;
   font-size: 1rem;
   line-height: 142.222%;
@@ -3528,7 +3528,7 @@ div[class*=course-library__tab--]::after {
   position: relative;
 }
 .time-line__item .image img {
-  border: 12px solid #fff;
+  border: 12px solid #FFFFFF;
   max-width: 326px;
   height: auto;
   width: auto;
@@ -3536,7 +3536,7 @@ div[class*=course-library__tab--]::after {
 .time-line__item .image .floating-text {
   max-width: 100%;
   position: absolute;
-  color: #9bbfcd;
+  color: #9BBFCD;
   font-family: "Versailles", sans-serif;
   font-size: 14px;
   line-height: 180%;

@@ -3,6 +3,8 @@
  * Enchanting Links Block Template
  * Location: /custom-blocks/enchanting-links/enchanting-links-template.php
  */
+// STATUS: UNUSED — not found in any published content as of March 2026.
+// Do not invest refactoring time here until confirmed needed.
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
