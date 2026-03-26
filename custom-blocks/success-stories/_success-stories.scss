@@ -51,7 +51,7 @@
 				svg {
 					width: 44px;
 					height: 44px;
-					fill: #222;
+					fill: $color-text;
 				}
 			}
 		}
@@ -65,7 +65,7 @@
 			gap: 1rem;
 			padding: 6rem 2rem 2rem;
 			border-radius: 22px;
-			background-color: #f7f0e5;
+			background-color: $color-sand;
 			overflow: visible;
 			text-align: center;
 		}
@@ -110,6 +110,6 @@
 
 	p {
 		margin: 0;
-		color: #666;
+		color: $color-text-light;
 	}
 }

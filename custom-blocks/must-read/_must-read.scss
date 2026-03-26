@@ -16,7 +16,7 @@
 
 	&__title {
 		margin: 0 0 3rem;
-		color: #101010;
+		color: $color-text;
 		text-align: center;
 		font-family: $titles;
 		font-size: to-rem(55.625px);
@@ -71,7 +71,7 @@
 		}
 
 		.categories {
-			color: #f0a9ad;
+			color: $color-pink-cta;
 			font-family: $font-gothic;
 			font-size: to-rem(20px);
 			font-weight: 400;
@@ -81,7 +81,7 @@
 		}
 
 		.title {
-			color: #222;
+			color: $color-text;
 			font-family: $titles;
 			font-size: to-rem(20px);
 			font-weight: 400;

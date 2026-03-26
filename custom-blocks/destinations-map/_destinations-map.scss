@@ -38,7 +38,7 @@
 
 	.destinations-list-container {
 		width: calc(27% - 0.5rem);
-		border: 1px solid #ddd;
+		border: 1px solid $color-border;
 		text-transform: uppercase;
 		font-size: 14px;
 		padding: 20px;
@@ -65,7 +65,7 @@
 			}
 
 			a {
-				color: #61a7af;
+				color: $color-blue;
 				text-decoration: none;
 				font-size: 14px;
 			}
@@ -87,7 +87,7 @@
 				align-items: center;
 				justify-content: flex-start;
 				gap: 5px;
-				color: #61a7af;
+				color: $color-blue;
 
 				.destination-counter {
 					min-width: 10px;
@@ -123,10 +123,10 @@
 				input {
 					width: 100%;
 					height: 32px;
-					border-color: #f6f5f3;
+					border-color: $color-cream;
 					padding: 8px 20px;
 					font-size: 12px;
-					background-color: #f6f5f3;
+					background-color: $color-cream;
 				}
 
 				.icon {
@@ -160,14 +160,14 @@
 					width: 20px;
 					height: 20px;
 					border-radius: 20px;
-					background-color: #61a7af;
+					background-color: $color-blue;
 					color: $color-white;
 					font-size: 12px;
 				}
 
 				.map-destination-image {
 					padding: 6px;
-					border: 1px solid #61a7af;
+					border: 1px solid $color-blue;
 
 					img {
 						width: 72px;

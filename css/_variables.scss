@@ -1,51 +1,159 @@
 // =============================================================================
-// VARIABLES
+// OFP Design Tokens
 // css/_variables.scss
+//
+// Single source of truth for all design values.
+// @use'd by:  css/ofp-styles.scss        →  @use 'variables' as *;
+//             custom-blocks/styles.scss  →  @use '../css/variables' as *;
+//
+// HOW TO ADD A TOKEN
+//   1. Pick the right section below.
+//   2. Use the naming convention already established ($color-*, $font-*, $bp-*).
+//   3. Don't add one-off values — tokens must be reused in at least 2 places.
 // =============================================================================
 
-// -----------------------------------------------------------------------------
-// Colors
-// -----------------------------------------------------------------------------
-$color-blue:        #66B1BB;   // OFP primary blue
-$color-blue-light:  #9BBFCD;   // OFP light blue / menu links
-$color-blue-pale:   #D7F2F8;   // gradient start
-$color-pink:        #F0A9AC;   // links visited / hover
-$color-pink-light:  #FFD6D9;   // light pink accent
-$color-pink-soft:   #FDA5AC;   // blog titles
-$color-pink-cta:    #F0A9AD;   // card CTA
-$color-green:       #BED8BA;   // buttons / load more
-$color-green2:      #67B1BB;   // alternate green/teal
-$color-cream:       #F5F2EF;   // backgrounds
-$color-cream-dark:  #F6F2EF;   // alternate cream
-$color-white2:      #F4F2EE;   // off white
-$color-sand:        #F7F0E5;   // sand
 
-$color-text:        #222222;   // main text
-$color-text-mid:    #404040;   // links default
-$color-text-light:  #555555;   // subtitles
-$color-text-muted:  #9A9A9A;   // error code, muted
-$color-white:       #FFFFFF;
+// -----------------------------------------------------------------------------
+// Color Palette
+// -----------------------------------------------------------------------------
+
+// Neutrals
 $color-black:       #000000;
-$color-black-soft:  #282828;   // headings, text dark
+$color-black-soft:  #282828;   // Headings, text dark
+$color-white:       #FFFFFF;
+$color-text:        #222222;   // Main text
+$color-text-mid:    #404040;   // Links default
+$color-text-light:  #555555;   // Subtitles
+$color-text-muted:  #9A9A9A;   // Error code, muted
+
+// Creams & Warm Neutrals
+$color-cream:       #F5F2EF;   // Backgrounds
+$color-cream-dark:  #F6F2EF;   // Alternate cream
+$color-white2:      #F4F2EE;   // Off white
+$color-sand:        #F7F0E5;   // Sand
+
+// Blues
+$color-blue:        #66B1BB;   // OFP primary blue
+$color-blue-dark:   #006B77;   // Hover state for teal interactive elements (credit-cards)
+$color-blue-light:  #9BBFCD;   // OFP light blue / menu links
+$color-blue-pale:   #D7F2F8;   // Gradient start
+
+// Greens & Teal
+$color-green:       #BED8BA;   // Buttons / load more
+$color-green2:      #67B1BB;   // Alternate green/teal
+$color-teal:        #67B1BB;   // Alias for $color-green2
+
+// Borders & Dividers
+$color-border:      #E0E0E0;   // Light grey borders/dividers (credit-cards, destinations-map)
+
+// Pinks & Peach
+$color-pink:        #F0A9AC;   // Links visited / hover
+$color-pink-light:  #FFD6D9;   // Light pink accent
+$color-pink-soft:   #FDA5AC;   // Blog titles
+$color-pink-cta:    #F0A9AD;   // Card CTA
+$color-peach-start: #F9C9B4;   // Header banner gradient start
+$color-peach-end:   #FDD7D4;   // Header banner gradient end
 
 // Gradients
-$gradient-blue: linear-gradient(264deg, #D7F2F8 0%, #9BBFCD 100%);
+$gradient-header:   linear-gradient(127deg, #{$color-peach-start} 0%, #{$color-peach-end} 100%);
+$gradient-blue:     linear-gradient(264deg, #{$color-blue-pale} 0%, #{$color-blue-light} 100%);
+
 
 // -----------------------------------------------------------------------------
-// Typography
+// Typography — Font Families
 // -----------------------------------------------------------------------------
-$font-glacial:      "GlacialIndifference", sans-serif;
-$font-versailles:   "Versailles", sans-serif;
-$font-moontime:     "Net MoonTime", sans-serif;
-$font-gothic:       "League Gothic", sans-serif;
-$font-jost:         "Jost", sans-serif;
+
+$font-versailles:   "Versailles", sans-serif;          // Headings (h1–h6 default)
+$font-glacial:      "GlacialIndifference", sans-serif; // Body text, links, buttons
+$font-gothic:       "League Gothic", sans-serif;       // Display / nav labels
+$font-moontime:     "Net MoonTime", sans-serif;        // Decorative / styled spans
+$font-jost:         "Jost", sans-serif;                // Utility font
+
+// Condensed Gothic variants (used in a handful of blocks)
+$font-gothic-condensed:      "League Gothic Condensed", sans-serif;
+$font-gothic-semi-condensed: "League Gothic SemiCondensed", sans-serif;
+
 
 // -----------------------------------------------------------------------------
 // Breakpoints
+// These are the system-level breakpoints used across all partials and blocks.
+// One-off px values in individual blocks are NOT tokens — they stay local.
 // -----------------------------------------------------------------------------
-$bp-xs:   480px;
-$bp-sm:   768px;
-$bp-md:   968px;
-$bp-lg:   991px;
-$bp-xl:   1132px;
-$bp-xxl:  1738px;
+
+$bp-xs:   480px;    // Small mobile
+$bp-sm:   768px;    // Mobile/tablet boundary
+$bp-md:   968px;    // Tablet/desktop boundary
+$bp-lg:   991px;    // Wide tablet / small desktop
+$bp-xl:   1132px;   // Large desktop
+$bp-xxl:  1738px;   // Extra large
+
+
+// -----------------------------------------------------------------------------
+// Layout
+// -----------------------------------------------------------------------------
+
+$container-max-width: 1440px;
+$container-padding:   1rem;
+
+
+// -----------------------------------------------------------------------------
+// Border Radius
+// These values appear repeatedly across blocks and components.
+// -----------------------------------------------------------------------------
+
+$radius-pill:   50px;   // Buttons (.btn, .header-banner__cta a)
+$radius-card:   20px;   // Block cards (favorite-cards__card)
+$radius-widget: 10px;   // Sidebar widget cards (banner-cta, page-sidebar)
+$radius-small:  8px;    // Smaller widget containers
+$radius-image:  6px;    // Image borders (header-banner__img)
+$radius-input:  3px;    // Form inputs
+
+
+// -----------------------------------------------------------------------------
+// Shadows
+// -----------------------------------------------------------------------------
+
+$shadow-card:   0 2px 4px rgba($color-black, 0.05);     // Sidebar widget cards
+$shadow-image:  10px 10px 20px rgba($color-black, 0.4); // Header banner image
+
+
+// -----------------------------------------------------------------------------
+// Spacing Scale
+// Built from the recurring rem values across blocks.
+// Use these instead of hardcoding rem/px values directly.
+// -----------------------------------------------------------------------------
+
+$space-1:   0.25rem;   //  4px
+$space-2:   0.5rem;    //  8px
+$space-3:   0.75rem;   // 12px
+$space-4:   1rem;      // 16px  — base unit
+$space-5:   1.5rem;    // 24px
+$space-6:   2rem;      // 32px
+$space-7:   2.5rem;    // 40px
+$space-8:   3rem;      // 48px
+$space-10:  4rem;      // 64px
+$space-12:  5rem;      // 80px
+$space-16:  8rem;      // 128px
+$space-20: 10rem;      // 160px
+
+// Section padding shorthand (most blocks use these two)
+$section-padding-y:        5rem;   // Standard block vertical padding
+$section-padding-y-mobile: 2rem;   // Mobile override
+
+
+// -----------------------------------------------------------------------------
+// Letter Spacing
+// -----------------------------------------------------------------------------
+
+$tracking-normal: 2px;
+$tracking-wide:   3px;
+$tracking-wider:  5px;
+
+
+// -----------------------------------------------------------------------------
+// Z-Index Scale
+// -----------------------------------------------------------------------------
+
+$z-dropdown:  10;
+$z-nav:       99999;
+$z-overlay:   100000;
