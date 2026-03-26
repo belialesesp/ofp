@@ -13,7 +13,7 @@
 	}
 
 	&__title {
-		color: #222;
+		color: $color-text;
 		text-align: center;
 		font-family: $titles;
 		font-size: to-rem(71.484px);
@@ -57,7 +57,7 @@
 		align-items: center;
 		gap: 1rem;
 		padding: 14px 0;
-		border-bottom: 1px solid #222;
+		border-bottom: 1px solid $color-text;
 
 		// Dynamic: color set inline via ACF field 'identifier_color'
 		.identifier {
@@ -70,7 +70,7 @@
 		}
 
 		a {
-			color: #222;
+			color: $color-text;
 			font-family: $titles;
 			font-size: to-rem(30px);
 

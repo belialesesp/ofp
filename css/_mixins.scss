@@ -1,0 +1,55 @@
+// =============================================================================
+// OFP Mixins & Functions
+// css/_mixins.scss
+//
+// @use'd by:  css/ofp-styles.scss          →  @use 'mixins' as *;
+//             custom-blocks/styles.scss     →  @use '../css/mixins' as *;
+// =============================================================================
+
+@use 'sass:math';
+
+// -----------------------------------------------------------------------------
+// Functions
+// -----------------------------------------------------------------------------
+
+// Strips the unit from a value (e.g. 16px → 16)
+@function stripUnit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
+// Converts a px value to rem (base: 16px)
+// Usage: font-size: to-rem(24px);  →  1.5rem
+@function to-rem($pxValue) {
+    @return #{math.div(stripUnit($pxValue), stripUnit(16px))}rem;
+}
+
+
+// -----------------------------------------------------------------------------
+// Mixins
+// -----------------------------------------------------------------------------
+
+// Fixed/parallax background
+// Usage: @include fixed-bg;
+@mixin fixed-bg {
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @media (max-width: 768px) {
+        background-size: auto 100%;
+        background-attachment: scroll;
+    }
+}
+
+// Infinite CSS rotation animation
+// Usage: @include rotating(15s);
+@mixin rotating($duration: 10s) {
+    animation: rotation $duration linear infinite 0s;
+}
+
+// Keyframes for rotating() mixin — defined once here, used globally
+@keyframes rotation {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}

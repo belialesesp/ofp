@@ -22,7 +22,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--OFP-Gradient, linear-gradient(264deg, #d7f2f8 0%, #9bbfcd 100%));
+	background: var(--OFP-Gradient, linear-gradient(264deg, $color-blue-pale 0%, $color-blue-light 100%));
 	// Dynamic: background-color may be overridden inline via ACF field 'background_color'
 
 	.container {
@@ -91,7 +91,7 @@
 }
 
 .search-hero__search-title {
-	color: #f7f0e5;
+	color: $color-sand;
 	text-align: center;
 	font-family: $titles;
 	font-size: 126.055px;
@@ -152,7 +152,7 @@
 	}
 
 	.search-icon {
-		color: #999;
+		color: $color-text-muted;
 		margin-right: 1rem;
 		flex-shrink: 0;
 	}
@@ -165,10 +165,10 @@
 		font-size: 1.1rem;
 		font-family: $text;
 		outline: none;
-		color: #333;
+		color: $color-text;
 
 		&::placeholder {
-			color: #999;
+			color: $color-text-muted;
 			font-style: italic;
 		}
 	}
@@ -231,7 +231,7 @@
 	animation: fadeInUp 1s ease-out 0.8s both;
 
 	.trending-label {
-		color: #f7f0e5;
+		color: $color-sand;
 		text-align: center;
 		font-family: $font-gothic;
 		font-size: 20px;
@@ -249,7 +249,7 @@
 	}
 
 	.trending-button {
-		color: #222;
+		color: $color-text;
 		font-family: $titles;
 		font-size: clamp(11px, 1.2vw, 16.094px);
 		font-weight: 400;
@@ -259,7 +259,7 @@
 
 		&:hover,
 		&:active {
-			color: #f7f0e5;
+			color: $color-sand;
 		}
 	}
 
@@ -324,7 +324,7 @@
 // =============================================================================
 
 .discover-more {
-	background: #f5f2ef;
+	background: $color-cream;
 	padding: 2rem 0;
 
 	@media screen and (max-width: 480px) {
@@ -358,7 +358,7 @@
 	font-size: 1.3rem;
 	line-height: 1rem;
 	margin: 0;
-	color: #222;
+	color: $color-text;
 	text-transform: uppercase;
 
 	&::after {
@@ -368,7 +368,7 @@
 		bottom: -6px;
 		width: 100%;
 		height: 1px;
-		background-color: #e5af9a;
+		background-color: $color-peach-start;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -396,7 +396,7 @@
 	text-decoration: none;
 	font-weight: 700;
 	text-transform: uppercase;
-	color: #222;
+	color: $color-text;
 	font-family: $text;
 	font-size: 14px;
 	// Dynamic: background-color set inline via ACF field 'cta_background_color'

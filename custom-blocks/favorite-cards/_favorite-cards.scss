@@ -6,9 +6,9 @@
 @use "../../css/variables" as *;
 
 // Local tokens (not yet in global variables)
-$fc-cream: #f7f0e6;
-$fc-pink:  #f0a9ad; // Updated to match customize.css value
-$fc-blue:  #9abfcc;
+$fc-cream: $color-cream;
+$fc-pink:  $color-pink-cta; // Updated to match customize.css value
+$fc-blue:  $color-blue-light;
 
 .my-favorite-cards {
 	padding: 5rem 0;
@@ -169,7 +169,7 @@ $fc-blue:  #9abfcc;
 	&__card-rates {
 		text-decoration: none; // Absorbed from customize.css
 		font-size: small;      // Absorbed from customize.css
-		color: #404040;
+		color: $color-text-mid;
 	}
 
 	&__cta {
@@ -270,7 +270,7 @@ $fc-blue:  #9abfcc;
 			padding: 0;
 			background-color: transparent;
 			font-family: $font-gothic;
-			color: #222;
+			color: $color-text;
 			letter-spacing: 3px;
 
 			&:hover {

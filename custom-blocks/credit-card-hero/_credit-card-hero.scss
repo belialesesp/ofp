@@ -5,7 +5,7 @@
 // =============================================================================
 
 .credit-card-hero-simple {
-	background-color: #f8f5f1;
+	background-color: $color-cream;
 	font-family: "Rubik", sans-serif;
 
 	.hero-container.container {
@@ -41,7 +41,7 @@
 		}
 
 		.rates-fees-section .rates-fees-link {
-			color: #9a9a9a;
+			color: $color-text-muted;
 			font-family: $font-glacial;
 			font-size: 12px;
 			font-weight: 600;
@@ -53,7 +53,7 @@
 			transition: all 0.3s ease;
 
 			&:hover {
-				color: #666;
+				color: $color-text-light;
 			}
 		}
 	}
@@ -78,7 +78,7 @@
 
 	// Left column content
 	.hero-left h1 {
-		color: #222;
+		color: $color-text;
 		font-family: $font-versailles;
 		font-size: 45px;
 		font-weight: 400;
@@ -86,7 +86,7 @@
 	}
 
 	.offer-points h2 {
-		color: #f0a9ad;
+		color: $color-pink-cta;
 		font-family: $font-glacial;
 		font-size: 30px;
 		font-weight: 700;
@@ -95,7 +95,7 @@
 	}
 
 	.old-offer p {
-		color: #939393;
+		color: $color-text-muted;
 		font-family: $font-glacial;
 		font-size: 20px;
 		font-weight: 700;
@@ -105,14 +105,14 @@
 	}
 
 	.current-offer p {
-		color: #222;
+		color: $color-text;
 		font-family: $font-glacial;
 		font-size: 17.719px;
 		font-weight: 400;
 	}
 
 	.learn-more-section .btn-learn-apply {
-		color: #9bbfcd;
+		color: $color-blue-light;
 		font-family: $font-glacial;
 		font-size: 25px;
 		font-weight: 700;

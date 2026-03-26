@@ -86,9 +86,9 @@
 		overflow: hidden;
 		border: 5px solid;
 		z-index: 10;
-		background: #000;
+		background: $color-black;
 		// Safari fix: forces border-radius to clip child content
-		-webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+		-webkit-mask-image: -webkit-radial-gradient($color-white, $color-black);
 
 		// img has no BEM class — nesting is intentional (fills the circle container)
 		img {
@@ -108,7 +108,7 @@
 
 	// Video variant of the float circle
 	&__float-video {
-		background: #000;
+		background: $color-black;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
 		transform: translateZ(0);
@@ -151,10 +151,10 @@
 			transform: translate(-50%, -50%) scale(1.4);
 		}
 
-		@supports (-webkit-mask-image: radial-gradient(#fff, #000)) {
+		@supports (-webkit-mask-image: radial-gradient($color-white, $color-black)) {
 			-webkit-mask-image: // Safari mask — named colors not allowed by stylelint
-        -webkit-radial-gradient(circle, #fff 100%, #000 100%);
-			mask-image: radial-gradient(circle, #fff 100%, #000 100%);
+        -webkit-radial-gradient(circle, $color-white 100%, $color-black 100%);
+			mask-image: radial-gradient(circle, $color-white 100%, $color-black 100%);
 		}
 	}
 
