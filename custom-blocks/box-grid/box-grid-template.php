@@ -1,4 +1,8 @@
 <?php
+/**
+ * Box Grid Block Template
+ * Location: /custom-blocks/box-grid/box-grid-template.php
+ */
 $background_type = get_field('background_type');
 $background_color = get_field('background_color');
 $background_color_start = get_field('background_color_start');

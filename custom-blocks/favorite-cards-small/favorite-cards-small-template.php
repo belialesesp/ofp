@@ -1,4 +1,11 @@
 <?php
+/**
+ * Favorite Cards Small Block Template
+ * Location: /custom-blocks/favorite-cards-small/favorite-cards-small-template.php
+ */
+// STATUS: UNUSED — not found in any published content as of March 2026.
+// Do not invest refactoring time here until confirmed needed.
+
 $background_type = get_field('background_type');
 $background_color = get_field('background_color');
 $section_style = '';

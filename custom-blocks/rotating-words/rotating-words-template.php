@@ -1,4 +1,10 @@
 <?php
+/**
+ * Rotating Words Block Template
+ * Location: /custom-blocks/rotating-words/rotating-words-template.php
+ */
+// STATUS: UNUSED — not found in any published content as of March 2026.
+// Do not invest refactoring time here until confirmed needed.
 $background_type = get_field('background_type');
 $background_color = get_field('background_color');
 $background_color_start = get_field('background_color_start');
