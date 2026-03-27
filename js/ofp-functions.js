@@ -40,6 +40,26 @@ window.OFP.closePopup = function (id) {
     jQuery('#' + id).fadeOut(400);
 };
 
+// ── Back to top button ────────────────────────────────────────────────────────
+(function () {
+    'use strict';
+
+    var btn = document.getElementById('back-to-top-btn');
+    if (!btn) return;
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 300) {
+            btn.classList.add('is-visible');
+        } else {
+            btn.classList.remove('is-visible');
+        }
+    }, { passive: true });
+
+    btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}());
+
 // ── Enhanced page sidebar detection ──────────────────────────────────────────
 // Runs immediately at parse time (intentional — same as before).
 // Result is not published to the namespace; it has no public callers.

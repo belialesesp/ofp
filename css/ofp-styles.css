@@ -709,6 +709,48 @@ footer form.ff-685421b840679baaea6652ec__form button:hover {
     max-width: 250px;
   }
 }
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.back-to-top svg {
+  display: block;
+}
+.back-to-top {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: transparent;
+}
+.back-to-top circle {
+  transition: fill 0.3s ease;
+}
+.back-to-top:hover circle {
+  fill: #67B1BB;
+}
+@media screen and (max-width: 768px) {
+  .back-to-top svg {
+    width: 60px;
+    height: auto;
+  }
+}
+
 @media (max-width: 480px) {
   .newsletter-footer-section {
     padding: 40px 0 30px;

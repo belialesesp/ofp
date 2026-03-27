@@ -207,6 +207,24 @@
 
 
 // -----------------------------------------------------------------------------
+// Mobile video suppression
+// -----------------------------------------------------------------------------
+.about-kam__float-image--mobile {
+  display: none;
+}
+
+.about-kam__float-video {
+  @media screen and (max-width: $bp-sm) {
+    display: none;
+  }
+}
+
+.about-kam__float-image--mobile {
+  @media screen and (max-width: $bp-sm) {
+    display: block;
+  }
+}
+
 // About Kam page (ID 161122)
 // -----------------------------------------------------------------------------
 .page-id-161122 {

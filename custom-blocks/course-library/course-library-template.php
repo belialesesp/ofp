@@ -137,12 +137,16 @@ if ($background_type === 'video' && $background_video) {
         min-height: 500px;
     }
     #<?= esc_attr($blockID) ?> .course-library__video-wrapper {
-        min-height: 700px;
+        display: none;
     }
-    #<?= esc_attr($blockID) ?> .course-library__video-wrapper iframe {
-        top: 0;
-        transform: scale(4);
+    <?php if ($background_image) : ?>
+    #<?= esc_attr($blockID) ?> {
+        background-image: url(<?= esc_url($background_image['url']) ?>);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
+    <?php endif; ?>
 }
 <?php endif; ?>
 

@@ -66,11 +66,11 @@ if ($float_video) {
     </div>
     
     <?php if ($video_embed_url): ?>
-        <!-- Float Video -->
+        <!-- Float Video (desktop only) -->
         <div class="about-kam__float-image about-kam__float-video" style="border-color: <?= $flloating_image_border_color ? $flloating_image_border_color : 'transparent' ?>;">
             <?php if (strpos($video_embed_url, 'player.vimeo.com') !== false || strpos($video_embed_url, 'youtube.com/embed') !== false): ?>
                 <!-- Iframe for Vimeo/YouTube -->
-                <iframe 
+                <iframe
                     src="<?= esc_url($video_embed_url) ?>"
                     frameborder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
@@ -79,19 +79,25 @@ if ($float_video) {
                 </iframe>
             <?php else: ?>
                 <!-- Video element for direct video files -->
-                <video 
-                    autoplay 
-                    muted 
-                    loop 
+                <video
+                    autoplay
+                    muted
+                    loop
                     playsinline>
                     <source src="<?= esc_url($video_embed_url) ?>" type="video/mp4">
                 </video>
             <?php endif; ?>
         </div>
+        <?php if ($float_image): ?>
+            <!-- Float Image (mobile fallback) -->
+            <div class="about-kam__float-image about-kam__float-image--mobile" style="border-color: <?= $flloating_image_border_color ? $flloating_image_border_color : 'transparent' ?>;">
+                <img src="<?= esc_url($float_image['url']) ?>" alt="<?= esc_attr($float_image['alt']) ?>" style="border-color: <?= $flloating_image_border_color ? $flloating_image_border_color : 'transparent' ?>;">
+            </div>
+        <?php endif; ?>
     <?php elseif ($float_image): ?>
-        <!-- Float Image (fallback) -->
+        <!-- Float Image (default) -->
         <div class="about-kam__float-image">
-            <img src="<?= esc_url($float_image['url']) ?>" alt="<?= $float_image['alt'] ?>" style="border-color: <?= $flloating_image_border_color ? $flloating_image_border_color : 'transparent' ?>;">
+            <img src="<?= esc_url($float_image['url']) ?>" alt="<?= esc_attr($float_image['alt']) ?>" style="border-color: <?= $flloating_image_border_color ? $flloating_image_border_color : 'transparent' ?>;">
         </div>
     <?php endif; ?>
     

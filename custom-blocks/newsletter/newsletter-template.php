@@ -244,10 +244,7 @@ if (!wp_script_is('flodesk-sdk', 'enqueued')) {
     }
     
     #<?= $blockID ?> .newsletter__video-wrapper {
-        top: -10%;
-        left: -10%;
-        width: 120%;
-        height: 120%;
+        display: none;
     }
     
     #<?= $blockID ?> .newsletter__video-iframe,
@@ -282,7 +279,7 @@ if (!wp_script_is('flodesk-sdk', 'enqueued')) {
 }
 </style>
 
-<div id="<?= $blockID ?>" class="<?= esc_attr($container_class) ?>" style="background-color: <?= $video_embed_url ? '#000000' : esc_attr($background_color) ?>; <?= (!$video_embed_url && $background_image) ? 'background-image: url(' . esc_url($background_image['url']) . '); background-size: cover; background-position: center;' : '' ?>">
+<div id="<?= $blockID ?>" class="<?= esc_attr($container_class) ?>" style="background-color: <?= $video_embed_url ? '#000000' : esc_attr($background_color) ?>; <?= $background_image ? 'background-image: url(' . esc_url($background_image['url']) . '); background-size: cover; background-position: center;' : '' ?>">
     
     <?php if ($video_embed_url): ?>
         <div class="newsletter__video-wrapper">

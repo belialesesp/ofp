@@ -254,6 +254,55 @@ footer form.ff-685421b840679baaea6652ec__form {
   }
 }
 
+// -----------------------------------------------------------------------------
+// Back to top button
+// -----------------------------------------------------------------------------
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+
+  svg {
+    display: block;
+  }
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background: transparent;
+  }
+
+  circle {
+    transition: fill 0.3s ease;
+  }
+
+  &:hover circle {
+    fill: $color-green2;
+  }
+
+  @media screen and (max-width: $bp-sm) {
+    svg {
+      width: 60px;
+      height: auto;
+    }
+  }
+}
+
 @media (max-width: $bp-xs) {
   .newsletter-footer-section {
     padding: 40px 0 30px;

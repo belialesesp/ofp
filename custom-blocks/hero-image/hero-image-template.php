@@ -71,6 +71,13 @@ if ($use_image) {
         // Fallback to desktop image if no mobile image is set
         $background_style_mobile = "background-image: url('" . esc_url($background_image['url']) . "');";
     }
+} elseif ($use_video) {
+    // Compute mobile fallback styles for when video is hidden on mobile
+    if ($background_mobile) {
+        $background_style_mobile = "background-image: url('" . esc_url($background_mobile['url']) . "');";
+    } elseif ($background_image) {
+        $background_style_mobile = "background-image: url('" . esc_url($background_image['url']) . "');";
+    }
 }
 
 // Determine fallback image URL for video
@@ -169,13 +176,13 @@ if ($background_mobile) {
         height: 70vh;
     }
     
-    /* Video wrapper */
+    /* Hide video on mobile, show image fallback instead */
     .hero-image#<?= $blockID ?> .hero-video-wrap {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
+        display: none !important;
+    }
+
+    .hero-image#<?= $blockID ?> .mobile-bg {
+        display: block !important;
     }
     
     .hero-image#<?= $blockID ?> .hero-video-bg {
@@ -368,6 +375,9 @@ if ($background_mobile) {
     <?php endif; ?>
     
     <?php if ($use_video && $video_embed_url): ?>
+        <?php if ($background_mobile || $background_image): ?>
+            <div class="mobile-bg"></div>
+        <?php endif; ?>
         <div class="hero-video-wrap">
             <div class="hero-video-bg" data-video-aspect="16:9">
                 <?php if ($is_vimeo || $is_youtube): ?>

@@ -253,6 +253,13 @@ $flodeskLoaded   = false; // Track if Flodesk universal script is loaded
 </footer><!-- #colophon -->
 </div><!-- #page -->
 
+<button class="back-to-top" id="back-to-top-btn" aria-label="<?php esc_attr_e( 'Back to top', 'our-family-passport' ); ?>">
+	<svg width="73" height="73" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+		<circle cx="36.5" cy="36.5" r="35" fill="#BED8BA" stroke="white" stroke-width="3"/>
+		<path d="M36.5 50V24M36.5 24L24 36M36.5 24L49 36" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+	</svg>
+</button>
+
 <?php wp_footer(); ?>
 
 </body>

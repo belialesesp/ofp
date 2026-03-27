@@ -1,0 +1,69 @@
+@use "../../css/variables" as *;
+
+// =============================================================================
+// CTA BLOCK
+// custom-blocks/cta/_cta.scss
+// =============================================================================
+
+.cta-block {
+	padding: $section-padding-y 0;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1.5rem;
+	}
+
+	&__eyebrow {
+		font-family: $font-glacial;
+		font-size: 0.875rem;
+		font-weight: 700;
+		letter-spacing: 5px;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	&__title {
+		font-family: $font-versailles;
+		font-size: 3rem;
+		font-weight: 400;
+		line-height: 1.2;
+		margin: 0;
+
+		@media screen and (max-width: $bp-sm) {
+			font-size: 2rem;
+		}
+	}
+
+	&__description {
+		font-family: $font-glacial;
+		font-size: 1rem;
+		line-height: 1.75;
+		max-width: 640px;
+
+		p:first-child { margin-top: 0; }
+		p:last-child  { margin-bottom: 0; }
+	}
+
+	&__button {
+		display: inline-block;
+		padding: 1rem 2.5rem;
+		border-radius: $radius-pill;
+		font-family: $font-glacial;
+		font-weight: 700;
+		font-size: 0.875rem;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: filter 0.3s ease;
+
+		&:hover {
+			filter: brightness(0.9);
+		}
+	}
+}

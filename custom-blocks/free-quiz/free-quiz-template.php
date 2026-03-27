@@ -106,6 +106,13 @@ $block_id = 'free-quiz-' . uniqid();
     border: none;
 }
 
+/* Hide background video on mobile */
+@media (max-width: 767px) {
+    #<?php echo $block_id; ?> .free-quiz-video-wrapper {
+        display: none;
+    }
+}
+
 /* Ensure video fills on larger screens */
 @media (min-width: 1920px) {
     #<?php echo $block_id; ?> .free-quiz-video-wrapper iframe,
