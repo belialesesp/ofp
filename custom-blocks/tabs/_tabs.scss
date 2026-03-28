@@ -1,0 +1,112 @@
+@use "../../css/variables" as *;
+
+// =============================================================================
+// TABS BLOCK
+// custom-blocks/tabs/_tabs.scss
+// =============================================================================
+
+.tabs-block {
+	padding: $section-padding-y 0;
+
+	// ── Tab navigation ──────────────────────────────────────────────────────
+	&__nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		border-bottom: 2px solid $color-border;
+		margin-bottom: 2.5rem;
+	}
+
+	&__tab {
+		position: relative;
+		padding: 0.75rem 1.5rem;
+		background: transparent;
+		border: 0;
+		cursor: pointer;
+		font-family: $font-glacial;
+		font-size: 1rem;
+		font-weight: 700;
+		color: $color-text-light;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		transition: color 0.2s ease;
+
+		// Active indicator — slides up from the bottom border
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: $color-teal;
+			transform: scaleX(0);
+			transition: transform 0.25s ease;
+		}
+
+		&:hover {
+			color: $color-teal;
+		}
+
+		&.is-active {
+			color: $color-teal;
+
+			&::after {
+				transform: scaleX(1);
+			}
+		}
+
+		@media screen and (max-width: $bp-sm) {
+			padding: 0.5rem 1rem;
+			font-size: 0.875rem;
+			letter-spacing: 1px;
+		}
+	}
+
+	// ── Tab panels ──────────────────────────────────────────────────────────
+	&__panel {
+		display: none;
+
+		&.is-active {
+			display: block;
+			animation: tabs-fade-in 0.25s ease;
+		}
+	}
+
+	&__panel-inner {
+		font-family: $font-glacial;
+		font-size: 1rem;
+		line-height: 1.75;
+		color: $color-text;
+
+		h2, h3, h4 {
+			font-family: $font-versailles;
+			font-weight: 400;
+			margin-top: 0;
+		}
+
+		p:first-child { margin-top: 0; }
+		p:last-child  { margin-bottom: 0; }
+
+		a {
+			color: $color-teal;
+			text-decoration: underline;
+			text-underline-offset: 3px;
+
+			&:hover {
+				color: $color-blue-dark;
+			}
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+			border-radius: $radius-image;
+		}
+	}
+}
+
+@keyframes tabs-fade-in {
+	from { opacity: 0; transform: translateY(4px); }
+	to   { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OFP Design System — Style Guide</title>
+  <!-- Load compiled theme CSS so OFP fonts render correctly -->
+  <link rel="stylesheet" href="css/ofp-styles.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F7F0E5;
+      color: #222222;
+      font-family: "GlacialIndifference", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .sg-header {
+      background: linear-gradient(127deg, #F9C9B4 0%, #FDD7D4 100%);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .sg-header h1 {
+      font-family: "Versailles", sans-serif;
+      font-size: 3.5rem;
+      font-weight: 400;
+      margin: 0 0 0.5rem;
+      color: #222;
+    }
+    .sg-header p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #555;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .sg-nav {
+      background: #fff;
+      border-bottom: 2px solid #E0E0E0;
+      padding: 0 2rem;
+      display: flex;
+      gap: 0;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .sg-nav a {
+      display: block;
+      padding: 1rem 1.25rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .sg-nav a:hover {
+      color: #67B1BB;
+      border-bottom-color: #67B1BB;
+    }
+
+    .sg-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    .sg-section {
+      margin-bottom: 4rem;
+      padding-top: 1rem;
+    }
+
+    .sg-section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #9A9A9A;
+      margin: 0 0 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #E0E0E0;
+    }
+
+    .sg-sub {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #BED8BA;
+      margin: 2rem 0 1rem;
+    }
+
+    /* ── Swatches ──────────────────────────────────────────────── */
+    .sg-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .sg-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      width: 90px;
+    }
+    .sg-swatch__color {
+      width: 90px;
+      height: 60px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .sg-swatch__name {
+      font-size: 10px;
+      text-align: center;
+      color: #555;
+      line-height: 1.3;
+    }
+    .sg-swatch__var {
+      font-size: 9px;
+      color: #9A9A9A;
+      text-align: center;
+      font-family: monospace;
+    }
+    .sg-gradient {
+      width: 200px;
+    }
+    .sg-gradient .sg-swatch__color {
+      width: 200px;
+    }
+
+    /* ── Typography ────────────────────────────────────────────── */
+    .sg-type-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .sg-type-table tr {
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .sg-type-table td {
+      padding: 1.25rem 0;
+      vertical-align: middle;
+    }
+    .sg-type-table td:first-child {
+      width: 200px;
+      vertical-align: top;
+      padding-top: 1.5rem;
+    }
+    .sg-token {
+      font-family: monospace;
+      font-size: 11px;
+      color: #67B1BB;
+      display: block;
+      font-weight: 700;
+    }
+    .sg-meta {
+      font-size: 10px;
+      color: #9A9A9A;
+      display: block;
+      margin-top: 2px;
+    }
+    .sg-font-families {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .sg-font-row {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .sg-font-row__meta {
+      min-width: 180px;
+      flex-shrink: 0;
+    }
+
+    /* ── Spacing ───────────────────────────────────────────────── */
+    .sg-spacing {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+    .sg-space {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sg-space__bar {
+      background: #BED8BA;
+      width: 32px;
+      border-radius: 3px;
+    }
+    .sg-space__label {
+      font-size: 9px;
+      color: #9A9A9A;
+      text-align: center;
+      font-family: monospace;
+      line-height: 1.4;
+    }
+
+    /* ── Border Radius ─────────────────────────────────────────── */
+    .sg-radii {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-end;
+    }
+    .sg-radius {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sg-radius__box {
+      width: 80px;
+      height: 50px;
+      background: #9BBFCD;
+    }
+    .sg-radius__label {
+      font-size: 10px;
+      font-family: monospace;
+      color: #67B1BB;
+    }
+    .sg-radius__val {
+      font-size: 9px;
+      color: #9A9A9A;
+    }
+
+    /* ── Shadows ───────────────────────────────────────────────── */
+    .sg-shadows {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .sg-shadow-card {
+      width: 160px;
+      height: 90px;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .sg-shadow-card span { font-size: 10px; font-family: monospace; color: #67B1BB; }
+    .sg-shadow-card small { font-size: 9px; color: #9A9A9A; }
+
+    /* ── Tracking ──────────────────────────────────────────────── */
+    .sg-tracking { display: flex; flex-direction: column; gap: 1.25rem; }
+    .sg-tracking-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .sg-tracking-row__meta { font-family: monospace; font-size: 10px; color: #9A9A9A; min-width: 180px; }
+    .sg-tracking-row__sample {
+      font-family: "GlacialIndifference", sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #222;
+    }
+
+    /* ── Breakpoints ───────────────────────────────────────────── */
+    .sg-bp-table { width: 100%; border-collapse: collapse; }
+    .sg-bp-table tr { border-bottom: 1px solid #E0E0E0; }
+    .sg-bp-table td { padding: 0.75rem 0; font-size: 0.875rem; }
+    .sg-bp-table td:first-child { font-family: monospace; color: #67B1BB; font-weight: 700; width: 120px; }
+    .sg-bp-table td:nth-child(2) { width: 80px; color: #222; }
+    .sg-bp-table td:nth-child(3) { color: #9A9A9A; font-size: 0.8rem; }
+
+    /* ── Z-Index ───────────────────────────────────────────────── */
+    .sg-z-table { width: 100%; border-collapse: collapse; }
+    .sg-z-table tr { border-bottom: 1px solid #E0E0E0; }
+    .sg-z-table td { padding: 0.75rem 0; font-size: 0.875rem; }
+    .sg-z-table td:first-child { font-family: monospace; color: #67B1BB; font-weight: 700; width: 160px; }
+    .sg-z-table td:nth-child(2) { width: 100px; }
+    .sg-z-table td:nth-child(3) { color: #9A9A9A; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+
+  <div class="sg-header">
+    <h1>OFP Design System</h1>
+    <p>Style Guide &amp; Token Reference</p>
+  </div>
+
+  <nav class="sg-nav">
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#radius">Border Radius</a>
+    <a href="#shadows">Shadows</a>
+    <a href="#tracking">Letter Spacing</a>
+    <a href="#breakpoints">Breakpoints</a>
+    <a href="#zindex">Z-Index</a>
+  </nav>
+
+  <div class="sg-body">
+
+    <!-- ── Colors ─────────────────────────────────────────────── -->
+    <section class="sg-section" id="colors">
+      <h2 class="sg-section-title">Color Palette</h2>
+
+      <p class="sg-sub">Neutrals</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#000000;"></div><span class="sg-swatch__name">Black</span><span class="sg-swatch__var">$color-black</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#282828;"></div><span class="sg-swatch__name">Black Soft</span><span class="sg-swatch__var">$color-black-soft</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#FFFFFF;"></div><span class="sg-swatch__name">White</span><span class="sg-swatch__var">$color-white</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#222222;"></div><span class="sg-swatch__name">Text</span><span class="sg-swatch__var">$color-text</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#404040;"></div><span class="sg-swatch__name">Text Mid</span><span class="sg-swatch__var">$color-text-mid</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#555555;"></div><span class="sg-swatch__name">Text Light</span><span class="sg-swatch__var">$color-text-light</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#9A9A9A;"></div><span class="sg-swatch__name">Text Muted</span><span class="sg-swatch__var">$color-text-muted</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#E0E0E0;"></div><span class="sg-swatch__name">Border</span><span class="sg-swatch__var">$color-border</span></div>
+      </div>
+
+      <p class="sg-sub">Creams &amp; Warm Neutrals</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#F5F2EF;"></div><span class="sg-swatch__name">Cream</span><span class="sg-swatch__var">$color-cream</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#F6F2EF;"></div><span class="sg-swatch__name">Cream Dark</span><span class="sg-swatch__var">$color-cream-dark</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#F4F2EE;"></div><span class="sg-swatch__name">White 2</span><span class="sg-swatch__var">$color-white2</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#F7F0E5;"></div><span class="sg-swatch__name">Sand</span><span class="sg-swatch__var">$color-sand</span></div>
+      </div>
+
+      <p class="sg-sub">Blues</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#66B1BB;"></div><span class="sg-swatch__name">Blue</span><span class="sg-swatch__var">$color-blue</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#006B77;"></div><span class="sg-swatch__name">Blue Dark</span><span class="sg-swatch__var">$color-blue-dark</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#9BBFCD;"></div><span class="sg-swatch__name">Blue Light</span><span class="sg-swatch__var">$color-blue-light</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#D7F2F8;"></div><span class="sg-swatch__name">Blue Pale</span><span class="sg-swatch__var">$color-blue-pale</span></div>
+      </div>
+
+      <p class="sg-sub">Greens &amp; Teal</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#BED8BA;"></div><span class="sg-swatch__name">Green</span><span class="sg-swatch__var">$color-green</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#67B1BB;"></div><span class="sg-swatch__name">Teal / Green2</span><span class="sg-swatch__var">$color-teal</span></div>
+      </div>
+
+      <p class="sg-sub">Pinks &amp; Peach</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#F0A9AC;"></div><span class="sg-swatch__name">Pink</span><span class="sg-swatch__var">$color-pink</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#FFD6D9;"></div><span class="sg-swatch__name">Pink Light</span><span class="sg-swatch__var">$color-pink-light</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#FDA5AC;"></div><span class="sg-swatch__name">Pink Soft</span><span class="sg-swatch__var">$color-pink-soft</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#F0A9AD;"></div><span class="sg-swatch__name">Pink CTA</span><span class="sg-swatch__var">$color-pink-cta</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#F9C9B4;"></div><span class="sg-swatch__name">Peach Start</span><span class="sg-swatch__var">$color-peach-start</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__color" style="background:#FDD7D4;"></div><span class="sg-swatch__name">Peach End</span><span class="sg-swatch__var">$color-peach-end</span></div>
+      </div>
+
+      <p class="sg-sub">Gradients</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch sg-gradient"><div class="sg-swatch__color" style="background:linear-gradient(127deg,#F9C9B4 0%,#FDD7D4 100%);"></div><span class="sg-swatch__name">Header / Peach</span><span class="sg-swatch__var">$gradient-header</span></div>
+        <div class="sg-swatch sg-gradient"><div class="sg-swatch__color" style="background:linear-gradient(264deg,#D7F2F8 0%,#9BBFCD 100%);"></div><span class="sg-swatch__name">Blue</span><span class="sg-swatch__var">$gradient-blue</span></div>
+      </div>
+    </section>
+
+    <!-- ── Typography ─────────────────────────────────────────── -->
+    <section class="sg-section" id="typography">
+      <h2 class="sg-section-title">Typography</h2>
+
+      <p class="sg-sub">Font Families</p>
+      <div class="sg-font-families">
+        <div class="sg-font-row">
+          <div class="sg-font-row__meta"><span class="sg-token">$font-versailles</span><span class="sg-meta">Headings (h1–h6)</span></div>
+          <div style="font-family:'Versailles',sans-serif;font-size:2rem;font-weight:400;">The quick brown fox jumps over the lazy dog</div>
+        </div>
+        <div class="sg-font-row">
+          <div class="sg-font-row__meta"><span class="sg-token">$font-glacial</span><span class="sg-meta">Body / Buttons</span></div>
+          <div style="font-family:'GlacialIndifference',sans-serif;font-size:1.5rem;">The quick brown fox jumps over the lazy dog</div>
+        </div>
+        <div class="sg-font-row">
+          <div class="sg-font-row__meta"><span class="sg-token">$font-gothic</span><span class="sg-meta">Display / Nav</span></div>
+          <div style="font-family:'League Gothic',sans-serif;font-size:2rem;">THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</div>
+        </div>
+        <div class="sg-font-row">
+          <div class="sg-font-row__meta"><span class="sg-token">$font-moontime</span><span class="sg-meta">Decorative</span></div>
+          <div style="font-family:'Net MoonTime',sans-serif;font-size:2.5rem;">The quick brown fox</div>
+        </div>
+        <div class="sg-font-row">
+          <div class="sg-font-row__meta"><span class="sg-token">$font-jost</span><span class="sg-meta">Utility</span></div>
+          <div style="font-family:'Jost',sans-serif;font-size:1.25rem;">The quick brown fox jumps over the lazy dog</div>
+        </div>
+      </div>
+
+      <p class="sg-sub" style="margin-top:2.5rem;">Size Scale</p>
+      <table class="sg-type-table">
+        <tr>
+          <td><span class="sg-token">$text-display</span><span class="sg-meta">5rem / 80px · $leading-tight</span></td>
+          <td><div style="font-family:'Versailles',sans-serif;font-size:5rem;font-weight:400;line-height:1.2;">Display</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-h1</span><span class="sg-meta">4rem / 64px · $leading-tight</span></td>
+          <td><div style="font-family:'Versailles',sans-serif;font-size:4rem;font-weight:400;line-height:1.2;">Heading 1</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-h2</span><span class="sg-meta">3rem / 48px · $leading-tight</span></td>
+          <td><div style="font-family:'Versailles',sans-serif;font-size:3rem;font-weight:400;line-height:1.2;">Heading 2</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-h3</span><span class="sg-meta">2rem / 32px · $leading-snug</span></td>
+          <td><div style="font-family:'Versailles',sans-serif;font-size:2rem;font-weight:400;line-height:1.4;">Heading 3</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-h4</span><span class="sg-meta">1.5rem / 24px · $leading-snug</span></td>
+          <td><div style="font-family:'GlacialIndifference',sans-serif;font-size:1.5rem;font-weight:700;line-height:1.4;">Heading 4</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-h5</span><span class="sg-meta">1.25rem / 20px · $leading-snug</span></td>
+          <td><div style="font-family:'GlacialIndifference',sans-serif;font-size:1.25rem;font-weight:700;line-height:1.4;">Heading 5</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-body-lg</span><span class="sg-meta">1.125rem / 18px · $leading-normal</span></td>
+          <td><div style="font-size:1.125rem;line-height:1.6;">Body large — introductory paragraphs</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-body</span><span class="sg-meta">1rem / 16px · $leading-normal</span></td>
+          <td><div style="font-size:1rem;line-height:1.6;">Body — default body text across the site</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-body-sm</span><span class="sg-meta">0.875rem / 14px · $leading-loose</span></td>
+          <td><div style="font-size:0.875rem;line-height:1.75;">Body small — captions, meta, button labels</div></td>
+        </tr>
+        <tr>
+          <td><span class="sg-token">$text-label</span><span class="sg-meta">0.75rem / 12px</span></td>
+          <td><div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;">Label — fine print, badges, eyebrows</div></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ── Spacing ────────────────────────────────────────────── -->
+    <section class="sg-section" id="spacing">
+      <h2 class="sg-section-title">Spacing Scale</h2>
+      <div class="sg-spacing">
+        <div class="sg-space"><div class="sg-space__bar" style="height:4px;"></div><div class="sg-space__label">$space-1<br>4px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:8px;"></div><div class="sg-space__label">$space-2<br>8px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:12px;"></div><div class="sg-space__label">$space-3<br>12px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:16px;"></div><div class="sg-space__label">$space-4<br>16px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:24px;"></div><div class="sg-space__label">$space-5<br>24px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:32px;"></div><div class="sg-space__label">$space-6<br>32px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:40px;"></div><div class="sg-space__label">$space-7<br>40px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:48px;"></div><div class="sg-space__label">$space-8<br>48px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:64px;"></div><div class="sg-space__label">$space-10<br>64px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:80px;"></div><div class="sg-space__label">$space-12<br>80px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:128px;"></div><div class="sg-space__label">$space-16<br>128px</div></div>
+        <div class="sg-space"><div class="sg-space__bar" style="height:160px;"></div><div class="sg-space__label">$space-20<br>160px</div></div>
+      </div>
+      <div style="margin-top:2rem;padding:1rem;background:#fff;border-radius:8px;font-size:0.875rem;color:#555;">
+        <strong>Section padding shorthand:</strong>
+        &nbsp;<code style="background:#F7F0E5;padding:2px 6px;border-radius:3px;">$section-padding-y</code> = 5rem &nbsp;·&nbsp;
+        <code style="background:#F7F0E5;padding:2px 6px;border-radius:3px;">$section-padding-y-mobile</code> = 2rem
+      </div>
+    </section>
+
+    <!-- ── Border Radius ──────────────────────────────────────── -->
+    <section class="sg-section" id="radius">
+      <h2 class="sg-section-title">Border Radius</h2>
+      <div class="sg-radii">
+        <div class="sg-radius"><div class="sg-radius__box" style="border-radius:50px;"></div><span class="sg-radius__label">$radius-pill</span><span class="sg-radius__val">50px — Buttons</span></div>
+        <div class="sg-radius"><div class="sg-radius__box" style="border-radius:20px;"></div><span class="sg-radius__label">$radius-card</span><span class="sg-radius__val">20px — Cards</span></div>
+        <div class="sg-radius"><div class="sg-radius__box" style="border-radius:10px;"></div><span class="sg-radius__label">$radius-widget</span><span class="sg-radius__val">10px — Widgets</span></div>
+        <div class="sg-radius"><div class="sg-radius__box" style="border-radius:8px;"></div><span class="sg-radius__label">$radius-small</span><span class="sg-radius__val">8px — Small containers</span></div>
+        <div class="sg-radius"><div class="sg-radius__box" style="border-radius:6px;"></div><span class="sg-radius__label">$radius-image</span><span class="sg-radius__val">6px — Images</span></div>
+        <div class="sg-radius"><div class="sg-radius__box" style="border-radius:3px;"></div><span class="sg-radius__label">$radius-input</span><span class="sg-radius__val">3px — Inputs</span></div>
+      </div>
+    </section>
+
+    <!-- ── Shadows ─────────────────────────────────────────────── -->
+    <section class="sg-section" id="shadows">
+      <h2 class="sg-section-title">Shadows</h2>
+      <div class="sg-shadows">
+        <div>
+          <div class="sg-shadow-card" style="box-shadow:0 2px 4px rgba(0,0,0,0.05);">
+            <span>$shadow-card</span>
+            <small>0 2px 4px / 5%</small>
+          </div>
+        </div>
+        <div>
+          <div class="sg-shadow-card" style="box-shadow:10px 10px 20px rgba(0,0,0,0.4);">
+            <span>$shadow-image</span>
+            <small>10 10 20px / 40%</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Letter Spacing ──────────────────────────────────────── -->
+    <section class="sg-section" id="tracking">
+      <h2 class="sg-section-title">Letter Spacing</h2>
+      <div class="sg-tracking">
+        <div class="sg-tracking-row">
+          <div class="sg-tracking-row__meta">$tracking-normal · 2px</div>
+          <div class="sg-tracking-row__sample" style="letter-spacing:2px;">Sample text uppercase</div>
+        </div>
+        <div class="sg-tracking-row">
+          <div class="sg-tracking-row__meta">$tracking-wide · 3px</div>
+          <div class="sg-tracking-row__sample" style="letter-spacing:3px;">Sample text uppercase</div>
+        </div>
+        <div class="sg-tracking-row">
+          <div class="sg-tracking-row__meta">$tracking-wider · 5px</div>
+          <div class="sg-tracking-row__sample" style="letter-spacing:5px;">Sample text uppercase</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Breakpoints ─────────────────────────────────────────── -->
+    <section class="sg-section" id="breakpoints">
+      <h2 class="sg-section-title">Breakpoints</h2>
+      <table class="sg-bp-table">
+        <tr><td>$bp-xs</td><td>480px</td><td>Small mobile</td></tr>
+        <tr><td>$bp-sm</td><td>768px</td><td>Mobile / tablet boundary</td></tr>
+        <tr><td>$bp-md</td><td>968px</td><td>Tablet / desktop boundary</td></tr>
+        <tr><td>$bp-lg</td><td>991px</td><td>Wide tablet / small desktop</td></tr>
+        <tr><td>$bp-xl</td><td>1132px</td><td>Large desktop</td></tr>
+        <tr><td>$bp-xxl</td><td>1738px</td><td>Extra large</td></tr>
+      </table>
+    </section>
+
+    <!-- ── Z-Index ─────────────────────────────────────────────── -->
+    <section class="sg-section" id="zindex">
+      <h2 class="sg-section-title">Z-Index Scale</h2>
+      <table class="sg-z-table">
+        <tr><td>$z-dropdown</td><td>10</td><td>Dropdowns, tooltips</td></tr>
+        <tr><td>$z-nav</td><td>99999</td><td>Look Around menu</td></tr>
+        <tr><td>$z-overlay</td><td>100000</td><td>Modals, pop-ups</td></tr>
+      </table>
+    </section>
+
+  </div>
+
+</body>
+</html>

@@ -23,7 +23,7 @@
 		font-family: $font-glacial;
 		font-size: 0.875rem;
 		font-weight: 700;
-		letter-spacing: 5px;
+		letter-spacing: $tracking-wider;
 		text-transform: uppercase;
 		margin: 0;
 	}
@@ -57,7 +57,7 @@
 		font-family: $font-glacial;
 		font-weight: 700;
 		font-size: 0.875rem;
-		letter-spacing: 3px;
+		letter-spacing: $tracking-wide;
 		text-transform: uppercase;
 		text-decoration: none;
 		transition: filter 0.3s ease;

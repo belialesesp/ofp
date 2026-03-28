@@ -1,0 +1,114 @@
+@use "../../css/variables" as *;
+
+// =============================================================================
+// QUOTE / TESTIMONIAL BLOCK
+// custom-blocks/quote/_quote.scss
+// =============================================================================
+
+.ofp-quote {
+	margin: 0;
+	padding: $section-padding-y 0;
+
+	// ── Pull Quote ─────────────────────────────────────────────────────────
+	&--pullquote {
+		max-width: 760px;
+		margin: 0 auto;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+
+		.ofp-quote__mark {
+			flex-shrink: 0;
+			opacity: 0.8;
+		}
+
+		.ofp-quote__text {
+			font-family: $font-versailles;
+			font-size: $text-h3;
+			font-weight: 400;
+			line-height: $leading-snug;
+			color: $color-text;
+			margin: 0;
+
+			@media screen and (max-width: $bp-sm) {
+				font-size: $text-h4;
+			}
+		}
+
+		.ofp-quote__attribution {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.25rem;
+		}
+
+		.ofp-quote__author {
+			font-family: $font-glacial;
+			font-size: $text-body-sm;
+			font-weight: 700;
+			letter-spacing: $tracking-wide;
+			text-transform: uppercase;
+		}
+
+		.ofp-quote__role {
+			font-family: $font-glacial;
+			font-size: $text-body-sm;
+			color: $color-text-muted;
+		}
+	}
+
+	// ── Testimonial ────────────────────────────────────────────────────────
+	&--testimonial {
+		background: $color-sand;
+		border-radius: $radius-card;
+		border-left: 4px solid; // color set inline
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		max-width: 680px;
+		margin: 0 auto;
+
+		.ofp-quote__photo {
+			img {
+				width: 72px;
+				height: 72px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 3px solid; // color set inline
+				display: block;
+			}
+		}
+
+		.ofp-quote__text {
+			font-family: $font-glacial;
+			font-size: $text-body-lg;
+			line-height: $leading-loose;
+			color: $color-text;
+			margin: 0;
+			font-style: italic;
+		}
+
+		.ofp-quote__attribution {
+			display: flex;
+			flex-direction: column;
+			gap: 0.2rem;
+		}
+
+		.ofp-quote__author {
+			font-family: $font-glacial;
+			font-size: $text-body-sm;
+			font-weight: 700;
+			letter-spacing: $tracking-normal;
+			text-transform: uppercase;
+		}
+
+		.ofp-quote__role {
+			font-family: $font-glacial;
+			font-size: $text-body-sm;
+			color: $color-text-muted;
+		}
+	}
+}
