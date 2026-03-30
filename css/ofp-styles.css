@@ -773,37 +773,42 @@ footer form.ff-685421b840679baaea6652ec__form button:hover {
     height: 35px;
   }
 }
+.archive #primary-menu a {
+  color: #66B1BB;
+}
+.archive #primary-menu a:hover {
+  color: #F0A9AC;
+}
+
 .archives-page {
   flex-direction: column;
   padding: 4rem 0;
 }
-.archives-page .archives-header {
+.archives-page .page-header {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 }
-.archives-page .archives-title {
-  display: flex;
+.archives-page .page-title {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   padding: 1rem 2rem;
   font-family: "GlacialIndifference", sans-serif;
+  font-size: 1rem;
   font-weight: 700;
-  color: #222;
-  font-weight: 700;
+  color: #222222;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-decoration: none;
   background-color: #FFD6D9;
 }
-.archives-page .archives-title.green {
-  background-color: #BED8BA;
+.archives-page .page-title .screen-reader-text {
+  display: none;
 }
-.archives-page .archives-title.blue {
-  background-color: #9BBFCD;
-}
-@media screen and (max-width: 767px) {
-  .archives-page .archives-title {
+@media screen and (max-width: 768px) {
+  .archives-page .page-title {
     padding: 0.3rem 0.8rem;
     font-size: 0.8rem;
   }
@@ -825,24 +830,77 @@ footer form.ff-685421b840679baaea6652ec__form button:hover {
   height: 544px;
   object-fit: cover;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .archives-page .archive-posts .post__image img {
     height: 248px;
   }
 }
 .archives-page .archive-posts .post__title {
   margin: 0;
-  font-size: 1rem;
+  font-family: "Versailles", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #222222;
 }
 .archives-page .archive-posts .post__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   color: #66B1BB;
+  font-family: "GlacialIndifference", sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
+  text-decoration: underline;
+  transition: fill 0.2s ease;
 }
-@media screen and (max-width: 767px) {
+.archives-page .archive-posts .post__cta svg path,
+.archives-page .archive-posts .post__cta svg rect {
+  fill: #66B1BB;
+  transition: fill 0.2s ease;
+}
+.archives-page .archive-posts .post__cta:hover {
+  color: #F0A9AC;
+}
+.archives-page .archive-posts .post__cta:hover svg path,
+.archives-page .archive-posts .post__cta:hover svg rect {
+  fill: #F0A9AC;
+}
+@media screen and (max-width: 768px) {
   .archives-page .archive-posts .post {
     width: calc(50% - 0.5rem);
   }
+}
+.archives-page .posts-navigation {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem !important;
+}
+.archives-page .posts-navigation .nav-links {
+  display: flex;
+  gap: 1rem;
+}
+.archives-page .posts-navigation .nav-previous a,
+.archives-page .posts-navigation .nav-next a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 5rem;
+  background-color: #BED8BA;
+  color: #222222;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: to-rem(14px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color 0.2s ease;
+}
+.archives-page .posts-navigation .nav-previous a:hover,
+.archives-page .posts-navigation .nav-next a:hover {
+  background-color: rgb(165.4444444444, 201.2666666667, 159.9333333333);
 }
 
 .single-post #primary-menu a {
@@ -1376,10 +1434,6 @@ body {
   max-width: 326px;
   height: auto;
   width: auto;
-}
-
-.free-resources-list {
-  padding: 8rem 0;
 }
 
 .free-resources-list .container {
@@ -2006,3 +2060,5 @@ button:hover, button:focus,
 .single-post .widget {
   margin: 0;
 }
+
+/*# sourceMappingURL=ofp-styles.css.map */
