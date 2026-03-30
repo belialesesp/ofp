@@ -1571,6 +1571,8 @@ div[class*=course-library__tab--]::after {
 .sidebar .my-favorite-cards {
   padding: 16px;
   background: #9BBFCD;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .sidebar .my-favorite-cards__left-col {
   width: 100%;
@@ -1629,14 +1631,7 @@ div[class*=course-library__tab--]::after {
 }
 .sidebar .my-favorite-cards__card-cta:hover {
   background-color: transparent;
-  color: #9BBFCD;
-}
-.sidebar .my-favorite-cards__card-cta:visited {
-  color: #F0A9AD;
-}
-.sidebar .my-favorite-cards__card-cta:visited:hover {
-  background-color: transparent;
-  color: #9BBFCD;
+  color: #F0A9AC;
 }
 .sidebar .my-favorite-cards__cta {
   display: none;

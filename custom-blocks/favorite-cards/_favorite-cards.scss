@@ -205,6 +205,8 @@ $fc-blue:  $color-blue-light;
 	.my-favorite-cards {
 		padding: 16px;
 		background: $fc-blue;
+		border-radius: $radius-card;
+		overflow: hidden; 
 
 		&__left-col {
 			width: 100%;
@@ -275,16 +277,7 @@ $fc-blue:  $color-blue-light;
 
 			&:hover {
 				background-color: transparent;
-				color: $fc-blue;
-			}
-
-			&:visited {
-				color: $fc-pink;
-
-				&:hover {
-					background-color: transparent;
-					color: $fc-blue;
-				}
+				color: $color-pink;
 			}
 		}
 
