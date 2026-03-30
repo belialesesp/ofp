@@ -1,1 +1,98 @@
-// Search styles — placeholder
+@use 'variables' as *;
+
+// -----------------------------------------------------------------------------
+// Search results page — search.php
+// Migrated from inline/customize CSS.
+// -----------------------------------------------------------------------------
+
+// ── Menu color override ───────────────────────────────────────────────────────
+.search .main-navigation .menu .menu-item a {
+  color: $color-blue-light;
+}
+
+// ── Page wrapper ──────────────────────────────────────────────────────────────
+.search main {
+  padding: 6rem 0;
+}
+
+// ── Page header ───────────────────────────────────────────────────────────────
+.search main .page-header {
+  width: 100%;
+}
+
+.search main .page-header .page-title {
+  font-family: $font-moontime;
+  color: $color-pink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+// ── Search grid ───────────────────────────────────────────────────────────────
+.search-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem 1rem;
+  justify-content: center;
+}
+
+.search article {
+  display: flex;
+  flex-direction: column;
+  gap: 0 1rem;
+  width: calc(33.33% - 0.6666666667rem);
+  text-align: center;
+
+  @media screen and (max-width: $bp-sm) {
+    width: 75%;
+  }
+}
+
+.search img.attachment-post-thumbnail {
+  width: 100%;
+  height: 544px;
+  object-fit: cover;
+}
+
+.search h2.entry-title a {
+  color: $color-text;
+  font-family: $font-versailles;
+  font-size: to-rem(20px);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+}
+
+// ── Pagination ────────────────────────────────────────────────────────────────
+// Note: these rules are scoped to .search to avoid conflicts with
+// the autoptimize-injected nav.navigation.posts-navigation rules.
+.search nav.navigation.posts-navigation {
+  width: 100%;
+  display: flex !important;
+  justify-content: center;
+  margin: 3rem 0 2rem !important; // !important: override autoptimize injected margin
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav-previous,
+  .nav-next {
+    border-radius: 50px;
+    background: $color-green;
+    padding: 1rem 5rem;
+    text-transform: uppercase;
+
+    a {
+      color: $color-white;
+      font-family: $font-glacial;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 2px;
+    }
+  }
+}

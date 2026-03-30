@@ -470,7 +470,6 @@
 
 // -----------------------------------------------------------------------------
 // Main menu colors — page-specific overrides
-// Migrated from _pages.scss
 // -----------------------------------------------------------------------------
 .page-id-161584 .main-navigation .menu .menu-item a,
 .page-id-161223 .main-navigation .menu .menu-item a,
@@ -507,4 +506,16 @@
 .single-credit_cards .main-navigation .menu .menu-item a,
 .error404 .main-navigation .menu .menu-item a {
   color: $color-blue-light;
+}
+
+.page-id-161208 .main-navigation {
+  z-index: 3;
+}
+
+.page-id-161208 #primary-menu > .menu-item > a {
+  color: $color-green2;
+
+  &:hover {
+    color: $color-pink-cta;
+  }
 }
