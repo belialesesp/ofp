@@ -1,1 +1,49 @@
-// 404 styles — placeholder
+@use 'variables' as *;
+
+// -----------------------------------------------------------------------------
+// 404 page — 404.php
+// Migrated from inline/customize CSS.
+// -----------------------------------------------------------------------------
+
+.error-404-container {
+  padding: 7rem 0 1rem;
+  text-align: center;
+}
+
+.error-404-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-404-title {
+  font-family: $font-glacial;
+  font-size: 5rem;
+  font-weight: 700;
+  color: $color-text;
+  margin-bottom: 1rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.error-404-subtitle {
+  font-family: $font-glacial;
+  font-size: to-rem(22px);
+  font-weight: 300;
+  color: $color-text-light;
+  margin-bottom: 2.5rem;
+  line-height: 1.4;
+
+    a {
+        text-transform: lowercase;
+    }
+}
+
+.error-code {
+  font-family: $font-glacial;
+  font-size: to-rem(14px);
+  font-weight: 400;
+  color: $color-text-muted;
+  margin-top: 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

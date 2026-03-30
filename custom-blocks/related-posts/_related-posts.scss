@@ -1,1 +1,101 @@
-// related-posts block — styles pending
+@use "../../css/variables" as *;
+
+// -----------------------------------------------------------------------------
+// Related Posts block
+// -----------------------------------------------------------------------------
+
+.related-posts-auto-block {
+  background-color: $color-sand;
+  padding: 3rem 0;
+  margin-bottom: 0;
+}
+
+.related-posts-auto-block-container {
+  // inherits .container
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+.related-posts-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.related-posts-title {
+  font-size: 2.5rem;
+  font-family: $font-versailles;
+  font-weight: 400;
+  margin: 0;
+}
+
+// ── Grid ──────────────────────────────────────────────────────────────────────
+.related-posts-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Post item ─────────────────────────────────────────────────────────────────
+.related-post-item {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid $color-pink-cta;
+  max-width: 750px;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  @media screen and (max-width: $bp-sm) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// ── Thumbnail ─────────────────────────────────────────────────────────────────
+.related-post-thumb {
+  flex-shrink: 0;
+
+  a img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+}
+
+// ── Content ───────────────────────────────────────────────────────────────────
+.related-post-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+// ── Category ─────────────────────────────────────────────────────────────────
+.related-post-category p {
+  margin: 0;
+  color: $color-pink-cta;
+  font-family: $font-glacial;
+  font-size: to-rem(16px);
+  font-weight: 400;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+// ── Title ─────────────────────────────────────────────────────────────────────
+.related-post-title a {
+  color: $color-text;
+  font-family: $font-glacial;
+  font-size: to-rem(18px);
+  font-weight: 400;
+  line-height: 1.47;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-pink;
+  }
+}

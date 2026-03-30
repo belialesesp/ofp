@@ -1,69 +1,157 @@
 @use 'variables' as *;
 
+// -----------------------------------------------------------------------------
+// Fix: archive pages inherit a white menu link color from other templates.
+// Override here to keep nav visible on the white background.
+// -----------------------------------------------------------------------------
+.archive #primary-menu a {
+  color: $color-blue;
+
+  &:hover {
+    color: $color-pink;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Archive page layout
+// -----------------------------------------------------------------------------
 .archives-page {
   flex-direction: column;
   padding: 4rem 0;
-  .archives-header {
+
+  // ── Page header ─────────────────────────────────────────────────────────────
+  .page-header {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 3rem;
   }
-  .archives-title {
-    display: flex;
+
+  // ── Title pill ──────────────────────────────────────────────────────────────
+  // the_archive_title() prepends "Category:", "Tag:" etc. wrapped in a <span>.
+  // We hide that prefix span and style only the term name.
+  .page-title {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     padding: 1rem 2rem;
     font-family: $font-glacial;
+    font-size: 1rem;
     font-weight: 700;
-    color: #222;
-    font-weight: 700;
+    color: $color-text;
     letter-spacing: 2px;
     text-transform: uppercase;
-    text-decoration: none;
-    background-color: #FFD6D9;
-    &.green {
-      background-color: #BED8BA;
+    background-color: $color-pink-light;   // default: pink
+
+    // WP wraps the prefix in a <span class="screen-reader-text"> on some setups
+    // but also in a plain <span> — hide both so only the term name shows.
+    .screen-reader-text {
+      display: none;
     }
-    &.blue {
-      background-color: #9BBFCD;
-    }
-    @media screen and (max-width: 767px) {
+
+    @media screen and (max-width: $bp-sm) {
       padding: 0.3rem 0.8rem;
       font-size: 0.8rem;
     }
   }
- 
+
+  // ── Post grid ───────────────────────────────────────────────────────────────
   .archive-posts {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+
     .post {
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      width: calc(33.33% - (2rem/3));
+      width: calc(33.33% - (2rem / 3));
       text-align: center;
-      &__image {
-        img {
-          width: 100%;
-          height: 544px;
-          object-fit: cover;
-          @media screen and (max-width: 767px) {
-            height: 248px;
+
+      &__image img {
+        width: 100%;
+        height: 544px;
+        object-fit: cover;
+
+        @media screen and (max-width: $bp-sm) {
+          height: 248px;
+        }
+      }
+
+      &__title {
+        margin: 0;
+        font-family: $font-versailles;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: $color-text;
+      }
+
+      &__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        color: $color-blue;
+        font-family: $font-glacial;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-decoration: underline;
+        transition: fill 0.2s ease;
+
+        svg path,
+        svg rect {
+          fill: $color-blue;
+          transition: fill 0.2s ease;
+        }
+
+        &:hover {
+          color: $color-pink;
+
+          svg path,
+          svg rect {
+            fill: $color-pink;
           }
         }
       }
-      &__title {
-        margin: 0;
-        font-size: 1rem;
-      }
-      &__cta {
-        color: #66B1BB;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-      @media screen and (max-width: 767px) {
+
+      @media screen and (max-width: $bp-sm) {
         width: calc(50% - 0.5rem);
+      }
+    }
+  }
+
+  // ── Pagination ────────────────────────────────────────────────────────────── 
+  .posts-navigation {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem !important;
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-previous a,
+    .nav-next a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 5rem;
+      background-color: $color-green;
+      color: $color-text;
+      font-family: $font-glacial;
+      font-size: to-rem(14px);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: darken($color-green, 8%);
       }
     }
   }

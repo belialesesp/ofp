@@ -188,3 +188,11 @@ $tracking-wider:  5px;
 $z-dropdown:  10;
 $z-nav:       99999;
 $z-overlay:   100000;
+
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+
+$transition-fast:   0.15s ease;   // micro-interactions (opacity, visibility)
+$transition-base:   0.2s ease;    // color, background-color hover states
+$transition-slow:   0.3s ease;    // transforms, filter, max-height
