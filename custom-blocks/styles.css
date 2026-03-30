@@ -2500,6 +2500,85 @@ div[class*=course-library__tab--]::after {
   height: 550px !important;
 }
 
+.instagram-dm {
+  padding: 2rem 0;
+}
+.instagram-dm .container {
+  max-width: 1300px;
+}
+.instagram-dm__slider {
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.instagram-dm__slider k .splide__track {
+  overflow: visible;
+}
+.instagram-dm__slider .splide__pagination {
+  margin-top: 1.5rem;
+  gap: 0.4rem;
+}
+.instagram-dm__slider .splide__pagination li button {
+  width: 8px;
+  height: 8px;
+  background-color: #c5c5c5;
+  border-radius: 50%;
+  opacity: 1;
+  transition: background-color 0.2s ease;
+}
+.instagram-dm__slider .splide__pagination li button.is-active {
+  background-color: #222222;
+  transform: none;
+}
+.instagram-dm__slide {
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.dm-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+}
+
+.dm-bubble {
+  width: 100%;
+  padding: 24px 28px;
+  background-color: #f4f5f7;
+  border-radius: 28px;
+}
+.dm-bubble__text {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #090c11;
+}
+.dm-bubble__text p {
+  margin: 0;
+}
+
+.dm-heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 38px;
+  margin-top: -6px;
+  margin-left: 10px;
+  background-color: #f4f5f7;
+  border: 3px solid #ffffff;
+  border-radius: 50px;
+  overflow: hidden;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
 .lets-connect {
   padding: 4rem 0;
 }
@@ -3986,3 +4065,5 @@ div[class*=course-library__tab--]::after {
   line-height: 190.877%;
   letter-spacing: 0.19px;
 }
+
+/*# sourceMappingURL=styles.css.map */

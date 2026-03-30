@@ -296,7 +296,7 @@ function our_family_passport_scripts() {
     // ------------------------------------------------------------------
     // Splide CSS — conditional: only on pages with slider blocks
     // ------------------------------------------------------------------
-    $splide_blocks = [ 'acf/success-stories', 'acf/course-library' ];
+    $splide_blocks = [ 'acf/success-stories', 'acf/course-library', 'acf/instagram-dm' ];
     $needs_splide  = false;
     foreach ( $splide_blocks as $block ) {
         if ( has_block( $block ) ) {
