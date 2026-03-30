@@ -159,6 +159,23 @@ window.OFP.slider = (function () {
 
     var CONFIGS = {
 
+        'instagram-dm-splide': {
+            type:       'slide',
+            perPage:    3,
+            perMove:    1,
+            gap:        '1.5rem',
+            pagination: false,
+            arrows:     false,
+            autoplay:   true,
+            interval:   4000,
+            pauseOnHover: true,
+            autoHeight: true,
+            breakpoints: {
+                991: { perPage: 2, pagination: true },
+                600: { perPage: 1, pagination: true }
+            }
+        },
+
         'success-stories-splide': {
             type:       'loop',
             perPage:    2,
