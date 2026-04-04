@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -300,6 +299,149 @@
 .page-sidebar-widget .banner-cta,
 .page-sidebar-block .banner-cta {
   padding: 15px;
+}
+
+.family-passport-section {
+  background: linear-gradient(264deg, #fed7d8 0%, #f8c8b4 100%);
+}
+.family-passport-section .container {
+  padding: 6rem 0;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .family-passport-section {
+    padding: 60px 0;
+  }
+}
+.family-passport-section .passport-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  min-height: 500px;
+}
+@media (max-width: 968px) {
+  .family-passport-section .passport-content {
+    gap: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .family-passport-section .passport-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+}
+.family-passport-section .image-column {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.family-passport-section .main-image-wrapper {
+  position: relative;
+  max-width: 100%;
+}
+.family-passport-section .main-image {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+}
+.family-passport-section .logo-overlay {
+  position: absolute;
+  top: 43px;
+  left: -86px;
+}
+@media (max-width: 968px) {
+  .family-passport-section .logo-overlay {
+    top: -30px;
+    left: 15px;
+  }
+}
+.family-passport-section .logo-1 {
+  position: absolute;
+  top: 45px;
+  left: 45px;
+  z-index: 1;
+}
+.family-passport-section .logo-2 {
+  animation: rotation 15s linear infinite 0s;
+}
+.family-passport-section .content-wrapper {
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+@media (max-width: 768px) {
+  .family-passport-section .content-align-left .content-wrapper,
+  .family-passport-section .content-align-right .content-wrapper,
+  .family-passport-section .content-align-center .content-wrapper {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+.family-passport-section .small-title {
+  font-family: "Net MoonTime", sans-serif;
+  color: #222222;
+  text-align: center;
+  font-size: 2.375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.6125rem;
+}
+.family-passport-section .main-title {
+  text-align: center;
+}
+.family-passport-section .main-title .title-line-1,
+.family-passport-section .main-title .title-line-2 {
+  color: #222222;
+  text-align: center;
+  font-family: "Versailles", sans-serif;
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 4.5rem;
+  text-transform: uppercase;
+}
+@media (max-width: 968px) {
+  .family-passport-section .main-title .title-line-1,
+  .family-passport-section .main-title .title-line-2 {
+    font-size: 2.5rem;
+  }
+}
+.family-passport-section .main-title .title-line-2 {
+  margin-top: -8px;
+}
+.family-passport-section .subtitle {
+  color: #222222;
+  text-align: center;
+  font-family: "LeagueGothic", sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+}
+.family-passport-section .description {
+  color: #222222;
+  text-align: center;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.8rem;
+  margin: 2rem 0 0;
+  padding: 0 2rem;
+}
+.family-passport-section .description p {
+  margin-bottom: 20px;
+}
+.family-passport-section .description p:last-child {
+  margin-bottom: 0;
 }
 
 .box-grid {
@@ -980,176 +1122,6 @@ div[class*=course-library__tab--]::after {
     order: 1;
   }
 }
-.credit-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-  background-color: #F5F2EF;
-  font-family: "Rubik", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-}
-.credit-card-container .card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border: 1px solid #E0E0E0;
-  border-radius: 8px;
-  padding: 45px;
-  background-color: #FFFFFF;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-.credit-card-container .card .card-title {
-  display: block;
-  color: #66B1BB;
-  font-weight: bold;
-  margin-bottom: 1.25rem;
-  text-decoration: none;
-}
-.credit-card-container .card .card-img {
-  display: block;
-  margin: 0 auto;
-  transition: all 0.5s;
-}
-.credit-card-container .card .card-img:hover {
-  transform: scale(1.1) rotate(-10deg);
-}
-.credit-card-container .card .reward-points {
-  color: #000000;
-  margin: 15px 0;
-}
-.credit-card-container .card .terms {
-  color: #555555;
-  margin-bottom: 15px;
-  font-style: italic;
-}
-.credit-card-container .card .terms a {
-  color: #555555;
-  text-decoration: underline;
-}
-.credit-card-container .card .apply-link,
-.credit-card-container .card .apply-button {
-  position: relative;
-  padding: 0.25rem 2rem;
-  border-radius: 6px;
-  color: #66B1BB;
-  font-weight: 700;
-  text-decoration: none;
-  text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s;
-}
-.credit-card-container .card .apply-link::after,
-.credit-card-container .card .apply-button::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #66B1BB;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.18);
-  transition: all 0.4s;
-}
-.credit-card-container .card .apply-link:hover::after,
-.credit-card-container .card .apply-button:hover::after {
-  width: 100%;
-}
-.credit-card-container .card .mod-annual {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding-top: 10px;
-}
-.credit-card-container .card .annual-fee {
-  color: #006B77;
-  margin: 0;
-}
-.credit-card-container .card .section-title {
-  color: #66B1BB;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-.credit-card-container .card hr {
-  height: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-.credit-card-container .card.large {
-  width: 100%;
-  font-size: 14px;
-}
-.credit-card-container .card.large .card-title {
-  font-size: 24px;
-}
-.credit-card-container .card.large .apply-link,
-.credit-card-container .card.large .apply-button {
-  font-size: 18px;
-}
-.credit-card-container .card.large .annual-fee {
-  font-size: 18px;
-}
-.credit-card-container .card.large .section-title {
-  font-size: 16px;
-}
-.credit-card-container .card.large .terms {
-  font-size: 12px;
-}
-.credit-card-container .card.medium {
-  max-width: 600px;
-  padding: 20px;
-  font-size: 12px;
-}
-.credit-card-container .card.medium .left {
-  width: 40%;
-}
-.credit-card-container .card.medium .right {
-  width: 60%;
-  padding-left: 15px;
-}
-.credit-card-container .card.medium .card-title {
-  font-size: 20px;
-}
-.credit-card-container .card.medium .mod-annual {
-  justify-content: center;
-}
-.credit-card-container .card.medium .annual-fee {
-  font-size: 14px;
-}
-.credit-card-container .card.small {
-  max-width: 260px;
-  flex-direction: column;
-  padding: 20px;
-  font-size: 11px;
-  text-align: center;
-}
-.credit-card-container .card.small .card-title {
-  font-size: 16px;
-}
-.credit-card-container .card.small .card-img {
-  max-width: 132px;
-  margin-bottom: 15px;
-}
-.credit-card-container .card.small hr {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 0;
-}
-.credit-card-container .card.small hr.hidde-small {
-  display: none;
-}
-.credit-card-container .card.small .mod-annual {
-  justify-content: center;
-  padding-top: 0;
-}
-.credit-card-container .card.small .annual-fee {
-  display: none;
-}
-
 .destinations-map .container {
   max-width: 1110px;
   align-items: flex-start;
@@ -1317,17 +1289,190 @@ div[class*=course-library__tab--]::after {
   }
 }
 
-.enchanting-links a {
-  color: inherit;
-  text-decoration: none;
-}
-.enchanting-links .container {
+.enchanted-link {
+  padding: 4rem 2rem;
+  background-color: #F5F2EF;
+  text-align: center;
+  display: flex;
   flex-direction: column;
   align-items: center;
+}
+.enchanted-link .pre-title {
+  color: #222222;
+  text-align: center;
+  font-family: "LeagueGothic", sans-serif;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+}
+.enchanted-link .section-title {
+  font-family: "Net MoonTime", sans-serif;
+  color: var(--OFP-CTA, #F0A9AD);
+  text-align: center;
+  font-size: 7.8125rem;
+  font-weight: 400;
+  line-height: 8.59375rem;
+  width: 734.216px;
+  height: 124.992px;
+  transform: rotate(-3deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.enchanted-link .section-description {
+  max-width: 435px;
+  color: #222222;
+  text-align: center;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  line-height: 1.875rem;
+}
+.enchanted-link .links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  max-width: 800px;
+  margin: 2rem auto 0;
+  position: relative;
+}
+.enchanted-link .links-grid::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background-color: #d7d7d7;
+  transform: translateX(-50%);
+}
+.enchanted-link .link-item {
+  background: transparent;
+  position: relative;
+}
+.enchanted-link .link-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.enchanted-link .link-item:nth-child(1)::before, .enchanted-link .link-item:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background-color: #d7d7d7;
+}
+.enchanted-link .link-item:nth-child(1)::after, .enchanted-link .link-item:nth-child(2)::after, .enchanted-link .link-item:nth-child(3)::after, .enchanted-link .link-item:nth-child(4)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background-color: #d7d7d7;
+}
+.enchanted-link .link-content {
+  padding: 2rem 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  position: relative;
+  min-height: 120px;
+  gap: 1rem;
+}
+.enchanted-link .link-title {
+  color: #222222;
+  font-family: "Versailles", sans-serif;
+  font-size: 1.9909375rem;
+  font-weight: 400;
+  line-height: 2.40625rem;
+  text-transform: uppercase;
+}
+.enchanted-link .link-number {
+  text-align: right;
+  font-family: "LeagueGothic", sans-serif;
+  font-size: 3.125rem;
+  font-weight: 400;
+  line-height: 3.125rem;
+}
+@media screen and (max-width: 768px) {
+  .enchanted-link {
+    padding: 3rem 1rem;
+  }
+  .enchanted-link .section-title {
+    font-size: 5rem;
+    width: auto;
+    height: auto;
+  }
+  .enchanted-link .section-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  .enchanted-link .links-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .enchanted-link .links-grid::before {
+    display: none;
+  }
+  .enchanted-link .links-grid .link-item:nth-child(1)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background-color: #d7d7d7;
+  }
+  .enchanted-link .links-grid .link-item:nth-child(n+2)::before {
+    display: none;
+  }
+  .enchanted-link .links-grid .link-item:last-child::after {
+    display: none;
+  }
+  .enchanted-link .link-content {
+    padding: 1.5rem 1rem;
+    min-height: 100px;
+  }
+  .enchanted-link .link-title {
+    font-size: 1.25rem;
+  }
+  .enchanted-link .link-number {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .enchanted-link {
+    padding: 2rem 1rem;
+  }
+  .enchanted-link .section-title {
+    font-size: 5rem;
+  }
+  .enchanted-link .pre-title {
+    font-size: 0.75rem;
+  }
+  .enchanted-link .section-description {
+    font-size: 0.875rem;
+  }
+  .enchanted-link .link-title {
+    font-size: 1.125rem;
+  }
+  .enchanted-link .link-number {
+    font-size: 2.5rem;
+  }
 }
 
 .extra-benefits {
   padding: 5.625rem 0;
+  background: linear-gradient(264deg, #D7F2F8 0%, #9BBFCD 100%);
 }
 .extra-benefits .container {
   max-width: 1012px;
@@ -1637,6 +1782,188 @@ div[class*=course-library__tab--]::after {
   display: none;
 }
 
+body.has-sidebar .my-favorite-cards__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+body.has-sidebar .my-favorite-cards__title br {
+  display: none;
+}
+body.has-sidebar .my-favorite-cards__title span {
+  font-size: 5rem;
+  line-height: 5rem;
+}
+body.has-sidebar .my-favorite-cards__title .styled {
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.favorite-cards-section {
+  background-color: #F7F0E5;
+}
+.favorite-cards-section .container {
+  align-items: center;
+  justify-content: space-around;
+}
+.favorite-cards-section .section-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  gap: 15px;
+}
+.favorite-cards-section .section-header .left-image {
+  flex-shrink: 0;
+  margin-top: -45px;
+}
+.favorite-cards-section .section-header .left-image img {
+  max-width: 30px;
+  height: auto;
+}
+.favorite-cards-section .section-header .title h2 {
+  margin: 0;
+  text-align: center;
+  color: #222222;
+}
+.favorite-cards-section .section-header .title h2 .first-line {
+  display: block;
+  color: #222222;
+  text-align: center;
+  font-family: "Net MoonTime", sans-serif;
+  font-size: 6.25rem;
+  line-height: 74.4px;
+}
+.favorite-cards-section .section-header .title h2 .second-line {
+  display: flex;
+  color: #222222;
+  text-align: center;
+  font-family: "Versailles", sans-serif;
+  font-size: 6.25rem;
+  line-height: 74.4px;
+  text-transform: uppercase;
+}
+.favorite-cards-section .cards-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.favorite-cards-section .card-item {
+  padding: 40px 30px;
+  width: 280px;
+}
+.favorite-cards-section .card-image {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 180px;
+}
+.favorite-cards-section .card-image img {
+  max-width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+}
+.favorite-cards-section .card-info h3 {
+  color: #222222;
+  font-family: "Versailles", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+.favorite-cards-section .card-info p {
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #282828;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+.favorite-cards-section .learn-more {
+  color: var(--OFP-CTA, #F0A9AD);
+  text-align: center;
+  font-family: "GlacialIndifference", sans-serif;
+  text-decoration: none;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.favorite-cards-section .learn-more:hover {
+  color: #9BBFCD;
+}
+@media screen and (max-width: 968px) {
+  .favorite-cards-section .cards-wrapper {
+    gap: 30px;
+  }
+  .favorite-cards-section .card-item {
+    width: 260px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .favorite-cards-section {
+    padding: 60px 0;
+  }
+  .favorite-cards-section .section-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+    gap: 10px;
+  }
+  .favorite-cards-section .section-header .left-image {
+    margin-top: -17px;
+  }
+  .favorite-cards-section .section-header .title h2 .first-line,
+  .favorite-cards-section .section-header .title h2 .second-line {
+    font-size: 4.375rem;
+    line-height: 55px;
+  }
+  .favorite-cards-section .cards-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .favorite-cards-section .card-item {
+    width: 100%;
+    max-width: 300px;
+    padding: 30px 25px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .favorite-cards-section .container {
+    padding: 0 15px;
+  }
+  .favorite-cards-section .section-header .title h2 .first-line,
+  .favorite-cards-section .section-header .title h2 .second-line {
+    font-size: 3.125rem;
+    line-height: 40px;
+  }
+  .favorite-cards-section .card-item {
+    padding: 25px 20px;
+  }
+  .favorite-cards-section .card-image {
+    height: 150px;
+    margin-bottom: 25px;
+  }
+  .favorite-cards-section .card-image img {
+    max-height: 130px;
+  }
+  .favorite-cards-section .card-info h3 {
+    font-size: 0.8125rem;
+  }
+  .favorite-cards-section .card-info p {
+    font-size: 0.9375rem;
+  }
+}
+
 .favorite-things {
   padding: 8rem 0 4rem;
   background-color: #F5F2EF;
@@ -1834,6 +2161,195 @@ div[class*=course-library__tab--]::after {
   letter-spacing: 2px;
 }
 
+.free-quiz-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  background-color: #000000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.free-quiz-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+@media (min-width: 1920px) {
+  .free-quiz-video-wrapper iframe,
+  .free-quiz-video-wrapper video {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+@media (max-width: 768px) {
+  .free-quiz-video-wrapper {
+    display: none;
+  }
+}
+
+.free-quiz-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+  padding: 4rem 2rem;
+}
+.free-quiz-overlay .free-quiz-container,
+.free-quiz-overlay .free-quiz-card,
+.free-quiz-overlay .free-quiz-content,
+.free-quiz-overlay .free-quiz-button {
+  pointer-events: auto;
+}
+@media (max-width: 768px) {
+  .free-quiz-overlay {
+    padding: 2rem 1rem;
+  }
+}
+
+.free-quiz-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+}
+
+.free-quiz-card {
+  background-color: #F7F0E5;
+  padding: 4rem 5rem;
+  border-radius: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .free-quiz-card {
+    padding: 2rem 1.5rem;
+    max-width: 320px;
+  }
+}
+@media (max-width: 480px) {
+  .free-quiz-card {
+    padding: 1.5rem 1rem;
+    max-width: 280px;
+  }
+}
+
+.free-quiz-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .free-quiz-content {
+    gap: 0;
+  }
+}
+
+.free-quiz-title {
+  margin: 0 0 1.5rem;
+  line-height: 1.2;
+}
+.free-quiz-title .title-line1 {
+  display: block;
+  font-family: "Net MoonTime", sans-serif;
+  color: #222222;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 4.125rem;
+}
+.free-quiz-title .title-line2 {
+  display: block;
+  color: #222222;
+  text-align: center;
+  font-family: "Versailles", sans-serif;
+  font-size: 6.25rem;
+  font-weight: 400;
+  line-height: 3.65625rem;
+  text-transform: uppercase;
+}
+@media (max-width: 768px) {
+  .free-quiz-title .title-line2 {
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .free-quiz-title .title-line2 {
+    font-size: 2.4rem;
+  }
+}
+
+.free-quiz-description {
+  width: 232px;
+  font-family: "GlacialIndifference", sans-serif;
+  color: #282828;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.875rem;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .free-quiz-description {
+    font-size: 0.9rem;
+    max-width: 250px;
+  }
+}
+
+.free-quiz-button {
+  color: var(--OFP-CTA, #F0A9AD);
+  text-align: center;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 4.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.free-quiz-button:hover {
+  color: #9BBFCD;
+}
+@media (max-width: 768px) {
+  .free-quiz-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .free-quiz-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+  }
+}
+body.has-post-sidebar .free-quiz-section {
+  min-height: 50vh;
+}
+body.has-post-sidebar .free-quiz-container {
+  justify-content: center;
+}
+
 .free-resources {
   padding: 4rem 0;
   background-color: #F6F2EF;
@@ -1949,7 +2465,7 @@ div[class*=course-library__tab--]::after {
 }
 
 .free-resources-list {
-  padding: 7rem 0;
+  padding: 7rem 0 !important;
   background-color: #F6F2EF;
 }
 .free-resources-list .container {
@@ -2075,6 +2591,7 @@ div[class*=course-library__tab--]::after {
   position: relative;
   padding: 0.5rem 2rem;
   font-size: 0.75rem;
+  white-space: normal !important;
 }
 .resource-list__content .badge h3 {
   width: 100%;
@@ -2116,6 +2633,178 @@ div[class*=course-library__tab--]::after {
   }
 }
 
+.guides-section {
+  padding: 6rem 15rem;
+  background-color: #F5F2EF;
+}
+.guides-section__title {
+  color: #222222;
+  font-family: "Versailles", sans-serif;
+  font-size: 3.75rem;
+  font-weight: 400;
+  line-height: 5.15625rem;
+}
+@media screen and (max-width: 768px) {
+  .guides-section {
+    padding: 3rem 1rem;
+  }
+  .guides-section__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.guides-content {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media screen and (max-width: 768px) {
+  .guides-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.guides-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.guides-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.guides-cta-button {
+  color: var(--OFP-CTA, #F0A9AD);
+  text-align: center;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 4.65rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.guides-cta-button:hover {
+  color: #9BBFCD;
+}
+.guides-cta-button svg {
+  width: 16px;
+  height: 16px;
+}
+@media screen and (max-width: 768px) {
+  .guides-cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.guide-card {
+  position: relative;
+}
+.guide-card--main {
+  min-height: 680px;
+  max-width: 465px;
+}
+.guide-card--main .guide-card__image {
+  min-height: 680px;
+}
+@media screen and (max-width: 768px) {
+  .guide-card--main {
+    min-height: 400px;
+  }
+  .guide-card--main .guide-card__image {
+    min-height: 400px;
+  }
+}
+.guide-card--secondary {
+  min-height: 280px;
+}
+.guide-card--secondary .guide-card__image {
+  min-height: 280px;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+@media screen and (max-width: 768px) {
+  .guide-card--secondary {
+    min-height: 250px;
+  }
+  .guide-card--secondary .guide-card__image {
+    min-height: 250px;
+  }
+}
+.guide-card__image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: inherit;
+}
+.guide-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(34, 34, 34, 0.44) 0%, rgba(34, 34, 34, 0.44) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.guide-card__title {
+  display: flex;
+  width: 401.858px;
+  height: 106.976px;
+  transform: rotate(-5deg);
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FFFFFF;
+  text-align: center;
+  font-family: "Net MoonTime", sans-serif;
+  font-size: 4.0625rem;
+  font-weight: 400;
+  line-height: 3.25rem;
+}
+@media screen and (max-width: 768px) {
+  .guide-card__title {
+    font-size: 2rem;
+    width: 250px;
+    height: 60px;
+    line-height: 35px;
+  }
+}
+.guide-card__content {
+  padding: 1rem 0;
+  text-align: center;
+}
+.guide-card__description {
+  padding: 0 1rem;
+  color: #222222;
+  text-align: center;
+  font-family: "GlacialIndifference", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6875rem;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @keyframes rotation {
   from {
     transform: rotate(0deg);
@@ -2207,7 +2896,7 @@ div[class*=course-library__tab--]::after {
 }
 @media screen and (max-width: 991px) {
   .hero-content__image {
-    display: none;
+    display: none !important;
   }
 }
 

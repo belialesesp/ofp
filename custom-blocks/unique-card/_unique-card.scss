@@ -1,1 +1,222 @@
-// unique-card block — styles pending
+@use "../../css/variables" as *;
+
+.unique-card {
+	position: relative;
+	padding: 8rem 0 $space-4;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	.container {
+		max-width: 1200px;
+	}
+
+	&__card {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $space-6;
+		justify-content: space-around;
+
+		@media screen and (max-width: 767px) {
+			text-align: center;
+			justify-content: center;
+		}
+	}
+
+	&__rotating-img {
+		width: calc(20% - 1.3333333333rem);
+		text-align: center;
+
+		.images-container {
+			position: relative;
+
+			.animated__img {
+				position: absolute;
+				max-width: inherit;
+				width: 206%;
+				height: 206%;
+				top: -44%;
+				left: -53%;
+				animation: rotation 15s linear infinite 0s;
+			}
+		}
+
+		@media screen and (min-width: 768px) and (max-width: $bp-lg) {
+			display: none;
+		}
+
+		@media screen and (max-width: 767px) {
+			position: absolute;
+			top: $space-10;
+			left: 0;
+		}
+	}
+
+	&__card-content {
+		width: calc(50% - 1.3333333333rem);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		gap: 26px;
+
+		@media screen and (min-width: 768px) and (max-width: $bp-lg) {
+			width: calc(70% - $space-4);
+		}
+
+		@media screen and (max-width: 767px) {
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	&__card-img {
+		width: calc(30% - 1.3333333333rem);
+		text-align: center;
+
+		@media screen and (min-width: 768px) and (max-width: $bp-lg) {
+			width: calc(30% - $space-4);
+		}
+
+		@media screen and (max-width: 767px) {
+			width: 60%;
+		}
+	}
+
+	&__card-title {
+		margin: 0;
+		font-family: $font-versailles;
+		font-size: to-rem(45);
+		font-style: normal;
+		font-weight: 400;
+		line-height: to-rem(51);
+	}
+
+	&__offers-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
+	&__card-new-offer {
+		margin: 0;
+		font-family: $font-glacial;
+		font-size: to-rem(30);
+		font-style: normal;
+		font-weight: 700;
+		letter-spacing: 6px;
+		text-transform: uppercase;
+
+		@media screen and (max-width: 767px) {
+			font-size: to-rem(26);
+		}
+	}
+
+	&__card-old-offer {
+		margin: 0;
+		font-family: $font-glacial;
+		font-size: to-rem(20);
+		font-style: normal;
+		font-weight: 700;
+		letter-spacing: 4px;
+		text-decoration-line: line-through;
+		text-transform: uppercase;
+	}
+
+	&__card-current-offer {
+		margin: 0;
+		font-family: $font-glacial;
+		font-size: to-rem(17.719);
+		font-style: normal;
+		font-weight: 400;
+		line-height: 162.54%;
+
+		.offer-ends {
+			font-size: to-rem(14);
+			font-style: normal;
+			font-weight: 400;
+			line-height: 205.714%;
+			text-transform: uppercase;
+		}
+	}
+
+	&__card-cta {
+		position: relative;
+		padding: 0;
+		background-color: transparent;
+		font-family: $font-versailles;
+		font-size: to-rem(25);
+		font-style: normal;
+		font-weight: 700;
+		line-height: 297.6%;
+		letter-spacing: 5px;
+		text-transform: uppercase;
+
+		&:hover,
+		&:visited:hover {
+			background-color: transparent;
+		}
+
+		&::after {
+			position: absolute;
+			left: 0;
+			bottom: 20px;
+			width: calc(100% - $space-4 - 24px);
+			border: 1px solid;
+			content: "";
+
+			@media screen and (max-width: 767px) {
+				width: calc(100% - $space-4 - 18px);
+				bottom: 12px;
+			}
+		}
+
+		@media screen and (min-width: 768px) and (max-width: $bp-lg) {
+			font-size: to-rem(22);
+		}
+
+		@media screen and (max-width: 767px) {
+			font-size: to-rem(18);
+		}
+	}
+
+	&__card-fees {
+		position: relative;
+		padding: 0;
+		background-color: transparent;
+		font-family: $font-glacial;
+		font-size: to-rem(12);
+		font-style: normal;
+		font-weight: 700;
+		line-height: 100%;
+		letter-spacing: 2.4px;
+		text-transform: uppercase;
+
+		&:hover,
+		&:visited:hover {
+			background-color: transparent;
+		}
+
+		&::after {
+			position: absolute;
+			left: 0;
+			bottom: -3px;
+			width: 100%;
+			border: 1px solid;
+			content: "";
+		}
+	}
+}
+
+@keyframes rotation {
+
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(359deg);
+	}
+}

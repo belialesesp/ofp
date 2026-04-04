@@ -1,1 +1,95 @@
-// words-animation block — styles pending
+.words-animation-section {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 120px;
+  padding: 24px 0;
+  border-bottom: 1px solid #d7d7d7;
+}
+@media screen and (max-width: 991px) {
+  .words-animation-section {
+    height: auto !important;
+    min-height: 80px;
+  }
+}
+
+.words-animation-container {
+  width: 100%;
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.words-marquee {
+  display: inline-flex;
+  align-items: center;
+  animation: move-to-center ease-in-out forwards;
+  will-change: transform;
+  width: max-content;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translateZ(0);
+}
+
+.animated-word {
+  text-align: center;
+  font-family: "Versailles", sans-serif;
+  font-size: 110px;
+  font-weight: 400;
+  line-height: 121px;
+  margin: 0 2rem;
+  white-space: nowrap;
+  text-transform: uppercase;
+  opacity: 1;
+}
+@media screen and (max-width: 991px) {
+  .animated-word {
+    font-size: 60px;
+    line-height: 66px;
+    margin: 0 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .animated-word {
+    font-size: 40px;
+    line-height: 44px;
+    margin: 0 0.8rem;
+  }
+}
+
+.word-separator {
+  text-align: center;
+  font-family: "Versailles", sans-serif;
+  font-size: 110px;
+  font-weight: 400;
+  line-height: 121px;
+  margin: 0 2rem;
+  opacity: 1;
+}
+@media screen and (max-width: 991px) {
+  .word-separator {
+    font-size: 60px;
+    line-height: 66px;
+    margin: 0 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .word-separator {
+    font-size: 40px;
+    line-height: 44px;
+    margin: 0 0.8rem;
+  }
+}
+
+@keyframes move-to-center {
+  0% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

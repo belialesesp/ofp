@@ -87,7 +87,7 @@
 		}
 
 		@media screen and (max-width: $bp-lg) {
-			display: none;
+			display: none !important;
 		}
 	}
 }

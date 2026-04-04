@@ -1,14 +1,14 @@
 {
-    "key": "group_66cd51690090b",
-    "title": "Favorite Cards [Post Block, Page Block]",
+    "key": "group_685d553b3aaf9",
+    "title": "Favorite Cards Small [Post* Block, Page Block]",
     "fields": [
         {
-            "key": "field_66cd5169c433c",
-            "label": "Favorite Cards [Post Block, Page Block]",
+            "key": "field_685d553b410b3",
+            "label": "Favorite Cards Small [Post* Block, Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "A section with a title and image on the left, and a list of Credit Card CPT items on the right.",
+            "instructions": "A one-row section displaying up to 3 cards pulled from the Credit Card CPT, as seen on the social page. On post pages, it is limited to 2 cards.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -21,42 +21,14 @@
             "endpoint": 0
         },
         {
-            "key": "field_66df5dc324a76",
-            "label": "Is Widget?",
-            "name": "is_widget",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "Yes",
-            "ui_off_text": "No",
-            "ui": 1
-        },
-        {
-            "key": "field_67c09af3d9a64",
+            "key": "field_685d553b410ee",
             "label": "Content",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66df5dc324a76",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -67,7 +39,7 @@
             "selected": 0
         },
         {
-            "key": "field_66cd51bcc433f",
+            "key": "field_685d553b41163",
             "label": "Title [line 1]",
             "name": "title_line_1",
             "aria-label": "",
@@ -87,7 +59,7 @@
             "append": ""
         },
         {
-            "key": "field_66cd51f0c4340",
+            "key": "field_685d553b4119d",
             "label": "Title [line 2]",
             "name": "title_line_2",
             "aria-label": "",
@@ -107,7 +79,7 @@
             "append": ""
         },
         {
-            "key": "field_66cd51fbc4341",
+            "key": "field_685d553b411d7",
             "label": "Left Image",
             "name": "left_image",
             "aria-label": "",
@@ -132,7 +104,7 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_66cd518bc433d",
+            "key": "field_685d553b41211",
             "label": "Favorite Cards",
             "name": "favorite_cards",
             "aria-label": "",
@@ -154,7 +126,7 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_66cd5198c433e",
+                    "key": "field_685d553b503f5",
                     "label": "Card Option",
                     "name": "fc_card_option",
                     "aria-label": "",
@@ -178,64 +150,19 @@
                     "bidirectional": 0,
                     "ui": 1,
                     "bidirectional_target": [],
-                    "parent_repeater": "field_66cd518bc433d"
+                    "parent_repeater": "field_685d553b41211"
                 }
             ]
         },
         {
-            "key": "field_66cd55e90f105",
-            "label": "CTA Label",
-            "name": "cta_label",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66cd55f70f106",
-            "label": "CTA Url",
-            "name": "cta_url",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_67c09adad9a63",
+            "key": "field_685d553b412c0",
             "label": "Settings",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66df5dc324a76",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -246,7 +173,7 @@
             "selected": 0
         },
         {
-            "key": "field_67c09b34d9a65",
+            "key": "field_685d553b412f9",
             "label": "Background Type",
             "name": "background_type",
             "aria-label": "",
@@ -273,7 +200,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_67c09b61d9a66",
+            "key": "field_685d553b41333",
             "label": "Background Color",
             "name": "background_color",
             "aria-label": "",
@@ -283,7 +210,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_685d553b412f9",
                         "operator": "==",
                         "value": "color"
                     }
@@ -299,7 +226,7 @@
             "return_format": "string"
         },
         {
-            "key": "field_67c09b71d9a67",
+            "key": "field_685d553b4136d",
             "label": "Background Color Start",
             "name": "background_color_start",
             "aria-label": "",
@@ -309,7 +236,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_685d553b412f9",
                         "operator": "==",
                         "value": "gradient"
                     }
@@ -325,7 +252,7 @@
             "return_format": "string"
         },
         {
-            "key": "field_67c09c17d9a68",
+            "key": "field_685d553b413a7",
             "label": "Background Color End",
             "name": "background_color_end",
             "aria-label": "",
@@ -335,7 +262,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_685d553b412f9",
                         "operator": "==",
                         "value": "gradient"
                     }
@@ -351,7 +278,7 @@
             "return_format": "string"
         },
         {
-            "key": "field_67c09c33d9a69",
+            "key": "field_685d553b413e1",
             "label": "Rotation (Deg) (0-360)",
             "name": "rotation_deg",
             "aria-label": "",
@@ -361,7 +288,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_685d553b412f9",
                         "operator": "==",
                         "value": "gradient"
                     }
@@ -381,7 +308,7 @@
             "append": ""
         },
         {
-            "key": "field_67c09c5fd9a6a",
+            "key": "field_685d553b4141b",
             "label": "Background Image",
             "name": "background_image",
             "aria-label": "",
@@ -391,7 +318,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_685d553b412f9",
                         "operator": "==",
                         "value": "image"
                     }
@@ -419,7 +346,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/favorite-cards"
+                "value": "acf\/favorite-cards-small"
             }
         ]
     ],
@@ -432,5 +359,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1775094103
+    "modified": 1775093156
 }

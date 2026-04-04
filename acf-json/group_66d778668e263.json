@@ -1,14 +1,14 @@
 {
     "key": "group_66d778668e263",
-    "title": "Success Stories [Custom Block]",
+    "title": "Success Stories [Page Block]",
     "fields": [
         {
             "key": "field_66d7786689afb",
-            "label": "Success Stories",
+            "label": "Success Stories [Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "",
+            "instructions": "Slider with success stories, containing the author’s image, name, and testimonial.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -348,5 +348,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1773173710
+    "modified": 1775272675
 }

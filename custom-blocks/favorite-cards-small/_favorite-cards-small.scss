@@ -1,1 +1,204 @@
-// favorite-cards-small block — styles pending
+@use "../../css/variables" as *;
+
+.favorite-cards-section {
+	background-color: $color-sand;
+
+	.container {
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.section-header {
+		display: flex;
+		align-items: flex-start;
+		margin-bottom: 60px;
+		gap: 15px;
+
+		.left-image {
+			flex-shrink: 0;
+			margin-top: -45px;
+
+			img {
+				max-width: 30px;
+				height: auto;
+			}
+		}
+
+		.title h2 {
+			margin: 0;
+			text-align: center;
+			color: $color-text;
+
+			.first-line {
+				display: block;
+				color: $color-text;
+				text-align: center;
+				font-family: $font-moontime;
+				font-size: to-rem(100);
+				line-height: 74.4px;
+			}
+
+			.second-line {
+				display: flex;
+				color: $color-text;
+				text-align: center;
+				font-family: $font-versailles;
+				font-size: to-rem(100);
+				line-height: 74.4px;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.cards-wrapper {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.card-item {
+		padding: 40px 30px;
+		width: 280px;
+	}
+
+	.card-image {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		height: 180px;
+
+		img {
+			max-width: 100%;
+			max-height: 120px;
+			object-fit: contain;
+		}
+	}
+
+	.card-info {
+
+		h3 {
+			color: $color-text;
+			font-family: $font-versailles;
+			font-size: $text-body-lg;
+			font-weight: 400;
+			line-height: 20px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			margin: 0;
+		}
+
+		p {
+			font-family: $font-glacial;
+			font-size: $text-body;
+			font-weight: 700;
+			color: $color-black-soft;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			margin: 0;
+		}
+	}
+
+	.learn-more {
+		color: var(--OFP-CTA, #{$color-pink-cta});
+		text-align: center;
+		font-family: $font-glacial;
+		text-decoration: none;
+		font-size: to-rem(11);
+		font-weight: 700;
+		letter-spacing: $tracking-normal;
+		text-transform: uppercase;
+		transition: color $transition-slow;
+
+		&:hover {
+			color: $color-blue-light;
+		}
+	}
+
+	@media screen and (max-width: $bp-md) {
+
+		.cards-wrapper {
+			gap: 30px;
+		}
+
+		.card-item {
+			width: 260px;
+		}
+	}
+
+	@media screen and (max-width: $bp-sm) {
+		padding: 60px 0;
+
+		.section-header {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			margin-bottom: 40px;
+			gap: 10px;
+
+			.left-image {
+				margin-top: -17px;
+			}
+
+			.title h2 {
+
+				.first-line,
+				.second-line {
+					font-size: to-rem(70);
+					line-height: 55px;
+				}
+			}
+		}
+
+		.cards-wrapper {
+			flex-direction: column;
+			align-items: center;
+			gap: 0;
+		}
+
+		.card-item {
+			width: 100%;
+			max-width: 300px;
+			padding: 30px 25px;
+		}
+	}
+
+	@media screen and (max-width: $bp-xs) {
+
+		.container {
+			padding: 0 15px;
+		}
+
+		.section-header .title h2 {
+
+			.first-line,
+			.second-line {
+				font-size: to-rem(50);
+				line-height: 40px;
+			}
+		}
+
+		.card-item {
+			padding: 25px 20px;
+		}
+
+		.card-image {
+			height: 150px;
+			margin-bottom: 25px;
+
+			img {
+				max-height: 130px;
+			}
+		}
+
+		.card-info {
+
+			h3 {
+				font-size: to-rem(13);
+			}
+
+			p {
+				font-size: to-rem(15);
+			}
+		}
+	}
+}

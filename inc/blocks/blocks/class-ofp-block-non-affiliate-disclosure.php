@@ -22,7 +22,7 @@ class OFP_Block_Non_Affiliate_Disclosure extends OFP_Block_Base {
     protected array  $keywords    = [ 'disclosure', 'affiliate', 'legal' ];
     protected array  $supports    = [
         'align' => [ 'wide', 'full' ],
-        'mode'  => true,
+        'mode'  => false,
         'jsx'   => true,
     ];
 }

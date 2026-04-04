@@ -1,14 +1,14 @@
 {
-    "key": "group_66dcc617b72b0",
-    "title": "Newsletter [Page Block]",
+    "key": "group_66dd23534217c",
+    "title": "Contact Form [Post* Block, Page Block]",
     "fields": [
         {
-            "key": "field_66dcc6177c3ae",
-            "label": "Newsletter [Page Block]",
+            "key": "field_66dd2353949de",
+            "label": "Contact Form [Post* Block, Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "Section with a video or image background, including a title and a newsletter form.",
+            "instructions": "Contact form as seen on the “Contact” page. It can be used on posts since there isn’t a background image.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -21,42 +21,14 @@
             "endpoint": 0
         },
         {
-            "key": "field_69b07c4442343",
-            "label": "Widget Mode",
-            "name": "widget",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "Use global widget settings from 'Site Widgets > Newsletter'",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui_on_text": "Widget",
-            "ui_off_text": "Block",
-            "ui": 1
-        },
-        {
-            "key": "field_66dcc6447c3af",
+            "key": "field_66dd2393949df",
             "label": "Content",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_69b07c4442343",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -67,7 +39,7 @@
             "selected": 0
         },
         {
-            "key": "field_66dcc6577c3b0",
+            "key": "field_66dd23a0949e0",
             "label": "Title",
             "name": "title",
             "aria-label": "",
@@ -87,7 +59,7 @@
             "append": ""
         },
         {
-            "key": "field_66dcc65d7c3b1",
+            "key": "field_66dd23a9949e1",
             "label": "Description",
             "name": "description",
             "aria-label": "",
@@ -107,22 +79,105 @@
             "delay": 0
         },
         {
-            "key": "field_69b07d1942344",
-            "label": "Flodesk Form ID",
-            "name": "flodesk_form_id",
+            "key": "field_66dd23ba949e2",
+            "label": "Contact Items",
+            "name": "contact_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66dd23d6949e3",
+                    "label": "Type",
+                    "name": "type",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.333",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "url": "URL",
+                        "mail": "Mail",
+                        "phone": "Phone"
+                    },
+                    "default_value": "url",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66dd23ba949e2"
+                },
+                {
+                    "key": "field_66dd2424949e4",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.333",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66dd23ba949e2"
+                },
+                {
+                    "key": "field_66dd244a949e5",
+                    "label": "Url",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "Use Only in case the type of item is URL",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.333",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_66dd23ba949e2"
+                }
+            ]
+        },
+        {
+            "key": "field_66dd255a949e6",
+            "label": "Contact Form ID",
+            "name": "contact_form_id",
             "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_69b07c4442343",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -135,22 +190,14 @@
             "append": ""
         },
         {
-            "key": "field_66dcc6707c3b2",
+            "key": "field_66ddd80ca7b97",
             "label": "Settings",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_69b07c4442343",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -161,7 +208,7 @@
             "selected": 0
         },
         {
-            "key": "field_66dcc6787c3b3",
+            "key": "field_66ddd815a7b98",
             "label": "Background Color",
             "name": "background_color",
             "aria-label": "",
@@ -170,7 +217,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "33.333",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -179,43 +226,7 @@
             "return_format": "string"
         },
         {
-            "key": "field_66dccead6b29f",
-            "label": "Title Color",
-            "name": "title_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33.333",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "#222",
-            "enable_opacity": 0,
-            "return_format": "string"
-        },
-        {
-            "key": "field_66dcd4a56b2a0",
-            "label": "Description Color",
-            "name": "description_color",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33.333",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "#222",
-            "enable_opacity": 0,
-            "return_format": "string"
-        },
-        {
-            "key": "field_66dcc6947c3b4",
+            "key": "field_66ddd824a7b99",
             "label": "Background Image",
             "name": "background_image",
             "aria-label": "",
@@ -238,34 +249,6 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
-        },
-        {
-            "key": "field_69b07d2b42345",
-            "label": "Background Video",
-            "name": "background_video",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_69b07c4442343",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         }
     ],
     "location": [
@@ -273,7 +256,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/newsletter"
+                "value": "acf\/contact-form"
             }
         ]
     ],
@@ -286,5 +269,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1775266744
+    "modified": 1775089268
 }

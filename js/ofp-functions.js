@@ -191,7 +191,7 @@ window.OFP.slider = (function () {
             heightRatio: 0,
             pagination:  false,
             arrows:      true,
-            perPage:     2,
+            perPage:     1,
             gap:         '1rem',
             arrowPath:   'M29.6548 23.8359H7.33398V20.1693H29.6548L19.3882 9.9026L22.0007 7.33594L36.6673 22.0026L22.0007 36.6693L19.3882 34.1026L29.6548 23.8359Z',
             breakpoints: { 991: { perPage: 1 } }
