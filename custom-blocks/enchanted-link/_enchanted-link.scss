@@ -1,1 +1,229 @@
-// enchanted-link block — styles pending
+@use "../../css/variables" as *;
+
+.enchanted-link {
+	padding: $space-10 $space-6;
+	background-color: $color-cream;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.pre-title {
+		color: $color-text;
+		text-align: center;
+		font-family: $LeagueGothic;
+		font-size: to-rem(25);
+		font-weight: 400;
+		line-height: to-rem(24);
+		letter-spacing: 0.75px;
+		text-transform: uppercase;
+	}
+
+	.section-title {
+		font-family: $styled;
+		color: var(--OFP-CTA, #{$color-pink-cta});
+		text-align: center;
+		font-size: to-rem(125);
+		font-weight: 400;
+		line-height: to-rem(137.5);
+		width: 734.216px;
+		height: 124.992px;
+		transform: rotate(-3deg);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.section-description {
+		max-width: 435px;
+		color: $color-text;
+		text-align: center;
+		font-family: $GlacialIndifference; 
+		font-size: to-rem(25);
+		font-weight: 400;
+		line-height: to-rem(30);
+	}
+
+	.links-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0;
+		max-width: 800px;
+		margin: $space-6 auto 0;
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 20px;
+			bottom: 20px;
+			width: 1px;
+			background-color: #d7d7d7;
+			transform: translateX(-50%);
+		}
+	}
+
+	.link-item {
+		background: transparent;
+		position: relative;
+
+		a {
+			text-decoration: none;
+			color: inherit;
+			display: block;
+			height: 100%;
+		}
+
+		&:nth-child(1),
+		&:nth-child(2) {
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 20px;
+				right: 20px;
+				height: 1px;
+				background-color: #d7d7d7;
+			}
+		}
+
+		&:nth-child(1),
+		&:nth-child(2),
+		&:nth-child(3),
+		&:nth-child(4) {
+
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				left: 20px;
+				right: 20px;
+				height: 1px;
+				background-color: #d7d7d7;
+			}
+		}
+	}
+
+	.link-content {
+		padding: $space-6 $space-5;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-start;
+		text-align: left;
+		position: relative;
+		min-height: 120px;
+		gap: $space-4;
+	}
+
+	.link-title {
+		color: $color-text;
+		font-family: $titles;
+		font-size: to-rem(31.855);
+		font-weight: 400;
+		line-height: to-rem(38.5);
+		text-transform: uppercase;
+	}
+
+	.link-number {
+		text-align: right;
+		font-family: $LeagueGothic;
+		font-size: to-rem(50);
+		font-weight: 400;
+		line-height: to-rem(50);
+	}
+
+	@media screen and (max-width: $bp-sm) {
+		padding: $space-8 $space-4;
+
+		.section-title {
+			font-size: to-rem(80);
+			width: auto;
+			height: auto;
+		}
+
+		.section-description {
+			font-size: $space-4;
+			margin-bottom: $space-6;
+		}
+
+		.links-grid {
+			grid-template-columns: 1fr;
+			max-width: 400px;
+
+			&::before {
+				display: none;
+			}
+
+			.link-item {
+
+				&:nth-child(1) {
+
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 20px;
+						right: 20px;
+						height: 1px;
+						background-color: #d7d7d7;
+					}
+				}
+
+				&:nth-child(n+2) {
+
+					&::before {
+						display: none;
+					}
+				}
+
+				&:last-child {
+
+					&::after {
+						display: none;
+					}
+				}
+			}
+		}
+
+		.link-content {
+			padding: $space-5 $space-4;
+			min-height: 100px;
+		}
+
+		.link-title {
+			font-size: to-rem(20);
+		}
+
+		.link-number {
+			font-size: to-rem(48);
+		}
+	}
+
+	@media screen and (max-width: $bp-xs) {
+		padding: $space-6 $space-4;
+
+		.section-title {
+			font-size: to-rem(80);
+		}
+
+		.pre-title {
+			font-size: to-rem(12);
+		}
+
+		.section-description {
+			font-size: to-rem(14);
+		}
+
+		.link-title {
+			font-size: to-rem(18);
+		}
+
+		.link-number {
+			font-size: to-rem(40);
+		}
+	}
+}

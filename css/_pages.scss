@@ -547,10 +547,6 @@ article.credit_cards {
   padding: 6rem 0;
 }
 
-.extra-benefits {
-  background: $gradient-blue;
-}
-
 // -----------------------------------------------------------------------------
 // Favorite Things
 // -----------------------------------------------------------------------------
@@ -945,10 +941,6 @@ button.dimiss {
     top: 6rem !important;
     right: 1rem !important;
   }
-}
-
-@media (max-width: $bp-xs) {
-  // Footer responsivo — migrado para _footer.scss
 }
 
 // -----------------------------------------------------------------------------

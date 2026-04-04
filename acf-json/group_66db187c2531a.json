@@ -1,14 +1,14 @@
 {
     "key": "group_66db187c2531a",
-    "title": "Free Consultation [Custom Block]",
+    "title": "Free Consultation [Post Block, Page Block]",
     "fields": [
         {
             "key": "field_66db187c7a546",
-            "label": "Free Consultation",
+            "label": "Free Consultation [Post Block, Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "",
+            "instructions": "A 2-column section with the title on the left and the description with a call-to-action on the right.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -282,5 +282,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1773174785
+    "modified": 1775256827
 }

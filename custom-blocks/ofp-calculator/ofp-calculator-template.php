@@ -67,8 +67,7 @@ if ($show_logo) {
 
 /* Calculator Specific Styles */
 #<?php echo $blockID; ?> {
-    padding: 30px 0;
-    margin: 25px 0;
+    padding: 55px 0;
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 

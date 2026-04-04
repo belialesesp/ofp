@@ -1,14 +1,14 @@
 {
     "key": "group_66d93b205f907",
-    "title": "Lets Connect [Custom Block]",
+    "title": "Lets Connect [Post Block, Page Block]",
     "fields": [
         {
             "key": "field_66d93b20a6244",
-            "label": "Let's Connect",
+            "label": "Lets Connect [Post Block, Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "",
+            "instructions": "A 2-column section with a masked image on the left and social links on the right.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -291,5 +291,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1773173663
+    "modified": 1775272146
 }

@@ -1,14 +1,14 @@
 {
-    "key": "group_66cd51690090b",
-    "title": "Favorite Cards [Post Block, Page Block]",
+    "key": "group_695d49d745e89",
+    "title": "Unique Card Body Section",
     "fields": [
         {
-            "key": "field_66cd5169c433c",
-            "label": "Favorite Cards [Post Block, Page Block]",
+            "key": "field_695d49d75e63b",
+            "label": "Unique Card Body Section",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "A section with a title and image on the left, and a list of Credit Card CPT items on the right.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -21,42 +21,14 @@
             "endpoint": 0
         },
         {
-            "key": "field_66df5dc324a76",
-            "label": "Is Widget?",
-            "name": "is_widget",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "Yes",
-            "ui_off_text": "No",
-            "ui": 1
-        },
-        {
-            "key": "field_67c09af3d9a64",
+            "key": "field_695d49d75e67c",
             "label": "Content",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66df5dc324a76",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -67,49 +39,32 @@
             "selected": 0
         },
         {
-            "key": "field_66cd51bcc433f",
-            "label": "Title [line 1]",
-            "name": "title_line_1",
+            "key": "field_695d49d75e6bd",
+            "label": "Card to Show",
+            "name": "card_to_show",
             "aria-label": "",
-            "type": "text",
+            "type": "select",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "choices": [],
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
-            "key": "field_66cd51f0c4340",
-            "label": "Title [line 2]",
-            "name": "title_line_2",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66cd51fbc4341",
-            "label": "Left Image",
-            "name": "left_image",
+            "key": "field_695d49d75e6fe",
+            "label": "Image",
+            "name": "image",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -132,62 +87,11 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_66cd518bc433d",
-            "label": "Favorite Cards",
-            "name": "favorite_cards",
+            "key": "field_695d49d75e73f",
+            "label": "Rotating Image",
+            "name": "rotating_image",
             "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 2,
-            "max": 3,
-            "collapsed": "",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_66cd5198c433e",
-                    "label": "Card Option",
-                    "name": "fc_card_option",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "credit_cards"
-                    ],
-                    "post_status": "",
-                    "taxonomy": "",
-                    "return_format": "id",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": [],
-                    "parent_repeater": "field_66cd518bc433d"
-                }
-            ]
-        },
-        {
-            "key": "field_66cd55e90f105",
-            "label": "CTA Label",
-            "name": "cta_label",
-            "aria-label": "",
-            "type": "text",
+            "type": "image",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -196,46 +100,26 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
-            "key": "field_66cd55f70f106",
-            "label": "CTA Url",
-            "name": "cta_url",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_67c09adad9a63",
+            "key": "field_695d49d75e780",
             "label": "Settings",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66df5dc324a76",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -246,7 +130,7 @@
             "selected": 0
         },
         {
-            "key": "field_67c09b34d9a65",
+            "key": "field_695d49d75e7c0",
             "label": "Background Type",
             "name": "background_type",
             "aria-label": "",
@@ -264,7 +148,7 @@
                 "gradient": "Gradient",
                 "image": "Image"
             },
-            "default_value": "gradient",
+            "default_value": "color",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -273,7 +157,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_67c09b61d9a66",
+            "key": "field_695d49d75e801",
             "label": "Background Color",
             "name": "background_color",
             "aria-label": "",
@@ -283,7 +167,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_695d49d75e7c0",
                         "operator": "==",
                         "value": "color"
                     }
@@ -299,7 +183,7 @@
             "return_format": "string"
         },
         {
-            "key": "field_67c09b71d9a67",
+            "key": "field_695d49d75e842",
             "label": "Background Color Start",
             "name": "background_color_start",
             "aria-label": "",
@@ -309,7 +193,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_695d49d75e7c0",
                         "operator": "==",
                         "value": "gradient"
                     }
@@ -320,12 +204,12 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "#9abfcc",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string"
         },
         {
-            "key": "field_67c09c17d9a68",
+            "key": "field_695d49d75e882",
             "label": "Background Color End",
             "name": "background_color_end",
             "aria-label": "",
@@ -335,7 +219,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_695d49d75e7c0",
                         "operator": "==",
                         "value": "gradient"
                     }
@@ -346,12 +230,12 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "#d3eff4",
+            "default_value": "",
             "enable_opacity": 0,
             "return_format": "string"
         },
         {
-            "key": "field_67c09c33d9a69",
+            "key": "field_695d49d75e8c3",
             "label": "Rotation (Deg) (0-360)",
             "name": "rotation_deg",
             "aria-label": "",
@@ -361,7 +245,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_695d49d75e7c0",
                         "operator": "==",
                         "value": "gradient"
                     }
@@ -381,7 +265,7 @@
             "append": ""
         },
         {
-            "key": "field_67c09c5fd9a6a",
+            "key": "field_695d49d75e904",
             "label": "Background Image",
             "name": "background_image",
             "aria-label": "",
@@ -391,14 +275,14 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_695d49d75e7c0",
                         "operator": "==",
                         "value": "image"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "33.333",
                 "class": "",
                 "id": ""
             },
@@ -412,6 +296,150 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_695d49d75e945",
+            "label": "Title Color",
+            "name": "title_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#222",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_695d49d75e986",
+            "label": "New Offer Color",
+            "name": "new_offer_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#F0A9AD",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_695d49d75e9c6",
+            "label": "Old Offer Color",
+            "name": "old_offer_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#939393",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_695d49d75ea07",
+            "label": "Current Offer Color",
+            "name": "current_offer_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#222",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_695d49d75ea48",
+            "label": "Learn More Color",
+            "name": "learn_more_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#9BBFCD",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_695d49d75ea89",
+            "label": "Learn More Hover Color",
+            "name": "learn_more_hover_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#F0A9AD",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_695d49d75eaca",
+            "label": "Rates and Fees Color",
+            "name": "rates_and_fees_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#9A9A9A",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_695d49d75eb0b",
+            "label": "Rates and Fees Hover Color",
+            "name": "rates_and_fees_hover_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#222",
+            "enable_opacity": 0,
+            "return_format": "string"
         }
     ],
     "location": [
@@ -419,7 +447,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/favorite-cards"
+                "value": "acf\/unique-card-body-section"
             }
         ]
     ],
@@ -429,8 +457,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1775094103
+    "modified": 1775274254
 }

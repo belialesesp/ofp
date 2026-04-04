@@ -45,107 +45,10 @@ $fallback_image_url = $background_image ? esc_url($background_image['url']) : ''
 $block_id = 'free-quiz-' . uniqid();
 ?>
 
-<style>
-/* Full viewport width for this specific block instance */
-#<?php echo $block_id; ?> {
-    position: relative;
-    overflow: hidden;
-    width: 100vw !important;
-    margin-left: calc(-50vw + 50%) !important;
-    min-height: 80vh;
-    background-color: #000;
-    padding: 0 !important; /* Override external CSS padding */
-}
-
-/* Remove background-attachment: fixed for video compatibility */
-#<?php echo $block_id; ?>.free-quiz-section {
-    background-attachment: scroll !important;
-    padding: 0 !important; /* Remove padding that constrains width */
-}
-
-/* Add padding back to the overlay for content spacing */
-#<?php echo $block_id; ?> .free-quiz-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    pointer-events: none;
-    padding: 4rem 2rem; /* Move padding here instead */
-}
-
-/* Video wrapper for overflow control */
-#<?php echo $block_id; ?> .free-quiz-video-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-}
-
-/* Video positioning for coverage - matching course-library exactly */
-#<?php echo $block_id; ?> .free-quiz-video-wrapper iframe,
-#<?php echo $block_id; ?> .free-quiz-video-wrapper video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 56.25vw; /* 16:9 Aspect Ratio */
-    min-height: 100vh;
-    min-width: 177.78vh; /* 16:9 Aspect Ratio */
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    pointer-events: none;
-    border: none;
-}
-
-/* Hide background video on mobile */
-@media (max-width: 767px) {
-    #<?php echo $block_id; ?> .free-quiz-video-wrapper {
-        display: none;
-    }
-}
-
-/* Ensure video fills on larger screens */
-@media (min-width: 1920px) {
-    #<?php echo $block_id; ?> .free-quiz-video-wrapper iframe,
-    #<?php echo $block_id; ?> .free-quiz-video-wrapper video {
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-}
-
-#<?php echo $block_id; ?> .free-quiz-card {
-    background: #F7F0E5;
-    padding: 4rem 5rem;
-    border-radius: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-/* Mobile adjustment */
-@media (max-width: 767px) {
-    #<?php echo $block_id; ?> {
-        margin-left: 0 !important;
-        width: 100% !important;
-        min-height: 50vh;
-    }
-    
-    #<?php echo $block_id; ?> .free-quiz-overlay {
-        padding: 2rem 1rem;
-    }
-}
-</style>
-
-<section id="<?php echo $block_id; ?>" class="free-quiz-section" style="background-image: url('<?php echo $fallback_image_url; ?>');">
+<section id="<?php echo $block_id; ?>" 
+class="free-quiz-section" 
+style="background-image: url('<?php echo $fallback_image_url; ?>');"
+data-no-lazy="1">
     <?php if ($video_embed_url): ?>
     <div class="free-quiz-video-wrapper">
         <?php if (strpos($video_embed_url, 'player.vimeo.com') !== false || strpos($video_embed_url, 'youtube.com/embed') !== false): ?>
@@ -153,10 +56,13 @@ $block_id = 'free-quiz-' . uniqid();
             <iframe 
                 class="free-quiz-video"
                 src="<?php echo esc_url($video_embed_url); ?>"
+                width="1440"
+                height="900"
                 frameborder="0"
                 allow="autoplay; fullscreen; picture-in-picture"
                 title="Background video"
-                allowfullscreen>
+                allowfullscreen
+                loading="eager">
             </iframe>
         <?php else: ?>
             <!-- Video element for direct video files -->
@@ -193,3 +99,13 @@ $block_id = 'free-quiz-' . uniqid();
         </div>
     </div>
 </section>
+
+<style>
+#<?php echo $block_id; ?> .free-quiz-video-wrapper iframe {
+    width: 100vw !important;
+    height: 56.25vw !important;
+    min-height: 100vh !important;
+    min-width: 177.78vh !important;
+    max-width: none !important;
+}
+    </style>

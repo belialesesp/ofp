@@ -1,14 +1,14 @@
 {
-    "key": "group_69cac8c0e5ed5",
-    "title": "Instagram DM Slider [Page Block]",
+    "key": "group_685c4a62d5275",
+    "title": "Words Animation [Page Block]",
     "fields": [
         {
-            "key": "field_69cacfa0782d4",
-            "label": "Instagram DM Slider [Page Block]",
+            "key": "field_685c4a6356988",
+            "label": "Words Animation [Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "Slider used to present Instagram testimonials in a more elegant way. Requires a white background.",
+            "instructions": "Thin section used to display words that animate from left to right in different colors.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -21,9 +21,9 @@
             "endpoint": 0
         },
         {
-            "key": "field_69cac8c30b09a",
-            "label": "Messages",
-            "name": "messages",
+            "key": "field_685c4a7156989",
+            "label": "Animated Words",
+            "name": "animated_words",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -43,9 +43,9 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_69cac8e20b09b",
-                    "label": "Message",
-                    "name": "message",
+                    "key": "field_685c4a855698a",
+                    "label": "Word",
+                    "name": "word",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -61,7 +61,26 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_69cac8c30b09a"
+                    "parent_repeater": "field_685c4a7156989"
+                },
+                {
+                    "key": "field_685c4a915698b",
+                    "label": "Color",
+                    "name": "color",
+                    "aria-label": "",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "enable_opacity": 0,
+                    "return_format": "string",
+                    "parent_repeater": "field_685c4a7156989"
                 }
             ]
         }
@@ -71,7 +90,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/instagram-dm"
+                "value": "acf\/words-animation"
             }
         ]
     ],
@@ -84,5 +103,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1775274880
+    "modified": 1775274521
 }

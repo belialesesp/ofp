@@ -85,7 +85,7 @@ if ($is_widget) {
   #<?= $blockID ?> h3,
   #<?= $blockID ?> .free-consultation__right-description,
   #<?= $blockID ?> .free-consultation__right-cta {
-    color: <?= $text_color ?>;
+    color: <?= $text_color ?> !important;
   }
   
   @media screen and (max-width: 767px) {

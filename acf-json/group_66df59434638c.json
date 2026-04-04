@@ -1,14 +1,14 @@
 {
-    "key": "group_66cd51690090b",
-    "title": "Favorite Cards [Post Block, Page Block]",
+    "key": "group_66df59434638c",
+    "title": "Banner CTA [Sidebar Widget, Post Block, Page Block]",
     "fields": [
         {
-            "key": "field_66cd5169c433c",
-            "label": "Favorite Cards [Post Block, Page Block]",
+            "key": "field_66df59433a982",
+            "label": "Banner CTA [Sidebar Widget, Post Block, Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "A section with a title and image on the left, and a list of Credit Card CPT items on the right.",
+            "instructions": "Customize it in Appearance > Widgets. It can be used as a block in both Posts and Pages. On pages, don't use the rounded border for design purposes.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -21,42 +21,14 @@
             "endpoint": 0
         },
         {
-            "key": "field_66df5dc324a76",
-            "label": "Is Widget?",
-            "name": "is_widget",
-            "aria-label": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui_on_text": "Yes",
-            "ui_off_text": "No",
-            "ui": 1
-        },
-        {
-            "key": "field_67c09af3d9a64",
+            "key": "field_66df5aae3a983",
             "label": "Content",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66df5dc324a76",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -67,53 +39,13 @@
             "selected": 0
         },
         {
-            "key": "field_66cd51bcc433f",
-            "label": "Title [line 1]",
-            "name": "title_line_1",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66cd51f0c4340",
-            "label": "Title [line 2]",
-            "name": "title_line_2",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66cd51fbc4341",
-            "label": "Left Image",
-            "name": "left_image",
+            "key": "field_66df5ac13a985",
+            "label": "Icon",
+            "name": "icon",
             "aria-label": "",
             "type": "image",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -132,11 +64,11 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_66cd518bc433d",
-            "label": "Favorite Cards",
-            "name": "favorite_cards",
+            "key": "field_66df5ab83a984",
+            "label": "Title",
+            "name": "title",
             "aria-label": "",
-            "type": "repeater",
+            "type": "text",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -145,47 +77,16 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "pagination": 0,
-            "min": 2,
-            "max": 3,
-            "collapsed": "",
-            "button_label": "Add Row",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_66cd5198c433e",
-                    "label": "Card Option",
-                    "name": "fc_card_option",
-                    "aria-label": "",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "credit_cards"
-                    ],
-                    "post_status": "",
-                    "taxonomy": "",
-                    "return_format": "id",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "bidirectional": 0,
-                    "ui": 1,
-                    "bidirectional_target": [],
-                    "parent_repeater": "field_66cd518bc433d"
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_66cd55e90f105",
-            "label": "CTA Label",
-            "name": "cta_label",
+            "key": "field_66df5aca3a986",
+            "label": "Description",
+            "name": "description",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -203,13 +104,33 @@
             "append": ""
         },
         {
-            "key": "field_66cd55f70f106",
+            "key": "field_66df5ad43a987",
+            "label": "CTA Label",
+            "name": "cta_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66df5ada3a988",
             "label": "CTA Url",
             "name": "cta_url",
             "aria-label": "",
             "type": "url",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -220,22 +141,14 @@
             "placeholder": ""
         },
         {
-            "key": "field_67c09adad9a63",
-            "label": "Settings",
+            "key": "field_66df5ae73a989",
+            "label": "Setting",
             "name": "",
             "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66df5dc324a76",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -246,13 +159,13 @@
             "selected": 0
         },
         {
-            "key": "field_67c09b34d9a65",
+            "key": "field_66df5af75f4ad",
             "label": "Background Type",
             "name": "background_type",
             "aria-label": "",
             "type": "select",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -273,7 +186,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_67c09b61d9a66",
+            "key": "field_66df5e4b5f4ae",
             "label": "Background Color",
             "name": "background_color",
             "aria-label": "",
@@ -283,7 +196,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_66df5af75f4ad",
                         "operator": "==",
                         "value": "color"
                     }
@@ -299,7 +212,7 @@
             "return_format": "string"
         },
         {
-            "key": "field_67c09b71d9a67",
+            "key": "field_66df5e8a5f4af",
             "label": "Background Color Start",
             "name": "background_color_start",
             "aria-label": "",
@@ -309,23 +222,23 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_66df5af75f4ad",
                         "operator": "==",
                         "value": "gradient"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "33.333",
+                "width": "33.3333",
                 "class": "",
                 "id": ""
             },
-            "default_value": "#9abfcc",
+            "default_value": "#fed7d8",
             "enable_opacity": 0,
             "return_format": "string"
         },
         {
-            "key": "field_67c09c17d9a68",
+            "key": "field_66df5ea35f4b0",
             "label": "Background Color End",
             "name": "background_color_end",
             "aria-label": "",
@@ -335,23 +248,23 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_66df5af75f4ad",
                         "operator": "==",
                         "value": "gradient"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "33.333",
+                "width": "33.3333",
                 "class": "",
                 "id": ""
             },
-            "default_value": "#d3eff4",
+            "default_value": "#f8c8b4",
             "enable_opacity": 0,
             "return_format": "string"
         },
         {
-            "key": "field_67c09c33d9a69",
+            "key": "field_66df5eb75f4b1",
             "label": "Rotation (Deg) (0-360)",
             "name": "rotation_deg",
             "aria-label": "",
@@ -361,18 +274,18 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_66df5af75f4ad",
                         "operator": "==",
                         "value": "gradient"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "33.333",
+                "width": "33.3333",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": 90,
             "min": "",
             "max": "",
             "placeholder": "",
@@ -381,7 +294,7 @@
             "append": ""
         },
         {
-            "key": "field_67c09c5fd9a6a",
+            "key": "field_66df5ecb5f4b2",
             "label": "Background Image",
             "name": "background_image",
             "aria-label": "",
@@ -391,14 +304,14 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_67c09b34d9a65",
+                        "field": "field_66df5af75f4ad",
                         "operator": "==",
                         "value": "image"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "100",
                 "class": "",
                 "id": ""
             },
@@ -412,6 +325,169 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_66df5f4ceb82f",
+            "label": "Title Font Size",
+            "name": "title_font_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.333",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 36,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66df5f7aeb830",
+            "label": "Title Font Color",
+            "name": "title_font_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.333",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_66df5fd3eb833",
+            "label": "Title Font Style",
+            "name": "title_font_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.333",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Versailles": "Title",
+                "GlacialIndifference": "Text",
+                "LeagueGothic": "Special"
+            },
+            "default_value": "LeagueGothic",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66df5f8aeb831",
+            "label": "Description Font size",
+            "name": "description_font_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66df5fa6eb832",
+            "label": "Description Font color",
+            "name": "description_font_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#222",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_66df6015eb834",
+            "label": "CTA Font color",
+            "name": "cta_font_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_66df6020eb835",
+            "label": "CTA Background color",
+            "name": "cta_background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_66df6096eb836",
+            "label": "Rounded Box",
+            "name": "rounded_box",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
         }
     ],
     "location": [
@@ -419,7 +495,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/favorite-cards"
+                "value": "acf\/banner-cta-widget"
             }
         ]
     ],
@@ -432,5 +508,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1775094103
+    "modified": 1775086292
 }

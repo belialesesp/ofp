@@ -1,7 +1,7 @@
 @use "../../css/variables" as *;
 
 .free-resources-list {
-	padding: 7rem 0;
+	padding: 7rem 0 !important;
 	background-color: $color-cream-dark;
 
 	.container {
@@ -137,6 +137,7 @@
 			position: relative;
 			padding: 0.5rem 2rem;
 			font-size: 0.75rem;
+			white-space: normal !important;
 
 			h3 {
 				width: 100%;

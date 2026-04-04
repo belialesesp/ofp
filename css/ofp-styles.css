@@ -2045,10 +2045,6 @@ article.credit_cards {
   padding: 6rem 0;
 }
 
-.extra-benefits {
-  background: linear-gradient(264deg, #D7F2F8 0%, #9BBFCD 100%);
-}
-
 .favorite-things {
   background-color: #F5F2EF !important;
   padding-top: 8rem;
@@ -2463,5 +2459,3 @@ button:hover, button:focus,
 .single-post .widget {
   margin: 0;
 }
-
-/*# sourceMappingURL=ofp-styles.css.map */

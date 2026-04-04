@@ -1,0 +1,45 @@
+{
+    "key": "group_68571e533572f",
+    "title": "Non-Affiliate Disclosure [CPT Block]",
+    "fields": [
+        {
+            "key": "field_68571e524f668",
+            "label": "Non-Affiliate Disclosure [CPT Block]",
+            "name": "disclosure_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Block used on CPT Credit Card Landing Page. Can't be used anywhere.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/non-affiliate-disclosure"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1775274164
+}

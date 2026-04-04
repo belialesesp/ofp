@@ -58,11 +58,13 @@ abstract class OFP_Block_Base {
     /**
      * Block supports options.
      *
+     * 'mode' => false hides the edit/preview toggle so blocks always open in edit mode.
+     *
      * @var array
      */
     protected array $supports = [
         'align' => false,
-        'mode'  => 'edit',
+        'mode'  => false,
         'jsx'   => true,
     ];
 
@@ -100,7 +102,7 @@ abstract class OFP_Block_Base {
             return;
         }
 
-        // Avoid double-registration
+        // Avoid double-registration.
         if ( acf_get_block_type( "acf/{$this->name}" ) ) {
             return;
         }
@@ -113,6 +115,7 @@ abstract class OFP_Block_Base {
             'category'        => $this->category,
             'icon'            => $this->icon,
             'keywords'        => $this->keywords,
+            'mode'            => 'edit',
             'supports'        => $this->supports,
         ] );
     }

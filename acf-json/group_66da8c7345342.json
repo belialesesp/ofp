@@ -1,14 +1,14 @@
 {
     "key": "group_66da8c7345342",
-    "title": "Free Resources [Custom Block]",
+    "title": "Free Resources [Post Block, Page Block]",
     "fields": [
         {
             "key": "field_66da8c736231c",
-            "label": "Free Resources",
+            "label": "Free Resources [Post Block, Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "",
+            "instructions": "A grid-style section with a title at the top and alternating image and content blocks below. Each content block includes a step label, title, and call-to-action",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -437,5 +437,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1773173628
+    "modified": 1775264863
 }

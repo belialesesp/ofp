@@ -19,7 +19,7 @@ class OFP_Block_Related_Posts extends OFP_Block_Base {
 
     protected array $supports = [
         'align' => false,
-        'mode'  => true,
+        'mode'  => false,
         'jsx'   => true,
     ];
 

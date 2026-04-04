@@ -1,6 +1,6 @@
 <?php
 if ( defined( 'CUSTOM_BLOCK_HELPER_LOADED' ) ) {
-  return;
+	return;
 }
 define( 'CUSTOM_BLOCK_HELPER_LOADED', true );
 
@@ -19,16 +19,19 @@ define( 'CUSTOM_BLOCK_HELPER_LOADED', true );
  * @param array $block The block settings and attributes.
  */
 function custom_block_render( $block ) {
-  $slug = str_replace( 'acf/', '', $block['name'] );
-  $template = get_theme_file_path( "/custom-blocks/{$slug}/{$slug}-template.php" );
+	$slug     = str_replace( 'acf/', '', $block['name'] );
+	$template = get_theme_file_path( "/custom-blocks/{$slug}/{$slug}-template.php" );
 
-  if ( file_exists( $template ) ) {
-    include $template;
-  }
+	if ( file_exists( $template ) ) {
+		include $template;
+	}
 }
 
 /**
  * Register a single ACF custom block.
+ *
+ * Blocks always open in edit mode (fields visible). The mode toggle button
+ * is hidden so the editor never sees a blank preview.
  *
  * @param array $config {
  *   @type string   $name        Block slug, e.g. 'hero-content'.
@@ -39,22 +42,21 @@ function custom_block_render( $block ) {
  * }
  */
 function register_custom_block( array $config ) {
-  if ( ! function_exists( 'acf_register_block' ) ) {
-    return;
-  }
+	if ( ! function_exists( 'acf_register_block' ) ) {
+		return;
+	}
 
-  $name = $config['name'];
-
-acf_register_block( array(
-    'name'            => $name,
-    'title'           => __( $config['title'] ),
-    'description'     => __( $config['description'] ?? "Block to show {$config['title']}." ),
-    'render_callback' => 'custom_block_render',
-    'category'        => 'formatting',
-    'icon'            => $config['icon'] ?? 'admin-generic',
-    'keywords'        => $config['keywords'] ?? array(),
-    'supports'        => array(
-        'mode' => 'edit',
-    ),
-) );
+	acf_register_block( array(
+		'name'            => $config['name'],
+		'title'           => __( $config['title'] ),
+		'description'     => __( $config['description'] ?? "Block to show {$config['title']}." ),
+		'render_callback' => 'custom_block_render',
+		'category'        => 'formatting',
+		'icon'            => $config['icon'] ?? 'admin-generic',
+		'keywords'        => $config['keywords'] ?? array(),
+		'mode'            => 'edit',
+		'supports'        => array(
+			'mode' => false, // Hides the edit/preview toggle button in the editor
+		),
+	) );
 }
