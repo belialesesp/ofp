@@ -426,7 +426,7 @@
       li a {
         width: auto;
         height: auto;
-        color: $color-black;
+        color: $color-black !important;
         font-family: $font-versailles;
         white-space: nowrap;
         padding: 1.2rem 0 !important;
