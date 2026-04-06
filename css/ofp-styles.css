@@ -428,7 +428,7 @@
 .main-navigation .menu .sub-menu li a {
   width: auto;
   height: auto;
-  color: #000000;
+  color: #000000 !important;
   font-family: "Versailles", sans-serif;
   white-space: nowrap;
   padding: 1.2rem 0 !important;
@@ -2459,3 +2459,5 @@ button:hover, button:focus,
 .single-post .widget {
   margin: 0;
 }
+
+/*# sourceMappingURL=ofp-styles.css.map */

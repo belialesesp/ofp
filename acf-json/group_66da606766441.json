@@ -1,14 +1,14 @@
 {
     "key": "group_66da606766441",
-    "title": "Hero Content [Custom Block]",
+    "title": "Hero Content [Page Block]",
     "fields": [
         {
             "key": "field_66da60677b022",
-            "label": "Hero Content [Custom Block]",
+            "label": "Hero Content [Page Block]",
             "name": "",
             "aria-label": "",
             "type": "accordion",
-            "instructions": "Hero section with a title, description, and CTA, used below the home page hero.",
+            "instructions": "Section with a title, description, and CTA, used below the home page hero.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -941,5 +941,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1775273739
+    "modified": 1775277663
 }
