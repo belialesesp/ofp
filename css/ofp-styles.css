@@ -2029,6 +2029,10 @@ body {
   background: #F5F2EF;
 }
 
+.single-post img {
+  object-fit: cover;
+}
+
 .single-post .entry-content a {
   color: #67B1BB !important;
   text-transform: none !important;
