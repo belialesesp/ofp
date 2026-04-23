@@ -226,20 +226,34 @@ function ofp_get_related_posts(
         return $cached;
     }
 
-    $posts = ofp_query_related_posts( $post_id, $qty, $selection, $order_by );
+    $posts   = ofp_query_related_posts( $post_id, $qty, $selection, $order_by );
+    $exclude = array_merge( [ $post_id ], wp_list_pluck( $posts, 'ID' ) );
 
-    // Fallback to category if tag/both returned nothing
-    if ( empty( $posts ) && $selection !== 'category' ) {
-        $posts = ofp_query_related_posts( $post_id, $qty, 'category', $order_by );
-    }
-
-    // Last resort: any recent posts
-    if ( empty( $posts ) ) {
-        $posts = ofp_query_related_posts( $post_id, $qty, 'none', $order_by );
+    // Fill remaining slots with any recent posts until we reach $qty
+    if ( count( $posts ) < $qty ) {
+        $filler = ofp_fill_related_posts( $qty - count( $posts ), $exclude, $order_by );
+        $posts  = array_merge( $posts, $filler );
     }
 
     set_transient( $cache_key, $posts, $ttl_seconds );
 
+    return $posts;
+}
+
+/**
+ * Fills remaining slots with recent posts, excluding the given IDs.
+ */
+function ofp_fill_related_posts( int $qty, array $exclude_ids, string $order_by ): array {
+    $query = new WP_Query( [
+        'post_type'      => 'post',
+        'posts_per_page' => $qty,
+        'post_status'    => 'publish',
+        'post__not_in'   => $exclude_ids,
+        'no_found_rows'  => true,
+        'orderby'        => $order_by,
+    ] );
+    $posts = $query->posts;
+    wp_reset_postdata();
     return $posts;
 }
 

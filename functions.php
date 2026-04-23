@@ -1440,7 +1440,7 @@ function restrict_search_to_posts($query) {
 }
 add_filter('pre_get_posts', 'restrict_search_to_posts');
 function enqueue_blog_filter_data() {
-    if ( is_page_template( 'page-blog.php' ) || is_page( 'blog' ) ) {
+    if ( is_page_template( 'page-blog.php' ) || is_page( 'blog' ) || is_home() ) {
         $categories = get_categories( array(
             'hide_empty' => false,
             'orderby'    => 'name',

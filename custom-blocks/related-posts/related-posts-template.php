@@ -14,7 +14,7 @@ $posts_number       = (int) ( get_field( 'posts_number' ) ?: 3 );
 $selection_criteria = get_field( 'selection_criteria' ) ?: 'category';
 $order_by           = get_field( 'order_by' )           ?: 'date';
 
-$current_id    = get_the_ID();
+$current_id    = get_the_ID() ?: get_queried_object_id();
 $related_posts = ofp_get_related_posts( $current_id, $posts_number, $selection_criteria, $order_by );
 ?>
 

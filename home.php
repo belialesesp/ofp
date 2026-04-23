@@ -391,8 +391,54 @@ if ($blog_page_id) {
             return category ? category.name : slug;
         }
 
-        // Stub — implement subcategory rendering here if needed.
+        renderSubcategories(parentId, targetLevel) {
+            const children = this.getChildCategories(parentId);
+            const row = this.categoryRows[targetLevel];
+            if (!row || children.length === 0) return;
+
+            const colors = ['#FFD6D9', '#BED8BA', '#9BBFCD', '#F1CAB9'];
+            row.innerHTML = '';
+
+            children.forEach((cat, index) => {
+                const grandchildren = this.getChildCategories(cat.id);
+                const hasKids = grandchildren.length > 0;
+
+                const btn = document.createElement('button');
+                btn.className = 'category-button';
+                btn.setAttribute('data-filter', cat.slug);
+                btn.setAttribute('data-category-id', cat.id);
+                btn.setAttribute('data-has-children', hasKids.toString());
+                btn.setAttribute('data-level', targetLevel);
+                btn.setAttribute('aria-pressed', 'false');
+                btn.style.backgroundColor = colors[index % colors.length];
+                btn.innerHTML = cat.name;
+
+                if (hasKids) {
+                    const indicator = document.createElement('span');
+                    indicator.className = 'has-children-indicator';
+                    indicator.textContent = '▼';
+                    btn.appendChild(indicator);
+                }
+
+                row.appendChild(btn);
+            });
+
+            row.style.display = 'flex';
+        }
+
         async handleCategoryLevel(level, categoryId, filter, hasChildren) {
+            if (level === 'primary') {
+                this.hideSubcategories('secondary');
+                this.hideSubcategories('tertiary');
+                if (hasChildren) {
+                    this.renderSubcategories(categoryId, 'secondary');
+                }
+            } else if (level === 'secondary') {
+                this.hideSubcategories('tertiary');
+                if (hasChildren) {
+                    this.renderSubcategories(categoryId, 'tertiary');
+                }
+            }
             await this.loadCategoryPosts(filter);
         }
 
